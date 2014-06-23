@@ -17,3 +17,13 @@ group :development do
   gem 'quiet_assets', '~> 1.0.2'
   gem 'better_errors', '~> 1.1.0'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails', '~> 4.4.0'
+  gem 'spring-commands-rspec', '~> 1.0.1'
+  gem 'rspec-collection_matchers', '~> 0.0.3'
+  gem 'rspec-its', '~> 1.0.0'
+  gem 'pry', '~> 0.9.12.6'
+  gem 'pry-debugger', '~> 0.2.2'
+end
