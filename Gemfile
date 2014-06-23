@@ -1,17 +1,19 @@
 source 'https://rubygems.org'
 
 ruby '2.1.0'
-
 gem 'rails', '4.1.1'
-gem 'pg'
+gem 'pg', '~> 0.17.1'
+
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.0'
 gem 'bootstrap-generators', '~> 3.1.0'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'haml-rails', '~> 0.5.3'
 gem 'airbrake', '~> 4.0.0'
+gem 'decent_exposure', '~> 2.3.2'
+gem 'draper', '~> 1.3.0'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
@@ -33,5 +35,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'rails_12factor'
+  gem 'rails_12factor', '~> 0.0.2'
 end
