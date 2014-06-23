@@ -18,7 +18,7 @@ gem 'draper', '~> 1.3.0'
 group :development do
   gem 'guard-rails', '~> 0.5.0'
   gem 'guard-bundler', '~> 2.0.0'
-  gem 'guard-livereload', '~> 2.1.1', require: false
+  gem 'guard-livereload', '~> 2.2.0', require: false
   gem 'guard-rspec', '~> 4.2.10'
   gem 'rack-livereload', '~> 0.3.15'
   gem 'quiet_assets', '~> 1.0.2'
@@ -29,9 +29,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'spring-commands-rspec', '~> 1.0.1'
-  gem 'rspec-collection_matchers', '~> 0.0.3'
+  gem 'rspec-collection_matchers', '~> 1.0.0'
   gem 'rspec-its', '~> 1.0.0'
-  gem 'pry', '~> 0.9.12.6'
   gem 'pry-debugger', '~> 0.2.2'
 end
 
