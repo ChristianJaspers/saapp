@@ -19,6 +19,7 @@ group :development do
   gem 'guard-rails', '~> 0.5.0'
   gem 'guard-bundler', '~> 2.0.0'
   gem 'guard-livereload', '~> 2.1.1', require: false
+  gem 'guard-rspec', '~> 4.2.10'
   gem 'rack-livereload', '~> 0.3.15'
   gem 'quiet_assets', '~> 1.0.2'
   gem 'better_errors', '~> 1.1.0'
