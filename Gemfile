@@ -27,3 +27,7 @@ group :development, :test do
   gem 'pry', '~> 0.9.12.6'
   gem 'pry-debugger', '~> 0.2.2'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
