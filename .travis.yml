@@ -1,0 +1,23 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.1.0
+services:
+- postgresql
+env:
+  matrix:
+  - RAILS_ENV=test
+before_install:
+- 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+- cp -f config/travis/database.yml config/database.yml
+before_script:
+- bundle exec rake db:create db:schema:load
+script:
+- bundle exec rspec spec
+notifications:
+  email:
+    recipients:
+    - b.kosmowski@selleo.com
+  hipchat:
+    rooms:
+    - '2fe7e1f5cdaf9e06957b9e0f287bb0@SAApp :: DEV'
