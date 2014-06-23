@@ -20,7 +20,7 @@ To setup test database, run `RAILS_ENV=test rake db:create db:migrate`
 
 * Run ```rspec spec``` to run the whole suite
 
-## Deployment to heroku (sandbox / staging)
+## Deployment to heroku (staging)
 
 
 ```
