@@ -1,4 +1,6 @@
-# Sales Argument App (SAApp) [![Dependency Status](https://gemnasium.com/414581dfdf7af56c503966f6408d430d.svg)](https://gemnasium.com/Selleo/saapp)
+# SAApp [![Dependency Status](https://gemnasium.com/414581dfdf7af56c503966f6408d430d.svg)](https://gemnasium.com/Selleo/saapp)
+
+**Sales Argument App**
 
 ## Prerequisites
 
