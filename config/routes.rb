@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :wizards, only: :create
 
   comfy_route :cms_admin, path: '/admin/cms'
+
   # Make sure this routeset is defined last
   comfy_route :cms, path: '/', sitemap: false
   # The priority is based upon order of creation: first created -> highest priority.
