@@ -1,0 +1,14 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: bart
+  password: secret
+
+development:
+  <<: *common
+  database: saaap
+
+development:
+  <<: *common
+  database: saaap_test
