@@ -9,6 +9,6 @@ development:
   <<: *common
   database: saaap
 
-development:
+test:
   <<: *common
   database: saaap_test
