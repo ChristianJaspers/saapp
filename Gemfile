@@ -17,7 +17,7 @@ gem 'draper', '~> 1.3.0'
 gem 'simple_form', '~> 3.0.2'
 gem 'devise'
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
-gem 'rails_email_preview', '~> 0.2.20'
+gem 'rails_email_preview', git: 'git@github.com:glebm/rails_email_preview.git', ref: '48638ca5c017dd389d85011951a3027dd120eb11'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
