@@ -20,4 +20,4 @@ notifications:
     - b.kosmowski@selleo.com
   hipchat:
     rooms:
-    - '2fe7e1f5cdaf9e06957b9e0f287bb0@SAApp :: DEV'
+    - '2fe7e1f5cdaf9e06957b9e0f287bb0@SAApp :: notifications'
