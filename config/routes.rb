@@ -1,7 +1,7 @@
 Saapp::Application.routes.draw do
-  comfy_route :cms_admin, :path => '/admin'
+  devise_for :users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
-  devise_for :users
   root 'home#show'
 
   resources :wizards, only: :create

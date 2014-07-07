@@ -22,7 +22,7 @@
         %ul.nav.navbar-nav.navbar-right
           %li
             - if user_signed_in?
-              = link_to t('Admin'), comfy_admin_cms_path
+              = link_to t('Admin'), admin_root_path
             - else
               = link_to t('Login'), new_user_session_path
           - if user_signed_in?
