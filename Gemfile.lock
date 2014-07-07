@@ -65,6 +65,7 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.2)
+    cancan (1.6.10)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     climate_control (0.0.3)
@@ -326,6 +327,7 @@ DEPENDENCIES
   better_errors (~> 1.1.0)
   bootstrap-generators (~> 3.1.0)
   bootstrap-sass (~> 3.1.0)
+  cancan
   coffee-rails (~> 4.0.0)
   comfortable_mexican_sofa (~> 1.12.0)
   decent_exposure (~> 2.3.2)
