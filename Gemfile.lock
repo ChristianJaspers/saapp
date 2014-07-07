@@ -351,7 +351,7 @@ DEPENDENCIES
   rspec-collection_matchers (~> 1.0.0)
   rspec-its (~> 1.0.0)
   rspec-rails (~> 3.0.0)
-  sass-rails (~> 4.0.0)
+  sass-rails (~> 4.0.3)
   selleo-controller_tests (~> 0.0.4)
   simple_form (~> 3.0.2)
   spring-commands-rspec (~> 1.0.1)
