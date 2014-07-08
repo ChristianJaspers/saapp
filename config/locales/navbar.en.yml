@@ -1,0 +1,5 @@
+en:
+  navbar:
+    admin_link: 'Admin'
+    login_link: 'Login'
+    logout_link: 'Logout'

@@ -22,12 +22,12 @@
         %ul.nav.navbar-nav.navbar-right
           %li
             - if user_signed_in?
-              = link_to t('Admin'), admin_root_path
+              = link_to t('navbar.admin_link'), admin_root_path
             - else
-              = link_to t('Login'), new_user_session_path
+              = link_to t('navbar.login_link'), new_user_session_path
           - if user_signed_in?
             %li
-              = link_to t('Logut'), destroy_user_session_path, method: 'delete'
+              = link_to t('navbar.logout_link'), destroy_user_session_path, method: 'delete'
     .container
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{name == :error ? 'danger' : 'success' } alert-dismissable" do
