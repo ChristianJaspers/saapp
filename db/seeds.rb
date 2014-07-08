@@ -13,5 +13,5 @@ user = User.create_with(
   email: admin_email,
   password: password,
   password_confirmation: password,
+  role: 'admin'
 ).find_or_create_by(email: admin_email)
-user.add_role(:admin) unless user.has_role?(:admin)

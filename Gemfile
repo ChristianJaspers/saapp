@@ -16,8 +16,6 @@ gem 'decent_exposure', '~> 2.3.2'
 gem 'draper', '~> 1.3.0'
 gem 'simple_form', '~> 3.0.2'
 gem 'devise', '3.2.4'
-gem 'cancan'
-gem 'rolify'
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
