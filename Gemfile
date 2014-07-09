@@ -18,6 +18,7 @@ gem 'simple_form', '~> 3.0.2'
 gem 'devise', '3.2.4'
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'simple_form', '~> 3.0.2'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
