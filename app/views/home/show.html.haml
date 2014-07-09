@@ -1,3 +1,4 @@
-= simple_form_for wizard do |f|
-  = f.input :email
-  = f.submit
+- if guest?
+  = simple_form_for wizard do |f|
+    = f.input :email
+    = f.submit
