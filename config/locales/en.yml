@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  page_title: "Sales Argument App"
+  helpers:
+    submit:
+      wizard:
+        create: Try for free!
+  simple_form:
+    placeholders:
+      wizard:
+        email: Your company email
+
