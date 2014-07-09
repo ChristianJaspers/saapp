@@ -1,14 +1,16 @@
 class User < ActiveRecord::Base
-  ROLES = [
-    'admin'
-  ]
+  enum role: {
+    user: 0,
+    manager: 1,
+    admin: 2
+  }
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable
 
-  def admin?
-    role == ROLES[0]
-  end
+  validates :role, presence: true
 end
