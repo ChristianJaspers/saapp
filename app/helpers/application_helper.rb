@@ -1,6 +1,6 @@
 module ApplicationHelper
   def logged_in?
-    false #FIXME Temporary implementation
+    current_user.present?
   end
 
   def guest?
