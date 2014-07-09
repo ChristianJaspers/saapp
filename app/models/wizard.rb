@@ -9,5 +9,3 @@ class Wizard
     self.email = attrs[:email]
   end
 end
-
-
