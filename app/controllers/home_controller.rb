@@ -1,3 +1,3 @@
 class HomeController < ApplicationController
-  expose(:wizard) { Wizard.new }
+  expose(:wizard)
 end
