@@ -14,6 +14,7 @@ gem 'haml-rails', '~> 0.5.3'
 gem 'airbrake', '~> 4.0.0'
 gem 'decent_exposure', '~> 2.3.2'
 gem 'draper', '~> 1.3.0'
+gem 'simple_form', '~> 3.0.2'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
