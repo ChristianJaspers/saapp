@@ -3,7 +3,7 @@ class Wizard
 
   attr_accessor :email
 
-  validates :email, presence: true
+  validates :email, presence: true, email: true
 
   def attributes=(attrs)
     self.email = attrs[:email]
