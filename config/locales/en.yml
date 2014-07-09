@@ -24,7 +24,6 @@ en:
     submit:
       wizard:
         create: Try for free!
-        update: "Save Changes"
   simple_form:
     placeholders:
       wizard:
