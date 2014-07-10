@@ -4,6 +4,11 @@ wizardApp.controller('wizardCtrl', ['$scope', ($scope) ->
   $scope.wizard = {}
   $scope.wizard.email = gon.email
   $scope.wizard.categories = []
+
+  $scope.maxCategories = 20
+
+  $scope.atCategoriesLimit = ->
+    $scope.wizard.categories.length >= $scope.maxCategories
 ])
 
 wizardApp.controller('categoryCtrl', ['$scope', ($scope) ->
@@ -14,6 +19,6 @@ wizardApp.controller('categoryCtrl', ['$scope', ($scope) ->
     $scope.wizard.categories.splice(index, 1)
 
   $scope.addCategory = (wizard) ->
-    wizard.categories.push($scope.category.name)
+    wizard.categories.push({name: $scope.category.name})
     $scope.category = {}
 ])
