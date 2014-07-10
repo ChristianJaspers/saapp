@@ -1,12 +1,10 @@
 %h2= t('wizard.step_1.header')
-%div
-  %ol
+%div{'ng-app' => 'wizardApp', 'ng-controller' => 'wizardCtrl'}
+  %ul{'ng-repeat' => 'category in categories'}
     %li
-      iPhone
+      {{$index + 1}} - {{category}}
       %span.glyphicon.glyphicon-trash
-    %li
-      iPad
-      %span.glyphicon.glyphicon-trash
-    %li
-      %input
-      %span.glyphicon.glyphicon-plus
+
+  %form{name: 'newCategoryForm'}
+    %input
+    %span.glyphicon.glyphicon-plus
