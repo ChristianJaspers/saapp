@@ -3,5 +3,6 @@ class WizardsController < ApplicationController
 
   def create
     render 'home/show' unless wizard.valid?
+    gon.email = wizard.email
   end
 end
