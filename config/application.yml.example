@@ -1,0 +1,4 @@
+MANDRILL_APIKEY: aUeb_nSGBOJraBjpK3-rcw
+
+production:
+  MANDRILL_APIKEY: ~
