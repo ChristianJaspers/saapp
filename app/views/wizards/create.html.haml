@@ -1,19 +1,4 @@
 %div{'ng-app' => 'wizardApp', 'ng-controller' => 'wizardCtrl'}
   %tabset
     %tab{'ng-repeat' => 'step in steps', heading: '{{step.title}}', active: 'step.active', disabled: 'step.disabled'}
-      {{step.content}}
-
-  %h2= t('wizard.step_1.header')
-  %div{'ng-controller' => 'categoryCtrl'}
-    %ul{'ng-repeat' => 'category in wizard.categories'}
-      %li
-        {{$index + 1}} - {{category.name}}
-        %span.glyphicon.glyphicon-trash{'ng-click' => 'removeCategory(category)'}
-
-    %form{name: 'newCategoryForm',
-    'ng-submit' =>'addCategory(wizard)',
-    'ng-hide' => 'atCategoriesLimit()'}
-      %input{'ng-model' => 'category.name', required: true}
-      %input.glyphicon.glyphicon-plus{type: 'submit'}
-    %span{'ng-show' => 'atCategoriesLimit()'}
-      = t('wizard.step_1.at_categories_limit_notification', maximum_amount: 20 )
+      %div{'ng-include' => true, src: 'step.template'}

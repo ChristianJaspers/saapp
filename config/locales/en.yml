@@ -33,3 +33,4 @@ en:
     step_1:
       header: Enter product categories
       at_categories_limit_notification: "You can create only %{maximum_amount} categories through this wizard"
+      next_step_button: "Next step"

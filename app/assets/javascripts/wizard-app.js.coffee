@@ -1,21 +1,27 @@
-wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap'])
+wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap', 'templates'])
 
 wizardApp.controller('wizardCtrl', ['$scope', ($scope) ->
-  $scope.steps = [
-    { title:'Step 1 : Categories', content:'Step 1'},
-    { title:'Step 2 : Features and Benefits', content:'Step 2', disabled: true },
-    { title:'Step 3 : Invitations', content:'Step 3', disabled: true },
-    { title:'Step 4 : Summary', content:'Step 4', disabled: true },
-  ]
-
   $scope.wizard = {}
   $scope.wizard.email = gon.email
   $scope.wizard.categories = []
-
   $scope.maxCategories = 20
+
+  $scope.steps = [
+    { title: 'Step 1 : Categories', template: 'step-one.html' },
+    { title: 'Step 2 : Features and Benefits', template: 'step-two.html', disabled: true },
+    { title: 'Step 3 : Invitations', template: 'step-three.html', disabled: true },
+    { title: 'Step 4 : Summary', template: 'step-four.html', disabled: true },
+  ]
 
   $scope.atCategoriesLimit = ->
     $scope.wizard.categories.length >= $scope.maxCategories
+
+  $scope.firstStepValid = ->
+    $scope.wizard.categories.length isnt 0
+
+  $scope.$watchCollection('wizard.categories', (currentCategories, _) ->
+    $scope.steps[1].disabled = not $scope.firstStepValid()
+  )
 ])
 
 wizardApp.controller('categoryCtrl', ['$scope', ($scope) ->
