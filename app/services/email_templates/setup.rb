@@ -45,13 +45,23 @@ module EmailTemplates
       {
         name: template_name,
         subject: "Subject: #{template_name}",
-        code: "<div>Please update your template #{template_name}</div>",
+        code: template_html_code(language, email_template_name),
         publish: true,
         labels: [
           language_tag(language),
           email_template_name
         ]
       }
+    end
+
+    def template_html_code(language, email_template_name)
+      file_path = Rails.root.join('config', 'email_templates', 'import', language, "#{email_template_name}.yml").to_s
+      if File.exist?(file_path)
+        data = HashWithIndifferentAccess.new(YAML.load(File.read(file_path)))
+        data[:body]
+      else
+        "<div>Please update your template #{email_template_name}</div>"
+      end
     end
 
     def language_tag(language)
