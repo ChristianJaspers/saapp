@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  application_name: BetterSalesman
   helpers:
     submit:
       wizard:
@@ -28,4 +29,8 @@ en:
     placeholders:
       wizard:
         email: Your company email
-
+  wizard:
+    step_1:
+      header: Enter product categories
+      at_categories_limit_notification: "You can create only %{maximum_amount} categories through this wizard"
+      next_step_button: "Next step"
