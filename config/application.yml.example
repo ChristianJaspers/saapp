@@ -1,4 +1,7 @@
 MANDRILL_APIKEY: n9YjeEKAFHuog92W-qBAvA
+MANDRILL_USERNAME: your-mandril-account-mail@domain.com
 
 production:
   MANDRILL_APIKEY: ~
+  MANDRILL_USERNAME: ~
+  SECRET_KEY_BASE: ~
