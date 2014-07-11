@@ -19,7 +19,7 @@ wizardApp.controller('wizardCtrl', ['$scope', ($scope) ->
   $scope.firstStepValid = ->
     $scope.wizard.categories.length isnt 0
 
-  $scope.$watchCollection('wizard.categories', (currentCategories, _) ->
+  $scope.$watchCollection('wizard.categories', ->
     $scope.steps[1].disabled = not $scope.firstStepValid()
   )
 ])
