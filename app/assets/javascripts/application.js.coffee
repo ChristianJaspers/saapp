@@ -17,5 +17,7 @@
 #= require angular.min
 #= require ui-bootstrap-tpls-0.11.0.min
 #= require angular-resource.min
+#= require angular-rails-templates
+#= require_tree ../templates
 
 #= require_tree .
