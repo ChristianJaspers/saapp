@@ -18,6 +18,7 @@ gem 'devise', '3.2.4'
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'gon', '~> 5.1.0'
+gem 'angular-rails-templates', '~> 0.1.3'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
