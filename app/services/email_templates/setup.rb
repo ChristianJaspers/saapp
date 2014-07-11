@@ -48,10 +48,14 @@ module EmailTemplates
         code: "<div>Please update your template #{template_name}</div>",
         publish: true,
         labels: [
-          language,
+          language_tag(language),
           email_template_name
         ]
       }
+    end
+
+    def language_tag(language)
+      "LANG_#{language}"
     end
   end
 end
