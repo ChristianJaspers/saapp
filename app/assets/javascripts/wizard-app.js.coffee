@@ -1,5 +1,13 @@
 wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap', 'templates'])
 
+wizardApp.directive('categoriesPreview', ->
+  {
+  restrict: 'E'
+  templateUrl: 'categories-preview.html',
+  replace: true
+  }
+)
+
 wizardApp.controller('wizardCtrl', ['$scope', ($scope) ->
   $scope.wizard = {
     email: gon.email,

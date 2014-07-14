@@ -1,0 +1,5 @@
+%div.mobile-preview-container
+  = I18n.t('common.category.many')
+  %ul{'ng-repeat' => 'category in wizard.categories'}
+    %li {{category.name}}
+
