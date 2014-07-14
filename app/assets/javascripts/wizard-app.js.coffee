@@ -1,5 +1,9 @@
 wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap', 'templates'])
 
+wizardApp.factory('Wizard', ['$resource', ($resource) ->
+  $resource('/wizards')
+])
+
 wizardApp.directive('categoriesPreview', ->
   {
   restrict: 'E'
@@ -16,7 +20,7 @@ wizardApp.directive('argumentsPreview', ->
   }
 )
 
-wizardApp.controller('wizardCtrl', ['$scope', '$animate', ($scope, $animate) ->
+wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $animate, Wizard) ->
   $scope.wizard = {
     email: gon.email,
     categories: [],
@@ -57,6 +61,17 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', ($scope, $animate) ->
   $scope.$watchCollection('wizard.invitations', ->
     $scope.steps[3].disabled = not $scope.thirdStepValid()
   )
+
+  $scope.submitWizard = ->
+    wizard = new Wizard({registration: {email: $scope.wizard.email, invitations: $scope.wizard.invitations}})
+
+    wizard.registration.categories = _.map($scope.wizard.categories, (category) ->
+      {name: category.name, arguments: _.map(category.arguments, (argument) ->
+        {feature: argument.feature, benefit: argument.benefit}
+      )}
+    )
+
+    wizard.$save()
 ])
 
 wizardApp.controller('categoryCtrl', ['$scope', ($scope) ->

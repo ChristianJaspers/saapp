@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'home#show'
 
-  resources :wizards, only: :new
+  resources :wizards, only: [:new, :create]
 
   comfy_route :cms_admin, path: '/admin/cms'
 

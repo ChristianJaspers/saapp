@@ -44,6 +44,10 @@ en:
       header: "Review and accept"
       categories_and_arguments_header: "Categories and arguments"
       invitations_header: "Sales representatives"
+      submit_button: "Send invitations"
+    create:
+      notifications:
+        success: "Invitations were sent successfuly!"
   common:
     feature: "Feature"
     benefit: "Benefit"
