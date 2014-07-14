@@ -8,7 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '~> 3.1.0'
 gem 'bootstrap-generators', '~> 3.1.0'
-gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-sass', '~> 3.2.0.0'
 gem 'haml-rails', '~> 0.5.3'
 gem 'airbrake', '~> 4.0.0'
 gem 'decent_exposure', '~> 2.3.2'
@@ -24,7 +24,7 @@ gem 'angular-ui-bootstrap-rails', '~> 0.11.0'
 group :development do
   gem 'guard-rails', '~> 0.5.0'
   gem 'guard-bundler', '~> 2.0.0'
-  gem 'guard-livereload', '~> 2.2.0', require: false
+  gem 'guard-livereload', '~> 2.3.0', require: false
   gem 'guard-rspec', '~> 4.2.10'
   gem 'rack-livereload', '~> 0.3.15'
   gem 'quiet_assets', '~> 1.0.2'
@@ -37,7 +37,7 @@ group :development, :test do
   gem 'spring-commands-rspec', '~> 1.0.1'
   gem 'rspec-collection_matchers', '~> 1.0.0'
   gem 'rspec-its', '~> 1.0.0'
-  gem 'pry-debugger', '~> 0.2.2'
+  gem 'pry-debugger', '~> 0.2.3'
   gem 'selleo-controller_tests', '~> 0.0.4'
   gem 'pry-remote', '~> 0.1.8'
 end
