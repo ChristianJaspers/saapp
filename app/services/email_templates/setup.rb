@@ -40,10 +40,11 @@ module EmailTemplates
 
     def to_request_data(language, email_template_name)
       template_name = TemplateNameBuilder.build(language, email_template_name)
+      data = template_html_data(language, email_template_name)
       {
         name: template_name,
-        subject: "Subject: #{template_name}",
-        code: template_html_code(language, email_template_name),
+        subject: data[:subject],
+        code: data[:body],
         publish: true,
         labels: [
           language_tag(language),
@@ -52,13 +53,15 @@ module EmailTemplates
       }
     end
 
-    def template_html_code(language, email_template_name)
+    def template_html_data(language, email_template_name)
       file_path = Rails.root.join('config', 'email_templates', 'import', language, "#{email_template_name}.yml").to_s
       if File.exist?(file_path)
-        data = HashWithIndifferentAccess.new(YAML.load(File.read(file_path)))
-        data[:body]
+        HashWithIndifferentAccess.new(YAML.load(File.read(file_path)))
       else
-        "<div>Please update your template #{email_template_name}</div>"
+        {
+          subject: "TODO: #{email_template_name}",
+          body: "<div>Please update your template #{email_template_name}</div>"
+        }
       end
     end
 
