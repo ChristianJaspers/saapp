@@ -1,6 +1,22 @@
 wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap', 'templates'])
 
-wizardApp.controller('wizardCtrl', ['$scope', ($scope) ->
+wizardApp.directive('categoriesPreview', ->
+  {
+  restrict: 'E'
+  templateUrl: 'categories-preview.html',
+  replace: true
+  }
+)
+
+wizardApp.directive('argumentsPreview', ->
+  {
+  restrict: 'E'
+  templateUrl: 'arguments-preview.html',
+  replace: true
+  }
+)
+
+wizardApp.controller('wizardCtrl', ['$scope', '$animate', ($scope, $animate) ->
   $scope.wizard = {
     email: gon.email,
     categories: [],
@@ -80,6 +96,7 @@ wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
     category.arguments.push(feature)
     wizard.arguments.push(feature)
 
+    category.active = true
     $scope.argument = {}
 ])
 

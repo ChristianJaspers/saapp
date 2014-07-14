@@ -47,3 +47,5 @@ en:
   common:
     feature: "Feature"
     benefit: "Benefit"
+    category:
+      many: "Categories"
