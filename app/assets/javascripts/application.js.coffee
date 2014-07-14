@@ -17,7 +17,6 @@
 #= require angular.min
 #= require angular-ui-bootstrap-tpls
 #= require angular-resource.min
-#= require angular-animate.min
 #= require angular-rails-templates
 #= require_tree ../templates
 
