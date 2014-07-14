@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 
   root 'home#show'
 
-  resources :wizards, only: :create
+  resources :wizards, only: :new
 
   comfy_route :cms_admin, path: '/admin/cms'
 
   # Make sure this routeset is defined last
   comfy_route :cms, path: '/', sitemap: false
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
