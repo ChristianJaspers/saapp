@@ -35,7 +35,7 @@ private
     locale = record.current_locale
     variables = vars.merge(email: record.email)
     headers = {
-      subject: nil,
+      subject: '',
       to: variables[:email]
     }
     headers['X-MC-Template'] = EmailTemplates::TemplateNameBuilder.build(locale, action)
