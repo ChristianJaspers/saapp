@@ -3,17 +3,19 @@ require 'mandrill'
 module EmailTemplates
   class Sender
     attr_reader :api,
-                :recipients
+                :recipients,
+                :template_name
 
-    def initialize(recipients)
+    def initialize(recipients, template_name)
       @api = Mandrill::API.new
       @recipients = Array.wrap(recipients)
+      @template_name = template_name
     end
 
     def send
       # TODO language might differ per users
       language = recipients.first.language
-      template_name = TemplateNameBuilder.build(language, 'test')
+      template_name = TemplateNameBuilder.build(language, template_name)
       api.messages.send_template(template_name, template_content, message, async, ip_pool, send_at)
     end
 
