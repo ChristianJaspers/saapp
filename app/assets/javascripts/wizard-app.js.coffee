@@ -4,7 +4,8 @@ wizardApp.controller('wizardCtrl', ['$scope', ($scope) ->
   $scope.wizard = {
     email: gon.email,
     categories: [],
-    arguments: []
+    arguments: [],
+    invitations: []
   }
 
   $scope.maxCategories = 20
@@ -25,12 +26,20 @@ wizardApp.controller('wizardCtrl', ['$scope', ($scope) ->
   $scope.secondStepValid = ->
     $scope.wizard.arguments.length isnt 0
 
+  $scope.thirdStepValid = ->
+    $scope.wizard.invitations.length isnt 0
+
   $scope.$watchCollection('wizard.categories', ->
     $scope.steps[1].disabled = not $scope.firstStepValid()
   )
 
   $scope.$watchCollection('wizard.arguments', ->
     $scope.steps[2].disabled = not $scope.secondStepValid()
+    $scope.steps[3].disabled = not $scope.secondStepValid() or not $scope.thirdStepValid()
+  )
+
+  $scope.$watchCollection('wizard.invitations', ->
+    $scope.steps[3].disabled = not $scope.thirdStepValid()
   )
 ])
 
@@ -72,4 +81,16 @@ wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
     wizard.arguments.push(feature)
 
     $scope.argument = {}
+])
+
+wizardApp.controller('invitationCtrl', ['$scope', ($scope) ->
+  $scope.invitation = {}
+
+  $scope.removeInvitation = (invitation) ->
+    index = $scope.wizard.invitations.indexOf(invitation)
+    $scope.wizard.invitations.splice(index, 1)
+
+  $scope.addInvitation = (wizard) ->
+    wizard.invitations.push({email: $scope.invitation.email, displayName: $scope.invitation.displayName})
+    $scope.invitation = {}
 ])

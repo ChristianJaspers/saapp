@@ -37,6 +37,9 @@ en:
     step_2:
       header: "Enter first arguments"
       next_step_button: "Next step"
+    step_3:
+      header: "Invite your sales representatives"
+      next_step_button: "Next step"
   common:
     feature: "Feature"
     benefit: "Benefit"
