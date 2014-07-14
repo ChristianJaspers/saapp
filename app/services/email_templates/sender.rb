@@ -26,6 +26,8 @@ module EmailTemplates
       }
     end
 
+  private
+
     def template_content
       []
     end
@@ -39,14 +41,12 @@ module EmailTemplates
     end
 
     def from_email
-      'noreply@example.com'
+      MandrillDeviseMailer.default_params[:from]
     end
 
     def from_name
        ActiveAdmin.application.site_title
     end
-
-  private
 
     def async
       true

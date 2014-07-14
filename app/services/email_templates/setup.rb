@@ -34,9 +34,7 @@ module EmailTemplates
 
     def templates
       @templates ||= %w(
-        confirmation_instructions
         reset_password_instructions
-        unlock_instructions
       )
     end
 
