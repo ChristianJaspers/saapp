@@ -1,2 +1,24 @@
-%div
-  Step 2
+%div{'ng-controller' => 'argumentCtrl'}
+  %h2= I18n.t('wizard.step_2.header')
+  %table
+    %thead
+      %th
+      %th= I18n.t('common.feature')
+      %th= I18n.t('common.benefit')
+      %th
+    %tbody{'ng-repeat' => "argument in wizard.arguments"}
+      %tr
+        %td {{$index + 1}} - {{argument.category.name}}
+        %td {{argument.feature}}
+        %td {{argument.benefit}}
+        %td
+          %span.glyphicon.glyphicon-trash{'ng-click' => 'removeArgument(argument)'}
+                                        
+  %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument(wizard)'}
+    %select{'ng-model' => 'argument.category', 'ng-options' => 'category as category.name for category in wizard.categories', required: true}
+    %input{'ng-model' => 'argument.feature', required: true}
+    %input{'ng-model' => 'argument.benefit', required: true}
+    %input.glyphicon.glyphicon-plus{type: 'submit'}
+
+  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true'}
+    = I18n.t('wizard.step_2.next_step_button')

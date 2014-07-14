@@ -34,3 +34,9 @@ en:
       header: Enter product categories
       at_categories_limit_notification: "You can create only %{maximum_amount} categories through this wizard"
       next_step_button: "Next step"
+    step_2:
+      header: "Enter first arguments"
+      next_step_button: "Next step"
+  common:
+    feature: "Feature"
+    benefit: "Benefit"
