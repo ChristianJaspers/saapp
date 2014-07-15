@@ -39,6 +39,7 @@ group :development, :test do
   gem 'pry-debugger', '~> 0.2.2'
   gem 'selleo-controller_tests', '~> 0.0.4'
   gem 'pry-remote', '~> 0.1.8'
+  gem 'travis', '~> 1.6.14'
 end
 
 group :production do
