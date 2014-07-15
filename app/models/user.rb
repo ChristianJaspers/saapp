@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
-  has_many :categories, inverse_of: :owner
+  has_many :categories, inverse_of: :owner, foreign_key: :owner_id
   has_many :features, inverse_of: :owner
   belongs_to :team, inverse_of: :users
 
