@@ -15,7 +15,7 @@ module EmailTemplates
     def send
       # TODO language might differ per users
       language = recipients.first.language
-      template_name = TemplateNameBuilder.build(language, template_name)
+      template_name = BuildTemplateName.call(language, template_name)
       api.messages.send_template(template_name, template_content, message, async, ip_pool, send_at)
     end
 

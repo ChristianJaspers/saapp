@@ -39,7 +39,7 @@ module EmailTemplates
     end
 
     def to_request_data(language, email_template_name)
-      template_name = TemplateNameBuilder.build(language, email_template_name)
+      template_name = BuildTemplateName.call(language, email_template_name)
       data = template_html_data(language, email_template_name)
       {
         name: template_name,

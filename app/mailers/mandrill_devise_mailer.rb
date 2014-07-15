@@ -38,7 +38,7 @@ private
       subject: '',
       to: variables[:email]
     }
-    headers['X-MC-Template'] = EmailTemplates::TemplateNameBuilder.build(locale, action)
+    headers['X-MC-Template'] = EmailTemplates::BuildTemplateName.call(locale, action)
     headers['X-MC-MergeVars'] = variables.to_json
     mail headers
   end
