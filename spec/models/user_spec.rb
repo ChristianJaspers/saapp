@@ -14,4 +14,10 @@ RSpec.describe User, type: :model do
       it { is_expected.to be_falsy }
     end
   end
+
+  describe '.create' do
+    context 'with no password provided' do
+      xit 'user can be created' #remove temporary password from SetupNewAccount when this is implemented
+    end
+  end
 end
