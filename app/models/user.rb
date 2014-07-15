@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :categories, inverse_of: :owner
   has_many :features, inverse_of: :owner
+  belongs_to :team, inverse_of: :users
 
   validates :role, presence: true
 end
