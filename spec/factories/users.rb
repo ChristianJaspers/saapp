@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:email) { |i| "user#{i + 1}@example.com" }
     password '12345678'
     password_confirmation { password }
+    team
     role 'user'
 
     trait :admin do
