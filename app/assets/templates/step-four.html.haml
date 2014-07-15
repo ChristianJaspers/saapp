@@ -1,0 +1,12 @@
+%div
+  %h2= I18n.t('wizard.step_4.header')
+
+  %h3= I18n.t('wizard.step_4.categories_and_arguments_header')
+  %div{'ng-repeat' => 'category in wizard.categories'}
+    %strong {{category.name}}
+    %ul{'ng-repeat' => 'argument in category.arguments'}
+      %li {{argument.feature}} - {{argument.benefit}}
+
+  %h3= I18n.t('wizard.step_4.invitations_header')
+  %ul{'ng-repeat' => 'invitation in wizard.invitations'}
+    %li {{invitation.email}} {{invitation.displayName}}

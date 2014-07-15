@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  application_name: BetterSalesman
   helpers:
     submit:
       wizard:
@@ -28,4 +29,23 @@ en:
     placeholders:
       wizard:
         email: Your company email
-
+  wizard:
+    step_1:
+      header: Enter product categories
+      at_categories_limit_notification: "You can create only %{maximum_amount} categories through this wizard"
+      next_step_button: "Next step"
+    step_2:
+      header: "Enter first arguments"
+      next_step_button: "Next step"
+    step_3:
+      header: "Invite your sales representatives"
+      next_step_button: "Next step"
+    step_4:
+      header: "Review and accept"
+      categories_and_arguments_header: "Categories and arguments"
+      invitations_header: "Sales representatives"
+  common:
+    feature: "Feature"
+    benefit: "Benefit"
+    category:
+      many: "Categories"

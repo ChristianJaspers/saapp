@@ -1,0 +1,15 @@
+%div{'ng-controller' => 'invitationCtrl'}
+  %h2= I18n.t('wizard.step_3.header')
+  %ul{'ng-repeat' => 'invitation in wizard.invitations'}
+    %li
+      {{$index + 1}} - {{invitation.email}} ({{invitation.displayName}})
+      %span.glyphicon.glyphicon-trash{'ng-click' => 'removeInvitation(invitation)'}
+
+  %form{name: 'newInvitationForm',
+  'ng-submit' =>'addInvitation(wizard)'}
+    %input{'ng-model' => 'invitation.email', required: true}
+    %input{'ng-model' => 'invitation.displayName'}
+    %input.glyphicon.glyphicon-plus{type: 'submit'}
+
+  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
+    = I18n.t('wizard.step_3.next_step_button')
