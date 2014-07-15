@@ -12,5 +12,8 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
+  has_many :categories, inverse_of: :owner
+  has_many :features, inverse_of: :owner
+
   validates :role, presence: true
 end
