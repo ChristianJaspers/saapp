@@ -1,5 +1,6 @@
 class WizardsController < ApplicationController
   expose(:wizard)
+  protect_from_forgery except: :create
 
   def new
     render 'home/show' unless wizard.valid?
@@ -7,6 +8,7 @@ class WizardsController < ApplicationController
   end
 
   def create
-    redirect_to root_path, notice: t('wizard.create.notifications.success')
+    flash[:notice] = t('wizard.create.notifications.success')
+    render json: 'success', status: :created
   end
 end

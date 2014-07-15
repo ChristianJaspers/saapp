@@ -63,15 +63,17 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
   )
 
   $scope.submitWizard = ->
-    wizard = new Wizard({registration: {email: $scope.wizard.email, invitations: $scope.wizard.invitations}})
+    wizard = new Wizard({email: $scope.wizard.email, invitations: $scope.wizard.invitations})
 
-    wizard.registration.categories = _.map($scope.wizard.categories, (category) ->
+    wizard.categories = _.map($scope.wizard.categories, (category) ->
       {name: category.name, arguments: _.map(category.arguments, (argument) ->
         {feature: argument.feature, benefit: argument.benefit}
       )}
     )
 
-    wizard.$save()
+    wizard.$save().then((u, putResponseHeaders) ->
+      document.location.href  = '/'
+    )
 ])
 
 wizardApp.controller('categoryCtrl', ['$scope', ($scope) ->
