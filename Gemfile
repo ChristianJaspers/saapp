@@ -17,6 +17,8 @@ gem 'simple_form', '~> 3.1.0.rc1'
 gem 'devise', '3.2.4'
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'mandrill-api', '~> 1.0.52'
+gem 'figaro', '~> 1.0.0.rc1'
 gem 'gon', '~> 5.1.0'
 gem 'angular-rails-templates', '~> 0.1.3'
 gem 'angular-ui-bootstrap-rails', '~> 0.11.0'
@@ -40,9 +42,9 @@ group :development, :test do
   gem 'pry-debugger', '~> 0.2.3'
   gem 'selleo-controller_tests', '~> 0.0.4'
   gem 'pry-remote', '~> 0.1.8'
+  gem 'travis', '~> 1.6.14'
 end
 
 group :production do
   gem 'rails_12factor', '~> 0.0.2'
 end
-

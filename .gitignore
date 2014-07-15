@@ -20,3 +20,4 @@
 
 # Ignore configuratino files
 /config/database.yml
+/config/application.yml

@@ -28,5 +28,16 @@ module Saapp
                        request_specs: false
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
+
+    # smtp mailer
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.mandrillapp.com',
+      port: 587,
+      enable_starttls_auto: true,
+      user_name: Figaro.env.MANDRILL_USERNAME,
+      password: Figaro.env.MANDRILL_APIKEY,
+      authentication: 'login',
+      domain: 'yourdomain.com' # your domain to identify your server when connecting
+    }
   end
 end

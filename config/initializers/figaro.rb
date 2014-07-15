@@ -1,0 +1,4 @@
+Figaro.require(
+  'MANDRILL_APIKEY',
+  'MANDRILL_USERNAME'
+)

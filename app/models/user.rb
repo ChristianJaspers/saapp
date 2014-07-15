@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
          :validatable
 
   validates :role, presence: true
+
+  def locale
+    'en'
+  end
 end
