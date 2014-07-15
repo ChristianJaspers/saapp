@@ -3,7 +3,6 @@ class CreateBenefits < ActiveRecord::Migration
     create_table :benefits do |t|
       t.string :description, null: false
       t.integer :feature_id, null: false
-
       t.timestamps
     end
 

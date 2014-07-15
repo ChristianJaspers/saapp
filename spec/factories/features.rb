@@ -7,4 +7,3 @@ FactoryGirl.define do
     owner_id { create(:manager).id }
   end
 end
-
