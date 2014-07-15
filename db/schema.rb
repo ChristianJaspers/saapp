@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715123653) do
+ActiveRecord::Schema.define(version: 20140715131040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,11 @@ ActiveRecord::Schema.define(version: 20140715123653) do
   add_index "comfy_cms_snippets", ["site_id", "identifier"], name: "index_comfy_cms_snippets_on_site_id_and_identifier", unique: true, using: :btree
   add_index "comfy_cms_snippets", ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position", using: :btree
 
+  create_table "companies", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "features", force: true do |t|
     t.string   "description", null: false
     t.integer  "category_id", null: false
@@ -179,6 +184,12 @@ ActiveRecord::Schema.define(version: 20140715123653) do
 
   add_index "features", ["category_id"], name: "index_features_on_category_id", using: :btree
   add_index "features", ["owner_id"], name: "index_features_on_owner_id", using: :btree
+
+  create_table "teams", force: true do |t|
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
