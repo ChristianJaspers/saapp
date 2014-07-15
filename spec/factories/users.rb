@@ -12,5 +12,9 @@ FactoryGirl.define do
     trait :manager do
       role 'manager'
     end
+
+    factory :manager do
+      role 'manager'
+    end
   end
 end
