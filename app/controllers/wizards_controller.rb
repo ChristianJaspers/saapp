@@ -8,6 +8,8 @@ class WizardsController < ApplicationController
   end
 
   def create
+    SetupNewAccount.call(self)
+
     flash[:notice] = t('wizard.create.notifications.success')
     render json: 'success', status: :created
   end
