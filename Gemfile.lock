@@ -339,7 +339,7 @@ DEPENDENCIES
   better_errors (~> 1.1.0)
   bootstrap-generators (~> 3.1.0)
   bootstrap-sass (~> 3.1.0)
-  business_process
+  business_process (~> 0.0.1)
   coffee-rails (~> 4.0.0)
   comfortable_mexican_sofa (~> 1.12.0)
   decent_exposure (~> 2.3.2)
