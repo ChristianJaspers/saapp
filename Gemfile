@@ -17,7 +17,6 @@ gem 'simple_form', '~> 3.0.2'
 gem 'devise', '3.2.4'
 gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'simple_form', '~> 3.0.2'
 gem 'mandrill-api', '~> 1.0.52'
 gem 'figaro', '~> 1.0.0.rc1'
 
