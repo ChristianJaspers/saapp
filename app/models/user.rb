@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   validates :role, presence: true
 
-  def current_locale
+  def locale
     'en'
   end
 end

@@ -5,35 +5,35 @@ class MandrillDeviseMailer < Devise::Mailer
   default from: 'noreply@example.com'
   default template_name: 'empty'
 
-  def confirmation_instructions(record, token, opts={})
+  def confirmation_instructions(user, token, opts={})
     @token = token
     vars = {
-      confirmation_url: confirmation_url(record, confirmation_token: @token)
+      confirmation_url: confirmation_url(user, confirmation_token: @token)
     }
-    mandrill_mail(record, :confirmation_instructions, vars)
+    mandrill_mail(user, :confirmation_instructions, vars)
   end
 
-  def reset_password_instructions(record, token, opts={})
+  def reset_password_instructions(user, token, opts={})
     @token = token
     vars = {
-      edit_password_url: edit_password_url(record, reset_password_token: @token)
+      edit_password_url: edit_password_url(user, reset_password_token: @token)
     }
-    mandrill_mail(record, :reset_password_instructions, vars)
+    mandrill_mail(user, :reset_password_instructions, vars)
   end
 
-  def unlock_instructions(record, token, opts={})
+  def unlock_instructions(user, token, opts={})
     @token = token
     vars = {
-      unlock_url: unlock_url(record, unlock_token: @token)
+      unlock_url: unlock_url(user, unlock_token: @token)
     }
-    mandrill_mail(record, :unlock_instructions, vars)
+    mandrill_mail(user, :unlock_instructions, vars)
   end
 
 private
 
-  def mandrill_mail(record, action, vars)
-    locale = record.current_locale
-    variables = vars.merge(email: record.email)
+  def mandrill_mail(user, action, vars)
+    locale = user.locale
+    variables = vars.merge(email: user.email)
     headers = {
       subject: '',
       to: variables[:email]
