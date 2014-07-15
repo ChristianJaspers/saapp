@@ -7,6 +7,9 @@ services:
 env:
   matrix:
   - RAILS_ENV=test
+  global:
+  - secure: JkJx4RNQ1GaBubCjCbOuHl0MyzyyzgQ+FvNbk2BsbbxSpUrbFmTDZoA0TwxDd6+mvN0D3YFAyhrR8b46G2f0la48K1WTogOoDzP2tAhkBWGZyZOILViRg/awxh8ECQkQ2EZwoD6T0HkhXRM3kZ5JqVPKhMiiBSa+s4R7cg8j0SM=
+  - secure: koAvKAECCe/Aa7EfGIj6gnA+cAksN+fNfJMYqezf8mgt7ZAAxUTRCt/YRZmEuQAdYErnUKRtsFML04gH8PqswOQdLpbxuWbUuS4tj1kjPJFP2I2VfGvgqundFeJlQiyz8OA5hMzrdm1GPYYKSCFjl00UW/SU/j4bxzDiTAqFRoQ=
 before_install:
 - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
 - cp -f config/travis/database.yml config/database.yml
