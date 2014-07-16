@@ -6,12 +6,13 @@ class SetupNewAccount < BusinessProcess::Base
         create_team and
         create_manager and
         create_categories_and_arguments and
-        create_invitees
+        create_invitees and
+        send_invitations
   end
 
   private
 
-  attr_reader :manager, :company, :team
+  attr_reader :manager, :company, :team, :invitees
 
   def create_manager
     @manager = team.users.create(email: wizard.email, password: 'fixme123') do |user|
@@ -40,10 +41,14 @@ class SetupNewAccount < BusinessProcess::Base
   end
 
   def create_invitees
-    wizard.invitations.each do |invitation|
+    @invitees = wizard.invitations.map do |invitation|
       team.users.create(email: invitation.email,
                         display_name: invitation.display_name,
                         password: 'fixme123')
     end
+  end
+
+  def send_invitations
+    ApplicationMailer.user_invitation(*invitees)
   end
 end

@@ -33,9 +33,9 @@ module EmailTemplates
     end
 
     def templates
-      @templates ||= %w(
-        reset_password_instructions
-      )
+      @templates ||= Dir[Rails.root.join('config', 'email_templates', 'import', 'en', '*')].map do |path|
+        File.basename(path, ".yml")
+      end
     end
 
     def to_request_data(language, email_template_name)
