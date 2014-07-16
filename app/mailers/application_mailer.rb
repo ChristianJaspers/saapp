@@ -6,4 +6,3 @@ class ApplicationMailer < ActionMailer::Base
     EmailTemplates::Sender.new(recipients, :user_invitation).send
   end
 end
-
