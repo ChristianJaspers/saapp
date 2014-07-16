@@ -36,16 +36,20 @@ group :development do
   gem 'thin', '~> 1.6.2'
 end
 
-group :development, :test do
+group :test do
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'factory_girl_rails', '~> 4.4.0'
-  gem 'spring-commands-rspec', '~> 1.0.1'
   gem 'rspec-collection_matchers', '~> 1.0.0'
   gem 'rspec-its', '~> 1.0.0'
-  gem 'pry-debugger', '~> 0.2.3'
-  gem 'selleo-controller_tests', '~> 0.0.4'
-  gem 'pry-remote', '~> 0.1.8'
   gem 'database_cleaner', '~> 1.3.0'
+  gem 'selleo-controller_tests', '~> 0.0.4'
+  gem 'spring-commands-rspec', '~> 1.0.1'
+  gem 'vcr', '~> 2.9.2'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails', '~> 4.4.0'
+  gem 'pry-debugger', '~> 0.2.3'
+  gem 'pry-remote', '~> 0.1.8'
   gem 'travis', '~> 1.6.14'
 end
 
