@@ -6,6 +6,8 @@ describe SetupNewAccount do
     let(:parameter_object) { double(wizard: wizard) }
     let(:perform) { described_class.call(parameter_object) }
 
+    before { allow(ApplicationMailer).to receive(:user_invitation) }
+
     context 'manager email is provided' do
       let(:manager_email) { 'manager@saapp.dev' }
 
@@ -36,6 +38,8 @@ describe SetupNewAccount do
 
           context 'after perform' do
             before { perform }
+
+            it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
 
             describe 'manager' do
               subject { User.manager.first }
