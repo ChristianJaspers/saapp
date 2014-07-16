@@ -31,6 +31,7 @@ group :development do
   gem 'rack-livereload', '~> 0.3.15'
   gem 'quiet_assets', '~> 1.0.2'
   gem 'better_errors', '~> 1.1.0'
+  gem 'thin', '~> 1.6.2'
 end
 
 group :development, :test do
