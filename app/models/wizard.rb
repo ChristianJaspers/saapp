@@ -1,11 +1,13 @@
 class Wizard
   include ActiveModel::Model
 
-  attr_accessor :email
+  attr_reader :attributes
+
+  delegate :email, :categories, :invitations, to: :attributes
 
   validates :email, presence: true, email: true
 
   def attributes=(attrs)
-    self.email = attrs[:email]
+    @attributes = Dish(attrs.deep_transform_keys(&:underscore))
   end
 end

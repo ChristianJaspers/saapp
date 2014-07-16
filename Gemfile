@@ -22,6 +22,8 @@ gem 'figaro', '~> 1.0.0.rc1'
 gem 'gon', '~> 5.1.0'
 gem 'angular-rails-templates', '~> 0.1.3'
 gem 'angular-ui-bootstrap-rails', '~> 0.11.0'
+gem 'business_process', '~> 0.0.1'
+gem 'dish', '~> 0.0.3'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
@@ -31,6 +33,7 @@ group :development do
   gem 'rack-livereload', '~> 0.3.15'
   gem 'quiet_assets', '~> 1.0.2'
   gem 'better_errors', '~> 1.1.0'
+  gem 'thin', '~> 1.6.2'
 end
 
 group :development, :test do
@@ -42,6 +45,7 @@ group :development, :test do
   gem 'pry-debugger', '~> 0.2.3'
   gem 'selleo-controller_tests', '~> 0.0.4'
   gem 'pry-remote', '~> 0.1.8'
+  gem 'database_cleaner', '~> 1.3.0'
   gem 'travis', '~> 1.6.14'
 end
 

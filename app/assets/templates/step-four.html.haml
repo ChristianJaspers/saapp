@@ -10,3 +10,6 @@
   %h3= I18n.t('wizard.step_4.invitations_header')
   %ul{'ng-repeat' => 'invitation in wizard.invitations'}
     %li {{invitation.email}} {{invitation.displayName}}
+
+  %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitWizard()'}
+    = I18n.t('wizard.step_4.submit_button')

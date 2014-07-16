@@ -1,4 +1,4 @@
 - if guest?
-  = simple_form_for wizard do |f|
+  = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
     = f.input :email
     = f.submit
