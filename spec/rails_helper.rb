@@ -30,7 +30,8 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
-
+  config.include JsonSpec::Helpers
+  config.include Api::AuthorizationHelper
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.

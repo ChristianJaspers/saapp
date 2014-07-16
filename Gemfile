@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry-remote', '~> 0.1.8'
   gem 'database_cleaner', '~> 1.3.0'
   gem 'travis', '~> 1.6.14'
+  gem 'json_spec', '~> 1.1.2'
 end
 
 group :production do

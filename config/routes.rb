@@ -6,6 +6,20 @@ Rails.application.routes.draw do
 
   resources :wizards, only: [:new, :create]
 
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :auth, only: [] do
+        collection do
+          post :login
+          post :forgot_password
+        end
+      end
+      resource :profile, only: [:show, :update] do
+        post :avatar, on: :member
+      end
+    end
+  end
+
   comfy_route :cms_admin, path: '/admin/cms'
 
   # Make sure this routeset is defined last
