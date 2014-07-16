@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe SetupNewAccount do
   describe '.call' do
-    let(:wizard){ double }
+    let(:wizard) { double }
     let(:parameter_object) { double(wizard: wizard) }
     let(:perform) { described_class.call(parameter_object) }
 
@@ -28,6 +28,55 @@ describe SetupNewAccount do
           before { allow(wizard).to receive(:invitations).and_return([invitation]) }
 
           it { expect { perform }.to change { User.count }.by(2) }
+          it { expect { perform }.to change { Team.count }.by(1) }
+          it { expect { perform }.to change { Company.count }.by(1) }
+          it { expect { perform }.to change { Category.count }.by(1) }
+          it { expect { perform }.to change { Feature.count }.by(1) }
+          it { expect { perform }.to change { Benefit.count }.by(1) }
+
+          context 'after perform' do
+            before { perform }
+
+            describe 'manager' do
+              subject { User.manager.first }
+
+              it { is_expected.to_not be_nil }
+              its(:email) { is_expected.to eq manager_email }
+            end
+
+            describe 'invitee' do
+              subject { User.user.first }
+
+              it { is_expected.to_not be_nil }
+              its(:email) { is_expected.to eq invitee_email }
+            end
+
+            describe 'category' do
+              let(:manager) { User.manager.first }
+
+              subject { Category.first }
+
+              its(:name) { is_expected.to eq category_name }
+              its(:features) { is_expected.to have(1).entry }
+              its(:owner) { is_expected.to eq manager }
+            end
+
+            describe 'feature' do
+              let(:manager) { User.manager.first }
+
+              subject { Feature.first }
+
+              its(:description) { is_expected.to eq feature_description }
+              its(:owner) { is_expected.to eq manager }
+              its(:benefit) { is_expected.to_not be_nil }
+            end
+
+            describe 'benefit' do
+              subject { Benefit.first }
+
+              its(:description) { is_expected.to eq benefit_description }
+            end
+          end
         end
       end
     end
