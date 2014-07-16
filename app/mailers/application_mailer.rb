@@ -1,4 +1,4 @@
-class ApplicationMailer
+class ApplicationMailer < ActionMailer::Base
   def user_invitation(*users)
     recipients = users.map do |user|
       EmailTemplates::Recipient.new(user.locale, user.email, {display_name: user.display_name})
