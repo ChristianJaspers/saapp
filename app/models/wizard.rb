@@ -8,6 +8,6 @@ class Wizard
   validates :email, presence: true, email: true
 
   def attributes=(attrs)
-    @attributes = Dish(attrs)
+    @attributes = Dish(attrs.deep_transform_keys(&:underscore))
   end
 end
