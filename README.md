@@ -24,11 +24,11 @@ To setup test database, run `RAILS_ENV=test rake db:create db:migrate`
 
 
 ```
-git push -f production master
+git push -f staging master
 heroku run rake db:migrate db:seed --app saapp-staging
 ```
 
-## Deployment to heroku (production)
+## Deployment to heroku (production) [needs setup]
 
 
 ```
