@@ -62,3 +62,24 @@ Make sure you have ```application.yml``` and all keys for **test** group you wan
 ```rake
 rake travis:encrypt_test_env
 ```
+
+#### Add new email template
+
+1. Add new file to `config/email_templates/import/en`
+2. Edit just created email template (take other files as example)
+3. Add new method to `application_mailer.rb`
+
+`mandrill_mail` method expects `user` object responding to `email` and `locale` methods, template name, and hash of variables that will be forwarded to template
+
+```ruby
+mandrill_mail(user, :user_invitation, {display_name: user.display_name})
+```
+4. Run `EmailTemplates::Setup.new.perform` from console
+5. You can review your template on https://mandrillapp.com/templates/
+6. Sending emails based on templates
+
+```ruby
+user = User.first
+recipients = [EmailTemplates::Recipient.new(user.locale, user.email, {display_name: user.display_name})]
+EmailTemplates::Sender.new(recipients, :user_invitation).send
+```
