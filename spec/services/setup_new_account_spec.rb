@@ -49,6 +49,7 @@ describe SetupNewAccount do
 
               it { is_expected.to_not be_nil }
               its(:email) { is_expected.to eq invitee_email }
+              its(:display_name) { is_expected.to eq invitee_display_name }
             end
 
             describe 'category' do

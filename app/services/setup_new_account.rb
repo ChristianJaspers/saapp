@@ -41,7 +41,9 @@ class SetupNewAccount < BusinessProcess::Base
 
   def create_invitees
     wizard.invitations.each do |invitation|
-      team.users.create(email: invitation.email, password: 'fixme123')
+      team.users.create(email: invitation.email,
+                        display_name: invitation.display_name,
+                        password: 'fixme123')
     end
   end
 end
