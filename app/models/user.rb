@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   belongs_to :team, inverse_of: :users
 
   validates :role, presence: true
+
+  def locale
+    'en'
+  end
 end
