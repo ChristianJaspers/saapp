@@ -13,10 +13,9 @@ class Api::Authentication
   private
 
   def api_token
-    unless @api_token
+    @api_token ||= begin
       token = ApiToken.for_access_token(param_token).includes(:user).first
-      @api_token = token if token && Devise.secure_compare(token.access_token, param_token)
+      token if token && Devise.secure_compare(token.access_token, param_token)
     end
-    @api_token
   end
 end
