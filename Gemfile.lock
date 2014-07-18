@@ -395,7 +395,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers (~> 0.8.1)
   activeadmin!
   airbrake (~> 4.0.0)
   angular-rails-templates (~> 0.1.3)

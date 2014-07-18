@@ -1,6 +1,6 @@
 class Api::V1::ProfilesController < Api::V1::RestrictedApiController
   def show
-    render_json(user_json(current_user), 200)
+    render_json(current_user, 200)
   end
 
   def avatar

@@ -5,8 +5,8 @@ class Api::BaseApplicationApiController < ApplicationController
 
 private
 
-  def render_json(json, status)
-    render json: json, status: status
+  def render_json(data, status, meta = {})
+    render meta.merge(status: status, json: data)
   end
 
   def render_fail_json(error_kind)
@@ -35,17 +35,5 @@ private
     else
       raise "Wrong error kind: #{error_kind}"
     end
-  end
-
-  def user_json(user)
-    {
-      user: {
-        id: user.id,
-        display_name: user.display_name,
-        email: user.email,
-        avatar_url: user.avatar.url.presence,
-        avatar_thumb_url: user.avatar.url(:thumb).presence
-      }
-    }
   end
 end
