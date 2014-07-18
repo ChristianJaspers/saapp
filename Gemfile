@@ -24,6 +24,8 @@ gem 'angular-rails-templates', '~> 0.1.3'
 gem 'angular-ui-bootstrap-rails', '~> 0.11.0'
 gem 'business_process', '~> 0.0.1'
 gem 'dish', '~> 0.0.3'
+gem "paperclip", '~> 4.1'
+gem 'aws-sdk', '~> 1.48.1'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
