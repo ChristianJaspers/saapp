@@ -8,14 +8,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
-      resources :auth, only: [] do
-        collection do
-          post :login
-          post :forgot_password
-        end
+      resources :auth, only: [:create] do
+        post :forgot_password, on: :collection
       end
-      resource :profile, only: [:show, :update] do
-        post :avatar, on: :member
+      resource :profile, only: [:show] do
+        resource :avatar
       end
     end
   end

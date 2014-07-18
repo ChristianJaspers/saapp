@@ -3,8 +3,8 @@ require 'rails_helper'
 describe Api::V1::AuthController do
   let(:user) { create(:user, display_name: 'Batman', email: 'a@a.com') }
 
-  describe '#login' do
-    before { post :login, params, {format: :json} }
+  describe '#create' do
+    before { post :create, params, {format: :json} }
     context 'valid credentials provided' do
       let(:params) do
         {

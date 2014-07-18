@@ -1,5 +1,5 @@
 class Api::V1::AuthController < Api::ApplicationController
-  def login
+  def create
     api_login = Api::Login.new(params).perform
     if api_login.user
       render_json(
