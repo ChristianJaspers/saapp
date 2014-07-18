@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
 
   delegate :access_token, to: :api_token, allow_nil: true
 
+  has_attached_file :avatar, styles: {thumb: '100x100>'}, default_url: ''
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   def self.authenticate(email, password)
     user = find_for_authentication(email: email)
     user.try(:valid_for_authentication?) && user.try(:valid_password?, password) ? user : nil
