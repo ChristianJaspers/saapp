@@ -28,8 +28,22 @@ private
       [401, 1003, 'Can not login']
     when :forbidden
       [403, 1010, 'You don\'t have access']
+    when :invalid_file_upload
+      [422, 1020, 'Can\'t upload']
     else
       raise "Wrong error kind: #{error_kind}"
     end
+  end
+
+  def user_json(user)
+    {
+      user: {
+        id: user.id,
+        display_name: user.display_name,
+        email: user.email,
+        avatar_url: user.avatar.url.presence,
+        avatar_thumb_url: user.avatar.url(:thumb).presence
+      }
+    }
   end
 end
