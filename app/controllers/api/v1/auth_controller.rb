@@ -1,4 +1,4 @@
-class Api::V1::AuthController < Api::BaseApplicationApiController
+class Api::V1::AuthController < Api::ApplicationController
   def login
     api_login = Api::Login.new(params).perform
     if api_login.user

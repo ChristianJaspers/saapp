@@ -1,4 +1,4 @@
-class Api::RestrictedApiController < Api::BaseApplicationApiController
+class Api::RestrictedApplicationController < Api::ApplicationController
   before_action :restrict_access
 
   helper_method :current_user
