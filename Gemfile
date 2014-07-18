@@ -26,6 +26,7 @@ gem 'business_process', '~> 0.0.1'
 gem 'dish', '~> 0.0.3'
 gem 'paperclip', '~> 4.1'
 gem 'aws-sdk', '~> 1.48.1'
+gem 'active_model_serializers', '~> 0.8.1'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
