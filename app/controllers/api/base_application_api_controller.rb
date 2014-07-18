@@ -30,6 +30,8 @@ private
       [403, 1010, 'You don\'t have access']
     when :invalid_file_upload
       [422, 1020, 'Can\'t upload']
+    when :account_not_exist
+      [404, 1002, 'Account not exist']
     else
       raise "Wrong error kind: #{error_kind}"
     end
