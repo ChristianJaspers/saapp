@@ -28,6 +28,7 @@ describe Api::V1::AuthController do
 
       it 'renders user with access token' do
         post :login, params, {format: :json}
+        expect(response).to be_successful
         expect(response.body).to be_json_eql expected_body
       end
     end
@@ -52,6 +53,7 @@ describe Api::V1::AuthController do
 
       it 'renders error' do
         post :login, params, {format: :json}
+        expect(response.status).to eq 401
         expect(response.body).to be_json_eql expected_body
       end
     end

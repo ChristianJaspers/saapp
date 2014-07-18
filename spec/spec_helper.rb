@@ -33,6 +33,11 @@ RSpec.configure do |config|
     end
   end
 
+  # remove any uploaded files when finished
+  config.after(:suite) do
+    FileUtils.rm_rf(Rails.root.join('public/test/').to_s)
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
