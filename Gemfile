@@ -44,6 +44,7 @@ group :test do
   gem 'selleo-controller_tests', '~> 0.0.4'
   gem 'spring-commands-rspec', '~> 1.0.1'
   gem 'vcr', '~> 2.9.2'
+  gem 'capybara-webkit', '~> 2.3.0'
 end
 
 group :development, :test do
