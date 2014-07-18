@@ -7,11 +7,7 @@ class Api::Login
 
   def perform
     @user = User.authenticate(params[:email], params[:password])
-    if user
-      ApiToken.create_with(
-        user: user
-      ).find_or_create_by(user: user)
-    end
+    ApiToken.find_or_create_by(user: user) if user
     self
   end
 end
