@@ -6,12 +6,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+unless Company.exists?
+  company = Company.create
+  team = company.teams.create
 
-admin_email = 'admin@example.com'
-password = '12345678'
-user = User.create_with(
-  email: admin_email,
-  password: password,
-  password_confirmation: password,
-  role: 'admin'
-).find_or_create_by(email: admin_email)
+  admin_email = 'admin@example.com'
+  password = '12345678'
+  user = User.create_with(
+    email: admin_email,
+    password: password,
+    password_confirmation: password,
+    role: 'admin',
+    team: team
+  ).find_or_create_by(email: admin_email)
+end
