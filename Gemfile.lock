@@ -78,6 +78,15 @@ GEM
       thor
     builder (3.2.2)
     business_process (0.0.1)
+    capybara (2.3.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara-webkit (1.2.0)
+      capybara (>= 2.0.2, < 2.4.0)
+      json
     celluloid (0.15.2)
       timers (~> 1.1.0)
     climate_control (0.0.3)
@@ -387,9 +396,12 @@ GEM
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vcr (2.9.2)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.1.4)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -405,6 +417,7 @@ DEPENDENCIES
   bootstrap-generators (~> 3.1.0)
   bootstrap-sass (~> 3.1.1.1)
   business_process (~> 0.0.1)
+  capybara-webkit (~> 1.2.0)
   coffee-rails (~> 4.0.0)
   comfortable_mexican_sofa (~> 1.12.0)
   database_cleaner (~> 1.3.0)
@@ -441,3 +454,4 @@ DEPENDENCIES
   thin (~> 1.6.2)
   travis (~> 1.6.14)
   uglifier (>= 1.3.0)
+  vcr (~> 2.9.2)

@@ -62,3 +62,17 @@ Make sure you have ```application.yml``` and all keys for **test** group you wan
 ```rake
 rake travis:encrypt_test_env
 ```
+
+#### Add new email template
+
+1. Add new file to `config/email_templates/import/en`
+2. Edit just created email template (take other files as example)
+3. Run `EmailTemplates::Setup.new.perform` from console
+4. You can review your template on https://mandrillapp.com/templates/
+5. Sending emails based on templates
+
+```ruby
+user = User.first
+recipients = [EmailTemplates::Recipient.new(user.locale, user.email, {display_name: user.display_name})]
+EmailTemplates::Sender.new(recipients, :user_invitation).send
+```

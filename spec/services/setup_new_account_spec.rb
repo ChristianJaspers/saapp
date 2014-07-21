@@ -6,6 +6,8 @@ describe SetupNewAccount do
     let(:parameter_object) { double(wizard: wizard) }
     let(:perform) { described_class.call(parameter_object) }
 
+    before { allow(ApplicationMailer).to receive(:user_invitation) }
+
     context 'manager email is provided' do
       let(:manager_email) { 'manager@saapp.dev' }
 
@@ -37,15 +39,17 @@ describe SetupNewAccount do
           context 'after perform' do
             before { perform }
 
+            it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
+
             describe 'manager' do
-              subject { User.manager.first }
+              subject { User.managers.first }
 
               it { is_expected.to_not be_nil }
               its(:email) { is_expected.to eq manager_email }
             end
 
             describe 'invitee' do
-              subject { User.user.first }
+              subject { User.users.first }
 
               it { is_expected.to_not be_nil }
               its(:email) { is_expected.to eq invitee_email }
@@ -53,7 +57,7 @@ describe SetupNewAccount do
             end
 
             describe 'category' do
-              let(:manager) { User.manager.first }
+              let(:manager) { User.managers.first }
 
               subject { Category.first }
 
@@ -63,7 +67,7 @@ describe SetupNewAccount do
             end
 
             describe 'feature' do
-              let(:manager) { User.manager.first }
+              let(:manager) { User.managers.first }
 
               subject { Feature.first }
 

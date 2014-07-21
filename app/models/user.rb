@@ -1,12 +1,17 @@
 class User < ActiveRecord::Base
   enum role: {
-    user: 0,
-    manager: 1,
-    admin: 2
+      user: 0,
+      manager: 1,
+      admin: 2
   }
 
+  class << self
+    alias_method :users, :user
+    alias_method :managers, :manager
+    alias_method :admins, :admin
+  end
+
   devise :database_authenticatable,
-         :registerable,
          :recoverable,
          :rememberable,
          :trackable,
