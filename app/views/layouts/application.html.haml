@@ -27,6 +27,8 @@
               = link_to page.label, page.full_path
         %ul.nav.navbar-nav.navbar-right
           %li
+            = link_to t('navbar.my_account_link'), manager_root_path
+          %li
             - if user_signed_in?
               - if current_user.admin?
                 = link_to t('navbar.admin_link'), admin_root_path
