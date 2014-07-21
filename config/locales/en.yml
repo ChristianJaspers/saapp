@@ -64,3 +64,5 @@ en:
             category_name: "Category name"
             features_count: "Features count"
             actions: "Actions"
+    tabs:
+      categories: "Categories"
