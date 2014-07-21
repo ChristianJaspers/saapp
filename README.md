@@ -76,3 +76,10 @@ user = User.first
 recipients = [EmailTemplates::Recipient.new(user.locale, user.email, {display_name: user.display_name})]
 EmailTemplates::Sender.new(recipients, :user_invitation).send
 ```
+
+#### Setup initial CMS pages
+
+```
+rake cms:setup
+```
+
