@@ -20,6 +20,11 @@
       .container
         .navbar-header
           = link_to t('application_name'), '#', class: 'navbar-brand'
+
+        %ul.nav.navbar-nav
+          - static_pages.each do |page|
+            %li
+              = link_to page.label, page.full_path
         %ul.nav.navbar-nav.navbar-right
           %li
             - if user_signed_in?
