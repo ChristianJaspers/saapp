@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :manager do
+    root 'categories#index'
+    resources :categories, only: :index
+  end
+
   comfy_route :cms_admin, path: '/admin/cms'
 
   # Make sure this routeset is defined last

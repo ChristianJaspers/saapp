@@ -53,3 +53,14 @@ en:
     benefit: "Benefit"
     category:
       many: "Categories"
+    unauthorized: "You cannot access this page. Please login with proper credentatials."
+  navbar:
+    my_account_link: "My Account"
+  manager:
+    categories:
+      index:
+        table:
+          headers:
+            category_name: "Category name"
+            features_count: "Features count"
+            actions: "Actions"
