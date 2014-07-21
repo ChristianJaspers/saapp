@@ -24,6 +24,7 @@ To setup test database, run `RAILS_ENV=test rake db:create db:migrate`
 
 
 ```
+figaro heroku:set -e staging --app saapp-staging
 git push -f staging master
 heroku run rake db:migrate db:seed --app saapp-staging
 ```
@@ -33,6 +34,7 @@ heroku run rake db:migrate db:seed --app saapp-staging
 
 ```
 git push -f production master
+figaro heroku:set -e production --app saapp-production
 heroku run rake db:migrate db:seed --app saapp-production
 ```
 
@@ -82,4 +84,3 @@ EmailTemplates::Sender.new(recipients, :user_invitation).send
 ```
 rake cms:setup
 ```
-
