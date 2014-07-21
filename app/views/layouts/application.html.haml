@@ -28,7 +28,8 @@
         %ul.nav.navbar-nav.navbar-right
           %li
             - if user_signed_in?
-              = link_to t('navbar.admin_link'), admin_root_path
+              - if current_user.admin?
+                = link_to t('navbar.admin_link'), admin_root_path
             - else
               = link_to t('navbar.login_link'), new_user_session_path
           - if user_signed_in?
