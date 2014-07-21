@@ -24,6 +24,9 @@ gem 'angular-rails-templates', '~> 0.1.3'
 gem 'angular-ui-bootstrap-rails', '~> 0.11.0'
 gem 'business_process', '~> 0.0.1'
 gem 'dish', '~> 0.0.3'
+gem 'paperclip', '~> 4.1'
+gem 'aws-sdk', '~> 1.48.1'
+gem 'active_model_serializers', '~> 0.8.1'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
@@ -45,6 +48,7 @@ group :test do
   gem 'spring-commands-rspec', '~> 1.0.1'
   gem 'vcr', '~> 2.9.2'
   gem 'capybara-webkit', '~> 1.2.0'
+  gem 'json_spec', '~> 1.1.2'
 end
 
 group :development, :test do

@@ -21,3 +21,6 @@
 # Ignore configuratino files
 /config/database.yml
 /config/application.yml
+/public/system/
+/public/test/system/
+
