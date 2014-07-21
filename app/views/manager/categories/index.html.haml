@@ -1,0 +1,12 @@
+%table.table.table-striped
+  %thead
+    %th= t('manager.categories.index.table.headers.category_name')
+    %th= t('manager.categories.index.table.headers.features_count')
+    %th= t('manager.categories.index.table.headers.actions')
+  %tbody
+    - categories.each do |category|
+      %tr
+        %td= category.name
+        %td= category.features_count
+        %td
+= paginate categories
