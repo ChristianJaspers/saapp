@@ -3,5 +3,5 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  expose(:static_pages) { Comfy::Cms::Page.where(slug: 'index').first.try { |root| root.children.published } }
+  expose(:static_pages) { Comfy::Cms::Page.find_by(slug: 'index').children.published }
 end
