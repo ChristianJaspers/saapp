@@ -2,7 +2,7 @@ class MandrillDeviseMailer < Devise::Mailer
   include Devise::Mailers::Helpers
   include Devise::Controllers::UrlHelpers
 
-  default from: 'noreply@example.com'
+  default from: ENV['NOREPLY_EMAIL']
   default template_name: 'empty'
 
   def confirmation_instructions(user, token, opts={})
