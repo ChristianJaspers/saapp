@@ -1,16 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+describe User do
   describe '#admin?' do
     subject { user.admin? }
 
     context 'user is admin' do
       let(:user) { create(:user, :admin) }
+
       it { is_expected.to be_truthy }
     end
 
     context 'user is not an admin' do
       let(:user) { create(:user) }
+
       it { is_expected.to be_falsy }
     end
   end
@@ -30,11 +32,13 @@ RSpec.describe User, type: :model do
 
       context 'valid credentials' do
         let(:password) { '12345678' }
+
         it { is_expected.to eq user }
       end
 
       context 'invalid credentials' do
         let(:password) { 'invalid password' }
+
         it { is_expected.to be_nil }
       end
     end
@@ -42,6 +46,7 @@ RSpec.describe User, type: :model do
     context 'email does not exist' do
       let(:email) { 'fake@test.com' }
       let(:password) { 'whatever' }
+
       it { is_expected.to be_nil }
     end
   end
