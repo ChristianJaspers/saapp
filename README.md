@@ -22,13 +22,17 @@ To setup test database, run `RAILS_ENV=test rake db:create db:migrate`
 
 ## Deployment to heroku (staging)
 
-
 ```
 figaro heroku:set -e staging --app saapp-staging
 git push -f staging master
 heroku run rake db:migrate db:seed --app saapp-staging
 heroku run rake email_templates:setup cms:setup --app saapp-staging
 ```
+
+Staging app can be accessed through:
+
+* saapp-staging.herokuapp.com
+* staging.bettersalesman.com
 
 ## Deployment to heroku (production) [needs setup]
 
