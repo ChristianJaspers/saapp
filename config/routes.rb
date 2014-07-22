@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
+  devise_scope :user do
+    get login: 'devise/sessions#new'
+    post login: 'devise/sessions#create'
+    delete logout: 'devise/sessions#destroy'
+  end
+
   ActiveAdmin.routes(self)
 
   root 'home#show'
