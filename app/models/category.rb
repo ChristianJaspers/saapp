@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
     self.archived_at = val.eql?('true') ? Time.zone.now : nil
   end
 
-  def removeable_by?(user)
+  def removable_by?(user)
     features_count.zero? || owner_id == user.id
   end
 
