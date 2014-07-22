@@ -1,6 +1,5 @@
 class WizardsController < ApplicationController
   expose(:wizard, strategy: DecentExposure::ActiveRecordWithEagerAttributesStrategy)
-  protect_from_forgery except: :create
 
   def new
     render 'home/show' unless wizard.valid?
