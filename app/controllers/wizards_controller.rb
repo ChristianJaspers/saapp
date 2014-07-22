@@ -1,5 +1,5 @@
 class WizardsController < ApplicationController
-  expose(:wizard)
+  expose(:wizard, strategy: DecentExposure::ActiveRecordWithEagerAttributesStrategy)
   protect_from_forgery except: :create
 
   def new
