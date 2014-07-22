@@ -67,9 +67,13 @@ en:
           actions:
             unarchive_link: "Publish"
             archive_link: "Unpublish"
+            destroy_link: "Remove"
       update:
         notifications:
           failure: "Changes could not be saved"
           success: "Changes saved successfully"
+      destroy:
+        notifications:
+          success: "Category removed successfully"
     tabs:
       categories: "Categories"
