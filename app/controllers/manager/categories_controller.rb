@@ -13,7 +13,7 @@ class Manager::CategoriesController < Manager::ManagerController
   end
 
   def destroy
-    category.remove! if category.removeable_by?(current_user)
+    category.remove! if category.removable_by?(current_user)
     redirect_to :back, notice: t('manager.categories.destroy.notifications.success')
   end
 

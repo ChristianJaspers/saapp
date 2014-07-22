@@ -14,7 +14,7 @@ class CategoryDecorator < ApplicationDecorator
   end
 
   def removal_link
-    if object.removeable_by?(current_user)
+    if object.removable_by?(current_user)
       link_to I18n.t('manager.categories.index.table.actions.destroy_link'),
               h.manager_category_path(object.id),
               method: :delete

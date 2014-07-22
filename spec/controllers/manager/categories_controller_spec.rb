@@ -45,6 +45,28 @@ describe Manager::CategoriesController do
     end
   end
 
+  describe '#destroy' do
+    include_context 'manager is logged in'
+
+    let(:call_request) { delete :destroy, id: category.id }
+
+    context 'category exists' do
+      let!(:category) { create(:category, owner: manager) }
+
+      context 'category is removable' do
+        before { expect_any_instance_of(Category).to receive(:removable_by?).with(manager).and_return(true) }
+
+        it { expect { call_request }.to change { category.reload.remove_at }.from(nil) }
+      end
+
+      context 'category is not removable' do
+        before { expect_any_instance_of(Category).to receive(:removable_by?).with(manager).and_return(false) }
+
+        it { expect { call_request }.not_to change { category.reload.remove_at }.from(nil) }
+      end
+    end
+  end
+
   describe '#categories' do
     include_context 'manager is logged in'
 
