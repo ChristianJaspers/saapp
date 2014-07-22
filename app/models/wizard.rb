@@ -3,7 +3,7 @@ class Wizard
 
   attr_reader :attributes
 
-  delegate :email, :categories, :invitations, to: :attributes
+  delegate :email, :categories, :invitations, to: :attributes, allow_nil: true
 
   validates :email, presence: true, email: true
 

@@ -64,5 +64,12 @@ en:
             category_name: "Category name"
             features_count: "Features count"
             actions: "Actions"
+          actions:
+            unarchive_link: "Publish"
+            archive_link: "Unpublish"
+      update:
+        notifications:
+          failure: "Changes could not be saved"
+          success: "Changes saved successfully"
     tabs:
       categories: "Categories"
