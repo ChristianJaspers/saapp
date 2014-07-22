@@ -17,4 +17,8 @@ class Category < ActiveRecord::Base
   def remove!
     update_column(:remove_at, Date.today + 30.days)
   end
+
+  def self.purge_outdated_entries!
+    unscoped.where('remove_at <= ?', Date.today.to_s(:db)).destroy_all
+  end
 end

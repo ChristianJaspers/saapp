@@ -38,4 +38,20 @@ describe Category do
       end
     end
   end
+
+  describe '.purge_outdated_entries!' do
+    let(:perform) { described_class.purge_outdated_entries! }
+
+    context 'outdated, removed category exists' do
+      before { create(:category, remove_at: Time.now - 1.day) }
+
+      it { expect { perform }.to change { Category.unscoped.count }.by(-1) }
+    end
+
+    context 'regular category exists' do
+      before { create(:category) }
+
+      it { expect { perform }.not_to change { Category.unscoped.count } }
+    end
+  end
 end
