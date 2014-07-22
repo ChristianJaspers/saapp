@@ -15,8 +15,7 @@ describe Manager::CategoriesController do
     end
 
     context 'logged in as manager' do
-      let(:manager) { create(:manager) }
-      before { sign_in manager }
+      include_context 'manager is logged in'
 
       context 'there is one category defined' do
         before { create(:category, owner: manager) }
@@ -28,30 +27,45 @@ describe Manager::CategoriesController do
     end
   end
 
+  describe '#update' do
+    include_context 'manager is logged in'
+
+    context 'un-publishing' do
+      let!(:category) { create(:category, owner: manager) }
+      let(:call_request) { patch :update, id: category.id, category: {archive: 'true'} }
+
+      it { expect { call_request }.to change { category.reload.archived_at }.from(nil) }
+    end
+
+    context 'publishing' do
+      let!(:category) { create(:category, :archived, owner: manager) }
+      let(:call_request) { patch :update, id: category.id, category: {archive: 'false'} }
+
+      it { expect { call_request }.to change { category.reload.archived_at }.to(nil) }
+    end
+  end
+
   describe '#categories' do
-    context 'manager is logged in' do
-      let(:manager) { create(:manager) }
-      before { sign_in manager }
+    include_context 'manager is logged in'
 
-      context 'category owned by manager exists' do
-        let(:category) { create(:category, owner: manager) }
+    context 'category owned by manager exists' do
+      let(:category) { create(:category, owner: manager) }
 
-        its(:categories) { is_expected.to include category }
-      end
+      its(:categories) { is_expected.to include category }
+    end
 
-      context "category owned by manager's team member exists" do
-        let(:team_member) { create(:user, team: manager.team) }
-        let(:category) { create(:category, owner: team_member) }
+    context "category owned by manager's team member exists" do
+      let(:team_member) { create(:user, team: manager.team) }
+      let(:category) { create(:category, owner: team_member) }
 
-        its(:categories) { is_expected.to include category }
-      end
+      its(:categories) { is_expected.to include category }
+    end
 
-      context "category owned by user outside of manager's team exists" do
-        let(:other_user) { create(:user) }
-        let(:category) { create(:category, owner: other_user) }
+    context "category owned by user outside of manager's team exists" do
+      let(:other_user) { create(:user) }
+      let(:category) { create(:category, owner: other_user) }
 
-        its(:categories) { is_expected.not_to include category }
-      end
+      its(:categories) { is_expected.not_to include category }
     end
   end
 end

@@ -3,4 +3,8 @@ class Category < ActiveRecord::Base
   has_many :features, inverse_of: :category, dependent: :destroy
 
   delegate :count, to: :features, prefix: true
+
+  def archive=(val)
+    self.archived_at = val.eql?('true') ? Time.zone.now : nil
+  end
 end
