@@ -8,8 +8,9 @@ env:
   matrix:
   - RAILS_ENV=test
   global:
-  - secure: JkJx4RNQ1GaBubCjCbOuHl0MyzyyzgQ+FvNbk2BsbbxSpUrbFmTDZoA0TwxDd6+mvN0D3YFAyhrR8b46G2f0la48K1WTogOoDzP2tAhkBWGZyZOILViRg/awxh8ECQkQ2EZwoD6T0HkhXRM3kZ5JqVPKhMiiBSa+s4R7cg8j0SM=
-  - secure: koAvKAECCe/Aa7EfGIj6gnA+cAksN+fNfJMYqezf8mgt7ZAAxUTRCt/YRZmEuQAdYErnUKRtsFML04gH8PqswOQdLpbxuWbUuS4tj1kjPJFP2I2VfGvgqundFeJlQiyz8OA5hMzrdm1GPYYKSCFjl00UW/SU/j4bxzDiTAqFRoQ=
+  - secure: FV4oLVJDk7ykG2sDl0eDqohLf6415GLhRxDsqm5ggS/bbUp4zJziEAH0nEuPWl4GAzg7usldE1piIkA6qlaz+lToeHVCOrSVr62v/TwdXsp6zXVelKgiBoosDEdwqqVCrPPcbCw7yWIpjoTtyNF1rJrPW6hcslYr0CJpcIfSiMA=
+  - secure: EN8mVqGN4hpBo1XKnnmv3khyP43Y/M3kfVaJqCUuHprhxMRTj0mYBQnRJnHq9YYWwipIlpAy5KcJMo2bAM413okF6qcvOEni030h8K/QA2Cv2GGOWDDeDe9UjPr3851E+YJ2r8itOFUOwdInFe9a9EJanRKxQT6Xy/k4JrFqe78=
+  - secure: kfrTi9k5ABLwZ3ilWGCh4rB82lq+mJjPt9EsLGzULrnfV/L0ZlIKPrHID0UJyapXL3wT3w4Lft6ImI0Ek781G1uVlNJzIOGGdCrdbTtURbvy/EQzQUbeBxtzyjvbjaLERF0zosqWwNqbjGEwmv7B6wbJ5fEsulz0XLRQwruObmo=
 before_install:
 - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
 - cp -f config/travis/database.yml config/database.yml

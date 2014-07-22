@@ -7,7 +7,7 @@ namespace :travis do
     output = travis_env.map {|k, v| "#{k}=#{v}" }
     output.each do |out|
       puts "Adding env: #{out}"
-      system "echo \"#{out}\" | travis encrypt -i --split --add"
+      system "echo \"#{out}\" | travis encrypt -i --split --add --skip-version-check"
     end
   end
 end
