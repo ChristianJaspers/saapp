@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, ActiveAdmin::Devise.config
-  devise_scope :user do
-    get login: 'devise/sessions#new'
-    post login: 'devise/sessions#create'
-    delete logout: 'devise/sessions#destroy'
-  end
+  devise_for :users, {
+    path: '',
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      sign_out_via: [:delete]
+    }
+  }
 
   ActiveAdmin.routes(self)
 

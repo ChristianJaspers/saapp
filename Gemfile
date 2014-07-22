@@ -39,6 +39,7 @@ group :development do
   gem 'better_errors', '~> 1.1.0'
   gem 'thin', '~> 1.6.2'
   gem 'html2haml', require: false
+  gem 'proxylocal', require: false
 end
 
 group :test do
