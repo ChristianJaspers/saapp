@@ -12,6 +12,11 @@ class Manager::CategoriesController < Manager::ManagerController
     end
   end
 
+  def destroy
+    category.remove! if category.removable_by?(current_user)
+    redirect_to :back, notice: t('manager.categories.destroy.notifications.success')
+  end
+
   private
 
   def team

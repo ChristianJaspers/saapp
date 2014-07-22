@@ -89,3 +89,9 @@ EmailTemplates::Sender.new(recipients, :user_invitation).send
 ```
 rake cms:setup
 ```
+
+#### Remove outdated objects from system
+
+```
+rake delayed_removal:perform
+```
