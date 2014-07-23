@@ -14,7 +14,10 @@ class Manager::CategoriesController < Manager::ManagerController
 
   def update
     respond_to do |format|
-      format.json { render json: 'success', status: :ok }
+      format.json do
+        Manager::UpdateCategory.call(self)
+        render json: 'success', status: :ok
+      end
       format.html do
         if category.save
           redirect_to :back, notice: t('manager.categories.update.notifications.success')
