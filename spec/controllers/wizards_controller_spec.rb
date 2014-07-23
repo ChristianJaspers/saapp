@@ -11,7 +11,7 @@ describe WizardsController do
 
       it { expect(call_request).to be_success }
 
-     #it_behaves_like 'an action rendering view'
+      it_behaves_like 'an action rendering view'
     end
 
     context 'no email is provided' do
@@ -21,11 +21,22 @@ describe WizardsController do
 
       it_behaves_like 'an action rendering view' do
         let(:view) { 'home/show' }
-       end
+      end
     end
 
     context 'invalid email is provided' do
       let(:attributes) { {wizard: {email: 'person'}} }
+
+      it { expect(call_request).to be_success }
+
+      it_behaves_like 'an action rendering view' do
+        let(:view) { 'home/show' }
+      end
+    end
+
+    context 'duplicate email is provided' do
+      let(:attributes) { {wizard: {email: 'existing@person.dev'}} }
+      before { create(:user, email: 'existing@person.dev') }
 
       it { expect(call_request).to be_success }
 
