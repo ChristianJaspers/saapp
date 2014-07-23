@@ -28,7 +28,9 @@ class Manager::UpdateCategory < BusinessProcess::Base
   end
 
   def destroy_old_arguments
-    true #FIXME To be implemented
+    features_to_destroy.all? do |feature|
+      feature.destroy
+    end
   end
 
   def update_existing_arguments
@@ -45,6 +47,10 @@ class Manager::UpdateCategory < BusinessProcess::Base
 
   def features_to_update
     category.features.includes(:benefit).where(id: attributes_of_arguments_to_update.map(&:id))
+  end
+
+  def features_to_destroy
+    category.features.where(id: attributes.arguments_to_remove_ids)
   end
 
   def attributes_of_arguments_to_create

@@ -8,7 +8,7 @@ editCategoryApp.config ['$httpProvider', ($httpProvider) ->
 editCategoryApp.factory('Categories', ['$resource', ($resource) ->
   $resource('/manager/categories/:id', null,
     {
-      'update': { method:'PUT' }
+      'update': { method: 'PUT' }
     }
   )
 ])
@@ -17,10 +17,12 @@ editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope,
   $scope.category = Categories.get({id: gon.category_id}, (category, _) ->
     $scope.arguments = category.features
   )
+  $scope.argumentsToRemoveIds = []
   $scope.argument = {}
 
   $scope.removeArgument = (argument) ->
     argumentIndex = $scope.arguments.indexOf(argument)
+    $scope.argumentsToRemoveIds.push($scope.arguments[argumentIndex].id)
     $scope.arguments.splice(argumentIndex, 1)
 
   $scope.addArgument = ->
@@ -35,9 +37,15 @@ editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope,
     $scope.argument = {}
 
   $scope.submitCategory = ->
-    category = {category: {name: $scope.category.name, arguments: $scope.arguments}}
+    category = {
+      category:  {
+        name: $scope.category.name,
+        arguments: $scope.arguments,
+        arguments_to_remove_ids: $scope.argumentsToRemoveIds
+      }
+    }
 
     Categories.update({id: $scope.category.id}, category, ->
-      document.location.href  = $scope.category.index_path
+      document.location.href = $scope.category.index_path
     )
 ])
