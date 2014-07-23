@@ -65,9 +65,10 @@ en:
             features_count: "Features count"
             actions: "Actions"
           actions:
-            unarchive_link: "Publish"
-            archive_link: "Unpublish"
-            destroy_link: "Remove"
+            unarchive_link: "Unarchive"
+            archive_link: "Archive"
+            destroy_link: "Delete"
+            edit_link: "Edit"
       update:
         notifications:
           failure: "Changes could not be saved"

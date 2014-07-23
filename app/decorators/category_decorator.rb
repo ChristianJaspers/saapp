@@ -20,4 +20,8 @@ class CategoryDecorator < ApplicationDecorator
               method: :delete
     end
   end
+
+  def edit_link
+    link_to I18n.t('manager.categories.index.table.actions.edit_link'), h.edit_manager_category_path(object.id)
+  end
 end
