@@ -18,7 +18,7 @@ describe MandrillDeviseMailer do
     end
 
     it 'correct merge variables for mandrill are set' do
-      expect(mail['X-MC-MergeVars'].value).to eq '{"edit_password_url":"http://localhost:3000/admin/password/edit?reset_password_token=abc","email":"test@example.com"}'
+      expect(mail['X-MC-MergeVars'].value).to eq '{"edit_password_url":"http://localhost:3000/password/edit?reset_password_token=abc","email":"test@example.com"}'
     end
 
     it 'recipient is valid' do
