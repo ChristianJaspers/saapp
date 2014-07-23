@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     user.try(:valid_for_authentication?) && user.try(:valid_password?, password) ? user : nil
   end
 
+  def is_owner_of?(object)
+    object.owner_id == id
+  end
+
   def locale
     'en'
   end
