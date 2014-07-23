@@ -1,5 +1,6 @@
 class FeatureSerializer < ActiveModel::Serializer
-  attributes :id, :description
+  attributes :id, :description, :benefit_description
 
-  has_one :benefit
+  delegate :benefit, to: :object
+  delegate :description, to: :benefit, prefix: true
 end
