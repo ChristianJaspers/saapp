@@ -8,11 +8,26 @@
 
 * Ruby 2.1.0
 
+#### Copy configuration files
+
+You need following files in you config directory
+
+* `database.yml` (copied from database.yml.example)
+* `application.yml` (ask other devs for contents)
+
 #### Database setup
 
 * Create database: ```rake db:create db:migrate db:seed```
 
 To setup test database, run `RAILS_ENV=test rake db:create db:migrate`
+
+#### Cms setup
+
+Run to create cms pages placeholders
+
+```
+rake cms:setup
+```
 
 ## Testing
 
