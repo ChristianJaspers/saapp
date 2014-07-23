@@ -4,6 +4,14 @@ class Manager::CategoriesController < Manager::ManagerController
 
   layout 'manager'
 
+  def show
+    render json: category, root: false
+  end
+
+  def edit
+    gon.category_id = category.id
+  end
+
   def update
     if category.save
       redirect_to :back, notice: t('manager.categories.update.notifications.success')

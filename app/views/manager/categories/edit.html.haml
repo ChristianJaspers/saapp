@@ -1,0 +1,5 @@
+%div{'ng-app' => 'editCategoryApp', 'ng-controller' => 'editCategoryCtrl'}
+  %input{'ng-model' => 'category.name'}
+  %ul{'ng-repeat' => 'feature in category.features'}
+    %li
+      {{feature.description}} - {{feature.benefit_description}}
