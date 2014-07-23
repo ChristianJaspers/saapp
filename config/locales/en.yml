@@ -54,6 +54,7 @@ en:
     category:
       many: "Categories"
     unauthorized: "You cannot access this page. Please login with proper credentatials."
+    save_changes: "Save changes"
   navbar:
     my_account_link: "My Account"
   manager:
