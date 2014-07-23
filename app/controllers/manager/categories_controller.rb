@@ -13,10 +13,15 @@ class Manager::CategoriesController < Manager::ManagerController
   end
 
   def update
-    if category.save
-      redirect_to :back, notice: t('manager.categories.update.notifications.success')
-    else
-      redirect_to :back, error: t('manager.categories.update.notifications.failure')
+    respond_to do |format|
+      format.json { render json: 'success', status: :ok }
+      format.html do
+        if category.save
+          redirect_to :back, notice: t('manager.categories.update.notifications.success')
+        else
+          redirect_to :back, error: t('manager.categories.update.notifications.failure')
+        end
+      end
     end
   end
 

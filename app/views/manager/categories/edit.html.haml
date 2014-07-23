@@ -13,3 +13,6 @@
     %input{'ng-model' => 'argument.description', required: true}
     %input{'ng-model' => 'argument.benefit_description', required: true}
     %input.glyphicon.glyphicon-plus{type: 'submit'}
+
+  %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitCategory()'}
+    = I18n.t('common.save_changes')

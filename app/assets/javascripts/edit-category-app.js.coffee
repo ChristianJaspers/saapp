@@ -2,14 +2,19 @@ editCategoryApp = angular.module('editCategoryApp', ['ngResource'])
 
 editCategoryApp.config ['$httpProvider', ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+  $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 ]
 
-editCategoryApp.factory('Category', ['$resource', ($resource) ->
-  $resource('/manager/categories/:id')
+editCategoryApp.factory('Categories', ['$resource', ($resource) ->
+  $resource('/manager/categories/:id', null,
+    {
+      'update': { method:'PUT' }
+    }
+  )
 ])
 
-editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Category', ($scope, Category) ->
-  $scope.category = Category.get({id: gon.category_id}, (category, _) ->
+editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope, Categories) ->
+  $scope.category = Categories.get({id: gon.category_id}, (category, _) ->
     $scope.arguments = category.features
   )
   $scope.argument = {}
@@ -28,4 +33,11 @@ editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Category', ($scope, C
 
     $scope.arguments.push(argument)
     $scope.argument = {}
+
+  $scope.submitCategory = ->
+    category = {category: {name: $scope.category.name, arguments: $scope.arguments}}
+
+    Categories.update({id: $scope.category.id}, category, ->
+      document.location.href  = $scope.category.index_path
+    )
 ])
