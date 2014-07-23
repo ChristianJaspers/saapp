@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, ActiveAdmin::Devise.config
+  devise_for :users, {
+    path: '',
+    path_names: {
+      sign_in: 'login',
+      sign_out: 'logout',
+      sign_out_via: [:delete]
+    }
+  }
+
   ActiveAdmin.routes(self)
 
   root 'home#show'
