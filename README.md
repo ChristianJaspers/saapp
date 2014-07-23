@@ -99,12 +99,6 @@ recipients = [EmailTemplates::Recipient.new(user.locale, user.email, {display_na
 EmailTemplates::Sender.new(recipients, :user_invitation).send
 ```
 
-#### Setup initial CMS pages
-
-```
-rake cms:setup
-```
-
 #### Remove outdated objects from system
 
 ```
