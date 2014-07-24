@@ -11,8 +11,9 @@ describe Devise::SessionsController do
   end
 
   shared_examples 'user signs out' do
+    before { sign_in user }
+
     it 'user is redirect to root when logout' do
-      sign_in user
       post :destroy
       expect(response).to redirect_to '/'
     end
