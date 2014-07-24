@@ -3,6 +3,8 @@ class Feature < ActiveRecord::Base
   belongs_to :category, inverse_of: :features, counter_cache: true
   has_one :benefit, inverse_of: :feature, dependent: :destroy
 
+  validates :description, presence: true
+
   def rated?
     false #FIXME Implementation pending
   end
