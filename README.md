@@ -35,6 +35,27 @@ rake cms:setup
 
 * Run ```rspec spec``` to run the whole suite
 
+## I18n
+Do not use config/locales. Use PhraseApp.
+
+If you want to add translation key. Change application.yml:
+```
+development:
+  PHRASE_EDITOR_ENABLED: 'true'
+```
+
+And restart server - you will be able to use in-context PhraseApp editor.
+When you are finished with translation you can turn off in-context editor.
+
+### Before deployment
+
+Update locales
+```
+phrase pull
+git add ./phrase/locales
+git commit -m "added new translations"
+```
+
 ## Deployment to heroku (staging)
 
 ```
@@ -50,7 +71,6 @@ Staging app can be accessed through:
 * staging.bettersalesman.com
 
 ## Deployment to heroku (production) [needs setup]
-
 
 ```
 git push -f production master
