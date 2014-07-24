@@ -36,7 +36,7 @@ rake cms:setup
 * Run ```rspec spec``` to run the whole suite
 
 ## I18n
-Do not use config/locales.
+Do not use config/locales. Use PhraseApp.
 
 If you want to add translation key. Change application.yml:
 ```
