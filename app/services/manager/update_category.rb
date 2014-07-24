@@ -1,15 +1,16 @@
 class Manager::UpdateCategory < BusinessProcess::Base
+  extend BusinessProcess::Transactional
+  transaction_for Category
+
   needs :category
   needs :params
   needs :current_user
 
   def call
-    Category.transaction do
-      (update_category_name and
-          create_new_arguments and
-          destroy_old_arguments and
-          update_existing_arguments) or raise ActiveRecord::Rollback
-    end
+    update_category_name and
+        create_new_arguments and
+        destroy_old_arguments and
+        update_existing_arguments
   end
 
   private
@@ -35,7 +36,7 @@ class Manager::UpdateCategory < BusinessProcess::Base
 
   def update_existing_arguments
     features_to_update.all? do |feature|
-      _attributes = attributes_of_arguments_to_update.find{|attrs| attrs.id == feature.id}
+      _attributes = attributes_of_arguments_to_update.find { |attrs| attrs.id == feature.id }
       benefit = feature.benefit
 
       feature.description = _attributes.description

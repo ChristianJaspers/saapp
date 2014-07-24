@@ -15,8 +15,11 @@ class Manager::CategoriesController < Manager::ManagerController
   def update
     respond_to do |format|
       format.json do
-        Manager::UpdateCategory.call(self)
-        render json: 'success', status: :ok
+        if Manager::UpdateCategory.call(self).success?
+          render json: 'success', status: :ok
+        else
+          render json: 'invalid', status: :unprocessable_entity
+        end
       end
       format.html do
         if category.save
