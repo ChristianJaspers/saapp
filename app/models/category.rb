@@ -4,6 +4,8 @@ class Category < ActiveRecord::Base
 
   delegate :count, to: :features, prefix: true
 
+  validates :name, presence: true
+
   default_scope -> { where(remove_at: nil) }
 
   def archive=(val)

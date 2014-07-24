@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   namespace :manager do
     root 'categories#index'
-    resources :categories, only: [:index, :show, :edit, :update, :destroy]
+    resources :categories, only: [:index, :show, :create, :edit, :update, :destroy]
   end
 
   comfy_route :cms_admin, path: '/admin/cms'

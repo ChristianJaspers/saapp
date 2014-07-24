@@ -13,3 +13,7 @@
           = category.removal_link
           = category.edit_link
 = paginate categories
+
+= simple_form_for [:manager, category] do |f|
+  = f.input :name
+  = f.submit

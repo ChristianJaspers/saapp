@@ -25,7 +25,12 @@ en:
     submit:
       wizard:
         create: Try for free!
+      category:
+        create: Create category
   simple_form:
+    labels:
+      category:
+        name: 'Name'
     placeholders:
       wizard:
         email: Your company email

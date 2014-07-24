@@ -8,6 +8,16 @@ class Manager::CategoriesController < Manager::ManagerController
     render json: category, root: false
   end
 
+  def create
+    category.owner = current_user
+
+    if category.save
+      redirect_to edit_manager_category_path(category)
+    else
+      render :index
+    end
+  end
+
   def edit
     gon.category_id = category.id
   end
@@ -43,6 +53,6 @@ class Manager::CategoriesController < Manager::ManagerController
   end
 
   def category_params
-    params.require(:category).permit(:archive)
+    params.require(:category).permit(:archive, :name)
   end
 end
