@@ -37,7 +37,11 @@ module Saapp
       user_name: Figaro.env.MANDRILL_USERNAME,
       password: Figaro.env.MANDRILL_APIKEY,
       authentication: 'login',
-      domain: 'yourdomain.com' # your domain to identify your server when connecting
+      domain: ENV['HOST'] # your domain to identify your server when connecting
     }
+
+    unless Rails.env.development?
+      config.i18n.load_path = Dir[Rails.root.join('phrase', 'locales', '*.yml').to_s]
+    end
   end
 end

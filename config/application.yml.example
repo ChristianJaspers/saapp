@@ -1,10 +1,12 @@
 MANDRILL_APIKEY: n9YjeEKAFHuog92W-qBAvA
 MANDRILL_USERNAME: your-mandril-account-mail@domain.com
 NOREPLY_EMAIL: noreply@example.com
+PHRASE_EDITOR_ENABLED: true
 
 test:
   MANDRILL_APIKEY: api-key-that-does-not-send-real-mails
   MANDRILL_USERNAME: your-mandril-account-mail@domain.com
+  NOREPLY_EMAIL: noreply@example.com
 
 production:
   MANDRILL_APIKEY: ~

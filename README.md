@@ -51,6 +51,12 @@ Staging app can be accessed through:
 
 ## Deployment to heroku (production) [needs setup]
 
+Update locales
+```
+phrase pull
+git add ./phrase/locales
+git commit -m "added new translations"
+```
 
 ```
 git push -f production master

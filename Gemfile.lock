@@ -104,6 +104,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colorize (0.7.3)
     columnize (0.8.9)
     comfortable_mexican_sofa (1.12.1)
       active_link_to (>= 1.0.0)
@@ -261,6 +262,10 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    phrase (0.4.26)
+      colorize
+      i18n
+      json
     polyamorous (1.0.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
@@ -446,6 +451,7 @@ DEPENDENCIES
   mandrill-api (~> 1.0.52)
   paperclip (~> 4.1)
   pg (~> 0.17.1)
+  phrase (~> 0.4.26)
   proxylocal (~> 0.3.1)
   pry-debugger (~> 0.2.3)
   pry-remote (~> 0.1.8)
