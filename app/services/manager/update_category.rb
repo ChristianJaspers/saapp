@@ -55,11 +55,15 @@ class Manager::UpdateCategory < BusinessProcess::Base
   end
 
   def attributes_of_arguments_to_create
-    attributes.arguments.select { |argument| argument.id.nil? }
+    arguments.select { |argument| argument.id.nil? }
   end
 
   def attributes_of_arguments_to_update
-    attributes.arguments.select { |argument| argument.id.present? }
+    arguments.select { |argument| argument.id.present? }
+  end
+
+  def arguments
+    attributes.arguments || []
   end
 
   def attributes

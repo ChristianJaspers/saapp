@@ -18,7 +18,6 @@ describe Manager::UpdateCategory do
                 name: 'Updated name!',
                 arguments: [
                     {id: feature_to_update.id, description: 'Updated feature description!', benefit_description: 'Updated benefit description!'},
-                    {id: feature_to_remove.id, description: 'Whatever', benefit_description: 'Whatever'},
                     {description: 'New feature description!', benefit_description: 'New benefit description!'},
                 ],
                 arguments_to_remove_ids: [feature_to_remove.id]
@@ -38,6 +37,20 @@ describe Manager::UpdateCategory do
         it { expect(Feature).to exist.with(description: 'New feature description!') }
         it { expect(Benefit).to exist.with(description: 'New benefit description!') }
       end
+    end
+
+    context 'removing all arguments' do
+      let(:params) do
+        {
+            category: {
+                name: 'Updated name!',
+                arguments_to_remove_ids: [feature_to_remove.id]
+            }
+        }.with_indifferent_access
+      end
+
+      it { expect { perform }.to change { Feature.count }.by(-1) }
+      it { expect { perform }.to change { Benefit.count }.by(-1) }
     end
   end
 end
