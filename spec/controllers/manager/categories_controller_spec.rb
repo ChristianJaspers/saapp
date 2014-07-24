@@ -27,7 +27,7 @@ describe Manager::CategoriesController do
     end
   end
 
-  describe '#update' do
+  describe '#create' do
     include_context 'manager is logged in'
 
     let(:call_request) { post :create, category: {name: 'New category!'} }
