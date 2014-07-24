@@ -30,6 +30,21 @@ describe Manager::CategoriesController do
   describe '#update' do
     include_context 'manager is logged in'
 
+    let(:call_request) { post :create, category: {name: 'New category!'} }
+
+    context 'after request' do
+      before { call_request }
+      let(:category) { Category.last }
+
+      it { expect(response).to redirect_to(action: 'edit', id: category.id) }
+      it { expect(Category).to exist.with(name: 'New category!') }
+      it { expect(category.owner).to eq manager }
+    end
+  end
+
+  describe '#update' do
+    include_context 'manager is logged in'
+
     context 'un-publishing' do
       let!(:category) { create(:category, owner: manager) }
       let(:call_request) { patch :update, id: category.id, category: {archive: 'true'} }
