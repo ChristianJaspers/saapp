@@ -35,10 +35,10 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
   $scope.maxCategories = 20
 
   $scope.steps = [
-    { title: 'Step 1 : Categories', template: 'step-one.html', class: 'categories_step' },
-    { title: 'Step 2 : Features and Benefits', template: 'step-two.html', disabled: true, class: 'arguments_step' },
-    { title: 'Step 3 : Invitations', template: 'step-three.html', disabled: true, class: 'invitations_step' },
-    { title: 'Step 4 : Summary', template: 'step-four.html', disabled: true, class: 'summary_step' },
+    { title: 'Product categories', template: 'step-one.html', class: 'ng-isolate-scope categories_step' },
+    { title: 'Arguments', template: 'step-two.html', disabled: true, class: ' ng-isolate-scope arguments_step' },
+    { title: 'Invitations', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
+    { title: 'Summary', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
   ]
 
   $scope.atCategoriesLimit = ->

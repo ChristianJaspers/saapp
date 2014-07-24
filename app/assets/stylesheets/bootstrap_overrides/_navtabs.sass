@@ -1,0 +1,87 @@
+.ng-isolate-scope
+  .nav-tabs
+    margin: $margin-auto
+    max-width: 946px
+
+    .ng-isolate-scope
+      position: relative
+      width: $wizard-icons-li
+      a
+        border: 0
+        color: $color-gray-dark
+        font:
+          family: $font-family-base
+          size: 15px
+          weight: $font-weight-bold
+        line-height: 18px
+        margin-top: 14px
+        padding: 0
+        text-align: center
+        text-transform: uppercase
+        width: $wizard-icons
+
+        &:before
+          background-color: $color-gray-dark
+          border-radius: 50%
+          box-shadow: 0 2px 0 0 darken($color-gray-dark, 10%)
+          color: $color-white
+          content: ''
+          display: block
+          height: $wizard-icons
+          line-height: $wizard-icons
+          margin-bottom: 14px
+          text-align: center
+          width: $wizard-icons
+
+      &.disabled
+        a
+          color: $color-gray-light
+          &:before
+            background-color: $color-gray-light
+            box-shadow: 0 2px 0 0 darken($color-gray-light, 10%)
+
+          &:after
+            background-color: $color-gray-light
+
+      &.active
+        a
+          color: $color-green
+          &:before
+            background-color: $color-green
+            box-shadow: 0 2px 0 0 darken($color-green, 10%)
+
+          &:after
+            background-color: $color-green
+
+      &.summary_step
+        width: $wizard-icons
+        a:before
+          content: '\e603'
+
+      &.categories_step
+        a:before
+          content: '\e602'
+
+      &.arguments_step
+        a:before
+          content: '\e604'
+
+      &.invitations_step
+        a:before
+          content: '\e605'
+
+      &:after
+        background-color: $color-gray-dark
+        content: ''
+        display: block
+        height: 1px
+        position: absolute
+        right: $font-size-base
+        top: 62px
+        width: $wizard-icons-line
+
+      &.active:after
+        background-color: $color-green
+
+      &.disabled:after
+        background-color: $color-gray-light
