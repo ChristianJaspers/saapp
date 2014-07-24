@@ -1,4 +1,4 @@
-RSpec::Matchers.define :exist do |klass|
+RSpec::Matchers.define :exist do
   match do |actual|
     actual.exists?(@conditions_hash || {})
   end
