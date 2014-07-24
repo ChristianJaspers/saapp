@@ -4,11 +4,30 @@ class Manager::CategoriesController < Manager::ManagerController
 
   layout 'manager'
 
+  def show
+    render json: category, root: false
+  end
+
+  def edit
+    gon.category_id = category.id
+  end
+
   def update
-    if category.save
-      redirect_to :back, notice: t('manager.categories.update.notifications.success')
-    else
-      redirect_to :back, error: t('manager.categories.update.notifications.failure')
+    respond_to do |format|
+      format.json do
+        if Manager::UpdateCategory.call(self).success?
+          render json: 'success', status: :ok
+        else
+          render json: 'invalid', status: :unprocessable_entity
+        end
+      end
+      format.html do
+        if category.save
+          redirect_to :back, notice: t('manager.categories.update.notifications.success')
+        else
+          redirect_to :back, error: t('manager.categories.update.notifications.failure')
+        end
+      end
     end
   end
 

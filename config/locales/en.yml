@@ -54,6 +54,7 @@ en:
     category:
       many: "Categories"
     unauthorized: "You cannot access this page. Please login with proper credentatials."
+    save_changes: "Save changes"
   navbar:
     my_account_link: "My Account"
   manager:
@@ -65,9 +66,10 @@ en:
             features_count: "Features count"
             actions: "Actions"
           actions:
-            unarchive_link: "Publish"
-            archive_link: "Unpublish"
-            destroy_link: "Remove"
+            unarchive_link: "Unarchive"
+            archive_link: "Archive"
+            destroy_link: "Delete"
+            edit_link: "Edit"
       update:
         notifications:
           failure: "Changes could not be saved"

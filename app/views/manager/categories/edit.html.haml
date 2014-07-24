@@ -1,0 +1,18 @@
+%div{'ng-app' => 'editCategoryApp', 'ng-controller' => 'editCategoryCtrl'}
+  %input{'ng-model' => 'category.name'}
+  %ul{'ng-repeat' => 'argument in arguments'}
+    %li
+      %span{'ng-hide' => 'argument.is_editable'}
+        {{argument.description}} - {{argument.benefit_description}}
+      %span{'ng-show' => 'argument.is_editable'}
+        %input{'ng-model' => 'argument.description'}
+        %input{'ng-model' => 'argument.benefit_description'}
+      %span.glyphicon.glyphicon-trash{'ng-show' => 'argument.is_removable', 'ng-click' => 'removeArgument(argument)'}
+
+  %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument()'}
+    %input{'ng-model' => 'argument.description', required: true}
+    %input{'ng-model' => 'argument.benefit_description', required: true}
+    %input.glyphicon.glyphicon-plus{type: 'submit'}
+
+  %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitCategory()'}
+    = t('common.save_changes')
