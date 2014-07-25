@@ -30,15 +30,16 @@ describe Manager::CategoriesController do
   describe '#create' do
     include_context 'manager is logged in'
 
-    let(:call_request) { post :create, category: {name: 'New category!'} }
+    let(:attributes){ {name: 'New category!'} }
+    let(:call_request) { post :create, category: attributes }
+
+    it_behaves_like 'an action creating object'
 
     context 'after request' do
       before { call_request }
       let(:category) { Category.last }
 
       it { expect(response).to redirect_to(action: 'edit', id: category.id) }
-      it { expect(Category).to exist.with(name: 'New category!') }
-      it { expect(category.owner).to eq manager }
     end
   end
 
