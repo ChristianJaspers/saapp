@@ -12,18 +12,21 @@ describe Api::V1::ResourcesController do
           {
             "reports": [
               {
+                "id": 1,
                 "position": 1,
                 "level": 81,
                 "name": "My activity",
                 "updated_at": "2014-03-28T16:00:00+01:00"
               },
               {
+                "id": 2,
                 "position": 2,
                 "level": 24,
                 "name": "My team activity",
                 "updated_at": "2014-03-28T16:00:00+01:00"
               },
               {
+                "id": 3,
                 "position": 3,
                 "level": 91,
                 "name": "All teams activity",
