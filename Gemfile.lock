@@ -450,7 +450,7 @@ DEPENDENCIES
   json_spec (~> 1.1.2)
   kaminari (~> 0.16.1)
   mandrill-api (~> 1.0.52)
-  ng-rails-csrf
+  ng-rails-csrf (~> 0.1.0)
   paperclip (~> 4.1)
   pg (~> 0.17.1)
   phrase (~> 0.4.26)
