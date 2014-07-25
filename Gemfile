@@ -30,6 +30,7 @@ gem 'aws-sdk', '~> 1.48.1'
 gem 'active_model_serializers', '~> 0.8.1'
 gem 'kaminari', '~> 0.16.1'
 gem 'ng-rails-csrf', '~> 0.1.0'
+gem 'phrase', '~> 0.4.26'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
@@ -60,7 +61,6 @@ group :development, :test do
   gem 'pry-debugger', '~> 0.2.3'
   gem 'pry-remote', '~> 0.1.8'
   gem 'travis', '~> 1.6.14'
-  gem 'phrase', '~> 0.4.26'
 end
 
 group :production do
