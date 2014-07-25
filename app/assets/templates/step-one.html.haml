@@ -5,6 +5,9 @@
       {{$index + 1}} - {{category.name}}
       %span.glyphicon.glyphicon-trash{'ng-click' => 'removeCategory(category)'}
 
+  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!firstStepValid()', 'ng-click' => 'steps[1].active = true'}
+    = I18n.t('wizard.step_1.next_step_button')
+
   %form{name: 'newCategoryForm',
   'ng-submit' =>'addCategory(wizard)',
   'ng-hide' => 'atCategoriesLimit()'}
@@ -13,8 +16,5 @@
       %input{type: 'submit', value: ''}
   %span{'ng-show' => 'atCategoriesLimit()'}
     = I18n.t('wizard.step_1.at_categories_limit_notification', maximum_amount: 20)
-
-  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!firstStepValid()', 'ng-click' => 'steps[1].active = true'}
-    = I18n.t('wizard.step_1.next_step_button')
 
 %categories-preview
