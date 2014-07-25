@@ -20,15 +20,16 @@ $font-weight-light:               300
 $font-weight-regular:             500
 $font-weight-bold:                700
 
-$icon-size:                       36px
+$icon-size:                       44px
 $icon-size-double:                $icon-size * 2
+$icon-size-half:                  $icon-size / 2
 
 //----- margins -----
 $margin-auto:                     0 auto
 
 //----- dimensions -----
 $wizard-icons:                    97px
-$wizard-icons-li:                 calc(33.3333% - (97px / 3))
+$wizard-icons-li:                 calc(33.3333% - (#{$wizard-icons}) / 3)
 $wizard-icons-line:               calc(100% - 97px - 2 * (16px))
 
 $inputs-size:                     43px
@@ -37,3 +38,13 @@ $inputs-size:                     43px
 $interval-default:                45px
 $interval-medium:                 $interval-default * 2
 
+//----- borders -----
+$default-border-radius:           3px
+
+//----- buttons -----
+$button-base-fontsize:            14px
+$button-base-padding:             11px 39px
+
+$btn-primary-bg:                  $color-green
+$btn-primary-color:               $color-white
+$btn-primary-border:              $color-green

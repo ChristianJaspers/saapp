@@ -1,4 +1,4 @@
-%div.category-window.col-md-8{'ng-controller' => 'categoryCtrl'}
+.category-window.col-md-6{'ng-controller' => 'categoryCtrl'}
   %h2= I18n.t('wizard.step_1.header')
   %ul{'ng-repeat' => 'category in wizard.categories'}
     %li
@@ -11,9 +11,9 @@
   %form{name: 'newCategoryForm',
   'ng-submit' =>'addCategory(wizard)',
   'ng-hide' => 'atCategoriesLimit()'}
-    %input{'ng-model' => 'category.name', required: true}
+    %input.wizard-input{'ng-model' => 'category.name', required: true}
     %span.wizard-add
-      %input{type: 'submit', value: ''}
+      %input{type: 'submit', value: ' '}
   %span{'ng-show' => 'atCategoriesLimit()'}
     = I18n.t('wizard.step_1.at_categories_limit_notification', maximum_amount: 20)
 

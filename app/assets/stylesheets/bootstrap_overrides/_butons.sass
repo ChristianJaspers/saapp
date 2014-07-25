@@ -1,0 +1,18 @@
+.btn
+  border-radius: $default-border-radius
+  font:
+    family: $font-family-base
+    size: $button-base-fontsize
+    weight: $font-weight-bold
+  padding: $button-base-padding
+  text-transform: uppercase
+
+.btn-primary, .btn-primary[disabled]
+  background-color: $btn-primary-bg
+  border-color: $btn-primary-border
+  @include button-shadow(darken($btn-primary-bg, 10%))
+  &:hover
+    background-color: (lighten($btn-primary-bg,10%))
+    border-color: (lighten($btn-primary-bg,10%))
+    @include button-shadow($btn-primary-bg)
+
