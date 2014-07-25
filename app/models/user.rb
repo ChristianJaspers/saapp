@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include SentientUser
+
   enum role: {
       user: 0,
       manager: 1,
