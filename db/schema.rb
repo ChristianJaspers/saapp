@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722121520) do
+ActiveRecord::Schema.define(version: 20140725123437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,6 +197,14 @@ ActiveRecord::Schema.define(version: 20140722121520) do
 
   add_index "features", ["category_id"], name: "index_features_on_category_id", using: :btree
   add_index "features", ["owner_id"], name: "index_features_on_owner_id", using: :btree
+
+  create_table "gamification_scorings", force: true do |t|
+    t.integer  "amount"
+    t.integer  "beneficiary_id"
+    t.string   "event_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "teams", force: true do |t|
     t.integer  "company_id"
