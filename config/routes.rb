@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       resources :auth, only: [:create]
+      resources :resources, only: [:index]
       resources :passwords, only: [:create]
       resource :profile, only: [:show] do
         resource :avatar, only: [:update]
