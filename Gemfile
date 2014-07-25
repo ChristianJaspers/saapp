@@ -29,6 +29,7 @@ gem 'paperclip', '~> 4.1'
 gem 'aws-sdk', '~> 1.48.1'
 gem 'active_model_serializers', '~> 0.8.1'
 gem 'kaminari', '~> 0.16.1'
+gem 'ng-rails-csrf', '~> 0.1.0'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'

@@ -1,7 +1,6 @@
-editCategoryApp = angular.module('editCategoryApp', ['ngResource'])
+editCategoryApp = angular.module('editCategoryApp', ['ngResource', 'ng-rails-csrf'])
 
 editCategoryApp.config ['$httpProvider', ($httpProvider) ->
-  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 ]
 

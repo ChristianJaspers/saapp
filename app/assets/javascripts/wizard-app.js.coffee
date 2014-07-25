@@ -1,8 +1,4 @@
-wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap', 'templates'])
-
-wizardApp.config ['$httpProvider', ($httpProvider) ->
-  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
-]
+wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap', 'templates', 'ng-rails-csrf'])
 
 wizardApp.factory('Wizard', ['$resource', ($resource) ->
   $resource('/wizards')
