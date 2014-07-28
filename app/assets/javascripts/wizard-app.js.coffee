@@ -72,7 +72,7 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
     )
 
     wizard.$save().then((u, putResponseHeaders) ->
-      document.location.href  = '/'
+      document.location.href  = '/confirmation?confirmation_token=' + u.confirmation_token
     )
 ])
 

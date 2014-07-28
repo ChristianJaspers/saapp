@@ -1,6 +1,8 @@
 module User::DeviseConfirmableActivation
   extend ActiveSupport::Concern
 
+  attr_reader :raw_confirmation_token
+
   def attempt_set_password(params)
     p = {}
     p[:password] = params[:password]

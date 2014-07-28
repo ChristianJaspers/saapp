@@ -1,6 +1,8 @@
 class SetupNewAccount < BusinessProcess::Base
   needs :wizard
 
+  delegate :raw_confirmation_token, to: :manager, prefix: true
+
   def call
     create_company and
         create_team and
