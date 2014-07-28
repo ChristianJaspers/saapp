@@ -15,7 +15,7 @@ class SetupNewAccount < BusinessProcess::Base
   attr_reader :manager, :company, :team, :invitees
 
   def create_manager
-    @manager = team.users.create(email: wizard.email, password: 'fixme123') do |user|
+    @manager = team.users.create(email: wizard.email) do |user|
       user.role = 'manager'
     end
   end
@@ -42,9 +42,11 @@ class SetupNewAccount < BusinessProcess::Base
 
   def create_invitees
     @invitees = wizard.invitations.map do |invitation|
-      team.users.create(email: invitation.email,
-                        display_name: invitation.display_name,
-                        password: 'fixme123')
+      invitee = team.users.new(email: invitation.email,
+                        display_name: invitation.display_name)
+      invitee.skip_confirmation_notification!
+      invitee.save
+      invitee
     end
   end
 
