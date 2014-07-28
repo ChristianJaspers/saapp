@@ -24,7 +24,7 @@
   form
     position: relative
     input
-      @include input-shadow($color-gray-dark, $default-border-radius, $color-gray)
+      @include box-shadow-border($color-gray-dark, $default-border-radius, $color-gray)
       float: left
       height: $inputs-size
       &.wizard-input
@@ -35,8 +35,9 @@
       width: $inputs-size
       &:before
         @extend %right-corners
-        box-shadow: 0 2px 0 0 #474747
+        @include box-shadow($color-gray)
         position: absolute
+        right: 0
       &:hover:before
         background-color: $color-green
       input
@@ -44,5 +45,66 @@
         width: $inputs-size
 
 .mobile-preview-container
+  background:
+    image: image-url('mockup.png')
+    repeat: no-repeat
   margin-top: $interval-default
+  max-width: $mockup-width
+  min-height: $mockup-width * 2.5
+  position: relative
 
+  .preview-head
+    color: $color-green
+    display: block
+    padding-top: $interval-default * 1.6
+    text-align: center
+    text-transform: uppercase
+  ul, li
+    margin: 0
+    padding: 0
+  .box
+    margin: $mockup-margin auto
+    overflow: hidden
+    width: 85%
+  li
+    background-color: $prev1
+    list-style: none
+    margin: $mockup-margin 0
+    padding: $m / 2 $m
+    text-transform: capitalize
+
+  ul.ng-scope
+    &:nth-child(8n+1) li
+      background-color: $prev8
+    &:nth-child(8n+2) li
+      background-color: $prev7
+    &:nth-child(8n+3) li
+      background-color: $prev6
+    &:nth-child(8n+4) li
+      background-color: $prev5
+    &:nth-child(8n+5) li
+      background-color: $prev4
+    &:nth-child(8n+6) li
+      background-color: $prev3
+    &:nth-child(8n+7) li
+      background-color: $prev2
+
+  .preview-list
+    &::-webkit-scrollbar
+      display: none
+    //----- FF fix -----
+    height: $mockup-width * 1.18
+    margin-right: -$m
+    margin-top: $m / 4
+    overflow-y: auto
+
+  .preview-overlay
+    background:
+      image: image-url('glow.png')
+      position: right top
+      repeat: no-repeat
+    display: block
+    height: 32%
+    position: absolute
+    top: 0
+    width: $mockup-width
