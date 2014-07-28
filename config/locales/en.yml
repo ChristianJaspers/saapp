@@ -34,6 +34,8 @@ en:
     placeholders:
       wizard:
         email: Your company email
+  landing:
+    free_30: Try for 30 days free!
   wizard:
     step_1:
       header: Enter product categories
