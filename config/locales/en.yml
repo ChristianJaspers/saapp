@@ -35,7 +35,9 @@ en:
       wizard:
         email: Your company email
   landing:
+    header: Find, rate & share the best sales arguments.
     free_30: Try for 30 days free!
+    testimonials_header: User testimonials
   wizard:
     step_1:
       header: Enter product categories
