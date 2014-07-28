@@ -22,9 +22,8 @@ feature 'Wizard' do
     find("input[type='submit']").click
     expect(page).to have_content "1 - #{category_name}"
 
-
     # Add feature / benefit
-    find('button', text: I18n.t('wizard.step_1.next_step_button')).click
+    find('button', text: I18n.t('wizard.step_1.next_step_button').upcase).click
     expect(page).to have_content I18n.t('wizard.step_2.header')
     expect(page).to_not have_selector('table tbody tr')
     find("select[ng-model='argument.category']").select('iPad')
@@ -34,7 +33,7 @@ feature 'Wizard' do
     expect(page).to have_selector('table tbody tr')
 
     # Add invitee
-    find('button', text: I18n.t('wizard.step_2.next_step_button')).click
+    find('button', text: I18n.t('wizard.step_2.next_step_button').upcase).click
     expect(page).to have_content I18n.t('wizard.step_3.header')
     expect(page).to_not have_selector('div.tab-pane ul li')
     find("input[ng-model='invitation.email']").set(invitee_email)
@@ -43,7 +42,7 @@ feature 'Wizard' do
     expect(page).to have_selector('div.tab-pane ul li')
 
     # Summary page
-    find('button', text: I18n.t('wizard.step_3.next_step_button')).click
+    find('button', text: I18n.t('wizard.step_3.next_step_button').upcase).click
     expect(page).to have_content I18n.t('wizard.step_4.header')
     expect(page).to have_content category_name
     expect(page).to have_content feature_name
@@ -51,8 +50,9 @@ feature 'Wizard' do
     expect(page).to have_content invitee_email
     expect(page).to have_content invitee_display_name
 
+
     # Submitting
-    find('button', text: I18n.t('wizard.step_4.submit_button')).click
+    find('button', text: I18n.t('wizard.step_4.submit_button').upcase).click
     expect(page).to have_content I18n.t('wizard.create.notifications.success')
   end
 end
