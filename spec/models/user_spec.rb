@@ -50,4 +50,45 @@ describe User do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#score' do
+    subject { create(:user) }
+
+    context 'two-point scoring exists' do
+      before { create(:gamification_scoring, beneficiary_id: subject.id, amount: 2) }
+
+      its(:score) { is_expected.to eq 2 }
+
+      context 'additional two-point scoring exists' do
+        before { create(:gamification_scoring, beneficiary_id: subject.id, amount: 2) }
+
+        its(:score) { is_expected.to eq 4 }
+      end
+    end
+
+    context 'on 28 Jul 2014 15:00' do
+      around { travel_to(DateTime.parse('28-07-2014 15:00')) }
+
+
+      context 'two-point scoring exists' do
+        before { create(:gamification_scoring, beneficiary_id: subject.id, amount: 2, created_at: creation_date) }
+
+        context 'for requested period between 26-07-2014 and 28-07-2014' do
+          let(:requested_period) { (DateTime.parse('26-07-2014')..DateTime.parse('28-07-2014')) }
+
+          context 'two-point scoring exists outside of requested period' do
+            let(:creation_date) { DateTime.parse('25-07-2014') }
+
+            it { expect { subject.score(period) }.to eq 0 }
+          end
+
+          context 'two-point scoring exists withi of requested period' do
+            let(:creation_date) { DateTime.parse('27-07-2014') }
+
+            it { expect { subject.score(period) }.to eq 2 }
+          end
+        end
+      end
+    end
+  end
 end
