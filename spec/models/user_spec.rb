@@ -78,7 +78,7 @@ describe User do
           it { expect(subject.score(period: requested_period)).to eq 0 }
         end
 
-        context 'two-point scoring exists withi of requested period' do
+        context 'two-point scoring exists within of requested period' do
           let(:creation_date) { DateTime.parse('27-07-2014') }
 
           it { expect(subject.score(period: requested_period)).to eq 2 }
