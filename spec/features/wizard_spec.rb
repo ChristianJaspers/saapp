@@ -18,8 +18,6 @@ feature 'Wizard' do
     expect(page).to have_content I18n.t('wizard.step_1.header')
 
     # Add product_group
-    #save_and_open_page
-   # binding.pry
     find("input[ng-model='productGroup.name']").set(product_group_name)
     find("input[type='submit']").click
     expect(page).to have_content "1 - #{product_group_name}"
@@ -57,6 +55,7 @@ feature 'Wizard' do
     expect(page).to have_content I18n.t('wizard.create.notifications.success')
     expect(page).to have_content I18n.t('devise.confirmations.account_activation_title')
 
+    # Choose password
     password = '1' * 8
     find("input[name='user[password]']").set(password)
     find("input[name='user[password_confirmation]']").set(password)
