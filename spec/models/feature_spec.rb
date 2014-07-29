@@ -18,4 +18,26 @@ describe Feature do
       end
     end
   end
+
+  describe '#save' do
+    let(:feature_creator) { create(:user) }
+    let(:feature) { build(:feature, owner: feature_creator) }
+    let(:perform) { feature.save }
+
+    context 'logged in as feature creator' do
+      before { allow(User).to receive(:current).and_return(feature_creator) }
+
+      it { expect { perform }.to change { Gamification::Scoring.count }.by(1) }
+
+      context 'after perform' do
+        before { perform }
+
+        describe 'feature creator scoring' do
+          subject { feature_creator.scorings.last }
+
+          its(:amount) { is_expected.to eq 2 }
+        end
+      end
+    end
+  end
 end

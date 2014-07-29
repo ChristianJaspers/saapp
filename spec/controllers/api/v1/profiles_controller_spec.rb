@@ -18,7 +18,9 @@ describe Api::V1::ProfilesController do
               "email": "a@a.com",
               "display_name": "Batman",
               "avatar_url": null,
-              "avatar_thumb_url": null
+              "avatar_thumb_url": null,
+              "activity_ratio": [0,0],
+              "score": 0
             }
           }
         EOS

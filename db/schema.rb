@@ -198,6 +198,14 @@ ActiveRecord::Schema.define(version: 20140728104904) do
   add_index "features", ["category_id"], name: "index_features_on_category_id", using: :btree
   add_index "features", ["owner_id"], name: "index_features_on_owner_id", using: :btree
 
+  create_table "gamification_scorings", force: true do |t|
+    t.integer  "amount"
+    t.integer  "beneficiary_id"
+    t.string   "event_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "teams", force: true do |t|
     t.integer  "company_id"
     t.datetime "created_at"

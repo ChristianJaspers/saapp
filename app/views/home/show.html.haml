@@ -1,4 +1,12 @@
-- if guest?
-  = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
-    = f.input :email
-    = f.submit
+.category-window.col-md-6
+  %h2= I18n.t('landing.header')
+  %h3= I18n.t('landing.free_30')
+  - if guest?
+    = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
+      = f.input :email
+      = f.submit
+
+  .clearfix
+  %h3= I18n.t('landing.testimonials_header')
+
+.landing-mobile.col-md-4.col-md-offset-2
