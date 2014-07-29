@@ -11,7 +11,7 @@ module Model
     end
 
     module ClassMethods
-      def self.purge_outdated_entries!
+      def purge_outdated_entries!
         unscoped.where('remove_at <= ?', Date.today.to_s(:db)).destroy_all
       end
     end
