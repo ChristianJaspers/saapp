@@ -138,6 +138,24 @@ class Api::V1::ResourcesController < Api::RestrictedApplicationController
         benefit: "#3 Lorem ipsum dolor sit amet benefit",
         category_id: 2,
         id: 3
+      },
+      {
+        rating: 0,
+        created_at: "2014-03-28T16:00:00+01:00",
+        feature: "Retina display",
+        updated_at: "2014-03-28T16:00:00+01:00",
+        benefit: "See more details on screen",
+        category_id: 2,
+        id: 4
+      },
+      {
+        rating: 0,
+        created_at: "2014-03-28T16:00:00+01:00",
+        feature: "Stereo speaker",
+        updated_at: "2014-03-28T16:00:00+01:00",
+        benefit: "Better sound quality",
+        category_id: 2,
+        id: 5
       }
     ]
   end

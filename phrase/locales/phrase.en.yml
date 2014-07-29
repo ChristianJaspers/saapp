@@ -10,7 +10,7 @@ en:
   devise:
     confirmations:
       account_activation_title: Account Activation
-      confirmed: Your account was successfully confirmed.
+      confirmed: Your password was set-up successfully
       send_instructions: You will receive an email with instructions about how to
         confirm your account in a few minutes.
       send_paranoid_instructions: If your email address exists in our database, you
@@ -149,4 +149,4 @@ en:
       categories_and_arguments_header: Categories and arguments
       header: Review and accept
       invitations_header: Sales representatives
-      submit_button: Send invitations
+      submit_button: SEND INVITATIONS

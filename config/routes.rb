@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  as :user do
+    patch 'confirmation' => 'confirmations#update', as: :update_user_confirmation, controller: 'confirmations'
+  end
+
   devise_for :users, {
     path: '',
     path_names: {
       sign_in: 'login',
       sign_out: 'logout',
       sign_out_via: [:delete]
+    },
+    controllers: {
+      confirmations: 'confirmations'
     }
   }
 

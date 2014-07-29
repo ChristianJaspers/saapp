@@ -24,7 +24,6 @@ feature 'Wizard' do
     find("input[type='submit']").click
     expect(page).to have_content "1 - #{product_group_name}"
 
-
     # Add feature / benefit
     find('button', text: I18n.t('wizard.step_1.next_step_button')).click
     expect(page).to have_content I18n.t('wizard.step_2.header')
@@ -56,5 +55,12 @@ feature 'Wizard' do
     # Submitting
     find('button', text: I18n.t('wizard.step_4.submit_button')).click
     expect(page).to have_content I18n.t('wizard.create.notifications.success')
+    expect(page).to have_content I18n.t('devise.confirmations.account_activation_title')
+
+    password = '1' * 8
+    find("input[name='user[password]']").set(password)
+    find("input[name='user[password_confirmation]']").set(password)
+    find("input[type='submit']").click
+    expect(page).to have_content I18n.t('devise.confirmations.confirmed')
   end
 end
