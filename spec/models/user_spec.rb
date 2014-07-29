@@ -51,6 +51,44 @@ describe User do
     end
   end
 
+  describe '#manager' do
+    subject { user.manager }
+
+    context 'normal user' do
+      let(:user) { create(:user) }
+      it { is_expected.to eq false }
+    end
+
+    context 'manager' do
+      let(:user) { create(:manager) }
+      it { is_expected.to eq true }
+    end
+  end
+
+  describe '#manager=' do
+    let(:user) { create(:user) }
+    subject { user.role }
+    before { user.manager = assigned_value }
+
+    context 'true value is assigned' do
+      let(:assigned_value) { true }
+      it { is_expected.to eq 'manager' }
+    end
+
+    context 'anything else is assigned' do
+      let(:assigned_value) { '1' }
+      it { is_expected.to eq 'user' }
+    end
+  end
+
+  describe '#remove!' do
+    let(:user) { create(:user) }
+    subject { user }
+    before { user.remove! }
+
+    it { expect(subject.reload.remove_at).to be_present }
+  end
+
   describe '#score' do
     subject { create(:user) }
 
