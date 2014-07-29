@@ -21,7 +21,9 @@ describe Api::V1::AvatarsController do
               "email": "a@a.com",
               "display_name": "Batman",
               "avatar_url": "/test/system/users/avatars/#{user.id}/original/avatar.png",
-              "avatar_thumb_url": "/test/system/users/avatars/#{user.id}/thumb/avatar.png"
+              "avatar_thumb_url": "/test/system/users/avatars/#{user.id}/thumb/avatar.png",
+              "activity_ratio": [0,0],
+              "score": 0
             }
           }
         EOS

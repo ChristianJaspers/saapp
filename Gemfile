@@ -30,6 +30,7 @@ gem 'aws-sdk', '~> 1.48.1'
 gem 'active_model_serializers', '~> 0.8.1'
 gem 'kaminari', '~> 0.16.1'
 gem 'ng-rails-csrf', '~> 0.1.0'
+gem 'sentient_user', '~> 0.3.3'
 gem 'phrase', '~> 0.4.26'
 
 group :development do
