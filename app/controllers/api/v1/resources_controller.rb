@@ -9,7 +9,7 @@ class Api::V1::ResourcesController < Api::RestrictedApplicationController
     {
       reports: stub_reports,
       users: stub_users,
-      categories: stub_categories,
+      product_groups: stub_categories,
       arguments: stub_arguments
     }
   end

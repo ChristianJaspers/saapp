@@ -75,7 +75,7 @@ describe Api::V1::ResourcesController do
                 "id": 5
               }
             ],
-            "categories": [
+            "product_groups": [
               {
                 "position": 1,
                 "id": 1,

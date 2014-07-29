@@ -8,7 +8,7 @@
       %th
     %tbody{'ng-repeat' => "argument in wizard.arguments"}
       %tr
-        %td {{$index + 1}} - {{argument.category.name}}
+        %td {{$index + 1}} - {{argument.productGroup.name}}
         %td {{argument.feature}}
         %td {{argument.benefit}}
         %td
@@ -18,7 +18,7 @@
     = I18n.t('wizard.step_2.next_step_button')
 
   %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument(wizard)'}
-    %select{'ng-model' => 'argument.category', 'ng-options' => 'category as category.name for category in wizard.categories', required: true}
+    %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true}
     %input{'ng-model' => 'argument.feature', required: true}
     %input{'ng-model' => 'argument.benefit', required: true}
     %input.glyphicon.glyphicon-plus{type: 'submit'}

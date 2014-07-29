@@ -13,8 +13,8 @@ editCategoryApp.factory('Categories', ['$resource', ($resource) ->
 ])
 
 editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope, Categories) ->
-  $scope.category = Categories.get({id: gon.category_id}, (category, _) ->
-    $scope.arguments = category.features
+  $scope.productGroup = Categories.get({id: gon.productGroup_id}, (productGroup, _) ->
+    $scope.arguments = productGroup.arguments
   )
   $scope.argumentsToRemoveIds = []
   $scope.argument = {}
@@ -36,15 +36,15 @@ editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope,
     $scope.argument = {}
 
   $scope.submitCategory = ->
-    category = {
-      category:  {
-        name: $scope.category.name,
+    productGroup = {
+      productGroup:  {
+        name: $scope.productGroup.name,
         arguments: $scope.arguments,
         arguments_to_remove_ids: $scope.argumentsToRemoveIds
       }
     }
 
-    Categories.update({id: $scope.category.id}, category, ->
-      document.location.href = $scope.category.index_path
+    Categories.update({id: $scope.productGroup.id}, productGroup, ->
+      document.location.href = $scope.productGroup.index_path
     )
 ])

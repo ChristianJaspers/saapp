@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe Feature do
+describe Argument do
   describe '#rated?' do
-    context 'feature was not rated' do
+    context 'argument was not rated' do
       it do
         pending 'To be implemented'
         expect(subject.rated?).to be_falsey
@@ -10,7 +10,7 @@ describe Feature do
       end
     end
 
-    context 'feature was rated' do
+    context 'argument was rated' do
       it do
         pending 'To be implemented'
         expect(subject.rated?).to be_truthy
@@ -20,20 +20,20 @@ describe Feature do
   end
 
   describe '#save' do
-    let(:feature_creator) { create(:user) }
-    let(:feature) { build(:feature, owner: feature_creator) }
-    let(:perform) { feature.save }
+    let(:argument_creator) { create(:user) }
+    let(:argument) { build(:argument, owner: argument_creator) }
+    let(:perform) { argument.save }
 
-    context 'logged in as feature creator' do
-      before { allow(User).to receive(:current).and_return(feature_creator) }
+    context 'logged in as argument creator' do
+      before { allow(User).to receive(:current).and_return(argument_creator) }
 
       it { expect { perform }.to change { Gamification::Scoring.count }.by(1) }
 
       context 'after perform' do
         before { perform }
 
-        describe 'feature creator scoring' do
-          subject { feature_creator.scorings.last }
+        describe 'argument creator scoring' do
+          subject { argument_creator.scorings.last }
 
           its(:amount) { is_expected.to eq 2 }
         end
