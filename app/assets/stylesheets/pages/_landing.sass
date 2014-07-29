@@ -5,3 +5,19 @@
   margin-top: $interval-default
   max-width: $mockup-width
   min-height: $mockup-width * 2.5
+
+.landing-list
+  margin: $interval-default 0
+  li
+    color: $color-gray
+    font:
+      family: $font-family-second
+      size: $font-size-medium
+
+    list-style: none
+    margin: $interval-small $interval-default
+    &:before
+      @include circle-icons($default-icon-background, $default-icon-color)
+      font-size: $icon-size-small
+      margin: 0 $interval-small 0 0
+      padding: $font-size-base  / 2
