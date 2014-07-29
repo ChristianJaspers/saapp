@@ -1,19 +1,19 @@
-editCategoryApp = angular.module('editCategoryApp', ['ngResource', 'ng-rails-csrf'])
+editProductGroupApp = angular.module('editProductGroupApp', ['ngResource', 'ng-rails-csrf'])
 
-editCategoryApp.config ['$httpProvider', ($httpProvider) ->
+editProductGroupApp.config ['$httpProvider', ($httpProvider) ->
   $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 ]
 
-editCategoryApp.factory('Categories', ['$resource', ($resource) ->
-  $resource('/manager/categories/:id', null,
+editProductGroupApp.factory('ProductGroups', ['$resource', ($resource) ->
+  $resource('/manager/product_groups/:id', null,
     {
       'update': { method: 'PUT' }
     }
   )
 ])
 
-editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope, Categories) ->
-  $scope.productGroup = Categories.get({id: gon.productGroup_id}, (productGroup, _) ->
+editProductGroupApp.controller('editProductGroupCtrl', ['$scope', 'ProductGroups', ($scope, ProductGroups) ->
+  $scope.productGroup = ProductGroups.get({id: gon.product_group_id}, (productGroup, _) ->
     $scope.arguments = productGroup.arguments
   )
   $scope.argumentsToRemoveIds = []
@@ -26,8 +26,8 @@ editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope,
 
   $scope.addArgument = ->
     argument = {
-      description: $scope.argument.description,
-      benefit_description: $scope.argument.benefit_description,
+      feature: $scope.argument.feature,
+      benefit: $scope.argument.benefit,
       is_editable: true,
       is_removable: true
     }
@@ -35,16 +35,16 @@ editCategoryApp.controller('editCategoryCtrl', ['$scope', 'Categories', ($scope,
     $scope.arguments.push(argument)
     $scope.argument = {}
 
-  $scope.submitCategory = ->
+  $scope.submitProductGroup = ->
     productGroup = {
-      productGroup:  {
+      product_group:  {
         name: $scope.productGroup.name,
         arguments: $scope.arguments,
         arguments_to_remove_ids: $scope.argumentsToRemoveIds
       }
     }
 
-    Categories.update({id: $scope.productGroup.id}, productGroup, ->
+    ProductGroups.update({id: $scope.productGroup.id}, productGroup, ->
       document.location.href = $scope.productGroup.index_path
     )
 ])

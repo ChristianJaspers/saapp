@@ -3,9 +3,11 @@ en:
   application_name: BetterSalesman
   common:
     benefit: Benefit
+    category:
+      many: Categories
+    feature: Feature
     product_group:
       many: Product groups
-    feature: Feature
     unauthorized: You cannot access this page. Please login with proper credentatials.
   devise:
     confirmations:
@@ -101,6 +103,24 @@ en:
       wizard:
         create: Try for free!
   manager:
+    categories:
+      destroy:
+        notifications:
+          success: Category removed successfully
+      index:
+        table:
+          actions:
+            archive_link: Unpublish
+            destroy_link: Remove
+            unarchive_link: Publish
+          headers:
+            actions: Actions
+            category_name: Category name
+            features_count: Features count
+      update:
+        notifications:
+          failure: Changes could not be saved
+          success: Changes saved successfully
     product_groups:
       destroy:
         notifications:
@@ -110,16 +130,18 @@ en:
           actions:
             archive_link: Unpublish
             destroy_link: Remove
+            edit_link: Edit
             unarchive_link: Publish
           headers:
             actions: Actions
-            product_group_name: Product group name
             features_count: Features count
+            product_group_name: Product group name
       update:
         notifications:
           failure: Changes could not be saved
           success: Changes saved successfully
     tabs:
+      categories: Categories
       product_groups: Product groups
   navbar:
     admin_link: Admin
@@ -135,9 +157,11 @@ en:
       notifications:
         success: Invitations were sent successfuly!
     step_1:
-      at_product_groups_limit_notification: You can create only %{maximum_amount} product_groups
+      at_categories_limit_notification: You can create only %{maximum_amount} categories
         through this wizard
-      header: Enter product groups
+      at_product_groups_limit_notification: You can create only %{maximum_amount}
+        product_groups through this wizard
+      header: Enter product categories
       next_step_button: NEXT STEP
     step_2:
       header: Enter first arguments
@@ -146,7 +170,8 @@ en:
       header: Invite your sales representatives
       next_step_button: NEXT STEP
     step_4:
-      product_groups_and_arguments_header: Product groups and arguments
+      categories_and_arguments_header: Categories and arguments
       header: Review and accept
       invitations_header: Sales representatives
+      product_groups_and_arguments_header: Product groups and arguments
       submit_button: SEND INVITATIONS
