@@ -1,25 +1,27 @@
 module User::DeviseConfirmableActivation
   extend ActiveSupport::Concern
 
-  attr_reader :raw_confirmation_token
+  included do
+    attr_reader :raw_confirmation_token
+  end
 
   def attempt_set_password(params)
-    p = {}
-    p[:password] = params[:password]
-    p[:password_confirmation] = params[:password_confirmation]
-    update_attributes(p)
+    update_attributes(
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
+    )
   end
 
   def has_no_password?
-    self.encrypted_password.blank?
+    encrypted_password.blank?
   end
 
   def only_if_unconfirmed
-    pending_any_confirmation {yield}
+    pending_any_confirmation { yield }
   end
 
   def password_match?
-    self.password == self.password_confirmation
+    self.password == password_confirmation
   end
 
   protected

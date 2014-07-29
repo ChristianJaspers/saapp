@@ -44,11 +44,10 @@ class SetupNewAccount < BusinessProcess::Base
 
   def create_invitees
     @invitees = wizard.invitations.map do |invitation|
-      invitee = team.users.new(email: invitation.email,
-                        display_name: invitation.display_name)
-      invitee.skip_confirmation_notification!
-      invitee.save
-      invitee
+      team.users.build(email: invitation.email, display_name: invitation.display_name).tap do |invitee|
+        invitee.skip_confirmation_notification!
+        invitee.save
+      end
     end
   end
 
