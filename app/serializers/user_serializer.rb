@@ -3,7 +3,9 @@ class UserSerializer < ActiveModel::Serializer
              :display_name,
              :email,
              :avatar_url,
-             :avatar_thumb_url
+             :avatar_thumb_url,
+             :activity_ratio,
+             :score
 
   def avatar_url
     object.avatar.url.presence
@@ -11,5 +13,9 @@ class UserSerializer < ActiveModel::Serializer
 
   def avatar_thumb_url
     object.avatar.url(:thumb).presence
+  end
+
+  def activity_ratio
+    [object.score(period: Team.comparison_period), object.goal_score]
   end
 end
