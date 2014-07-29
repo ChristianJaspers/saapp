@@ -4,10 +4,10 @@ wizardApp.factory('Wizard', ['$resource', ($resource) ->
   $resource('/wizards')
 ])
 
-wizardApp.directive('categoriesPreview', ->
+wizardApp.directive('productGroupsPreview', ->
   {
   restrict: 'E'
-  templateUrl: 'categories-preview.html',
+  templateUrl: 'product-groups-preview.html',
   replace: true
   }
 )
@@ -23,25 +23,25 @@ wizardApp.directive('argumentsPreview', ->
 wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $animate, Wizard) ->
   $scope.wizard = {
     email: gon.email,
-    categories: [],
+    productGroups: [],
     arguments: [],
     invitations: []
   }
 
-  $scope.maxCategories = 20
+  $scope.maxProductGroups = 20
 
   $scope.steps = [
-    { title: 'Product categories', template: 'step-one.html', class: 'ng-isolate-scope categories_step' },
+    { title: 'Product Groups', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
     { title: 'Arguments', template: 'step-two.html', disabled: true, class: ' ng-isolate-scope arguments_step' },
     { title: 'Invitations', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
     { title: 'Summary', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
   ]
 
-  $scope.atCategoriesLimit = ->
-    $scope.wizard.categories.length >= $scope.maxCategories
+  $scope.atProductGroupsLimit = ->
+    $scope.wizard.productGroups.length >= $scope.maxProductGroups
 
   $scope.firstStepValid = ->
-    $scope.wizard.categories.length isnt 0
+    $scope.wizard.productGroups.length isnt 0
 
   $scope.secondStepValid = ->
     $scope.wizard.arguments.length isnt 0
@@ -49,7 +49,7 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
   $scope.thirdStepValid = ->
     $scope.wizard.invitations.length isnt 0
 
-  $scope.$watchCollection('wizard.categories', ->
+  $scope.$watchCollection('wizard.productGroups', ->
     $scope.steps[1].disabled = not $scope.firstStepValid()
   )
 
@@ -65,8 +65,8 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
   $scope.submitWizard = ->
     wizard = new Wizard({email: $scope.wizard.email, invitations: $scope.wizard.invitations})
 
-    wizard.categories = _.map($scope.wizard.categories, (category) ->
-      {name: category.name, arguments: _.map(category.arguments, (argument) ->
+    wizard.productGroups = _.map($scope.wizard.productGroups, (productGroup) ->
+      {name: productGroup.name, arguments: _.map(productGroup.arguments, (argument) ->
         {feature: argument.feature, benefit: argument.benefit}
       )}
     )
@@ -76,19 +76,19 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
     )
 ])
 
-wizardApp.controller('categoryCtrl', ['$scope', ($scope) ->
-  $scope.category = {}
+wizardApp.controller('productGroupCtrl', ['$scope', ($scope) ->
+  $scope.productGroup = {}
 
-  $scope.removeCategory = (category) ->
-    index = $scope.wizard.categories.indexOf(category)
+  $scope.removeProductGroup = (productGroup) ->
+    index = $scope.wizard.productGroups.indexOf(productGroup)
     $scope.wizard.arguments = _.reject($scope.wizard.arguments, (argument) ->
-      argument.category is category
+      argument.productGroup is productGroup
     )
-    $scope.wizard.categories.splice(index, 1)
+    $scope.wizard.productGroups.splice(index, 1)
 
-  $scope.addCategory = (wizard) ->
-    wizard.categories.push({name: $scope.category.name, arguments: []})
-    $scope.category = {}
+  $scope.addProductGroup = (wizard) ->
+    wizard.productGroups.push({name: $scope.productGroup.name, arguments: []})
+    $scope.productGroup = {}
 ])
 
 wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
@@ -97,23 +97,23 @@ wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
   $scope.removeArgument = (argument) ->
     argumentIndex = $scope.wizard.arguments.indexOf(argument)
 
-    category = argument.category
-    categoryArgumentIndex = category.arguments.indexOf(argument)
+    productGroup = argument.productGroup
+    productGroupArgumentIndex = productGroup.arguments.indexOf(argument)
 
-    category.arguments.splice(categoryArgumentIndex, 1)
+    productGroup.arguments.splice(productGroupArgumentIndex, 1)
     $scope.wizard.arguments.splice(argumentIndex, 1)
 
   $scope.addArgument = (wizard) ->
-    category = _.find(wizard.categories, (category) ->
-      category is $scope.argument.category
+    productGroup = _.find(wizard.productGroups, (productGroup) ->
+      productGroup is $scope.argument.productGroup
     )
 
-    feature = {feature: $scope.argument.feature, benefit: $scope.argument.benefit, category: category}
+    feature = {feature: $scope.argument.feature, benefit: $scope.argument.benefit, productGroup: productGroup}
 
-    category.arguments.push(feature)
+    productGroup.arguments.push(feature)
     wizard.arguments.push(feature)
 
-    category.active = true
+    productGroup.active = true
     $scope.argument = {}
 ])
 

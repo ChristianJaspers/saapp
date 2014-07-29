@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728104904) do
+ActiveRecord::Schema.define(version: 20140729092642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,27 +41,25 @@ ActiveRecord::Schema.define(version: 20140728104904) do
   add_index "api_tokens", ["access_token"], name: "index_api_tokens_on_access_token", unique: true, using: :btree
   add_index "api_tokens", ["user_id"], name: "index_api_tokens_on_user_id", using: :btree
 
-  create_table "benefits", force: true do |t|
-    t.string   "description", null: false
-    t.integer  "feature_id",  null: false
+  create_table "argument_ratings", force: true do |t|
+    t.integer  "argument_id"
+    t.integer  "rater_id"
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "benefits", ["feature_id"], name: "index_benefits_on_feature_id", using: :btree
-
-  create_table "categories", force: true do |t|
-    t.string   "name",           null: false
-    t.integer  "owner_id",       null: false
+  create_table "arguments", force: true do |t|
+    t.string   "feature",          null: false
+    t.string   "benefit",          null: false
+    t.integer  "product_group_id", null: false
+    t.integer  "owner_id",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "archived_at"
-    t.integer  "features_count"
-    t.date     "remove_at"
   end
 
-  add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
-  add_index "categories", ["owner_id"], name: "index_categories_on_owner_id", using: :btree
+  add_index "arguments", ["owner_id"], name: "index_arguments_on_owner_id", using: :btree
+  add_index "arguments", ["product_group_id"], name: "index_arguments_on_product_group_id", using: :btree
 
   create_table "comfy_cms_blocks", force: true do |t|
     t.string   "identifier",     null: false
@@ -187,17 +185,6 @@ ActiveRecord::Schema.define(version: 20140728104904) do
     t.datetime "updated_at"
   end
 
-  create_table "features", force: true do |t|
-    t.string   "description", null: false
-    t.integer  "category_id", null: false
-    t.integer  "owner_id",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "features", ["category_id"], name: "index_features_on_category_id", using: :btree
-  add_index "features", ["owner_id"], name: "index_features_on_owner_id", using: :btree
-
   create_table "gamification_scorings", force: true do |t|
     t.integer  "amount"
     t.integer  "beneficiary_id"
@@ -205,6 +192,19 @@ ActiveRecord::Schema.define(version: 20140728104904) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "product_groups", force: true do |t|
+    t.string   "name",            null: false
+    t.integer  "owner_id",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "archived_at"
+    t.integer  "arguments_count"
+    t.date     "remove_at"
+  end
+
+  add_index "product_groups", ["name"], name: "index_product_groups_on_name", using: :btree
+  add_index "product_groups", ["owner_id"], name: "index_product_groups_on_owner_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.integer  "company_id"

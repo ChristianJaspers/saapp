@@ -33,8 +33,8 @@ Rails.application.routes.draw do
   end
 
   namespace :manager do
-    root 'categories#index'
-    resources :categories, only: [:index, :show, :create, :edit, :update, :destroy]
+    root 'product_groups#index'
+    resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy]
   end
 
   comfy_route :cms_admin, path: '/admin/cms'

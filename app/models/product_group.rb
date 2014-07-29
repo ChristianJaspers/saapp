@@ -1,8 +1,8 @@
-class Category < ActiveRecord::Base
-  belongs_to :owner, class_name: User, inverse_of: :categories
-  has_many :features, inverse_of: :category, dependent: :destroy
+class ProductGroup < ActiveRecord::Base
+  belongs_to :owner, class_name: User, inverse_of: :product_groups
+  has_many :arguments, inverse_of: :product_group, dependent: :destroy
 
-  delegate :count, to: :features, prefix: true
+  delegate :count, to: :arguments, prefix: true
 
   validates :name, presence: true
 
@@ -13,7 +13,7 @@ class Category < ActiveRecord::Base
   end
 
   def removable_by?(user)
-    features_count.zero? || owner_id == user.id
+    arguments_count.zero? || owner_id == user.id
   end
 
   def remove!

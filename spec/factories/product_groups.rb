@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :category do
+  factory :product_group do
     sequence(:name) { |n| "Category ##{n}" }
     owner_id { create(:manager).id }
 

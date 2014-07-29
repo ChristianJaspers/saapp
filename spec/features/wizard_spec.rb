@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Wizard' do
-  let(:category_name) { 'iPad' }
+  let(:product_group_name) { 'iPad' }
   let(:feature_name) { 'Large display' }
   let(:benefit_description) { 'Better photo editing capabilities' }
   let(:invitee_email) { 'invitee@bettersalesman.dev' }
@@ -17,16 +17,16 @@ feature 'Wizard' do
     click_button I18n.t('helpers.submit.wizard.create')
     expect(page).to have_content I18n.t('wizard.step_1.header')
 
-    # Add category
-    find("input[ng-model='category.name']").set(category_name)
+    # Add product_group
+    find("input[ng-model='productGroup.name']").set(product_group_name)
     find("input[type='submit']").click
-    expect(page).to have_content "1 - #{category_name}"
+    expect(page).to have_content "1 - #{product_group_name}"
 
     # Add feature / benefit
     find('button', text: I18n.t('wizard.step_1.next_step_button')).click
     expect(page).to have_content I18n.t('wizard.step_2.header')
     expect(page).to_not have_selector('table tbody tr')
-    find("select[ng-model='argument.category']").select('iPad')
+    find("select[ng-model='argument.productGroup']").select('iPad')
     find("input[ng-model='argument.feature']").set(feature_name)
     find("input[ng-model='argument.benefit']").set(benefit_description)
     find("input[type='submit']").click
@@ -44,7 +44,7 @@ feature 'Wizard' do
     # Summary page
     find('button', text: I18n.t('wizard.step_3.next_step_button')).click
     expect(page).to have_content I18n.t('wizard.step_4.header')
-    expect(page).to have_content category_name
+    expect(page).to have_content product_group_name
     expect(page).to have_content feature_name
     expect(page).to have_content benefit_description
     expect(page).to have_content invitee_email
@@ -55,6 +55,7 @@ feature 'Wizard' do
     expect(page).to have_content I18n.t('wizard.create.notifications.success')
     expect(page).to have_content I18n.t('devise.confirmations.account_activation_title')
 
+    # Choose password
     password = '1' * 8
     find("input[name='user[password]']").set(password)
     find("input[name='user[password_confirmation]']").set(password)

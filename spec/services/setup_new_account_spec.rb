@@ -13,14 +13,14 @@ describe SetupNewAccount do
 
       before { allow(wizard).to receive(:email).and_return(manager_email) }
 
-      context 'one category with one argument is provided' do
-        let(:category_name) { 'iPad' }
+      context 'one product_group with one argument is provided' do
+        let(:product_group_name) { 'iPad' }
         let(:feature_description) { 'hi-res screen' }
         let(:benefit_description) { 'more efficient image editing' }
-        let(:argument) { double(feature: feature_description, benefit: benefit_description) }
-        let(:category) { double(name: category_name, arguments: [argument]) }
+        let(:argument) { double(argument: feature_description, benefit: benefit_description) }
+        let(:product_group) { double(name: product_group_name, arguments: [argument]) }
 
-        before { allow(wizard).to receive(:categories).and_return([category]) }
+        before { allow(wizard).to receive(:product_groups).and_return([product_group]) }
 
         context 'one invitation is provided' do
           let(:invitee_email) { 'salesperson@saapp.dev' }
@@ -32,9 +32,8 @@ describe SetupNewAccount do
           it { expect { perform }.to change { User.count }.by(2) }
           it { expect { perform }.to change { Team.count }.by(1) }
           it { expect { perform }.to change { Company.count }.by(1) }
-          it { expect { perform }.to change { Category.count }.by(1) }
-          it { expect { perform }.to change { Feature.count }.by(1) }
-          it { expect { perform }.to change { Benefit.count }.by(1) }
+          it { expect { perform }.to change { ProductGroup.count }.by(1) }
+          it { expect { perform }.to change { Argument.count }.by(1) }
 
           context 'after perform' do
             before { perform }
@@ -56,31 +55,25 @@ describe SetupNewAccount do
               its(:display_name) { is_expected.to eq invitee_display_name }
             end
 
-            describe 'category' do
+            describe 'product_group' do
               let(:manager) { User.managers.first }
 
-              subject { Category.first }
+              subject { ProductGroup.first }
 
-              its(:name) { is_expected.to eq category_name }
-              its(:features) { is_expected.to have(1).entry }
+              its(:name) { is_expected.to eq product_group_name }
+              its(:arguments) { is_expected.to have(1).entry }
               its(:owner) { is_expected.to eq manager }
             end
 
-            describe 'feature' do
+            describe 'argument' do
               let(:manager) { User.managers.first }
 
-              subject { Feature.first }
+              subject { Argument.first }
 
-              its(:description) { is_expected.to eq feature_description }
+              its(:feature) { is_expected.to eq feature_description }
               its(:owner) { is_expected.to eq manager }
-              its(:benefit) { is_expected.to_not be_nil }
-            end
-
-            describe 'benefit' do
-              subject { Benefit.first }
-
-              its(:description) { is_expected.to eq benefit_description }
-            end
+              its(:benefit) { is_expected.to eq benefit_description  }
+            end           
           end
         end
       end

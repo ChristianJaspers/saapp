@@ -3,7 +3,7 @@ class Team < ActiveRecord::Base
 
   belongs_to :company, inverse_of: :teams
   has_many :users, inverse_of: :team
-  has_many :categories, through: :users
+  has_many :product_groups, through: :users
   has_many :scorings, class_name: Gamification::Scoring, through: :users
 
   def goal_score
