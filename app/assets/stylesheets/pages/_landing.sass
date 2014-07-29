@@ -7,7 +7,7 @@
     repeat: no-repeat
   margin-top: $interval-default * 1.5
   max-width: $mockup-width
-  min-height: $mockup-width * 2.5
+  min-height: $mockup-width * 2.2
 
 .landing-list
   margin: $interval-default 0 $interval-default * 1.8 0
@@ -40,4 +40,34 @@
     border: inherit
     margin-top: 0
 
+.landing-testimonials
+  .testimonial
+    color: $color-gray-dark
+    font:
+      family: $font-family-second
+      size: $font-size-base + 1
+      style: italic
+    margin-top: $m * 1.5
 
+  .testimonial-photo
+    @include circle-icons($color-gray, $color-gray)
+    float: left
+    height: $thumbnail-images
+    margin-top: $m * 2
+    overflow: hidden
+    width: $thumbnail-images
+    img
+      width: $thumbnail-images
+
+  .testimonial-author
+    display: inline-block
+    margin-top: $m * 2
+    padding: $m / 3 $m
+    h4, h5
+      font:
+        size: $font-size-base
+        style: normal
+      margin: 0
+      padding: 0
+    h4
+      color: $color-green
