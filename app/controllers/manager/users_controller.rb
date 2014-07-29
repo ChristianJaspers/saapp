@@ -10,10 +10,15 @@ class Manager::UsersController < Manager::ManagerController
 
     if user.save
       ApplicationMailer.user_invitation(user)
-      redirect_to manager_users_path(user), notice: t('manager.users.create.notifications.success')
+      redirect_to manager_users_path, notice: t('manager.users.create.notifications.success')
     else
       render :index
     end
+  end
+
+  def destroy
+    user.remove!
+    redirect_to manager_users_path, notice: t('manager.product_groups.destroy.notifications.success')
   end
 
   private
