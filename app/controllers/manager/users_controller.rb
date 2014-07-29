@@ -18,7 +18,7 @@ class Manager::UsersController < Manager::ManagerController
 
   def destroy
     user.remove!
-    redirect_to manager_users_path, notice: t('manager.product_groups.destroy.notifications.success')
+    redirect_to manager_users_path, notice: t('manager.users.destroy.notifications.success')
   end
 
   private
