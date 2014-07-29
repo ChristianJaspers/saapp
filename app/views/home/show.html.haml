@@ -1,4 +1,4 @@
-.category-window.col-md-6
+.landing-page.col-md-8
   %h2= I18n.t('landing.header')
 
   %ul.landing-list
@@ -9,12 +9,13 @@
     %li.icon-set Easy use  5 min setup
 
   %h3= I18n.t('landing.free_30')
-  - if guest?
-    = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
-      = f.input :email
-      = f.submit t('helpers.submit.wizard.create'), class: 'test'
+  .landing-form
+    - if guest?
+      = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
+        = f.input :email
+        = f.submit t('helpers.submit.wizard.create'), class: 'btn btn-primary'
+    .clearfix
 
-  .clearfix
   %h3= I18n.t('landing.testimonials_header')
 
-.landing-mobile.col-md-4.col-md-offset-2
+.landing-mobile.col-md-4
