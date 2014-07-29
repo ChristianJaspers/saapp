@@ -17,7 +17,7 @@ describe SetupNewAccount do
         let(:product_group_name) { 'iPad' }
         let(:feature_description) { 'hi-res screen' }
         let(:benefit_description) { 'more efficient image editing' }
-        let(:argument) { double(argument: feature_description, benefit: benefit_description) }
+        let(:argument) { double(feature: feature_description, benefit: benefit_description) }
         let(:product_group) { double(name: product_group_name, arguments: [argument]) }
 
         before { allow(wizard).to receive(:product_groups).and_return([product_group]) }
