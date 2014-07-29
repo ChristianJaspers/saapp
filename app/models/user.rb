@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include SentientUser
   include Gamification::Beneficiary
+  include Model::DelayedDestroy
 
   enum role: {
       user: 0,
