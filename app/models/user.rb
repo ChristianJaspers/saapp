@@ -49,4 +49,10 @@ class User < ActiveRecord::Base
   def locale
     'en'
   end
+
+  alias_method :manager, :manager?
+
+  def manager=(value)
+    self.role = value == true ? 'manager' : 'user'
+  end
 end

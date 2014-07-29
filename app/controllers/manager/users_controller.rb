@@ -21,6 +21,22 @@ class Manager::UsersController < Manager::ManagerController
     redirect_to manager_users_path, notice: t('manager.users.destroy.notifications.success')
   end
 
+  def edit
+  end
+
+  def update
+    was_manager = user.manager?
+    user.manager = params[:user][:manager] == '1'
+    becomes_manager = !was_manager && user.manager?
+
+    if user.save
+      user.send_reset_password_instructions if becomes_manager
+      redirect_to manager_users_path, notice: t('manager.users.update.notifications.success')
+    else
+      render :edit
+    end
+  end
+
   private
 
   def team
