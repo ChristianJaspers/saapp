@@ -34,6 +34,9 @@
     width: 60%
   label
     display: none
+  .help-block
+    position: absolute
+    top: - $m
   .btn-primary
     @extend %right-corners
     @include box-shadow(darken($btn-primary-bg, 10%))
@@ -41,6 +44,7 @@
     margin-top: 0
 
 .landing-testimonials
+  margin-bottom: $interval-default
   .testimonial
     color: $color-gray-dark
     font:
