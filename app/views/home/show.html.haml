@@ -1,10 +1,18 @@
 .category-window.col-md-6
   %h2= I18n.t('landing.header')
+
+  %ul.landing-list
+    %li.icon-progress Sell more
+    %li.icon-money Save money
+    %li.icon-time Save time
+    %li.icon-gain Gain confidence
+    %li.icon-set Easy use  5 min setup
+
   %h3= I18n.t('landing.free_30')
   - if guest?
     = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
       = f.input :email
-      = f.submit
+      = f.submit t('helpers.submit.wizard.create'), class: 'test'
 
   .clearfix
   %h3= I18n.t('landing.testimonials_header')

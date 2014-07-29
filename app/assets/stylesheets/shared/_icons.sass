@@ -5,7 +5,27 @@
   font-weight: normal
   font-style: normal
 
-.icon-enter:before, .icon-trash:before, .icon-archive:before, .icon-list:before, .icon-star:before, .icon-users:before, .ng-isolate-scope a:before, .ng-isolate-scope a:after, .wizard-add:before
+@font-face
+  font-family: 'saapp-landing-icons'
+  src: font-url('saapp-landing-icons.eot')
+  src: font-url('saapp-landing-icons.eot?#iefix') format('embedded-opentype'), font-url('saapp-landing-icons.woff') format('woff'), font-url('saapp-landing-icons.ttf') format('truetype'), font-url('saapp-landing-icons.svg#saapp-landing-icons') format('svg')
+  font-weight: normal
+  font-style: normal
+
+.icon-enter:before,
+.icon-trash:before,
+.icon-archive:before,
+.icon-list:before,
+.icon-star:before,
+.icon-users:before,
+.ng-isolate-scope a:before,
+.ng-isolate-scope a:after,
+.wizard-add:before,
+.icon-progress:before,
+.icon-money:before,
+.icon-time:before,
+.icon-gain:before,
+.icon-set:before
   display: inline-block
   font:
     family: 'saapp-icons'
@@ -19,6 +39,14 @@
 
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+
+.icon-progress:before,
+.icon-money:before,
+.icon-time:before,
+.icon-gain:before,
+.icon-set:before
+  font:
+    family: 'saapp-landing-icons'
 
 .icon-enter:before
   content: '\e600'
@@ -38,3 +66,17 @@
 .icon-users:before
   content: '\e605'
 
+.icon-progress:before
+  content: '\e604'
+
+.icon-money:before
+  content: '\e602'
+
+.icon-time:before
+  content: '\e603'
+
+.icon-gain:before
+  content: '\e600'
+
+.icon-set:before
+  content: '\e601'
