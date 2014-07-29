@@ -5,7 +5,7 @@ class UserDecorator < ApplicationDecorator
     link_to I18n.t('manager.users.index.table.actions.destroy_link'),
             h.manager_user_path(object.id),
             method: :delete,
-            confirm: I18n.t('manager.users.index.table.actions.destroy_confirmation')
+            data: {confirm: I18n.t('manager.users.index.table.actions.destroy_confirmation')}
   end
 
   def edit_link
