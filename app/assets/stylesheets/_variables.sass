@@ -3,6 +3,10 @@ $font-size-base:                  16px
 $font-size-big:                   floor($font-size-base * 3)
 $font-size-medium:                floor($font-size-base * 1.2)
 
+$line-height-base:                1.5
+
+$m:                               $font-size-base * $line-height-base
+
 //----- colors -----
 $color-black:                     #000
 $color-gray:                      #474747
@@ -20,20 +24,47 @@ $font-weight-light:               300
 $font-weight-regular:             500
 $font-weight-bold:                700
 
-$icon-size:                       36px
+$icon-size:                       44px
 $icon-size-double:                $icon-size * 2
+$icon-size-half:                  $icon-size / 2
 
 //----- margins -----
 $margin-auto:                     0 auto
 
 //----- dimensions -----
 $wizard-icons:                    97px
-$wizard-icons-li:                 calc(33.3333% - (97px / 3))
+$wizard-icons-li:                 calc(33.3333% - (#{$wizard-icons}) / 3)
 $wizard-icons-line:               calc(100% - 97px - 2 * (16px))
 
 $inputs-size:                     43px
 
+$mockup-width:                    $font-size-base * 18.4
+$mockup-margin:                   $font-size-base / 2
+
+$navbar-brand:                    $font-size-base * 4
+
 //----- intervals -----
-$interval-default:                45px
+$interval-default:                $font-size-base * 4
 $interval-medium:                 $interval-default * 2
 
+//----- borders -----
+$default-border-radius:           3px
+
+//----- buttons -----
+$button-base-fontsize:            14px
+$button-base-padding:             11px 39px
+
+$btn-primary-bg:                  $color-green
+$btn-primary-color:               $color-white
+$btn-primary-border:              $color-green
+$default-button-margin:           $font-size-base * 2
+
+//----- preview list sequence
+$prev1:                           #bf63a6
+$prev2:                           #e868a1
+$prev3:                           #f18c32
+$prev4:                           #f5d63d
+$prev5:                           #c5d747
+$prev6:                           #79c267
+$prev7:                           #459ba8
+$prev8:                           #78c5d5

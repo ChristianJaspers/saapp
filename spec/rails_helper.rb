@@ -25,6 +25,10 @@ end
 
 Capybara.javascript_driver = :webkit
 
+JsonSpec.configure do
+  exclude_keys []
+end
+
 RSpec.configure do |config|
   config.include(Selleo::XhrPersistence)
 
