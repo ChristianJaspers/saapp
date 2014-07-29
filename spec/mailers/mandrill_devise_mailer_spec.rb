@@ -26,7 +26,31 @@ describe MandrillDeviseMailer do
     end
 
     it 'sender is set to default' do
-      expect(mail.from).to eq ['noreply@example.com']
+      expect(mail.from).to contain_exactly 'noreply@example.com'
+    end
+  end
+
+  describe '#reset_password_instructions' do
+    let(:mail) { described_class.confirmation_instructions(user, token) }
+
+    it 'subject is set to empty to not overwrite madrill subject' do
+      expect(mail.subject).to be_nil
+    end
+
+    it 'correct template for mandrill is set' do
+      expect(mail['X-MC-Template'].value).to eq 'en-confirmation_instructions'
+    end
+
+    it 'correct merge variables for mandrill are set' do
+      expect(mail['X-MC-MergeVars'].value).to eq '{"confirmation_url":"http://localhost:3000/confirmation?confirmation_token=abc","email":"test@example.com"}'
+    end
+
+    it 'recipient is valid' do
+      expect(mail.to).to eq [user.email]
+    end
+
+    it 'sender is set to default' do
+      expect(mail.from).to contain_exactly 'noreply@example.com'
     end
   end
 end

@@ -1,6 +1,8 @@
 class SetupNewAccount < BusinessProcess::Base
   needs :wizard
 
+  delegate :raw_confirmation_token, to: :manager, prefix: true
+
   def call
     create_company and
         create_team and
@@ -15,7 +17,7 @@ class SetupNewAccount < BusinessProcess::Base
   attr_reader :manager, :company, :team, :invitees
 
   def create_manager
-    @manager = team.users.create(email: wizard.email, password: 'fixme123') do |user|
+    @manager = team.users.create(email: wizard.email) do |user|
       user.role = 'manager'
     end
   end
@@ -42,9 +44,10 @@ class SetupNewAccount < BusinessProcess::Base
 
   def create_invitees
     @invitees = wizard.invitations.map do |invitation|
-      team.users.create(email: invitation.email,
-                        display_name: invitation.display_name,
-                        password: 'fixme123')
+      team.users.build(email: invitation.email, display_name: invitation.display_name).tap do |invitee|
+        invitee.skip_confirmation_notification!
+        invitee.save
+      end
     end
   end
 

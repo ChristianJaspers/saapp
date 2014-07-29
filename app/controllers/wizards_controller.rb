@@ -7,9 +7,10 @@ class WizardsController < ApplicationController
   end
 
   def create
-    SetupNewAccount.call(self)
-
+    setup_new_account = SetupNewAccount.call(self)
     flash[:notice] = t('wizard.create.notifications.success')
-    render json: 'success', status: :created
+    render json: {
+      confirmation_token: setup_new_account.manager_raw_confirmation_token
+    }, status: :created
   end
 end

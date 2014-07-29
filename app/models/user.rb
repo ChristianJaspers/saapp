@@ -18,7 +18,10 @@ class User < ActiveRecord::Base
          :recoverable,
          :rememberable,
          :trackable,
-         :validatable
+         :validatable,
+         :confirmable
+
+  include User::DeviseConfirmableActivation
 
   has_many :categories, inverse_of: :owner, foreign_key: :owner_id
   has_many :features, inverse_of: :owner

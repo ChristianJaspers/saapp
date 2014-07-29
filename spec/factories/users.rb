@@ -5,6 +5,7 @@ FactoryGirl.define do
     password_confirmation { password }
     team
     role 'user'
+    confirmed_at { Time.now }
 
     trait :admin do
       role 'admin'
