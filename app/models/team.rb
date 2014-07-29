@@ -10,17 +10,17 @@ class Team < ActiveRecord::Base
     [max_team_score, average_team_score * 2].max
   end
 
-  def comparison_period
+  def self.comparison_period
     ((Date.today.beginning_of_day-7.days)..Date.today.end_of_day)
   end
 
   private
 
   def max_team_score
-    scorings.within_period(comparison_period).group(:beneficiary_id).sum(:amount).values.max || 0
+    scorings.within_period(Team.comparison_period).group(:beneficiary_id).sum(:amount).values.max || 0
   end
 
   def average_team_score
-    scorings.within_period(comparison_period).average(:amount).to_i
+    scorings.within_period(Team.comparison_period).average(:amount).to_i
   end
 end
