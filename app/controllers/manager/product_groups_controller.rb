@@ -23,7 +23,6 @@ class Manager::ProductGroupsController < Manager::ManagerController
   end
 
   def update
-
     respond_to do |format|
       format.json do
         if Manager::UpdateProductGroup.call(self).success?
