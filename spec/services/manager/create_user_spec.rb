@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Manager::Users::Create do
+describe Manager::CreateUser do
   describe '.call' do
     let(:user) { build(:user, email: 'fake@email.com') }
     let(:parameter_object) { double(user: user) }

@@ -1,4 +1,4 @@
-class Manager::Users::Create < BusinessProcess::Base
+class Manager::CreateUser < BusinessProcess::Base
   needs :user
 
   def call

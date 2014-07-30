@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Manager::Users::Update do
+describe Manager::UpdateUser do
   describe '.call' do
     let(:user) { create(:user) }
     let(:params) do

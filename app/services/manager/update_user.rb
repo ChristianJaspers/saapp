@@ -1,4 +1,4 @@
-class Manager::Users::Update < BusinessProcess::Base
+class Manager::UpdateUser < BusinessProcess::Base
   needs :user
   needs :params
 

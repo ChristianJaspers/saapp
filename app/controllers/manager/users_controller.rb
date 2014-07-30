@@ -5,7 +5,7 @@ class Manager::UsersController < Manager::ManagerController
   layout 'manager'
 
   def create
-    if Manager::Users::Create.call(self).success?
+    if Manager::CreateUser.call(self).success?
       redirect_to manager_users_path, notice: t('manager.users.create.notifications.success')
     else
       render :index
@@ -18,7 +18,7 @@ class Manager::UsersController < Manager::ManagerController
   end
 
   def update
-    if Manager::Users::Update.call(self).success?
+    if Manager::UpdateUser.call(self).success?
       redirect_to manager_users_path, notice: t('manager.users.update.notifications.success')
     else
       render :edit
