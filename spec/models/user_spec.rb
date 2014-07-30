@@ -13,7 +13,7 @@ describe User do
     context 'user is not an admin' do
       let(:user) { create(:user) }
 
-      it { is_expected.to be_falsy }
+      it { is_expected.to be_falsey }
     end
   end
 
@@ -43,6 +43,43 @@ describe User do
 
       it { is_expected.to be_nil }
     end
+  end
+
+  describe '#manager' do
+    subject { user }
+
+    context 'normal user' do
+      let(:user) { create(:user) }
+      its(:manager) { is_expected.to be_falsey }
+    end
+
+    context 'manager' do
+      let(:user) { create(:manager) }
+      its(:manager) { is_expected.to be_truthy }
+    end
+  end
+
+  describe '#manager=' do
+    let(:user) { create(:user) }
+    subject { user.role }
+    before { user.manager = assigned_value }
+
+    context 'true value is assigned' do
+      let(:assigned_value) { true }
+      it { is_expected.to eq 'manager' }
+    end
+
+    context 'false value is assigned' do
+      let(:assigned_value) { false }
+      it { is_expected.to eq 'user' }
+    end
+  end
+
+  describe '#remove!' do
+    let(:user) { create(:user) }
+    subject { user }
+
+    it { expect{ subject.remove! }.to change{ subject.reload.remove_at }.from(nil) }
   end
 
   describe '#score' do

@@ -1,0 +1,21 @@
+%table.table.table-striped
+  %thead
+    %th= t('manager.users.index.table.headers.email')
+    %th= t('manager.users.index.table.headers.display_name')
+    %th= t('manager.users.index.table.headers.role')
+    %th= t('manager.users.index.table.headers.actions')
+  %tbody
+    - users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.display_name
+        %td= user.role
+        %td
+          = user.edit_link
+          = user.removal_link
+= paginate users
+
+= simple_form_for [:manager, user] do |f|
+  = f.input :display_name
+  = f.input :email
+  = f.submit

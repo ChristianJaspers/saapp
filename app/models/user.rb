@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include SentientUser
   include Gamification::Beneficiary
+  include Model::DelayedDestroy
 
   enum role: {
       user: 0,
@@ -47,5 +48,11 @@ class User < ActiveRecord::Base
 
   def locale
     'en'
+  end
+
+  alias_method :manager, :manager?
+
+  def manager=(value)
+    self.role = value ? 'manager' : 'user'
   end
 end
