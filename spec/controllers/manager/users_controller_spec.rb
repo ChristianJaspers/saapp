@@ -73,6 +73,7 @@ describe Manager::UsersController do
       end
 
       it { expect { call_request }.to change { user.reload.email }.from(old_email).to('new@email.com') }
+      it { expect { call_request }.to_not change { user.reload.reset_password_token } }
       it_behaves_like 'an action redirecting to', -> { manager_users_path }
     end
 

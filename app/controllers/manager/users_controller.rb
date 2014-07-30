@@ -5,10 +5,7 @@ class Manager::UsersController < Manager::ManagerController
   layout 'manager'
 
   def create
-    user.skip_confirmation_notification!
-
-    if user.save
-      ApplicationMailer.user_invitation(user)
+    if Manager::Users::Create.call(self).success?
       redirect_to manager_users_path, notice: t('manager.users.create.notifications.success')
     else
       render :index
@@ -21,12 +18,7 @@ class Manager::UsersController < Manager::ManagerController
   end
 
   def update
-    was_manager = user.manager?
-    user.manager = params[:user][:manager] == '1'
-    becomes_manager = !was_manager && user.manager?
-
-    if user.save
-      user.send_reset_password_instructions if becomes_manager
+    if Manager::Users::Update.call(self).success?
       redirect_to manager_users_path, notice: t('manager.users.update.notifications.success')
     else
       render :edit
