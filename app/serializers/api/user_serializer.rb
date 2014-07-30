@@ -1,19 +1,16 @@
 class Api::UserSerializer < ActiveModel::Serializer
+  include Shared::UserAvatarSerializable
+
   attributes :id,
              :display_name,
              :email,
-             :avatar_url,
-             :avatar_thumb_url,
+             :experience,
              :my_activity,
              :my_team_activity,
              :all_teams_activity
 
-  def avatar_url
-    object.avatar.url.presence
-  end
-
-  def avatar_thumb_url
-    object.avatar.url(:thumb).presence
+  def experience
+    0
   end
 
   def my_activity
