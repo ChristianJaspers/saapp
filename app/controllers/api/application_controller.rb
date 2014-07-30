@@ -9,33 +9,8 @@ private
     render meta.merge(status: status, json: data)
   end
 
-  def render_fail_json(error_kind)
-    http_status, internal_status, error_message = error_data(error_kind)
-    render_json(
-      {
-        error: {
-          code: internal_status,
-          message: error_message
-        }
-      },
-      http_status
-    )
-  end
-
-  def error_data(error_kind)
-    case error_kind
-    when :not_authenticated
-      [401, 1103, 'Wrong credentials']
-    when :forbidden
-      [403, 1010, 'You don\'t have access']
-    when :invalid_file_upload
-      [422, 1020, 'Can\'t upload']
-    when :account_not_exist
-      [404, 1002, 'Account not exist']
-    when :invalid_password
-      [422, 1108, 'Invalid password']
-    else
-      raise "Wrong error kind: #{error_kind}"
-    end
+  def render_fail_json(error_key)
+    mapping = Api::ErrorMapping.new(error_key)
+    render_json(mapping.to_hash, mapping.http_code)
   end
 end
