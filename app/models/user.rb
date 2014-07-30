@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include SentientUser
   include Gamification::Beneficiary
   include Model::DelayedDestroy
 
@@ -26,6 +25,7 @@ class User < ActiveRecord::Base
 
   has_many :product_groups, inverse_of: :owner, foreign_key: :owner_id
   has_many :arguments, inverse_of: :owner
+  has_many :ratings, class_name: ArgumentRating, inverse_of: :rater
   has_one :api_token, inverse_of: :user
   belongs_to :team, inverse_of: :users
 

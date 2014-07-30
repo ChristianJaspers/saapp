@@ -26,19 +26,15 @@ describe Argument do
     let(:argument) { build(:argument, owner: argument_creator) }
     let(:perform) { argument.save }
 
-    context 'logged in as argument creator' do
-      before { allow(User).to receive(:current).and_return(argument_creator) }
+    it { expect { perform }.to change { Gamification::Scoring.count }.by(1) }
 
-      it { expect { perform }.to change { Gamification::Scoring.count }.by(1) }
+    context 'after perform' do
+      before { perform }
 
-      context 'after perform' do
-        before { perform }
+      describe 'argument creator scoring' do
+        subject { argument_creator.scorings.last }
 
-        describe 'argument creator scoring' do
-          subject { argument_creator.scorings.last }
-
-          its(:amount) { is_expected.to eq 2 }
-        end
+        its(:amount) { is_expected.to eq 2 }
       end
     end
   end
