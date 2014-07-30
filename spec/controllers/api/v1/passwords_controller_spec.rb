@@ -76,6 +76,7 @@ describe Api::V1::PasswordsController do
                 "display_name": "Batman",
                 "avatar_url": null,
                 "avatar_thumb_url": null,
+                "experience": 0,
                 "my_activity": 0,
                 "my_team_activity": 0,
                 "all_teams_activity": 0

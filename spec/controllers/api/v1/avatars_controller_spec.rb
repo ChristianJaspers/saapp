@@ -22,6 +22,7 @@ describe Api::V1::AvatarsController do
               "display_name": "Batman",
               "avatar_url": "/test/system/users/avatars/#{user.id}/original/avatar.png",
               "avatar_thumb_url": "/test/system/users/avatars/#{user.id}/thumb/avatar.png",
+              "experience": 0,
               "my_activity": 0,
               "my_team_activity": 0,
               "all_teams_activity": 0
