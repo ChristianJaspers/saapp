@@ -32,6 +32,8 @@ private
       [422, 1020, 'Can\'t upload']
     when :account_not_exist
       [404, 1002, 'Account not exist']
+    when :invalid_password
+      [422, 1108, 'Invalid password']
     else
       raise "Wrong error kind: #{error_kind}"
     end
