@@ -6,7 +6,6 @@ class Manager::UsersController < Manager::ManagerController
 
   def create
     user.skip_confirmation_notification!
-    user.team = team
 
     if user.save
       ApplicationMailer.user_invitation(user)
@@ -19,9 +18,6 @@ class Manager::UsersController < Manager::ManagerController
   def destroy
     user.remove!
     redirect_to manager_users_path, notice: t('manager.users.destroy.notifications.success')
-  end
-
-  def edit
   end
 
   def update
