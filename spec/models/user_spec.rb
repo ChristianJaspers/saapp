@@ -84,9 +84,8 @@ describe User do
   describe '#remove!' do
     let(:user) { create(:user) }
     subject { user }
-    before { user.remove! }
 
-    it { expect(subject.reload.remove_at).to be_present }
+    it { expect{ subject.remove! }.to change{ subject.reload.remove_at }.from(nil) }
   end
 
   describe '#score' do
