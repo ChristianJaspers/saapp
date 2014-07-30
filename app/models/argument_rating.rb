@@ -3,6 +3,7 @@ class ArgumentRating < ActiveRecord::Base
   belongs_to :argument, inverse_of: :ratings
 
   validates :rater_id, :argument_id, :rating, presence: true
+  validates :argument_id, uniqueness: {scope: :rater_id}
 
   enum rating: {
       low: 1,
