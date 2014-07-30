@@ -25,7 +25,7 @@ private
   def error_data(error_kind)
     case error_kind
     when :not_authenticated
-      [401, 1003, 'Can not login']
+      [401, 1103, 'Wrong credentials']
     when :forbidden
       [403, 1010, 'You don\'t have access']
     when :invalid_file_upload
