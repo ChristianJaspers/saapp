@@ -52,16 +52,16 @@ describe User do
   end
 
   describe '#manager' do
-    subject { user.manager }
+    subject { user }
 
     context 'normal user' do
       let(:user) { create(:user) }
-      it { is_expected.to be_falsey }
+      its(:manager) { is_expected.to be_falsey }
     end
 
     context 'manager' do
       let(:user) { create(:manager) }
-      it { is_expected.to be_truthy }
+      its(:manager) { is_expected.to be_truthy }
     end
   end
 
