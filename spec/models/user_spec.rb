@@ -17,12 +17,6 @@ describe User do
     end
   end
 
-  describe '.create' do
-    context 'with no password provided' do
-      xit 'user can be created' #remove temporary password from SetupNewAccount when this is implemented
-    end
-  end
-
   describe '.authenticate' do
     let(:user) { create(:user, email: 'user@test.com') }
     subject { described_class.authenticate(email, password) }
