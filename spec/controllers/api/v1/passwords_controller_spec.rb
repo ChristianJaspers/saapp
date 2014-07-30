@@ -96,7 +96,7 @@ describe Api::V1::PasswordsController do
       context 'too short password is sent' do
         let(:params) do
           {
-            password: 'a'
+            password: '1234'
           }
         end
 
