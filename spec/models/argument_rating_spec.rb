@@ -6,17 +6,10 @@ describe ArgumentRating do
   describe '.create' do
     context 'for given argument' do
       let(:argument_creator) { create(:user) }
-      let!(:argument) do
-        allow_any_instance_of(Argument).to receive(:current_user).and_return(argument_creator)
-        create(:argument, owner: argument_creator)
-      end
+      let!(:argument) { create(:argument, owner: argument_creator) }
 
       context 'for given rater' do
-        let!(:rater) do
-          create(:user).tap do |_rater|
-            allow_any_instance_of(ArgumentRating).to receive(:current_user).and_return(_rater)
-          end
-        end
+        let!(:rater) { create(:user) }
 
         context 'argument is rated' do
           let(:rating_level){ :medium }
