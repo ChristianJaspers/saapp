@@ -1,6 +1,4 @@
 class UserDecorator < ApplicationDecorator
-  delegate :link_to, :current_user, to: :h
-
   def removal_link
     link_to I18n.t('manager.users.index.table.actions.destroy_link'),
             h.manager_user_path(object.id),

@@ -35,16 +35,13 @@ describe Manager::UsersController do
     let(:call_request) { post :create, user: attributes }
 
     it_behaves_like 'an action creating object'
+    it_behaves_like 'an action redirecting to', -> { manager_users_path }
 
     context 'after request' do
       before { call_request }
       let(:user) { User.last }
 
-      it { expect(response).to redirect_to(action: 'index') }
-      it { expect(user.email).to eq 'fake@example.com' }
-      it { expect(user.display_name).to eq 'Fake' }
       it { expect(user.team_id).to eq manager.team_id }
-      it_behaves_like 'an action redirecting to', -> { manager_users_path }
     end
   end
 
@@ -71,15 +68,15 @@ describe Manager::UsersController do
       let(:attributes) do
         {
           display_name: 'New name',
-          email: old_email + 'x'
+          email: 'new@email.com'
         }
       end
 
-      it { expect { call_request }.to change { user.reload.email }.from(old_email).to(old_email + 'x') }
+      it { expect { call_request }.to change { user.reload.email }.from(old_email).to('new@email.com') }
       it_behaves_like 'an action redirecting to', -> { manager_users_path }
     end
 
-    context 'changing role explicitly is not allowed' do
+    context 'changing role explicitly' do
       let!(:user) { create(:user, team: manager.team) }
       let(:attributes) do
         {
@@ -87,7 +84,9 @@ describe Manager::UsersController do
         }
       end
 
-      it { expect { call_request }.to_not change { user.reload.role } }
+      it 'is not allowed' do
+        expect { call_request }.to_not change { user.reload.role }
+      end
     end
   end
 

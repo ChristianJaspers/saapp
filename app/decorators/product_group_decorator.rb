@@ -1,6 +1,4 @@
 class ProductGroupDecorator < ApplicationDecorator
-  delegate :link_to, :current_user, to: :h
-
   def publishing_link
     if object.archived_at
       link_to I18n.t('manager.product_groups.index.table.actions.unarchive_link'),

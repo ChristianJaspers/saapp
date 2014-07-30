@@ -13,7 +13,7 @@ describe User do
     context 'user is not an admin' do
       let(:user) { create(:user) }
 
-      it { is_expected.to be_falsy }
+      it { is_expected.to be_falsey }
     end
   end
 
@@ -56,12 +56,12 @@ describe User do
 
     context 'normal user' do
       let(:user) { create(:user) }
-      it { is_expected.to eq false }
+      it { is_expected.to be_falsey }
     end
 
     context 'manager' do
       let(:user) { create(:manager) }
-      it { is_expected.to eq true }
+      it { is_expected.to be_truthy }
     end
   end
 
