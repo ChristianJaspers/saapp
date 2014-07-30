@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :auth, only: [:create]
       resources :resources, only: [:index]
-      resources :passwords, only: [:create]
+      resource :passwords, only: [:create, :update]
       resource :profile, only: [:show] do
         resource :avatar, only: [:update]
       end
