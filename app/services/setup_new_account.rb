@@ -34,7 +34,7 @@ class SetupNewAccount < BusinessProcess::Base
     wizard.product_groups.each do |wizard_product_group|
       manager.product_groups.create(name: wizard_product_group.name).tap do |product_group|
         wizard_product_group.arguments.each do |wizard_argument|
-          product_group.arguments.create(feature: wizard_argument.argument,
+          product_group.arguments.create(feature: wizard_argument.feature,
                                          benefit: wizard_argument.benefit,
                                          owner_id: manager.id)
         end

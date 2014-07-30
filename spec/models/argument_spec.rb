@@ -1,21 +1,23 @@
 require 'rails_helper'
 
 describe Argument do
+  subject { create(:argument) }
+
+  describe '.ratings#create' do
+    let(:perform) { subject.ratings.create(rating: :low, rater_id: create(:user).id) }
+
+    it { expect { perform }.to change { subject.reload.rating }.from(nil).to(1.0) }
+  end
+
   describe '#rated?' do
     context 'argument was not rated' do
-      it do
-        pending 'To be implemented'
-        expect(subject.rated?).to be_falsey
-        fail
-      end
+      its(:rated?) { is_expected.to be_falsey }
     end
 
     context 'argument was rated' do
-      it do
-        pending 'To be implemented'
-        expect(subject.rated?).to be_truthy
-        fail
-      end
+      before { subject.ratings.create(rating: :low, rater_id: create(:user).id) }
+
+      its(:rated?) { is_expected.to be_truthy }
     end
   end
 

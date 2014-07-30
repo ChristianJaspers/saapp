@@ -61,5 +61,7 @@ feature 'Wizard' do
     find("input[name='user[password_confirmation]']").set(password)
     find("input[type='submit']").click
     expect(page).to have_content I18n.t('devise.confirmations.confirmed')
+
+    expect(Argument).to exist.with(feature: feature_name, benefit: benefit_description)
   end
 end

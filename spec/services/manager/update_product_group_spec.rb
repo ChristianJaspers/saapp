@@ -15,8 +15,8 @@ describe Manager::UpdateProductGroup do
             product_group: {
                 name: 'Updated name!',
                 arguments: [
-                    {id: argument_to_update.id, description: 'Updated argument description!', benefit_description: 'Updated benefit description!'},
-                    {description: 'New argument description!', benefit_description: 'New benefit description!'},
+                    {id: argument_to_update.id, feature: 'Updated argument description!', benefit: 'Updated benefit description!'},
+                    {feature: 'New argument description!', benefit: 'New benefit description!'},
                 ],
                 arguments_to_remove_ids: [argument_to_remove.id]
             }
