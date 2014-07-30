@@ -1,0 +1,32 @@
+footer
+  background-color: $footer-background
+  padding: $interval-default 0
+  h2
+    @extend %box-reset
+    color: $color-white
+    font:
+      family: $font-family-base
+      size: $font-size-base
+      weight: $font-weight-bold
+  ul, li
+    @extend %box-reset
+  ul
+    margin-top: $m / 4
+    li
+      list-style: none
+      a
+        color: $color-gray-dark
+        text-decoration: none
+        &:hover
+          color: $color-green
+  h3
+    @extend %box-reset
+    color: $color-white
+    font:
+      family: $font-family-second
+      size: $m
+      weight: bold
+
+  .footer-logo
+    color: $color-gray-dark
+    text-align: right

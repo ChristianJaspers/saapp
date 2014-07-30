@@ -56,6 +56,7 @@ group :test do
   gem 'capybara-webkit', '~> 1.2.0'
   gem 'json_spec', '~> 1.1.2'
   gem 'simplecov', require: false
+  gem 'shoulda-matchers', '~> 2.6.2'
 end
 
 group :development, :test do

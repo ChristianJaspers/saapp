@@ -21,10 +21,7 @@
         width: $wizard-icons
 
         &:before
-          background-color: $color-gray-dark
-          border-radius: 50%
-          box-shadow: 0 2px 0 0 darken($color-gray-dark, 10%)
-          color: $color-white
+          @include circle-icons($color-gray-dark, $color-white)
           content: ''
           display: block
           height: $wizard-icons

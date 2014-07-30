@@ -1,7 +1,77 @@
+.landing-page
+  margin-top: $interval-small
+
 .landing-mobile
   background:
     image: image-url('mobile.png')
     repeat: no-repeat
-  margin-top: $interval-default
+  margin-top: $interval-default * 1.5
   max-width: $mockup-width
-  min-height: $mockup-width * 2.5
+  min-height: $mockup-width * 2.2
+
+.landing-list
+  margin: $interval-default 0 $interval-default * 1.8 0
+  padding: 0
+  li
+    color: $color-gray
+    font:
+      family: $font-family-second
+      size: $font-size-medium
+
+    list-style: none
+    margin: $interval-small $interval-default * 1.5
+    &:before
+      @include circle-icons($default-icon-background, $default-icon-color)
+      font-size: $icon-size-small
+      margin: 0 $interval-small 0 0
+      padding: $font-size-base  / 2
+
+.landing-form
+  margin: $interval-small * 2 0 $interval-small $interval-default * 1.5
+  .wizard_email input
+    @extend %left-corners
+    float: left
+    width: 60%
+  label
+    display: none
+  .help-block
+    position: absolute
+    top: - $m
+  .btn-primary
+    @extend %right-corners
+    @include box-shadow(darken($btn-primary-bg, 10%))
+    border: inherit
+    margin-top: 0
+
+.landing-testimonials
+  margin-bottom: $interval-default
+  .testimonial
+    color: $color-gray-dark
+    font:
+      family: $font-family-second
+      size: $font-size-base + 1
+      style: italic
+    margin-top: $m * 1.5
+
+  .testimonial-photo
+    @include circle-icons($color-gray, $color-gray)
+    float: left
+    height: $thumbnail-images
+    margin-top: $m * 2
+    overflow: hidden
+    width: $thumbnail-images
+    img
+      width: $thumbnail-images
+
+  .testimonial-author
+    display: inline-block
+    margin-top: $m * 2
+    padding: $m / 3 $m
+    h4, h5
+      font:
+        size: $font-size-base
+        style: normal
+      margin: 0
+      padding: 0
+    h4
+      color: $color-green

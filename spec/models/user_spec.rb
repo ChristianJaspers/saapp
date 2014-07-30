@@ -17,12 +17,6 @@ describe User do
     end
   end
 
-  describe '.create' do
-    context 'with no password provided' do
-      xit 'user can be created' #remove temporary password from SetupNewAccount when this is implemented
-    end
-  end
-
   describe '.authenticate' do
     let(:user) { create(:user, email: 'user@test.com') }
     subject { described_class.authenticate(email, password) }
@@ -115,7 +109,7 @@ describe User do
           it { expect(subject.score(period: requested_period)).to eq 0 }
         end
 
-        context 'two-point scoring exists withi of requested period' do
+        context 'two-point scoring exists within of requested period' do
           let(:creation_date) { DateTime.parse('27-07-2014') }
 
           it { expect(subject.score(period: requested_period)).to eq 2 }
