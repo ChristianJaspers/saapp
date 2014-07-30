@@ -8,6 +8,7 @@ en:
     feature: Feature
     product_group:
       many: Product groups
+    save_changes: Save changes
     unauthorized: You cannot access this page. Please login with proper credentatials.
   devise:
     confirmations:
@@ -100,6 +101,8 @@ en:
     world: Hello World
   helpers:
     submit:
+      user:
+        create: Add sales representative
       wizard:
         create: Try for free!
   manager:
@@ -143,6 +146,28 @@ en:
     tabs:
       categories: Categories
       product_groups: Product groups
+      users: Users
+    users:
+      create:
+        notifications:
+          success: Sales representative created
+      destroy:
+        notifications:
+          success: Sales representative removed
+      index:
+        table:
+          actions:
+            destroy_confirmation: Are you sure?
+            destroy_link: Remove
+            edit_link: Edit
+          headers:
+            actions: Actions
+            display_name: Display name
+            email: Email
+            role: Role
+      update:
+        notifications:
+          success: Sales representative updated
   navbar:
     admin_link: Admin
     login_link: Login
