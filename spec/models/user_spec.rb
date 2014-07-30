@@ -75,8 +75,8 @@ describe User do
       it { is_expected.to eq 'manager' }
     end
 
-    context 'anything else is assigned' do
-      let(:assigned_value) { '1' }
+    context 'false value is assigned' do
+      let(:assigned_value) { false }
       it { is_expected.to eq 'user' }
     end
   end

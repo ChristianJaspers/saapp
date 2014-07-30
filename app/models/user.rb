@@ -53,6 +53,6 @@ class User < ActiveRecord::Base
   alias_method :manager, :manager?
 
   def manager=(value)
-    self.role = (value == true) ? 'manager' : 'user'
+    self.role = value ? 'manager' : 'user'
   end
 end
