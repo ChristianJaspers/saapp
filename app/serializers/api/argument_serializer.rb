@@ -17,8 +17,9 @@ class Api::ArgumentSerializer < ActiveModel::Serializer
     object.rating.to_i
   end
 
+  # PERF n+1
   def my_rating
-    0
+    scope.ratings.find_by(argument_id: object.id).try(:rating)
   end
 
   def created_at
