@@ -10,4 +10,8 @@ class ArgumentRating < ActiveRecord::Base
       medium: 2,
       high: 3
   }
+
+  def to_i
+    self.class.ratings[rating]
+  end
 end

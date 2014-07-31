@@ -10,7 +10,7 @@ class Api::ArgumentSerializer < ActiveModel::Serializer
              :updated_at
 
   def user_id
-    current_user.id
+    object.owner_id
   end
 
   def rating
@@ -19,7 +19,7 @@ class Api::ArgumentSerializer < ActiveModel::Serializer
 
   # PERF n+1
   def my_rating
-    scope.ratings.find_by(argument_id: object.id).try(:rating) || 0
+    current_user.ratings.find_by(argument_id: object.id).try(:to_i) || 0
   end
 
   def created_at
