@@ -19,6 +19,15 @@ class Argument < ActiveRecord::Base
     !rating.nil?
   end
 
+  def clear_rating?
+    %w(feature benefit).any? { |key| previous_changes.has_key?(key) }
+  end
+
+  def clear_rating!
+    ratings.destroy_all
+    update_column(:cached_rating, nil)
+  end
+
   private
 
   def cache_rating(*)
