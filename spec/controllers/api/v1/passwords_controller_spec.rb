@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 shared_examples 'an invalid password update' do
+  it { expect(response.status).to eq 422 }
+
   it do
-    expect(response.status).to eq 422
     expect(response.body).to be_json_eql <<-EOS
       {
         "error": {
@@ -32,6 +33,7 @@ describe Api::V1::PasswordsController do
         before { call_request }
 
         it { expect(response).to be_successful }
+
         it { expect(response.body).to be_json_eql '{}' }
       end
     end
@@ -40,8 +42,9 @@ describe Api::V1::PasswordsController do
       let(:email) { 'fake@test.com' }
       before { call_request }
 
+      it { expect(response.status).to eq 404 }
+
       it do
-        expect(response.status).to eq 404
         expect(response.body).to be_json_eql <<-EOS
           {
             "error": {
@@ -71,8 +74,11 @@ describe Api::V1::PasswordsController do
           }
         end
 
+        it { expect(response).to be_successful }
+
+        it { expect(user.reload.valid_password?('12345')).to be_truthy }
+
         it do
-          expect(response).to be_successful
           expect(response.body).to be_json_eql <<-EOS
             {
               "user": {
@@ -88,7 +94,6 @@ describe Api::V1::PasswordsController do
               }
             }
           EOS
-          expect(user.reload.valid_password?('12345')).to be_truthy
         end
       end
 
@@ -113,8 +118,9 @@ describe Api::V1::PasswordsController do
       let(:params) { {} }
       before { call_request }
 
+      it { expect(response.status).to eq 403 }
+
       it do
-        expect(response.status).to eq 403
         expect(response.body).to be_json_eql <<-EOS
           {
             "error": {

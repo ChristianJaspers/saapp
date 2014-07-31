@@ -8,7 +8,7 @@ class ApplicationMailer < ActionMailer::Base
 
   def reset_user_password(user)
     EmailTemplates::Sender.new(
-      EmailTemplates::Recipient.new(user.locale, user.email, {password: activate_user_with_generated_password(user)}), :reset_user_password
+      EmailTemplates::Recipient.new(user.locale, user.email, {display_name: user.display_name, password: activate_user_with_generated_password(user)}), :reset_user_password
     ).send
   end
 
