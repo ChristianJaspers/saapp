@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Api::V1::ResourcesController do
-  before { Timecop.freeze(Time.new(2014, 7, 30, 12, 0, 0, "+00:00")) }
-  after { Timecop.return }
+  before { travel_to(Time.new(2014, 7, 30, 12, 0, 0, "+00:00")) }
+  after { travel_back }
   let!(:manager) { create(:manager) }
   let!(:current_user) { create(:user, display_name: 'Batman', email: 'batman@cave.com', team: manager.team) }
   let!(:other_user) { create(:user, display_name: 'Robin', email: 'robin@cave.com', team: manager.team) }

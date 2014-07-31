@@ -57,7 +57,6 @@ group :test do
   gem 'json_spec', '~> 1.1.2'
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 2.6.2'
-  gem 'timecop', '~> 0.7.1'
 end
 
 group :development, :test do
