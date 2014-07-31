@@ -15,6 +15,12 @@ FactoryGirl.define do
       role 'manager'
     end
 
+    trait :unconfirmed_user do
+      password nil
+      password_confirmation nil
+      confirmed_at nil
+    end
+
     factory :manager do
       role 'manager'
     end

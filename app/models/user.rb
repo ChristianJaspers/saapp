@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include SentientUser
   include Gamification::Beneficiary
   include Model::DelayedDestroy
 
@@ -27,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :product_groups, inverse_of: :owner, foreign_key: :owner_id
   has_many :arguments, inverse_of: :owner
   has_many :ratings, class_name: ArgumentRating, inverse_of: :rater, foreign_key: :rater_id
+
   has_one :api_token, inverse_of: :user
   belongs_to :team, inverse_of: :users
 
@@ -55,5 +55,10 @@ class User < ActiveRecord::Base
 
   def manager=(value)
     self.role = value ? 'manager' : 'user'
+  end
+
+  def activate_with_new_password!(new_password)
+    self.password = self.password_confirmation = new_password
+    confirm!
   end
 end

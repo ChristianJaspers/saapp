@@ -2,10 +2,6 @@ module Gamification
   module Gamified
     extend ActiveSupport::Concern
 
-    def current_user
-      User.current
-    end
-
     module ClassMethods
       def gamify(event, options = {})
         event_subklass_name = if options[:as]

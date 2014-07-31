@@ -10,7 +10,7 @@
 module Gamification
   module Events
     class ArgumentCreation < Base
-      grant_points 2
+      grant_points 2, to: :owner
     end
   end
 end

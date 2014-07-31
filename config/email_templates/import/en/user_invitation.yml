@@ -2,6 +2,10 @@ subject: Welcome to BetterSalesman
 body: |
   <p>Welcome *|display_name|*!</p>
 
-  <p>You can confirm your account email through the link below:</p>
+  <p>Welcome in BetterSalesman!</p>
 
-  <p><a href="*|confirmation_url|*">Confirm my account</a></p>
+  <p>There will be a link here for you to download an app... soon ;)</p>
+
+  <p>Here is your password</p>
+
+  <p>*|password|*</p>

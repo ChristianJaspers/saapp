@@ -75,6 +75,15 @@ describe User do
     end
   end
 
+  describe '#activate_with_new_password!' do
+    let(:user) { create(:user, :unconfirmed_user) }
+    let(:perform) { user.activate_with_new_password!('00000000') }
+
+    it { expect{ perform }.to change { user.reload.encrypted_password }.from('') }
+    it { expect{ perform }.to change { user.reload.confirmed_at }.from(nil) }
+    it { expect{ perform }.to change { user.reload.confirmation_token }.to(nil) }
+  end
+
   describe '#remove!' do
     let(:user) { create(:user) }
     subject { user }
