@@ -1,2 +1,9 @@
 ---
-da: {}
+da:
+  application_name: BetterSalesman
+  wizard:
+    step_1:
+      at_categories_limit_notification: Du kan maksimalt oprette %{maximum_amount}
+        kategorier i denne konfigurator.
+      at_product_groups_limit_notification: Du kan maksimalt oprette %{maximum_amount}
+        produkt grupper i denne konfigurator.
