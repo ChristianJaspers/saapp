@@ -3,7 +3,7 @@ class Api::V1::PasswordsController < Api::RestrictedApplicationController
 
   def create
     if params[:email].present? && (user = User.where(email: params[:email]).first)
-      user.send_reset_password_instructions
+      ApplicationMailer.reset_user_password(user)
       render_json({}, 200)
     else
       render_fail_json(:account_not_exist)

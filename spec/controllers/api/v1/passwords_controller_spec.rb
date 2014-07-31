@@ -18,22 +18,27 @@ describe Api::V1::PasswordsController do
   let(:user) { create(:user, display_name: 'Batman', email: 'a@a.com') }
 
   describe '#create' do
-    before do
-      post :create, {email: email}, {format: :json}
-    end
+    let(:call_request) { post :create, {email: email}, {format: :json} }
 
     context 'user exists' do
       let(:email) { user.email }
 
-      it do
-        expect(response).to be_successful
-        expect(response.body).to be_json_eql '{}'
-        expect(user.reload.reset_password_token).to be_present
+      it 'mail is sent' do
+        expect_any_instance_of(ApplicationMailer).to receive(:reset_user_password)
+        call_request
+      end
+
+      context 'after request' do
+        before { call_request }
+
+        it { expect(response).to be_successful }
+        it { expect(response.body).to be_json_eql '{}' }
       end
     end
 
     context 'invalid email' do
       let(:email) { 'fake@test.com' }
+      before { call_request }
 
       it do
         expect(response.status).to eq 404

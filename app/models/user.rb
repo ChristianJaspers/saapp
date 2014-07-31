@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
 
   def activate_with_new_password!(new_password)
     self.password = self.password_confirmation = new_password
-    confirm!
+    unless confirmed?
+      confirm!
+    else
+      save
+    end
   end
 end
