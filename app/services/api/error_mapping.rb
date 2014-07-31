@@ -1,10 +1,30 @@
 class Api::ErrorMapping
   ERRORS = {
-    not_authenticated: [401, 1103, 'Wrong credentials'],
-    forbidden: [403, 1010, 'You don\'t have access'],
-    account_not_exist: [404, 1002, 'Account not exist'],
-    invalid_file_upload: [422, 1020, 'Can\'t upload'],
-    invalid_password: [422, 1108, 'Invalid password']
+    not_authenticated: {
+      http_code: 401,
+      internal_code: 1103,
+      message: 'Wrong credentials'
+    },
+    forbidden: {
+      http_code: 403,
+      internal_code: 1010,
+      message: 'You don\'t have access'
+    },
+    account_not_exist: {
+      http_code: 404,
+      internal_code: 1002,
+      message: 'Account not exist'
+    },
+    invalid_file_upload: {
+      http_code: 422,
+      internal_code: 1020,
+      message: 'Can\'t upload'
+    },
+    invalid_password: {
+      http_code: 422,
+      internal_code: 1108,
+      message: 'Invalid password'
+    }
   }
 
   def initialize(error_key, params = {})
@@ -13,15 +33,15 @@ class Api::ErrorMapping
   end
 
   def http_code
-    ERRORS[error_key][0]
+    ERRORS[error_key][:http_code]
   end
 
   def internal_code
-    ERRORS[error_key][1]
+    ERRORS[error_key][:internal_code]
   end
 
   def message
-    ERRORS[error_key][2]
+    ERRORS[error_key][:message]
   end
 
   def to_hash
