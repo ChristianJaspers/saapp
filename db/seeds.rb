@@ -21,4 +21,5 @@ unless Company.exists?
   )
   user.skip_confirmation_notification!
   user.save
+  user.confirm!
 end
