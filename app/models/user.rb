@@ -55,4 +55,9 @@ class User < ActiveRecord::Base
   def manager=(value)
     self.role = value ? 'manager' : 'user'
   end
+
+  def activate_with_new_password!(new_password)
+    self.password = self.password_confirmation = new_password
+    confirm!
+  end
 end
