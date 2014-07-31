@@ -12,13 +12,7 @@ class Api::TeamSerializer < ActiveModel::Serializer
 
   def product_groups
     object.product_groups.order(:id).map.with_index do |product_group, index|
-      Api::ProductGroupSerializer.new(product_group, root: false, color_iterator: color_iterator, position: index + 1)
+      Api::ProductGroupSerializer.new(product_group, root: false, position: index + 1)
     end
-  end
-
-  private
-
-  def color_iterator
-    @color_iterator ||= ColorCycleIterator.new
   end
 end

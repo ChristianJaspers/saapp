@@ -48,13 +48,13 @@ describe Api::V1::ResourcesController do
             {
               "id": #{product_group_1.id},
               "name": "Group A",
-              "color_hex": "#{ColorCycleIterator::COLORS.first}",
+              "color_hex": "#{Api::ProductGroupSerializer::COLORS.first}",
               "position": 1
             },
             {
               "id": #{product_group_2.id},
               "name": "Group B",
-              "color_hex": "#{ColorCycleIterator::COLORS.second}",
+              "color_hex": "#{Api::ProductGroupSerializer::COLORS.second}",
               "position": 2
             }
           ],
