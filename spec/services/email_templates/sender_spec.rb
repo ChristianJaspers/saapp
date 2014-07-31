@@ -56,6 +56,21 @@ describe EmailTemplates::Sender do
   end
 
   describe '#send' do
-    pending "Create test for outcoming requests"
+    let(:recipients) { [EmailTemplates::Recipient.new('en', 'test@example.com', {name: 'Someone'})] }
+    let(:perform) { subject.send }
+
+    it 'mail is queued' do
+      expect(perform.to_json).to be_json_eql(
+        <<-EOS
+          [
+            {
+              "email": "test@example.com",
+              "status": "sent",
+              "reject_reason": null
+            }
+          ]
+        EOS
+      ).excluding('_id')
+    end
   end
 end
