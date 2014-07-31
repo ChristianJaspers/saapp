@@ -61,7 +61,7 @@ describe Api::V1::ResourcesController do
           "arguments": [
             {
               "id": #{argument_1.id},
-              "user_id": #{current_user.id},
+              "user_id": #{argument_1.owner_id},
               "product_group_id": #{product_group_1.id},
               "rating": 0,
               "my_rating": 0,
@@ -72,7 +72,7 @@ describe Api::V1::ResourcesController do
             },
             {
               "id": #{argument_2.id},
-              "user_id": #{current_user.id},
+              "user_id": #{argument_2.owner_id},
               "product_group_id": #{product_group_2.id},
               "rating": 0,
               "my_rating": 0,
