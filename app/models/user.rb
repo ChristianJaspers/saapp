@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   validates :role, presence: true
 
   delegate :access_token, to: :api_token, allow_nil: true
-  delegate :goal_score, :comparison_period, to: :team
+  delegate :company, to: :team
 
   has_attached_file :avatar, styles: {thumb: '100x100>'}, default_url: ''
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

@@ -3,11 +3,5 @@ class UserSerializer < ActiveModel::Serializer
 
   attributes :id,
              :display_name,
-             :email,
-             :activity_ratio,
-             :score
-
-  def activity_ratio
-    [object.score(period: Team.comparison_period), object.goal_score]
-  end
+             :email
 end
