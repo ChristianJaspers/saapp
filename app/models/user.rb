@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 
   has_many :product_groups, inverse_of: :owner, foreign_key: :owner_id
   has_many :arguments, inverse_of: :owner
+  has_many :ratings, class_name: ArgumentRating, inverse_of: :rater, foreign_key: :rater_id
   has_one :api_token, inverse_of: :user
   belongs_to :team, inverse_of: :users
 
