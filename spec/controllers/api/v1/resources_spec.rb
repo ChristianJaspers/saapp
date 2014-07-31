@@ -29,8 +29,8 @@ describe Api::V1::ResourcesController do
               "avatar_thumb_url": null,
               "experience": 0,
               "my_activity": 0,
-              "my_team_activity": 0,
-              "all_teams_activity": 0
+              "my_team_activity": 100,
+              "all_teams_activity": 100
             },
             {
               "id": #{other_user.id},
@@ -40,8 +40,8 @@ describe Api::V1::ResourcesController do
               "avatar_thumb_url": null,
               "experience": 0,
               "my_activity": 0,
-              "my_team_activity": 0,
-              "all_teams_activity": 0
+              "my_team_activity": 100,
+              "all_teams_activity": 100
             }
           ],
           "product_groups": [
