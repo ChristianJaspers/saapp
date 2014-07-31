@@ -25,14 +25,15 @@ class User < ActiveRecord::Base
 
   has_many :product_groups, inverse_of: :owner, foreign_key: :owner_id
   has_many :arguments, inverse_of: :owner
-  has_many :ratings, class_name: ArgumentRating, inverse_of: :rater
+  has_many :ratings, class_name: ArgumentRating, inverse_of: :rater, foreign_key: :rater_id
+
   has_one :api_token, inverse_of: :user
   belongs_to :team, inverse_of: :users
 
   validates :role, presence: true
 
   delegate :access_token, to: :api_token, allow_nil: true
-  delegate :goal_score, :comparison_period, to: :team
+  delegate :company, to: :team
 
   has_attached_file :avatar, styles: {thumb: '100x100>'}, default_url: ''
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
@@ -58,6 +59,10 @@ class User < ActiveRecord::Base
 
   def activate_with_new_password!(new_password)
     self.password = self.password_confirmation = new_password
-    confirm!
+    unless confirmed?
+      confirm!
+    else
+      save
+    end
   end
 end

@@ -15,5 +15,10 @@ class ArgumentRating < ActiveRecord::Base
       high: 3
   }
 
+  def to_i
+    self.class.ratings[rating]
+  end
+
   gamify :creation, as: :rating
 end
+

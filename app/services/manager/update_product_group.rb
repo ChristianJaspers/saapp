@@ -23,8 +23,8 @@ class Manager::UpdateProductGroup < BusinessProcess::Base
   def create_new_arguments
     attributes_of_arguments_to_create.all? do |argument_to_create|
       product_group.arguments.new(feature: argument_to_create.feature,
-                                     benefit: argument_to_create.benefit,
-                                     owner_id: current_user.id).save
+                                  benefit: argument_to_create.benefit,
+                                  owner_id: current_user.id).save
 
 
     end
@@ -43,7 +43,9 @@ class Manager::UpdateProductGroup < BusinessProcess::Base
       argument.feature = _attributes.feature
       argument.benefit = _attributes.benefit
 
-      argument.save
+      argument.save.tap do
+        argument.clear_rating! if argument.clear_rating?
+      end
     end
   end
 
