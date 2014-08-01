@@ -35,3 +35,4 @@ deploy:
   on:
     repo: Selleo/saapp
   run: 'rake db:migrate'
+  strategy: git
