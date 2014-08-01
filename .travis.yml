@@ -27,3 +27,11 @@ notifications:
   hipchat:
     rooms:
     - '2fe7e1f5cdaf9e06957b9e0f287bb0@SAApp :: notifications'
+deploy:
+  provider: heroku
+  api_key:
+    secure: QctjDTu8mDbvUEF8v0Tpcu2KuVu8uXUHu0LgfoNWApVSw3z1NVwZOio+UuMXRf6pWNp939vlvN9EYqUdRBSzmyGtnLwh30Uevq73UhdHHk8Ov111eJTCJlC0C6gIoGRB5i3j1MQdXfLgLoJkj29AIudWI7oxJBN/sILY9yYS4/U=
+  app: saapp-staging
+  on:
+    repo: Selleo/saapp
+  run: 'rake db:migrate'
