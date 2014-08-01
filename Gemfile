@@ -63,7 +63,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'pry-debugger', '~> 0.2.3'
   gem 'pry-remote', '~> 0.1.8'
-  gem 'travis', '~> 1.6.14'
+  gem 'travis', '~> 1.6.17'
 end
 
 group :production do
