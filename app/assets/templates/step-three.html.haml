@@ -5,7 +5,7 @@
       {{$index + 1}} - {{invitation.email}} ({{invitation.displayName}})
       %span.glyphicon.glyphicon-trash{'ng-click' => 'removeInvitation(invitation)'}
 
-  %button.btn.btn-primary{type: 'button', 'ng-enabled' => 'thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
+  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
     = I18n.t('wizard.step_3.next_step_button')
 
   %form{name: 'newInvitationForm',
