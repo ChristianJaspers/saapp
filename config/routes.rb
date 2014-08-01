@@ -29,6 +29,9 @@ Rails.application.routes.draw do
       resource :profile, only: [:show] do
         resource :avatar, only: [:update]
       end
+      resources :arguments, only: [] do
+        resource :ratings, only: [:create]
+      end
     end
   end
 
