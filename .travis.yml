@@ -20,6 +20,8 @@ before_script:
 - bundle exec rake db:create db:schema:load
 script:
 - bundle exec rspec spec
+after_success:
+- git fetch --unshallow
 notifications:
   email:
     recipients:
@@ -35,3 +37,4 @@ deploy:
   on:
     repo: Selleo/saapp
   run: 'rake db:migrate'
+  strategy: git
