@@ -1,5 +1,3 @@
-puts ENV.inspect
-
 required_env = [
   'MANDRILL_APIKEY',
   'MANDRILL_USERNAME'
