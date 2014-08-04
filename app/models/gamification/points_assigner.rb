@@ -21,7 +21,7 @@ module Gamification
       when Symbol then
         object.public_send(options[:to])
       when Proc then
-        options[:to].call(options[:to])
+        options[:to].call(object)
       else
         object.current_user
       end
@@ -32,7 +32,7 @@ module Gamification
 
       case condition
       when Symbol then
-        object.public_send(:condition)
+        !object.public_send(condition)
       when Proc then
         condition.call(object)
       else

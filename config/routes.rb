@@ -25,9 +25,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :auth, only: [:create]
       resources :resources, only: [:index]
-      resources :passwords, only: [:create]
+      resource :passwords, only: [:create, :update]
       resource :profile, only: [:show] do
         resource :avatar, only: [:update]
+      end
+      resources :arguments, only: [] do
+        resource :ratings, only: [:create]
       end
     end
   end
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
   namespace :manager do
     root 'product_groups#index'
     resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :users, only: [:index, :create, :edit, :update, :destroy]
   end
 
   comfy_route :cms_admin, path: '/admin/cms'

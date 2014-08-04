@@ -30,8 +30,8 @@ gem 'aws-sdk', '~> 1.48.1'
 gem 'active_model_serializers', '~> 0.8.1'
 gem 'kaminari', '~> 0.16.1'
 gem 'ng-rails-csrf', '~> 0.1.0'
-gem 'sentient_user', '~> 0.3.3'
 gem 'phrase', '~> 0.4.26'
+gem 'keepass-password-generator', '~> 0.1.1'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
@@ -55,13 +55,15 @@ group :test do
   gem 'vcr', '~> 2.9.2'
   gem 'capybara-webkit', '~> 1.2.0'
   gem 'json_spec', '~> 1.1.2'
+  gem 'simplecov', require: false
+  gem 'shoulda-matchers', '~> 2.6.2'
 end
 
 group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'pry-debugger', '~> 0.2.3'
   gem 'pry-remote', '~> 0.1.8'
-  gem 'travis', '~> 1.6.14'
+  gem 'travis', '~> 1.6.17'
 end
 
 group :production do

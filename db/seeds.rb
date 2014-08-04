@@ -12,11 +12,14 @@ unless Company.exists?
 
   admin_email = 'admin@example.com'
   password = '12345678'
-  user = User.create_with(
+  user = User.new(
     email: admin_email,
     password: password,
     password_confirmation: password,
     role: 'admin',
     team: team
-  ).find_or_create_by(email: admin_email)
+  )
+  user.skip_confirmation_notification!
+  user.save
+  user.confirm!
 end

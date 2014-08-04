@@ -1,21 +1,23 @@
 require 'rails_helper'
 
 describe Argument do
+  subject { create(:argument) }
+
+  describe '.ratings#create' do
+    let(:perform) { subject.ratings.create(rating: :low, rater_id: create(:user).id) }
+
+    it { expect { perform }.to change { subject.reload.rating }.from(nil).to(1.0) }
+  end
+
   describe '#rated?' do
     context 'argument was not rated' do
-      it do
-        pending 'To be implemented'
-        expect(subject.rated?).to be_falsey
-        fail
-      end
+      its(:rated?) { is_expected.to be_falsey }
     end
 
     context 'argument was rated' do
-      it do
-        pending 'To be implemented'
-        expect(subject.rated?).to be_truthy
-        fail
-      end
+      before { subject.ratings.create(rating: :low, rater_id: create(:user).id) }
+
+      its(:rated?) { is_expected.to be_truthy }
     end
   end
 
@@ -24,19 +26,15 @@ describe Argument do
     let(:argument) { build(:argument, owner: argument_creator) }
     let(:perform) { argument.save }
 
-    context 'logged in as argument creator' do
-      before { allow(User).to receive(:current).and_return(argument_creator) }
+    it { expect { perform }.to change { Gamification::Scoring.count }.by(1) }
 
-      it { expect { perform }.to change { Gamification::Scoring.count }.by(1) }
+    context 'after perform' do
+      before { perform }
 
-      context 'after perform' do
-        before { perform }
+      describe 'argument creator scoring' do
+        subject { argument_creator.scorings.last }
 
-        describe 'argument creator scoring' do
-          subject { argument_creator.scorings.last }
-
-          its(:amount) { is_expected.to eq 2 }
-        end
+        its(:amount) { is_expected.to eq 2 }
       end
     end
   end

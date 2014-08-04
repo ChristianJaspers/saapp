@@ -1,13 +1,8 @@
 class Api::RestrictedApplicationController < Api::ApplicationController
   before_action :restrict_access
+  expose(:current_user) { @api_authentication.try :user }
 
-  helper_method :current_user
-
-private
-
-  def current_user
-    @api_authentication.try :user
-  end
+  private
 
   def restrict_access
     result = authenticate_with_http_token do |token, options|

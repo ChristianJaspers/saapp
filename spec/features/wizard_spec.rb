@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Wizard' do
   let(:product_group_name) { 'iPad' }
+  let(:second_product_group_name) { 'MacBook PRO' }
   let(:feature_name) { 'Large display' }
   let(:benefit_description) { 'Better photo editing capabilities' }
   let(:invitee_email) { 'invitee@bettersalesman.dev' }
@@ -21,6 +22,11 @@ feature 'Wizard' do
     find("input[ng-model='productGroup.name']").set(product_group_name)
     find("input[type='submit']").click
     expect(page).to have_content "1 - #{product_group_name}"
+
+    # Add another product_group
+    find("input[ng-model='productGroup.name']").set(second_product_group_name)
+    find("input[type='submit']").click
+    expect(page).to have_content "2 - #{second_product_group_name}"
 
     # Add feature / benefit
     find('button', text: I18n.t('wizard.step_1.next_step_button')).click
@@ -61,5 +67,8 @@ feature 'Wizard' do
     find("input[name='user[password_confirmation]']").set(password)
     find("input[type='submit']").click
     expect(page).to have_content I18n.t('devise.confirmations.confirmed')
+
+    expect(Argument).to exist.with(feature: feature_name, benefit: benefit_description)
+    expect(ProductGroup.all).to have(2).records
   end
 end

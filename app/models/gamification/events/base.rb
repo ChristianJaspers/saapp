@@ -1,12 +1,14 @@
 module Gamification
   module Events
     class Base
-      cattr_accessor :point_assigners
-      @@point_assigners = []
+      class << self
+        attr_accessor :point_assigners
+      end
 
       attr_reader :object
 
       def self.grant_points(*args)
+        self.point_assigners ||= []
         point_assigners.push(Gamification::PointsAssigner.new(*args))
       end
 

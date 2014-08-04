@@ -1,5 +1,5 @@
 .landing-page.col-md-8
-  %h2= I18n.t('landing.header')
+  %h2= t('landing.header')
 
   %ul.landing-list
     %li.icon-progress Sell more
@@ -8,7 +8,7 @@
     %li.icon-gain Gain confidence
     %li.icon-set Easy use  5 min setup
 
-  %h3= I18n.t('landing.free_30')
+  %h3= ('landing.free_30')
   .landing-form
     - if guest?
       = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
@@ -20,7 +20,7 @@
 .clearfix
 
 .landing-testimonials.col-md-12
-  %h3= I18n.t('landing.testimonials_header')
+  %h3= t('landing.testimonials_header')
 
   / testimonials demo contents start /
 
@@ -29,7 +29,6 @@
     %p Gumbo beet greens corn soko endive gumbo gourd.
 
     .testimonial-photo
-      %img{src: "/assets/person-1.png"}/
 
     .testimonial-author
       %h4 Veggies es bonus
@@ -42,7 +41,6 @@
     %p Gumbo beet greens corn soko endive gumbo gourd.
 
     .testimonial-photo
-      %img{src: "/assets/person-2.png"}/
 
     .testimonial-author
       %h4 Veggies es bonus
@@ -55,7 +53,6 @@
     %p Gumbo beet greens corn soko endive gumbo gourd.
 
     .testimonial-photo
-      %img{src: "/assets/person-3.png"}/
 
     .testimonial-author
       %h4 Veggies es bonus

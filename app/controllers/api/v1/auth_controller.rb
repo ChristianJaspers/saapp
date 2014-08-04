@@ -6,7 +6,8 @@ class Api::V1::AuthController < Api::ApplicationController
         api_login.user,
         200,
         meta: api_login.user.access_token,
-        meta_key: 'access_token'
+        meta_key: 'access_token',
+        serializer: Api::UserSerializer
       )
     else
       render_fail_json(:not_authenticated)

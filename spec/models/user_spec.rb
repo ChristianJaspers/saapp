@@ -13,13 +13,7 @@ describe User do
     context 'user is not an admin' do
       let(:user) { create(:user) }
 
-      it { is_expected.to be_falsy }
-    end
-  end
-
-  describe '.create' do
-    context 'with no password provided' do
-      xit 'user can be created' #remove temporary password from SetupNewAccount when this is implemented
+      it { is_expected.to be_falsey }
     end
   end
 
@@ -51,6 +45,52 @@ describe User do
     end
   end
 
+  describe '#manager' do
+    subject { user }
+
+    context 'normal user' do
+      let(:user) { create(:user) }
+      its(:manager) { is_expected.to be_falsey }
+    end
+
+    context 'manager' do
+      let(:user) { create(:manager) }
+      its(:manager) { is_expected.to be_truthy }
+    end
+  end
+
+  describe '#manager=' do
+    let(:user) { create(:user) }
+    subject { user.role }
+    before { user.manager = assigned_value }
+
+    context 'true value is assigned' do
+      let(:assigned_value) { true }
+      it { is_expected.to eq 'manager' }
+    end
+
+    context 'false value is assigned' do
+      let(:assigned_value) { false }
+      it { is_expected.to eq 'user' }
+    end
+  end
+
+  describe '#activate_with_new_password!' do
+    let(:user) { create(:user, :unconfirmed_user) }
+    let(:perform) { user.activate_with_new_password!('00000000') }
+
+    it { expect{ perform }.to change { user.reload.encrypted_password }.from('') }
+    it { expect{ perform }.to change { user.reload.confirmed_at }.from(nil) }
+    it { expect{ perform }.to change { user.reload.confirmation_token }.to(nil) }
+  end
+
+  describe '#remove!' do
+    let(:user) { create(:user) }
+    subject { user }
+
+    it { expect{ subject.remove! }.to change{ subject.reload.remove_at }.from(nil) }
+  end
+
   describe '#score' do
     subject { create(:user) }
 
@@ -78,7 +118,7 @@ describe User do
           it { expect(subject.score(period: requested_period)).to eq 0 }
         end
 
-        context 'two-point scoring exists withi of requested period' do
+        context 'two-point scoring exists within of requested period' do
           let(:creation_date) { DateTime.parse('27-07-2014') }
 
           it { expect(subject.score(period: requested_period)).to eq 2 }
