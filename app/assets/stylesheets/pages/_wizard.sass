@@ -16,7 +16,7 @@
         position: absolute
   form
     position: relative
-    input
+    input, select
       @include box-shadow-border($color-gray-dark, $default-border-radius, $color-gray)
       float: left
       height: $inputs-size
@@ -37,17 +37,24 @@
         opacity: 0
         width: $inputs-size
 
+    &.arguments-form
+      select
+        margin-right: $m-quarter
+        width: calc(15% - (#{$m-quarter}))
+      .feature
+        margin-right: $m-quarter
+        width: calc(25% - (#{$m-quarter}))
+      .benefit
+        margin-right: $m-quarter
+        width: calc(60% - (#{$inputs-size}) - (#{$m-quarter}))
+      .four-corners:before
+        @extend %four-corners
+
 .category-window
   margin-top: $interval-default
 
 .mobile-preview-container
-  background:
-    image: image-url('mockup.png')
-    repeat: no-repeat
   margin-top: $interval-default
-  max-width: $mockup-width
-  min-height: $mockup-width * 2.5
-  position: relative
 
   .preview-head
     color: $color-green
@@ -61,7 +68,7 @@
   .box
     margin: $mockup-margin auto
     overflow: hidden
-    width: 85%
+    width: 78%
   li
     background-color: $prev1
     list-style: none
@@ -94,13 +101,43 @@
     margin-top: $m / 4
     overflow-y: auto
 
+  .preview-underlay
+    background:
+      image: image-url('mockup.png')
+      position: top right
+      repeat: no-repeat
+    float: right
+    min-height: $mockup-width * 2.5
+    position: relative
+    width: $mockup-width
+
   .preview-overlay
     background:
       image: image-url('glow.png')
       position: right top
       repeat: no-repeat
     display: block
-    height: 32%
+    height: 60%
     position: absolute
     top: 0
     width: $mockup-width
+
+.argument-list
+  .argument-delete, .argument-item, .feature, .benefit
+    @include box-shadow-border($color-gray-dark, $default-border-radius, $color-gray)
+    display: inline-block
+    float: left
+    height: $inputs-size
+    line-height: $inputs-size
+
+  .argument-delete
+    margin-left: - $inputs-size
+
+  .argument-item
+    margin-right: $m-quarter
+    width: calc(15% - (#{$m-quarter}))
+
+  .feature
+    margin-right: $m-quarter
+    width: calc(25% - (#{$m-quarter}))
+

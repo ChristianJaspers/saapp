@@ -1,6 +1,6 @@
-%div{'ng-controller' => 'argumentCtrl'}
+.category-window.col-md-6{'ng-controller' => 'argumentCtrl'}
   %h2= I18n.t('wizard.step_2.header')
-  %table
+  %table.argument-list
     %thead
       %th
       %th= I18n.t('common.feature')
@@ -8,19 +8,22 @@
       %th
     %tbody{'ng-repeat' => "argument in wizard.arguments"}
       %tr
-        %td {{$index + 1}} - {{argument.productGroup.name}}
-        %td {{argument.feature}}
-        %td {{argument.benefit}}
-        %td
+        %td.argument-delete
           %span.glyphicon.glyphicon-trash{'ng-click' => 'removeArgument(argument)'}
+        %td.argument-item
+          %span {{$index + 1}}
+          {{argument.productGroup.name}}
+        %td.feature {{argument.feature}}
+        %td.benefit {{argument.benefit}}
+
+  %form.arguments-form{name: 'newArgumentForm', 'ng-submit' =>'addArgument(wizard)'}
+    %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true}
+    %input.feature{'ng-model' => 'argument.feature', required: true}
+    %input.benefit{'ng-model' => 'argument.benefit', required: true}
+    %span.wizard-add.four-corners
+      %input{type: 'submit'}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true'}
     = I18n.t('wizard.step_2.next_step_button')
 
-  %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument(wizard)'}
-    %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true}
-    %input{'ng-model' => 'argument.feature', required: true}
-    %input{'ng-model' => 'argument.benefit', required: true}
-    %input.glyphicon.glyphicon-plus{type: 'submit'}
-
-  %arguments-preview
+%arguments-preview
