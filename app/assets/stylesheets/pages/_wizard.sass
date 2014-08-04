@@ -39,14 +39,15 @@
 
     &.arguments-form
       select
+        margin-left: 15%
         margin-right: $m-quarter
         width: calc(15% - (#{$m-quarter}))
       .feature
         margin-right: $m-quarter
-        width: calc(25% - (#{$m-quarter}))
+        width: calc(30% - (#{$m-quarter}))
       .benefit
         margin-right: $m-quarter
-        width: calc(60% - (#{$inputs-size}) - (#{$m-quarter}))
+        width: calc(40% - (#{$inputs-size}) - (#{$m-quarter}))
       .four-corners:before
         @extend %four-corners
 
@@ -123,21 +124,35 @@
     width: $mockup-width
 
 .argument-list
-  .argument-delete, .argument-item, .feature, .benefit
+  .row
+    @extend %box-reset
+    margin-bottom: $m-half
+
+  .argument-item, .feature, .benefit
     @include box-shadow-border($color-gray-dark, $default-border-radius, $color-gray)
-    display: inline-block
+    color: $color-gray-dark
     float: left
+    font-family: $font-family-second
     height: $inputs-size
     line-height: $inputs-size
 
   .argument-delete
-    margin-left: - $inputs-size
+    float: left
+    height: $inputs-size
+    line-height: $inputs-size
 
-  .argument-item
+  .argument-item, .argument-delete
     margin-right: $m-quarter
     width: calc(15% - (#{$m-quarter}))
+    div
+      color: $color-gray-light
+      display: inline
+      font-size: $font-size-medium
+      margin: 0 $m 0 (-$m)
 
   .feature
     margin-right: $m-quarter
-    width: calc(25% - (#{$m-quarter}))
+    width: calc(30% - (#{$m-quarter}))
 
+  .benefit
+    width: 40%

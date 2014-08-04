@@ -1,20 +1,22 @@
 .category-window.col-md-6{'ng-controller' => 'argumentCtrl'}
   %h2= I18n.t('wizard.step_2.header')
-  %table.argument-list
-    %thead
-      %th
-      %th= I18n.t('common.feature')
-      %th= I18n.t('common.benefit')
-      %th
-    %tbody{'ng-repeat' => "argument in wizard.arguments"}
-      %tr
-        %td.argument-delete
-          %span.glyphicon.glyphicon-trash{'ng-click' => 'removeArgument(argument)'}
-        %td.argument-item
-          %span {{$index + 1}}
-          {{argument.productGroup.name}}
-        %td.feature {{argument.feature}}
-        %td.benefit {{argument.benefit}}
+
+  .argument-list
+    %span= I18n.t('common.feature')
+    %span= I18n.t('common.benefit')
+
+    .row{'ng-repeat' => "argument in wizard.arguments"}
+
+      .argument-delete
+        %span.glyphicon.glyphicon-trash{'ng-click' => 'removeArgument(argument)'}
+      .argument-item
+        .div {{$index + 1}}
+        {{argument.productGroup.name}}
+      .feature {{argument.feature}}
+      .benefit {{argument.benefit}}
+      .clearfix
+
+  .clearfix
 
   %form.arguments-form{name: 'newArgumentForm', 'ng-submit' =>'addArgument(wizard)'}
     %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true}
