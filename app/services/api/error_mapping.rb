@@ -34,6 +34,11 @@ class Api::ErrorMapping
       http_code: 422,
       internal_code: 1110,
       message: 'Missing feature or benefit'
+    },
+    argument_not_found: {
+      http_code: 404,
+      internal_code: 1111,
+      message: 'Argument not found'
     }
   }
 
