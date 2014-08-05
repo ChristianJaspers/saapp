@@ -14,13 +14,13 @@
         %td
           %span.glyphicon.glyphicon-trash{'ng-click' => 'removeArgument(argument)'}
 
-  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true'}
+  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true', tabindex: 7}
     = I18n.t('wizard.step_2.next_step_button')
 
   %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument(wizard)'}
-    %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true}
-    %input{'ng-model' => 'argument.feature', required: true}
-    %input{'ng-model' => 'argument.benefit', required: true}
+    %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true, tabindex: 8, onFocus: "this.tabIndex=4", onBlur: "this.tabIndex=8"}
+    %input{'ng-model' => 'argument.feature', required: true, tabindex: 5}
+    %input{'ng-model' => 'argument.benefit', required: true, tabindex: 6}
     %input.glyphicon.glyphicon-plus{type: 'submit'}
 
   %arguments-preview
