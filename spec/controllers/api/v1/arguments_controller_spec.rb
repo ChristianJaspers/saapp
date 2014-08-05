@@ -149,10 +149,7 @@ describe Api::V1::ArgumentsController do
     let(:call_request) { put :update, params.merge(id: id), format: 'json' }
 
     context 'valid api token' do
-      before do
-        api_authorize_with(api_token.access_token)
-        call_request
-      end
+      before { api_authorize_with(api_token.access_token) }
 
       context 'valid params' do
         let(:id) { argument.id }
@@ -163,6 +160,7 @@ describe Api::V1::ArgumentsController do
             product_group_id: product_group.id
           }
         end
+        before { call_request }
 
         it { expect(response.status).to eq 201 }
         it { expect(response.body).to have_json_type(Integer).at_path 'argument/id' }
@@ -197,9 +195,35 @@ describe Api::V1::ArgumentsController do
         end
       end
 
+      context 'contains rating' do
+        let(:id) { argument.id }
+
+        before do
+          create(:argument_rating, argument: argument)
+          call_request
+        end
+
+        context 'feature is modified' do
+          let(:params) { {feature: 'New F'} }
+          it { expect(argument.ratings).to have(0).items }
+        end
+
+        context 'benefit is modified' do
+          let(:params) { {benefit: 'New B'} }
+          it { expect(argument.ratings).to have(0).items }
+        end
+
+        context 'product group id is modified' do
+          let(:other_product_group) { create(:product_group, owner: product_group.owner) }
+          let(:params) { {product_group_id: other_product_group} }
+          it { expect(argument.ratings).to have(1).item }
+        end
+      end
+
       context 'missing argument' do
         let(:id) { argument.id + 1}
         let(:params) { {} }
+        before { call_request }
 
         it { expect(response.status).to eq 404 }
 
@@ -222,6 +246,7 @@ describe Api::V1::ArgumentsController do
             product_group_id: product_group.id + 1
           }
         end
+        before { call_request }
 
         it { expect(response.status).to eq 422 }
 

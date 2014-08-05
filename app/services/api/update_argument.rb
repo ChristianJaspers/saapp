@@ -12,6 +12,7 @@ class Api::UpdateArgument < BusinessProcess::Base
       validate_owner and
       check_for_product_group_change and
       update_argument and
+      reset_ratings and
       prepare_result
   end
 
@@ -46,6 +47,11 @@ class Api::UpdateArgument < BusinessProcess::Base
       argument.attributes = argument_params
       argument.save
     end
+  end
+
+  def reset_ratings
+    argument.clear_rating! if argument.clear_rating?
+    true
   end
 
   def prepare_result
