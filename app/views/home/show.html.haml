@@ -12,8 +12,8 @@
   .landing-form
     - if guest?
       = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|
-        = f.input :email
-        = f.submit t('helpers.submit.wizard.create'), class: 'btn btn-primary'
+        = f.input :email, autofocus: true, input_html: {tabindex: 1}
+        = f.submit t('helpers.submit.wizard.create'), class: 'btn btn-primary', tabindex: 2
     .clearfix
 
 .landing-mobile.col-md-4
