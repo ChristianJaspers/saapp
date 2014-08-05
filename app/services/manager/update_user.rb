@@ -1,4 +1,7 @@
 class Manager::UpdateUser < BusinessProcess::Base
+  extend BusinessProcess::Transactional
+  transaction_for User
+
   needs :user
   needs :params
 

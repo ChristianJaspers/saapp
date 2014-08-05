@@ -23,10 +23,10 @@ class Api::ArgumentSerializer < ActiveModel::Serializer
   end
 
   def created_at
-    object.created_at.iso8601
+    object.created_at.try :iso8601
   end
 
   def updated_at
-    object.updated_at.iso8601
+    object.updated_at.try :iso8601
   end
 end
