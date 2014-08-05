@@ -20,7 +20,7 @@ wizardApp.directive('argumentsPreview', ->
   }
 )
 
-wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $animate, Wizard) ->
+wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', ($scope, $animate, $timeout, Wizard) ->
   $scope.wizard = {
     email: gon.email,
     productGroups: [],
@@ -32,10 +32,29 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
 
   $scope.steps = [
     { title: 'Product Groups', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
-    { title: 'Arguments', template: 'step-two.html', disabled: true, class: ' ng-isolate-scope arguments_step' },
+    { title: 'Arguments', template: 'step-two.html', disabled: true, class: 'ng-isolate-scope arguments_step' },
     { title: 'Invitations', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
     { title: 'Summary', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
   ]
+
+  $scope.focusArgument = ->
+    $timeout ->
+      angular.element('input[ng-model="argument.feature"]').trigger('focus')
+    , 100
+    return true
+
+  $scope.initTab = (classes) ->
+    tabCode = classes.split(' ')[1]
+
+    switch tabCode
+      when 'product_groups_step'
+        $timeout ->
+          angular.element('input[ng-model="productGroup.name"]').trigger('focus')
+        , 100
+      when 'arguments_step'
+        $scope.argument = {productGroup: $scope.wizard.productGroups[0]}
+        $scope.focusArgument()
+    return true
 
   $scope.atProductGroupsLimit = ->
     $scope.wizard.productGroups.length >= $scope.maxProductGroups
@@ -56,6 +75,7 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
   $scope.$watchCollection('wizard.arguments', ->
     $scope.steps[2].disabled = not $scope.secondStepValid()
     $scope.steps[3].disabled = not $scope.secondStepValid() or not $scope.thirdStepValid()
+    $scope.focusArgument()
   )
 
   $scope.$watchCollection('wizard.invitations', ->
@@ -72,13 +92,11 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
     )
 
     wizard.$save().then((u, putResponseHeaders) ->
-      document.location.href  = '/confirmation?confirmation_token=' + u.confirmation_token
+      document.location.href = '/confirmation?confirmation_token=' + u.confirmation_token
     )
 ])
 
 wizardApp.controller('productGroupCtrl', ['$scope', ($scope) ->
-  $scope.productGroup = {}
-
   $scope.removeProductGroup = (productGroup) ->
     index = $scope.wizard.productGroups.indexOf(productGroup)
     $scope.wizard.arguments = _.reject($scope.wizard.arguments, (argument) ->
@@ -86,17 +104,12 @@ wizardApp.controller('productGroupCtrl', ['$scope', ($scope) ->
     )
     $scope.wizard.productGroups.splice(index, 1)
 
-    angular.element('input[ng-model="productGroup.name"]').trigger('focus')
-    return true
-
   $scope.addProductGroup = (wizard) ->
     wizard.productGroups.push({name: $scope.productGroup.name, arguments: []})
     $scope.productGroup = {}
 ])
 
 wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
-  $scope.argument = {}
-
   $scope.removeArgument = (argument) ->
     argumentIndex = $scope.wizard.arguments.indexOf(argument)
 
@@ -117,7 +130,7 @@ wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
     wizard.arguments.push(feature)
 
     productGroup.active = true
-    $scope.argument = {}
+    $scope.argument = {productGroup: $scope.wizard.productGroups[0]}
 ])
 
 wizardApp.controller('invitationCtrl', ['$scope', ($scope) ->
