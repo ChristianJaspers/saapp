@@ -1,5 +1,5 @@
 %div.mobile-preview-container
   %tabset{type: 'pills'}
-    %tab{'ng-repeat' => 'category in wizard.categories', heading: '{{category.name}}', active: 'category.active'}
-      %ul{'ng-repeat' => 'argument in category.arguments', 'ng-animate' => 'animate'}
+    %tab{'ng-repeat' => 'productGroup in wizard.productGroups', heading: '{{productGroup.name}}', active: 'productGroup.active'}
+      %ul{'ng-repeat' => 'argument in productGroup.arguments', 'ng-animate' => 'animate'}
         %li {{argument.feature}} - {{argument.benefit}}
