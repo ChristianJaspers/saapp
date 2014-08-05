@@ -58,11 +58,10 @@
   margin-top: $interval-default
 
   .preview-head
-    color: $color-green
+    color: $color-orange
     display: block
     padding-top: $interval-default * 1.6
     text-align: center
-    text-transform: uppercase
   ul, li
     margin: 0
     padding: 0
@@ -135,6 +134,7 @@
     font-family: $font-family-second
     height: $inputs-size
     line-height: $inputs-size
+    padding: 0 $m-half
 
   .argument-delete
     float: left
@@ -144,15 +144,65 @@
   .argument-item, .argument-delete
     margin-right: $m-quarter
     width: calc(15% - (#{$m-quarter}))
-    div
+  .argument-item
+    position: relative
+    span
       color: $color-gray-light
       display: inline
       font-size: $font-size-medium
-      margin: 0 $m 0 (-$m)
+      left: -($m * 1.5)
+      position: absolute
+      top: 0
+    p
+      @extend %ellipsis-overflow
+      position: inherit
+      width: 100%
 
   .feature
+    @extend %ellipsis-overflow
     margin-right: $m-quarter
     width: calc(30% - (#{$m-quarter}))
 
   .benefit
+    @extend %ellipsis-overflow
     width: 40%
+
+//----- mobile arguments preview -----
+
+.mobile-preview-container .nav-pills
+  li
+    display: none
+    &.active
+      background-color: $color-white
+      border: 2px solid $color-orange
+      border-radius: $mobile-border-radius
+      display: block
+      padding: 0
+      text-align: center
+      width: 98%
+      & a
+        background-color: $color-transparent
+        color: $color-orange
+      &:before
+        @extend %font-icons
+        color: $color-orange
+        content: '\e603'
+        font-family: 'cursors'
+        position: absolute
+        right: $m-half
+        top: $m-half
+
+.mobile-preview-container
+  ul.preview-argument.ng-scope
+    margin-top: -($m-third)
+    &:nth-child(2n+1) li
+      background-color: $color-white
+    &:nth-child(2n+2) li
+      background-color: $color-mobile-gray
+
+  ul.preview-argument li
+    color: $color-gray-dark
+    span
+      color: $color-gray
+      display: block
+      font-weight: bold

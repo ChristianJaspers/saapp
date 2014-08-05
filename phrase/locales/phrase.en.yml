@@ -7,7 +7,8 @@ en:
       many: Categories
     feature: Feature
     product_group:
-      many: Product groups
+      many: PRODUCT GROUPS
+      arguments: ARGUMENTS
     save_changes: Save changes
     unauthorized: You cannot access this page. Please login with proper credentatials.
   devise:
