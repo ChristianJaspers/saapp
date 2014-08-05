@@ -86,6 +86,9 @@ wizardApp.controller('productGroupCtrl', ['$scope', ($scope) ->
     )
     $scope.wizard.productGroups.splice(index, 1)
 
+    angular.element('input[ng-model="productGroup.name"]').trigger('focus')
+    return true
+
   $scope.addProductGroup = (wizard) ->
     wizard.productGroups.push({name: $scope.productGroup.name, arguments: []})
     $scope.productGroup = {}
