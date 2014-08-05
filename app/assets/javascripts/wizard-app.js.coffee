@@ -31,10 +31,10 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', 'Wizard', ($scope, $an
   $scope.maxProductGroups = 20
 
   $scope.steps = [
-    { title: 'Product Groups', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
-    { title: 'Arguments', template: 'step-two.html', disabled: true, class: ' ng-isolate-scope arguments_step' },
-    { title: 'Invitations', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
-    { title: 'Summary', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
+    { title: 'PRODUCT GROUPS', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
+    { title: 'ARGUMENTS', template: 'step-two.html', disabled: true, class: ' ng-isolate-scope arguments_step' },
+    { title: 'INVITATIONS', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
+    { title: 'SUMMARY', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
   ]
 
   $scope.atProductGroupsLimit = ->

@@ -2,8 +2,9 @@
   %h2= I18n.t('wizard.step_2.header')
 
   .argument-list
-    %span= I18n.t('common.feature')
-    %span= I18n.t('common.benefit')
+    %h4.right= I18n.t('common.feature')
+    %h4.center= I18n.t('common.benefit')
+    .clearfix
 
     .row{'ng-repeat' => "argument in wizard.arguments"}
 

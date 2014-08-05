@@ -1,5 +1,6 @@
 .ng-isolate-scope
   .nav-tabs
+    border: 0
     margin: $margin-auto
     max-width: 946px
     padding-top: 29px
@@ -29,6 +30,10 @@
           margin-bottom: 14px
           text-align: center
           width: $wizard-icons
+
+        &:hover,&:focus
+          background-color: $color-transparent
+          border: 0
 
       &.disabled
         a
