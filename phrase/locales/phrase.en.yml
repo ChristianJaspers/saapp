@@ -6,9 +6,10 @@ en:
     category:
       many: Categories
     feature: Feature
+    invitation:
+      many: Invitations
     product_group:
-      many: PRODUCT GROUPS
-      arguments: ARGUMENTS
+      many: Product groups
     save_changes: Save changes
     unauthorized: You cannot access this page. Please login with proper credentatials.
   devise:
