@@ -215,14 +215,18 @@
 
 .representative-list
   .row
-    padding-left: $interval-default
+    @extend %left-default
     .representative-item, .representative-name
       margin-right: $m-quarter
       width: calc(50% - (6px) - (#{$inputs-size}) / 2)
     .representative-delete
       text-align: center
       width: $inputs-size
-  .representative-form
-    margin-left: $interval-default
+
+.representative-form
+  margin-left: $interval-default
+  input
+    margin-right: $m-quarter
+    width: calc(50% - (6px) - (#{$inputs-size}) / 2)
 
 

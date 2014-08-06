@@ -2,10 +2,6 @@
   %h2= I18n.t('wizard.step_3.header')
 
   .representative-list
-    %h4.right= I18n.t('common.feature')
-    %h4.center= I18n.t('common.benefit')
-    .clearfix
-
     .row{'ng-repeat' => 'invitation in wizard.invitations'}
       .representative-item
         %span {{$index + 1}}
