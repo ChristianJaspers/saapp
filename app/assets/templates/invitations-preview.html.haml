@@ -1,0 +1,9 @@
+.mobile-preview-container.col-md-3.col-md-offset-2
+  .preview-underlay
+    %span.preview-head
+      = I18n.t('common.invitation.many')
+    .box
+      .preview-list
+        %ul{'ng-repeat' => 'invitation in wizard.invitations'}
+          %li {{invitation.displayName}}
+    .preview-overlay

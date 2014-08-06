@@ -20,6 +20,14 @@ wizardApp.directive('argumentsPreview', ->
   }
 )
 
+wizardApp.directive('invitationsPreview', ->
+  {
+  restrict: 'E'
+  templateUrl: 'invitations-preview.html',
+  replace: true
+  }
+)
+
 wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', ($scope, $animate, $timeout, Wizard) ->
   $scope.wizard = {
     email: gon.email,
