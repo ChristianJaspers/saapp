@@ -7,7 +7,9 @@ en:
       many: Categories
     feature: Feature
     invitation:
-      many: Invitations
+      many: INVITATIONS
+      name: Name
+      email: Email
     product_group:
       many: Product groups
     save_changes: Save changes
