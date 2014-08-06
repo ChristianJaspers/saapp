@@ -1,5 +1,6 @@
 .ng-isolate-scope
   .nav-tabs
+    border: 0
     margin: $margin-auto
     max-width: 946px
     padding-top: 29px
@@ -30,6 +31,10 @@
           text-align: center
           width: $wizard-icons
 
+        &:hover,&:focus
+          background-color: $color-transparent
+          border: 0
+
       &.disabled
         a
           color: $color-gray-light
@@ -55,7 +60,7 @@
         a:before
           content: '\e603'
 
-      &.categories_step
+      &.product_groups_step
         a:before
           content: '\e602'
 

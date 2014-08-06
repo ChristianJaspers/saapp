@@ -1,8 +1,9 @@
-%div.mobile-preview-container.col-md-4.col-md-offset-2
-  %span.preview-head
-    = I18n.t('common.product_group.many')
-  .box
-    .preview-list
-      %ul{'ng-repeat' => 'productGroup in wizard.productGroups'}
-        %li {{productGroup.name}}
-  .preview-overlay
+.mobile-preview-container.col-md-3.col-md-offset-2
+  .preview-underlay
+    %span.preview-head
+      = I18n.t('common.product_group.many')
+    .box
+      .preview-list
+        %ul{'ng-repeat' => 'productGroup in wizard.productGroups'}
+          %li {{productGroup.name}}
+    .preview-overlay

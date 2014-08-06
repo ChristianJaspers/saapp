@@ -26,19 +26,10 @@
 .icon-time:before,
 .icon-gain:before,
 .icon-set:before
-  display: inline-block
   font:
     family: 'saapp-icons'
     size: $icon-size
-    style: normal
-    variant: normal
-    weight: normal
-  line-height: 1
-  speak: none
-  text-transform: none
-
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+  @extend %font-icons
 
 .icon-progress:before,
 .icon-money:before,
@@ -80,3 +71,15 @@
 
 .icon-set:before
   content: '\e601'
+
+//----- cursors icons -----
+@font-face
+  font-family: 'cursors'
+  src: font-url('cursors.eot')
+  src: font-url('cursors.eot?#iefix') format('embedded-opentype'), font-url('cursors.woff') format('woff'), font-url('cursors.ttf') format('truetype'), font-url('cursors.svg#cursors') format('svg')
+
+.cursor-right:after, .cursor-left:after, .cursor-up:after, .cursor-down:after,
+  font:
+    family: 'cursors'
+    size: $icon-size
+  @extend %font-icons
