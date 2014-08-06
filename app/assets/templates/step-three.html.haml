@@ -1,15 +1,26 @@
-%div{'ng-controller' => 'invitationCtrl'}
+.category-window.col-md-7{'ng-controller' => 'invitationCtrl'}
   %h2= I18n.t('wizard.step_3.header')
-  %ul{'ng-repeat' => 'invitation in wizard.invitations'}
-    %li
-      {{$index + 1}} - {{invitation.email}} ({{invitation.displayName}})
-      %span.glyphicon.glyphicon-trash{'ng-click' => 'removeInvitation(invitation)'}
+
+  .representative-list
+    %h4.right= I18n.t('common.feature')
+    %h4.center= I18n.t('common.benefit')
+    .clearfix
+
+    .row{'ng-repeat' => 'invitation in wizard.invitations'}
+      .representative-item
+        %span {{$index + 1}}
+        %p {{invitation.email}}
+      .representative-name ({{invitation.displayName}})
+      .representative-delete
+        %span.glyphicon.glyphicon-trash{'ng-click' => 'removeInvitation(invitation)'}
+      .clearfix
+  .clearfix
+
+  %form.representative-form{name: 'newInvitationForm', 'ng-submit' =>'addInvitation(wizard)'}
+    %input{'ng-model' => 'invitation.email', required: true}
+    %input{'ng-model' => 'invitation.displayName'}
+    %span.wizard-add.four-corners
+      %input{type: 'submit'}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
     = I18n.t('wizard.step_3.next_step_button')
-
-  %form{name: 'newInvitationForm',
-  'ng-submit' =>'addInvitation(wizard)'}
-    %input{'ng-model' => 'invitation.email', required: true}
-    %input{'ng-model' => 'invitation.displayName'}
-    %input.glyphicon.glyphicon-plus{type: 'submit'}
