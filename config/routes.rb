@@ -1,25 +1,34 @@
 Rails.application.routes.draw do
-  as :user do
-    patch 'confirmation' => 'confirmations#update', as: :update_user_confirmation, controller: 'confirmations'
-  end
+  scope "(:locale)", locale: /da/, defaults: {locale: 'en'} do
+    as :user do
+      patch 'confirmation' => 'confirmations#update', as: :update_user_confirmation, controller: 'confirmations'
+    end
 
-  devise_for :users, {
-    path: '',
-    path_names: {
-      sign_in: 'login',
-      sign_out: 'logout',
-      sign_out_via: [:delete]
-    },
-    controllers: {
-      confirmations: 'confirmations'
+    devise_for :users, {
+      path: '',
+      path_names: {
+        sign_in: 'login',
+        sign_out: 'logout',
+        sign_out_via: [:delete]
+      },
+      controllers: {
+        confirmations: 'confirmations'
+      }
     }
-  }
 
-  ActiveAdmin.routes(self)
+    ActiveAdmin.routes(self)
 
-  root 'home#show'
+    root 'home#show'
 
-  resources :wizards, only: [:new, :create]
+    resources :wizards, only: [:new, :create]
+
+
+    namespace :manager do
+      root 'product_groups#index'
+      resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy]
+      resources :users, only: [:index, :create, :edit, :update, :destroy]
+    end
+  end
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
@@ -33,12 +42,6 @@ Rails.application.routes.draw do
         resource :ratings, only: [:create]
       end
     end
-  end
-
-  namespace :manager do
-    root 'product_groups#index'
-    resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :create, :edit, :update, :destroy]
   end
 
   comfy_route :cms_admin, path: '/admin/cms'
