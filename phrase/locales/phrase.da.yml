@@ -1,9 +1,191 @@
 ---
 da:
   application_name: BetterSalesman
+  common:
+    benefit: ''
+    save_changes: Gem ændringer
+    unauthorized: Du kan ikke komme ind på denne side. Venligst log ind med korrekt
+      brugernavn og adgangskode.
+  devise:
+    confirmations:
+      account_activation_title: Aktivering af konto
+      confirmed: Adgangskode succesfuldt oprettet!
+      send_instructions: Du vil om et øjeblik modtage en email med instruktion om,
+        hvordan du bekræfter din konto.
+      send_paranoid_instructions: Hvis din email adresse allerede findes i vores database
+        vil du om et øjeblik modtage en email med instruktioner om, hvordan du bekræfter
+        din konto.
+    failure:
+      already_authenticated: Du er allerede logget ind.
+      inactive: Din konto er ikke aktiveret endnu.
+      invalid: Ugyldig email eller adgangskode.
+      last_attempt: Du har endnu et forsøg, inden din konto bliver spærret.
+      locked: Din konto er spærret.
+      not_found_in_database: 'Ugyldig email eller adgangskode. '
+      timeout: Time out. Venligst log ind igen for at fortsætte.
+      unauthenticated: Du skal logge ind eller registrere dig for at kunne fortsætte.
+      unconfirmed: Du skal bekræfte din konto før du fortsætter.
+    links:
+      activate: Aktivér
+      change_my_password: Skift adgangskode
+      forgot_your_password: Glemt adgangskode
+      new_confirmation: Har du ikke modtaget bekræftelsesmail?
+      new_unlock: Har du ikke modtaget instruktion om, hvordan kontoen låses op?
+      resend_confirmation_instructions: Send instruktion om bekræftelse igen
+      send_me_reset_password_instructions: Send instruktion om, hvordan adgangskoden
+        nulstilles
+      sign_in: Log ind
+    mailer:
+      confirmation_instructions:
+        subject: Instruktion om bekræftelse
+      reset_password_instructions:
+        subject: Instruktion om at nulstille adgangskoden
+      unlock_instructions:
+        subject: Instruktion om at låse op
+    omniauth_callbacks:
+      failure: Kunne ikke godkende dig til %{kind} pga. "%{reason}".
+      success: Succesfuldt godkendt af %{kind} konto.
+    passwords:
+      change_your_password: Skift din adgangskode
+      choose_password: Vælg adgangskode
+      confirm_your_new_password: Bekræft din nye adgangskode
+      new_password: Ny adgangskode
+      no_token: Du kan ikke få adgang til denne side med mindre du kommer fra en email
+        med nulstil adgangskode. Hvis du kommer fra en sådan email, venligst tjek
+        at du har brugt hele den opgivne URL.
+      password_confirmation: Adgangskode bekræftelse
+      send_instructions: Du vil om et øjeblik modtage en email med instruktion om,
+        hvordan adgangskoden nulstilles.
+      send_paranoid_instructions: Hvis din email allerede findes i vores database,
+        vil du om et øjeblik modtage en mail med et genskabelses-link.
+      updated: Din adgangskode er ændret, og du er nu logget ind.
+      updated_not_active: Din adgangskode er blevet ændret.
+    registrations:
+      destroyed: Farvel. Din konto er blevet slettet. Vi håber at se dig snart igen.
+      signed_up: Velkommen! Du er nu registreret som bruger.
+      signed_up_but_inactive: Du er nu registreret som bruger. Men vi kunne ikke logge
+        dig ind fordi din konto endnu ikke er blevet aktiveret.
+      signed_up_but_locked: Du er nu registreret som bruger. Men vi kunne ikke logge
+        dig ind fordi din konto er låst.
+      signed_up_but_unconfirmed: En besked med et link er blevet sendt til din email.
+        Venligst klik på dette link for at aktivere din konto.
+      update_needs_confirmation: Du har nu opdateret din konto, men vi har brug for
+        at verificere din nye email adresse. Venligst tjek din email og klik på linket
+        for at færdiggøre bekræftelsen af din nye email adresse.
+      updated: Du har nu opdateret din konto.
+    sessions:
+      signed_in: Logget ind.
+      signed_out: Logget ind.
+    unlocks:
+      send_instructions: Du vil om et øjeblik modtage en email med instruktion om,
+        hvordan din konto låses op.
+      send_paranoid_instructions: Hvis din konto eksisterer, vil du om et øjeblik
+        modtage en email med instruktion om, hvordan den låses op.
+      unlocked: Din konto er nu låst op. Venligst log ind for at fortsætte.
+  errors:
+    messages:
+      already_confirmed: er allerede bekræftet, venligst prøv at logge ind
+      confirmation_period_expired: skal bekræftes inden for %{period}, venligst anmod
+        om en ny
+      expired: er udløbet, venligst anmod om en ny
+      not_found: ikke fundet
+      not_locked: blev ikke låst
+  helpers:
+    submit:
+      user:
+        create: Tilføj sælger
+      wizard:
+        create: Prøv 30 dage gratis!
+  manager:
+    categories:
+      destroy:
+        notifications:
+          success: Produkt gruppe er blevet fjernet
+      index:
+        table:
+          actions:
+            archive_link: Træk tilbage
+            destroy_link: Fjern
+            unarchive_link: Publicer
+          headers:
+            actions: Handlinger
+            category_name: Produkt gruppe navn
+            features_count: Features antal
+      update:
+        notifications:
+          failure: "Ændringerne kunne ikke gemmes"
+          success: "Ændringerne er gemt"
+    product_groups:
+      destroy:
+        notifications:
+          success: Produkt gruppen fjernet
+      index:
+        table:
+          actions:
+            archive_link: Træk tilbage
+            destroy_link: Fjern
+            edit_link: Ret
+            unarchive_link: Publicer
+          headers:
+            actions: Handlinger
+            features_count: Features antal
+            product_group_name: Produkt gruppe navn
+      update:
+        notifications:
+          failure: "Ændringer kunne ikke gemmes"
+          success: "Ændringer gemt"
+    tabs:
+      product_groups: Produkt grupper
+      users: Brugere
+    users:
+      create:
+        notifications:
+          success: Sælger oprettet
+      destroy:
+        notifications:
+          success: Sælger fjernet
+      index:
+        table:
+          actions:
+            destroy_confirmation: Er du sikker?
+            destroy_link: Fjern
+          headers:
+            actions: Ret
+            display_name: Vis navn
+            email: Email
+            role: Rolle
+      update:
+        notifications:
+          success: Sælger opdateret
+  navbar:
+    admin_link: Admin
+    login_link: Log ind
+    logout_link: Log ud
+    my_account_link: Min konto
+  simple_form:
+    placeholders:
+      wizard:
+        email: Din firma email
   wizard:
+    create:
+      notifications:
+        success: Invitationer er sendt!
     step_1:
       at_categories_limit_notification: Du kan maksimalt oprette %{maximum_amount}
-        kategorier i denne konfigurator.
+        produkt grupper.
       at_product_groups_limit_notification: Du kan maksimalt oprette %{maximum_amount}
-        produkt grupper i denne konfigurator.
+        produkt grupper.
+      header: Skriv produkt grupper
+      next_step_button: NÆSTE
+    step_2:
+      header: Skriv de første argumenter
+      next_step_button: NÆSTE
+    step_3:
+      header: Inviter dine sælgere
+      next_step_button: NÆSTE
+    step_4:
+      categories_and_arguments_header: Produkt grupper og argumenter
+      header: Gennemse og bekræft
+      invitations_header: Sælgere
+      product_groups_and_arguments_header: Produkt grupper og argumenter
+      submit_button: SEND INVITATIONER

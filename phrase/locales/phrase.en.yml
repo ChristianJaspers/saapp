@@ -104,12 +104,12 @@ en:
       user:
         create: Add sales representative
       wizard:
-        create: Try for free!
+        create: Try 30 days for free!
   manager:
     categories:
       destroy:
         notifications:
-          success: Category removed successfully
+          success: Product group removed successfully
       index:
         table:
           actions:
@@ -118,7 +118,7 @@ en:
             unarchive_link: Publish
           headers:
             actions: Actions
-            category_name: Category name
+            category_name: Product group name
             features_count: Features count
       update:
         notifications:
@@ -182,11 +182,11 @@ en:
       notifications:
         success: Invitations were sent successfuly!
     step_1:
-      at_categories_limit_notification: You can create only %{maximum_amount} categories
-        through this wizard
-      at_product_groups_limit_notification: You can create only %{maximum_amount}
-        product_groups through this wizard
-      header: Enter product categories
+      at_categories_limit_notification: You can create maximum %{maximum_amount} products
+        groups.
+      at_product_groups_limit_notification: 'You can create maximum %{maximum_amount}
+        product_groups '
+      header: Enter product groups
       next_step_button: NEXT STEP
     step_2:
       header: Enter first arguments
@@ -195,7 +195,7 @@ en:
       header: Invite your sales representatives
       next_step_button: NEXT STEP
     step_4:
-      categories_and_arguments_header: Categories and arguments
+      categories_and_arguments_header: Product groups and arguments
       header: Review and accept
       invitations_header: Sales representatives
       product_groups_and_arguments_header: Product groups and arguments
