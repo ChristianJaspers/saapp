@@ -9,13 +9,13 @@
   %form{name: 'newProductGroupForm',
   'ng-submit' =>'addProductGroup(wizard)',
   'ng-hide' => 'atProductGroupsLimit()'}
-    %input.wizard-input{'ng-model' => 'productGroup.name', required: true}
+    %input.wizard-input{'ng-model' => 'productGroup.name', required: true, tabindex: 1}
     %span.wizard-add
       %input{type: 'submit', value: ' '}
   %span{'ng-show' => 'atProductGroupsLimit()'}
     = I18n.t('wizard.step_1.at_product_groups_limit_notification', maximum_amount: 20)
 
-  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!firstStepValid()', 'ng-click' => 'steps[1].active = true'}
+  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!firstStepValid()', 'ng-click' => 'steps[1].active = true', tabindex: 2}
     = I18n.t('wizard.step_1.next_step_button')
 
 %product-groups-preview
