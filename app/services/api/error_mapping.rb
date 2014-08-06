@@ -24,6 +24,21 @@ class Api::ErrorMapping
       http_code: 422,
       internal_code: 1108,
       message: 'Invalid password'
+    },
+    missing_product_group: {
+      http_code: 422,
+      internal_code: 1109,
+      message: 'Missing product group'
+    },
+    missing_feature_or_benefit: {
+      http_code: 422,
+      internal_code: 1110,
+      message: 'Missing feature or benefit'
+    },
+    argument_not_found: {
+      http_code: 404,
+      internal_code: 1111,
+      message: 'Argument not found'
     }
   }
 

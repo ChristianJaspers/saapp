@@ -17,7 +17,7 @@ describe Api::V1::ResourcesController do
     before { api_authorize_with(api_token.access_token) }
 
     it 'returns all resources' do
-      get :index
+      get :index, {format: :json}
       expect(response.body).to be_json_eql <<-EOS
         {
           "users": [

@@ -1,4 +1,7 @@
 class Api::RateArgument < BusinessProcess::Base
+  extend BusinessProcess::Transactional
+  transaction_for ArgumentRating
+
   needs :params
   needs :current_user
 

@@ -43,7 +43,7 @@ describe Api::V1::RatingsController do
   let(:expected_timestamp) { '2014-07-30T12:00:00Z' }
 
   describe '#create' do
-    let(:call_request) { post :create, params.merge(argument_id: argument.id) }
+    let(:call_request) { post :create, params.merge(argument_id: argument.id), {format: :json} }
 
     context 'valid api token' do
       before do
