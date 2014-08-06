@@ -37,7 +37,7 @@
         opacity: 0
         width: $inputs-size
 
-    &.arguments-form
+    &.arguments-form, &.representative-form
       select
         margin-left: 15%
         margin-right: $m-quarter
@@ -122,7 +122,7 @@
     top: 0
     width: $mockup-width
 
-.argument-list
+.argument-list, .representative-list
   margin-top: $interval-small * 2.5
   h4
     display: inline-block
@@ -133,7 +133,7 @@
     @extend %box-reset
     margin-bottom: $m-half
 
-  .argument-item, .feature, .benefit
+  .argument-item, .feature, .benefit, .representative-item, .representative-name
     @include box-shadow-border($color-gray-dark, $default-border-radius, $color-gray)
     color: $color-gray-dark
     float: left
@@ -142,7 +142,7 @@
     line-height: $inputs-size
     padding: 0 $m-half
 
-  .argument-delete
+  .argument-delete, .representative-delete
     float: left
     height: $inputs-size
     line-height: $inputs-size
@@ -150,7 +150,7 @@
   .argument-item, .argument-delete
     margin-right: $m-quarter
     width: calc(15% - (#{$m-quarter}))
-  .argument-item
+  .argument-item, .representative-item
     position: relative
     span
       color: $color-gray-light
@@ -212,3 +212,17 @@
       color: $color-gray
       display: block
       font-weight: bold
+
+.representative-list
+  .row
+    padding-left: $interval-default
+    .representative-item, .representative-name
+      margin-right: $m-quarter
+      width: calc(50% - (6px) - (#{$inputs-size}) / 2)
+    .representative-delete
+      text-align: center
+      width: $inputs-size
+  .representative-form
+    margin-left: $interval-default
+
+
