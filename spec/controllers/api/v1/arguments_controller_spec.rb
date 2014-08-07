@@ -221,7 +221,7 @@ describe Api::V1::ArgumentsController do
       end
 
       context 'missing argument' do
-        let(:id) { argument.id + 1}
+        let(:id) { argument.id + 1 }
         let(:params) { {} }
         before { call_request }
 
