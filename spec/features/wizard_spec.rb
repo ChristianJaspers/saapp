@@ -31,12 +31,12 @@ feature 'Wizard' do
     # Add feature / benefit
     find('button', text: I18n.t('wizard.step_1.next_step_button')).click
     expect(page).to have_content I18n.t('wizard.step_2.header')
-    expect(page).to_not have_selector('table tbody tr')
+    expect(page).to_not have_selector('.argument-list .feature')
     find("select[ng-model='argument.productGroup']").select('iPad')
     find("input[ng-model='argument.feature']").set(feature_name)
     find("input[ng-model='argument.benefit']").set(benefit_description)
     find("input[type='submit']").click
-    expect(page).to have_selector('table tbody tr')
+    expect(page).to have_selector('.argument-list .feature')
 
     # Add invitee
     find('button', text: I18n.t('wizard.step_2.next_step_button')).click
