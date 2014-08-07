@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
 
     namespace :manager do
-      root 'product_groups#index'
+      root 'profiles#edit'
+      resource :profile, only: [:edit, :update]
       resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy]
       resources :users, only: [:index, :create, :edit, :update, :destroy]
     end
