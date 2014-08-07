@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     pages = if site
       home_page = site.pages.find_by(slug: 'index')
       if home_page
-        home_page.children.published
+        home_page.children.published.includes(:site)
       else
         []
       end

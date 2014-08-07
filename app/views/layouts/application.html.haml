@@ -25,7 +25,7 @@
         %ul.nav.navbar-nav
           - static_pages.each do |page|
             %li
-              = link_to page.label, page.full_path
+              = link_to page.label, localized_cms_page_path(page)
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in? && !current_user.admin?
             %li
