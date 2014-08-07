@@ -15,10 +15,20 @@ class Api::ErrorMapping
       internal_code: 1002,
       message: 'Account not exist'
     },
-    invalid_file_upload: {
+    invalid_file_type: {
       http_code: 422,
-      internal_code: 1020,
-      message: 'Can\'t upload'
+      internal_code: 1105,
+      message: 'Invalid file type'
+    },
+    invalid_file_parameter: {
+      http_code: 422,
+      internal_code: 1106,
+      message: 'Invalid file parameter'
+    },
+    file_is_too_big: {
+      http_code: 422,
+      internal_code: 1107,
+      message: 'File is too big'
     },
     invalid_password: {
       http_code: 422,

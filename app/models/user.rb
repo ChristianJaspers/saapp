@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: {thumb: '200x200>'}, default_url: ''
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_attachment_size :avatar, less_than: 8.megabytes
 
   def self.authenticate(email, password)
     user = find_for_authentication(email: email)
