@@ -1,0 +1,4 @@
+= simple_form_for current_user, url: manager_profile_path, method: :patch do |f|
+  = f.input :display_name
+  = f.input :address, as: :text
+  = f.button :submit, t('common.save_changes'), class: 'btn-primary'
