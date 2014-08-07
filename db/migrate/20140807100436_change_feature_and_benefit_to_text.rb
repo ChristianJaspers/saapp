@@ -5,6 +5,6 @@ class ChangeFeatureAndBenefitToText < ActiveRecord::Migration
   end
 
   def down
-    raise IrreversibleMigration
+    raise ActiveRecord::IrreversibleMigration
   end
 end
