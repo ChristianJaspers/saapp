@@ -10,7 +10,7 @@ private
   end
 
   def render_fail_json(error_key)
-    mapping = Api::ErrorMapping.new(error_key)
+    mapping = Api::ErrorMapping.new(error_key, current_user, params)
     render_json(mapping.to_hash, mapping.http_code)
   end
 end
