@@ -6,57 +6,96 @@ describe Api::V1::AvatarsController do
 
   describe '#update' do
     let(:perform) { put :update, file: subject }
-    subject { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/files/avatar.png'), 'image/png') }
+    subject { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/files/#{file}"), mime) }
 
     context 'valid access token provided' do
+      let(:file) { 'avatar.png' }
+      let(:mime) { 'image/png' }
+
       before { api_authorize_with(api_token.access_token) }
-      before { perform }
 
-      it 'uploads file' do
-        expect(response).to be_successful
-        expect(response.body).to be_json_eql <<-EOS
-          {
-            "user": {
-              "id": #{user.id},
-              "email": "a@a.com",
-              "display_name": "Batman",
-              "avatar_url": "/test/system/users/avatars/#{user.id}/original/avatar.png",
-              "avatar_thumb_url": "/test/system/users/avatars/#{user.id}/thumb/avatar.png",
-              "experience": 0,
-              "my_activity": 0,
-              "my_team_activity": 0,
-              "all_teams_activity": 0
-            }
-          }
-        EOS
-      end
+      context 'valid file provided' do
+        before { perform }
 
-      context 'invalid mime type' do
-        pending
-      end
-
-      context 'no param provided' do
-        subject { nil }
-
-        it 'upload fails' do
-          expect(response.status).to eq 422
+        it 'uploads file' do
+          expect(response).to be_successful
           expect(response.body).to be_json_eql <<-EOS
             {
-              "error": {
-                "code": 1020,
-                "message": "Can't upload"
+              "user": {
+                "id": #{user.id},
+                "email": "a@a.com",
+                "display_name": "Batman",
+                "avatar_url": "/test/system/users/avatars/#{user.id}/original/avatar.png",
+                "avatar_thumb_url": "/test/system/users/avatars/#{user.id}/thumb/avatar.png",
+                "experience": 0,
+                "my_activity": 0,
+                "my_team_activity": 0,
+                "all_teams_activity": 0
               }
             }
           EOS
         end
       end
 
-      context 'to big file' do
-        pending
+      context 'invalid mime type' do
+        let(:file) { 'text.txt' }
+        let(:mime) { 'text/plain' }
+        before { perform }
+
+        it 'upload is rejected' do
+          expect(response.status).to eq 422
+          expect(response.body).to be_json_eql <<-EOS
+            {
+              "error": {
+                "code": 1105,
+                "message": "Invalid file type"
+              }
+            }
+          EOS
+        end
+      end
+
+      context 'no param provided' do
+        subject { nil }
+        before { perform }
+
+        it 'upload fails' do
+          expect(response.status).to eq 422
+          expect(response.body).to be_json_eql <<-EOS
+            {
+              "error": {
+                "code": 1106,
+                "message": "Invalid file parameter"
+              }
+            }
+          EOS
+        end
+      end
+
+      context 'file is too big' do
+        before do
+          allow_any_instance_of(User).to receive(:avatar_file_size).and_return(50.megabytes)
+          perform
+        end
+
+        it do
+          expect(response.status).to eq 422
+          expect(response.body).to be_json_eql <<-EOS
+            {
+              "error": {
+                "code": 1107,
+                "message": "File is too big"
+              }
+            }
+          EOS
+        end
       end
     end
 
     context 'no access' do
+      let(:file) { 'avatar.png' }
+      let(:mime) { 'image/png' }
+
       it 'renders unauthorized' do
         perform
         expect(response.status).to eq 403
