@@ -39,6 +39,11 @@ class Api::ErrorMapping
       http_code: 404,
       internal_code: 1111,
       message: 'Argument not found'
+    },
+    argument_already_rated: {
+      http_code: 422,
+      internal_code: 1112,
+      message: 'Argument already rated'
     }
   }
 

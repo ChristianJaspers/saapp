@@ -3,7 +3,7 @@ class Api::V1::RatingsController < Api::RestrictedApplicationController
     if (rate = Api::RateArgument.call(self)).success?
       render_json(rate.result, 201, serializer: Api::ArgumentRatingSerializer)
     else
-      render_fail_json(:forbidden)
+      render_fail_json(rate.result)
     end
   end
 end

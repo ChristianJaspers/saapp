@@ -43,66 +43,114 @@ describe Api::V1::RatingsController do
   let(:expected_timestamp) { '2014-07-30T12:00:00Z' }
 
   describe '#create' do
-    let(:call_request) { post :create, params.merge(argument_id: argument.id), {format: :json} }
+    let(:call_request) { post :create, params.merge(argument_id: id), {format: :json} }
 
     context 'valid api token' do
-      before do
-        api_authorize_with(api_token.access_token)
-        call_request
+      before { api_authorize_with(api_token.access_token) }
+
+      context 'existing argument' do
+        let(:id) { argument.id }
+
+        before { call_request }
+
+        context 'user rates 1' do
+          let(:params) { {rating: 1} }
+          let(:expected_values) do
+            {
+              experience: 2,
+              my_activity: 50,
+              my_team_activity: 100,
+              all_teams_activity: 100,
+              rating: 1,
+              my_rating: 1
+            }
+          end
+
+          it_behaves_like 'rated argument by user'
+        end
+
+        context 'user rates 2' do
+          let(:params) { {rating: 2} }
+          let(:expected_values) do
+            {
+              experience: 2,
+              my_activity: 50,
+              my_team_activity: 150,
+              all_teams_activity: 150,
+              rating: 2,
+              my_rating: 2
+            }
+          end
+
+          it_behaves_like 'rated argument by user'
+        end
+
+        context 'user rates 3' do
+          let(:params) { {rating: 3} }
+          let(:expected_values) do
+            {
+              experience: 2,
+              my_activity: 33,
+              my_team_activity: 133,
+              all_teams_activity: 200,
+              rating: 3,
+              my_rating: 3
+            }
+          end
+
+          it_behaves_like 'rated argument by user'
+        end
       end
 
-      context 'user rates 1' do
+      context 'non existing argument' do
+        let(:id) { argument.id + 1 }
         let(:params) { {rating: 1} }
-        let(:expected_values) do
-          {
-            experience: 2,
-            my_activity: 50,
-            my_team_activity: 100,
-            all_teams_activity: 100,
-            rating: 1,
-            my_rating: 1
-          }
-        end
 
-        it_behaves_like 'rated argument by user'
+        before { call_request }
+
+        it { expect(response.status).to eq 404 }
+
+        it do
+          expect(response.body).to be_json_eql <<-EOS
+            {
+              "error": {
+                "code": 1111,
+                "message": "Argument not found"
+              }
+            }
+          EOS
+        end
       end
 
-      context 'user rates 2' do
-        let(:params) { {rating: 2} }
-        let(:expected_values) do
-          {
-            experience: 2,
-            my_activity: 50,
-            my_team_activity: 150,
-            all_teams_activity: 150,
-            rating: 2,
-            my_rating: 2
-          }
+      context 'argument already rated' do
+        let(:id) { argument.id }
+        let(:params) { {rating: 1} }
+
+        before do
+          create(:argument_rating, argument: argument, rater: current_user)
+          call_request
         end
 
-        it_behaves_like 'rated argument by user'
-      end
+        it { expect(response.status).to eq 422 }
 
-      context 'user rates 3' do
-        let(:params) { {rating: 3} }
-        let(:expected_values) do
-          {
-            experience: 2,
-            my_activity: 33,
-            my_team_activity: 133,
-            all_teams_activity: 200,
-            rating: 3,
-            my_rating: 3
-          }
+        it do
+          expect(response.body).to be_json_eql <<-EOS
+            {
+              "error": {
+                "code": 1112,
+                "message": "Argument already rated"
+              }
+            }
+          EOS
         end
-
-        it_behaves_like 'rated argument by user'
       end
     end
 
     context 'invalid api token' do
-      before { call_request }
       let(:params) { {} }
+      let(:id) { argument.id }
+
+      before { call_request }
 
       it { expect(response.status).to eq 403 }
 
