@@ -39,6 +39,17 @@
           - if user_signed_in?
             %li
               = link_to t('navbar.logout_link'), destroy_user_session_path, method: 'delete'
+          %li
+            .btn-group
+              %button.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+                = image_tag locale_flag_filename(I18n.locale)
+              %ul.dropdown-menu{role: 'menu'}
+                - I18n.available_locales.each do |locale|
+                  %li
+                    = link_to localized_current_path(locale) do
+                      = image_tag locale_flag_filename(locale)
+                      = locale.to_s.upcase
+
     .container
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{name == :error ? 'danger' : 'success' } alert-dismissable" do
