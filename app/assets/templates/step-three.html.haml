@@ -2,14 +2,14 @@
   %h2= I18n.t('wizard.step_3.header')
 
   .representative-list
-    %h4.right= I18n.t('common.invitation.name')
-    %h4.center= I18n.t('common.invitation.email')
+    %h4.right= I18n.t('common.invitation.email')
+    %h4.center= I18n.t('common.invitation.name')
     .clearfix
     .row{'ng-repeat' => 'invitation in wizard.invitations'}
       .representative-item
         %span {{$index + 1}}
         %p {{invitation.email}}
-      .representative-name ({{invitation.displayName}})
+      .representative-name {{invitation.displayName}}
       .representative-delete
         %span.glyphicon.glyphicon-trash{'ng-click' => 'removeInvitation(invitation)'}
       .clearfix
