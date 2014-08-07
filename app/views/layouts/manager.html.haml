@@ -1,5 +1,7 @@
 = content_for :top do
   %ul.nav.nav-tabs
+    %li{class: ('active' if controller_name == 'profiles')}
+      = link_to t('manager.tabs.my_profile'), edit_manager_profile_path
     %li{class: ('active' if controller_name == 'product_groups')}
       = link_to t('manager.tabs.product_groups'), manager_product_groups_path
     %li{class: ('active' if controller_name == 'users')}

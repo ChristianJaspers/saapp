@@ -29,6 +29,10 @@
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in? && !current_user.admin?
             %li
+              = t('navbar.logged_as')
+              %br
+              = current_user.email
+            %li
               = link_to t('navbar.my_account_link'), manager_root_path
           %li
             - if user_signed_in?
