@@ -215,14 +215,58 @@
 
 .representative-list
   .row
-    padding-left: $interval-default
+    @extend %left-default
     .representative-item, .representative-name
       margin-right: $m-quarter
       width: calc(50% - (6px) - (#{$inputs-size}) / 2)
     .representative-delete
       text-align: center
       width: $inputs-size
-  .representative-form
-    margin-left: $interval-default
+  h4.right
+    margin-left: $inputs-size
+    text-align: center
+    width: calc(50% - (#{$inputs-size}))
+  h4.center
+    margin-right: $inputs-size
+    width: calc(50% - (#{$inputs-size}))
 
+.representative-form
+  margin-left: $interval-default
+  input
+    margin-right: $m-quarter
+    width: calc(50% - (6px) - (#{$inputs-size}) / 2)
 
+ul.representative-preview.ng-scope
+  margin-top: -($m-third)
+  &:nth-child(odd) li
+    background-color: $color-white
+  &:nth-child(even) li
+    background-color: $color-mobile-gray
+
+ul.representative-preview li
+  color: $color-gray-dark
+  span
+    color: $color-gray
+    display: block
+    font-weight: bold
+
+.summary
+  font-family: $font-family-second
+  margin-bottom: $interval-default
+  h3
+    color: $color-gray
+    font-size: $font-size-large
+    margin: $interval-default / 2 0
+  ul.ng-scope
+    margin: 0
+    padding: 0
+    li
+      font-size: $font-size-medium
+      font-weight: $font-weight-light
+      span
+        color: $color-green
+        left: 0
+        position: inherit
+
+  .review
+    font-size: $font-size-medium

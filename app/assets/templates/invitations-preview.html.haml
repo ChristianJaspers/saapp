@@ -4,6 +4,8 @@
       = I18n.t('common.invitation.many')
     .box
       .preview-list
-        %ul{'ng-repeat' => 'invitation in wizard.invitations'}
-          %li {{invitation.displayName}}
+        %ul.representative-preview{'ng-repeat' => 'invitation in wizard.invitations'}
+          %li
+            %span {{invitation.displayName}}
+            {{invitation.email}}
     .preview-overlay

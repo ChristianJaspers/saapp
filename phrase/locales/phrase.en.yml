@@ -7,7 +7,9 @@ en:
       many: Categories
     feature: Feature
     invitation:
-      many: Invitations
+      many: INVITATIONS
+      name: Name
+      email: Email
     product_group:
       many: Product groups
     save_changes: Save changes
@@ -202,3 +204,4 @@ en:
       invitations_header: Sales representatives
       product_groups_and_arguments_header: Product groups and arguments
       submit_button: SEND INVITATIONS
+      benefit: benefits with

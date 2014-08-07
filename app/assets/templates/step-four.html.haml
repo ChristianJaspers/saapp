@@ -1,15 +1,23 @@
-%div
+.category-window.col-md-7.summary
   %h2= I18n.t('wizard.step_4.header')
 
-  %h3= I18n.t('wizard.step_4.categories_and_arguments_header')
-  %div{'ng-repeat' => 'productGroup in wizard.productGroups'}
-    %strong {{productGroup.name}}
-    %ul{'ng-repeat' => 'argument in productGroup.arguments'}
-      %li {{argument.feature}} - {{argument.benefit}}
+  .left-default
 
-  %h3= I18n.t('wizard.step_4.invitations_header')
-  %ul{'ng-repeat' => 'invitation in wizard.invitations'}
-    %li {{invitation.email}} {{invitation.displayName}}
+    %h3= I18n.t('wizard.step_4.categories_and_arguments_header')
+    .review{'ng-repeat' => 'productGroup in wizard.productGroups'}
+      %strong {{productGroup.name}}
+      %ul.inline{'ng-repeat' => 'argument in productGroup.arguments'}
+        %li.inline
+          {{argument.feature}}
+          %span= I18n.t('wizard.step_4.benefit')
+          {{argument.benefit}}
 
-  %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitWizard()'}
-    = I18n.t('wizard.step_4.submit_button')
+    %h3= I18n.t('wizard.step_4.invitations_header')
+    %ul{'ng-repeat' => 'invitation in wizard.invitations'}
+      %li.block
+        %strong {{invitation.email}}
+        {{invitation.displayName}}
+
+    .clearfix
+    %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitWizard()'}
+      = I18n.t('wizard.step_4.submit_button')
