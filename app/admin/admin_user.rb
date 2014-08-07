@@ -10,6 +10,7 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+    column :remove_at
     actions
   end
 
@@ -25,5 +26,11 @@ ActiveAdmin.register User do
       f.input :password_confirmation
     end
     f.actions
+  end
+
+  controller do
+    def scoped_collection
+      User.unscoped
+    end
   end
 end
