@@ -2,13 +2,13 @@
   %h2= t('landing.header')
 
   %ul.landing-list
-    %li.icon-progress Sell more
-    %li.icon-money Save money
-    %li.icon-time Save time
-    %li.icon-gain Gain confidence
-    %li.icon-set Easy use  5 min setup
+    %li.icon-progress= t('landing.selling_points.sell_more')
+    %li.icon-money= t('landing.selling_points.save_money')
+    %li.icon-time= t('landing.selling_points.save_time')
+    %li.icon-gain= t('landing.selling_points.gain_confidence')
+    %li.icon-set= t('landing.selling_points.easy_setup')
 
-  %h3= ('landing.free_30')
+  %h3= t('landing.free_30')
   .landing-form
     - if guest?
       = simple_form_for wizard, method: :get, url: new_wizard_path  do |f|

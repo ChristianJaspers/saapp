@@ -7,9 +7,7 @@ en:
       many: Categories
     feature: Feature
     invitation:
-      many: INVITATIONS
-      name: Name
-      email: Email
+      many: Invitations
     product_group:
       many: Product groups
     save_changes: Save changes
@@ -109,6 +107,16 @@ en:
         create: Add sales representative
       wizard:
         create: Try 30 days for free!
+  landing:
+    free_30: 30 day free trial
+    header: The app that helps you sell more, sell faster, and sell better
+    selling_points:
+      easy_setup: Easy use 5 min setup
+      gain_confidence: Gain confidence
+      save_money: Save money
+      save_time: Save time
+      sell_more: Sell more
+    testimonials_header: Testimonials
   manager:
     categories:
       destroy:
@@ -204,4 +212,3 @@ en:
       invitations_header: Sales representatives
       product_groups_and_arguments_header: Product groups and arguments
       submit_button: SEND INVITATIONS
-      benefit: benefits with
