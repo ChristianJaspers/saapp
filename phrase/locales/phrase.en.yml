@@ -39,7 +39,7 @@ en:
       new_unlock: Didn't receive unlock instructions?
       resend_confirmation_instructions: Resend confirmation instructions
       send_me_reset_password_instructions: Send me reset password instructions
-      sign_in: Sign In
+      sign_in: SIGN IN
     mailer:
       confirmation_instructions:
         subject: Confirmation instructions
