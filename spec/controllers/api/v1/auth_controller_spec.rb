@@ -14,7 +14,7 @@ shared_examples 'user that is not allowed to use API' do
       {
         "error": {
           "code": 1103,
-          "message": "Wrong credentials"
+          "message": "#{ I18n.t('api.errors.invalid_credentials') }"
         }
       }
     EOS
@@ -73,7 +73,7 @@ describe Api::V1::AuthController do
             {
               "error": {
                 "code": 1103,
-                "message": "Wrong credentials"
+                "message": "#{ I18n.t('api.errors.invalid_credentials') }"
               }
             }
           EOS

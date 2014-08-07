@@ -73,7 +73,7 @@ describe Api::V1::ArgumentsController do
             {
               "error": {
                 "code": 1109,
-                "message": "Missing product group"
+                "message": "#{ I18n.t('api.errors.missing_product_group') }"
               }
             }
           EOS
@@ -95,7 +95,7 @@ describe Api::V1::ArgumentsController do
             {
               "error": {
                 "code": 1110,
-                "message": "Missing feature or benefit"
+                "message": "#{ I18n.t('api.errors.missing_feature_or_benefit') }"
               }
             }
           EOS
@@ -117,7 +117,7 @@ describe Api::V1::ArgumentsController do
             {
               "error": {
                 "code": 1110,
-                "message": "Missing feature or benefit"
+                "message": "#{ I18n.t('api.errors.missing_feature_or_benefit') }"
               }
             }
           EOS
@@ -136,7 +136,7 @@ describe Api::V1::ArgumentsController do
           {
             "error": {
               "code": 1010,
-              "message": "You don't have access"
+              "message": "#{ I18n.t('api.errors.no_access') }"
             }
           }
         EOS
@@ -232,7 +232,7 @@ describe Api::V1::ArgumentsController do
             {
               "error": {
                 "code": 1111,
-                "message": "Argument not found"
+                "message": "#{ I18n.t('api.errors.argument_not_found') }"
               }
             }
           EOS
@@ -255,7 +255,7 @@ describe Api::V1::ArgumentsController do
             {
               "error": {
                 "code": 1109,
-                "message": "Missing product group"
+                "message": "#{ I18n.t('api.errors.missing_product_group') }"
               }
             }
           EOS
@@ -284,7 +284,7 @@ describe Api::V1::ArgumentsController do
           {
             "error": {
               "code": 1010,
-              "message": "You don't have access"
+              "message": "#{ I18n.t('api.errors.no_access') }"
             }
           }
         EOS
@@ -304,7 +304,7 @@ describe Api::V1::ArgumentsController do
           {
             "error": {
               "code": 1010,
-              "message": "You don't have access"
+              "message": "#{ I18n.t('api.errors.no_access') }"
             }
           }
         EOS
