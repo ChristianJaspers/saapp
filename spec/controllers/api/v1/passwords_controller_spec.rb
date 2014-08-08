@@ -8,7 +8,7 @@ shared_examples 'an invalid password update' do
       {
         "error": {
           "code": 1108,
-          "message": "Invalid password"
+          "message": "#{ I18n.t('api.errors.invalid_password') }"
         }
       }
     EOS
@@ -49,7 +49,7 @@ describe Api::V1::PasswordsController do
           {
             "error": {
               "code": 1002,
-              "message": "Account not exist"
+              "message": "#{ I18n.t('api.errors.account_not_exist') }"
             }
           }
         EOS
@@ -125,7 +125,7 @@ describe Api::V1::PasswordsController do
           {
             "error": {
               "code": 1010,
-              "message": "You don't have access"
+              "message": "#{ I18n.t('api.errors.no_access') }"
             }
           }
         EOS

@@ -48,7 +48,7 @@ describe Api::V1::AvatarsController do
             {
               "error": {
                 "code": 1105,
-                "message": "Invalid file type"
+                "message": "#{ I18n.t('api.errors.invalid_file_type') }"
               }
             }
           EOS
@@ -65,7 +65,7 @@ describe Api::V1::AvatarsController do
             {
               "error": {
                 "code": 1106,
-                "message": "Invalid file parameter"
+                "message": "#{ I18n.t('api.errors.invalid_file_parameter') }"
               }
             }
           EOS
@@ -84,7 +84,7 @@ describe Api::V1::AvatarsController do
             {
               "error": {
                 "code": 1107,
-                "message": "File is too big"
+                "message": "#{ I18n.t('api.errors.file_is_too_big') }"
               }
             }
           EOS
@@ -103,7 +103,7 @@ describe Api::V1::AvatarsController do
           {
             "error": {
               "code": 1010,
-              "message": "You don't have access"
+              "message": "#{ I18n.t('api.errors.no_access') }"
             }
           }
         EOS

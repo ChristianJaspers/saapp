@@ -115,7 +115,7 @@ describe Api::V1::RatingsController do
             {
               "error": {
                 "code": 1111,
-                "message": "Argument not found"
+                "message": "#{ I18n.t('api.errors.argument_not_found') }"
               }
             }
           EOS
@@ -138,7 +138,7 @@ describe Api::V1::RatingsController do
             {
               "error": {
                 "code": 1112,
-                "message": "Argument already rated"
+                "message": "#{ I18n.t('api.errors.argument_already_rated') }"
               }
             }
           EOS
@@ -159,7 +159,7 @@ describe Api::V1::RatingsController do
           {
             "error": {
               "code": 1010,
-              "message": "You don't have access"
+              "message": "#{ I18n.t('api.errors.no_access') }"
             }
           }
         EOS
