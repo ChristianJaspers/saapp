@@ -11,18 +11,6 @@ module ApplicationHelper
     "/#{cms_page.site.path}/#{cms_page.full_path}".squeeze("/")
   end
 
-  def localized_path(locale, path)
-    if locale == I18n.default_locale
-      path
-    else
-      "/#{locale}#{path}"
-    end
-  end
-
-  def localized_current_path(locale)
-    localized_path(locale, '/')
-  end
-
   def locale_flag_filename(locale)
     "locales/#{locale}.png"
   end

@@ -16,6 +16,8 @@ module Saapp
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
+    config.middleware.use HttpAcceptLanguage::Middleware
+
     config.generators do |g|
       g.test_framework :rspec,
                        view_specs: false,

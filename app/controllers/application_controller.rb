@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_current_locale
 
+  helper_method :localized_path, :localized_current_path
+
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
@@ -44,5 +46,17 @@ class ApplicationController < ActionController::Base
 
   def set_current_locale
     I18n.locale = params[:locale] if params[:locale]
+  end
+
+  def localized_path(locale, path)
+    if locale == I18n.default_locale
+      path
+    else
+      "/#{locale}#{path}"
+    end
+  end
+
+  def localized_current_path(locale)
+    localized_path(locale, '/')
   end
 end
