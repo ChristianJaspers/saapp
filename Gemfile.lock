@@ -214,6 +214,7 @@ GEM
       activesupport (>= 3.2, < 5)
     highline (1.6.21)
     hike (1.2.3)
+    http_accept_language (2.0.2)
     http_parser.rb (0.6.0)
     i18n (0.6.9)
     inherited_resources (1.4.1)
@@ -455,6 +456,7 @@ DEPENDENCIES
   guard-rails (~> 0.5.0)
   guard-rspec (~> 4.2.10)
   haml-rails (~> 0.5.3)
+  http_accept_language
   jquery-rails (~> 3.1.0)
   json_spec (~> 1.1.2)
   kaminari (~> 0.16.1)
