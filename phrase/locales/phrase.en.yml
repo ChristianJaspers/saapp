@@ -1,13 +1,30 @@
 ---
 en:
+  api:
+    errors:
+      account_not_exist: Account not exist
+      argument_already_rated: Argument is already rated
+      argument_not_found: Argument not found
+      file_is_too_big: File is too big
+      invalid_credentials: Invalid credentials
+      invalid_file_parameter: Invalid file parameter
+      invalid_file_type: Invalid file type
+      invalid_password: Invalid password
+      missing_feature_or_benefit: Feature or benefit is missing
+      missing_product_group: Product group is missing
+      no_access: You don't have access
   application_name: BetterSalesman
   common:
+    argument:
+      many: Arguments
     benefit: Benefit
     category:
       many: Categories
+    email: Email
     feature: Feature
     invitation:
       many: Invitations
+    name: Name
     product_group:
       many: Product groups
     save_changes: Save changes
@@ -39,7 +56,7 @@ en:
       new_unlock: Didn't receive unlock instructions?
       resend_confirmation_instructions: Resend confirmation instructions
       send_me_reset_password_instructions: Send me reset password instructions
-      sign_in: SIGN IN
+      sign_in: Sign In
     mailer:
       confirmation_instructions:
         subject: Confirmation instructions
@@ -207,6 +224,7 @@ en:
       header: Invite your sales representatives
       next_step_button: NEXT STEP
     step_4:
+      benefit: benefits with
       categories_and_arguments_header: Product groups and arguments
       header: Review and accept
       invitations_header: Sales representatives

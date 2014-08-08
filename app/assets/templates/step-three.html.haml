@@ -2,8 +2,8 @@
   %h2= I18n.t('wizard.step_3.header')
 
   .representative-list
-    %h4.right= I18n.t('common.invitation.email')
-    %h4.center= I18n.t('common.invitation.name')
+    %h4.right= I18n.t('common.email')
+    %h4.center= I18n.t('common.name')
     .clearfix
     .row{'ng-repeat' => 'invitation in wizard.invitations'}
       .representative-item
