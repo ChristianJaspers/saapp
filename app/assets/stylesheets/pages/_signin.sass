@@ -12,10 +12,40 @@
       label
         input
           height: inherit
-          left: 35%
-          opacity: .5
           position: absolute
+          left: 35%
           top: -($inputs-size)
+          opacity: .5
+
+        #user_remember_me + label
+          color: red
+          opacity: 1
 
         label
           margin-top: 0
+
+input[type=checkbox].saapp-checkbox
+  position: absolute
+  overflow: hidden
+  clip: rect(0 0 0 0)
+  height: 1px
+  width: 1px
+  margin: -1px
+  padding: 0
+  border: 0
+  + label.saapp-label
+    padding-left: 20px
+    height: 15px
+    display: inline-block
+    line-height: 15px
+    background-repeat: no-repeat
+    background-position: 0 0
+    font-size: 15px
+    vertical-align: middle
+    cursor: pointer
+  &:checked + label.saapp-label
+    background-position: 0 -15px
+
+.saapp-label
+  background-image: url(http://csscheckbox.com/checkboxes/dark-check-green.png)
+
