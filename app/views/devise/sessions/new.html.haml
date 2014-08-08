@@ -8,5 +8,5 @@
         = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
       .form-actions.center.clearfix
         = f.button :submit, t('devise.links.sign_in'), {class: "btn-primary"}
-    .center.top-small
+    .center.bottom-default
       = render 'devise/shared/links'
