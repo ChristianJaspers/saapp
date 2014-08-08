@@ -35,7 +35,7 @@ describe Api::V1::ProfilesController do
           {
             "error": {
               "code": 1010,
-              "message": "You don't have access"
+              "message": "#{ I18n.t('api.errors.no_access') }"
             }
           }
         EOS
