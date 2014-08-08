@@ -1,9 +1,13 @@
-%h2 Resend confirmation instructions
-= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = f.error_notification
-  = f.full_error :confirmation_token
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-  .form-actions
-    = f.button :submit, t('devise.links.resend_confirmation_instructions')
-= render 'devise/shared/links'
+.wizard-window.sign-in
+  %h2 Resend confirmation instructions
+  .col-md-6.col-md-offset-3
+    = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+      .form-warning.center
+        = f.error_notification
+        = f.full_error :confirmation_token
+      .form-inputs
+        = f.input :email, required: true, autofocus: true
+      .form-actions.center.clearfix
+        = f.button :submit, t('devise.links.resend_confirmation_instructions'), {class: "btn-primary"}
+    .center.bottom-default
+      = render 'devise/shared/links'

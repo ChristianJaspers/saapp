@@ -13,10 +13,10 @@
       label
         input
           height: inherit
-          position: absolute
           left: 35%
+          position: absolute
           top: -($inputs-size)
-          opacity: .5
+          width: auto
 
         #user_remember_me + label
           color: red
@@ -24,10 +24,21 @@
         label
           margin-top: 0
 
+  .form-warning
+    @include box-shadow-border($color-gray-lighten, $default-border-radius, $color-gray-light)
+    background-color: $color-gray-lighten
+    font-family: $font-family-second
+    padding: $m
+    .help-block
+      @extend %box-reset
+
   .form-inputs
     margin-bottom: -($interval-small)
+    input
+      width: 100%
 
   .form-actions
     margin-bottom: $interval-small
     .btn
+      @include box-shadow-border($color-green, $default-border-radius, darken($color-green, 10%))
       float: none
