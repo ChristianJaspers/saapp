@@ -8,11 +8,11 @@
           - if @requires_password
             %p
               = f.label :password, t('devise.passwords.choose_password')
-              = f.password_field :password
+              = f.password_field :password, autofocus: true
             %p
               = f.label :password_confirmation, t('devise.passwords.password_confirmation')
               = f.password_field :password_confirmation
           = hidden_field_tag :confirmation_token, @confirmation_token
           .clearfix
       .form-actions.center
-        = f.button :submit, t('devise.links.activate'),  {class: "btn-primary"}
+        = f.button :submit, t('devise.links.activate'), {class: "btn-primary"}
