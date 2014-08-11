@@ -64,7 +64,6 @@ feature 'Wizard' do
     # Choose password
     password = '1' * 8
     find("input[name='user[password]']").set(password)
-    find("input[name='user[password_confirmation]']").set(password)
     find("input[type='submit']").click
     expect(page).to have_content I18n.t('devise.confirmations.confirmed')
 
