@@ -1,8 +1,15 @@
-%span
-  = t('manager.profile.edit.sales_reps')
-  = sales_reps_count
+.my-account
+  .col-md-6.col-md-offset-1
+    %h4= t('manager.tabs.my_profile')
+    = simple_form_for current_user, url: manager_profile_path, method: :patch do |f|
+      = f.input :display_name
+      = f.input :address, as: :text
+      = f.button :submit, t('common.save_changes'), class: 'btn-primary f-right'
+      .clearfix.bottom-default
 
-= simple_form_for current_user, url: manager_profile_path, method: :patch do |f|
-  = f.input :display_name
-  = f.input :address, as: :text
-  = f.button :submit, t('common.save_changes'), class: 'btn-primary'
+  .col-md-2.center
+    .icon-team
+    = t('manager.profile.edit.your_team_has')
+    .rep-counter
+      = sales_reps_count
+    = t('manager.profile.edit.sales_reps')

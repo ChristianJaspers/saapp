@@ -1,0 +1,80 @@
+.my-account
+  .nav-tabs
+    border: 0
+  .nav-tabs > li
+    border: 1px solid $color-green
+    border-width: 0 0 1px 0
+    float: none
+    margin-bottom: 2px
+    a
+      background-color: $color-transparent
+      border: 0
+      color: $color-gray
+      font-family: $font-family-base
+      font-weight: $font-weight-bold
+      padding: $button-base-padding
+      text-transform: uppercase // till translations
+      &:hover
+        color: $color-gray-dark
+
+    &.active
+      border: 0
+      position: relative
+      a
+        @include box-shadow-border($color-green, $default-border-radius, darken($color-green, 10%))
+        background-color: $color-green
+        border-top-right-radius: 0
+        color: $color-white
+
+    &.active:after
+      border-bottom: 22px solid $color-transparent
+      border-left: 12px solid $color-green
+      border-top: 22px solid $color-transparent
+      content: ''
+      display: block
+      position: absolute
+      right: -10px
+      top: 0
+
+    &.active:hover a
+      background-color: lighten($color-green, 10%)
+      border-color: lighten($color-green, 10%)
+
+    &.active:hover:after
+      border-left-color: lighten($color-green, 10%)
+  h2
+    margin-bottom: $m * 1.5
+
+  h4
+    @extend %box-reset
+    color: $color-green
+    font:
+      family: $font-family-second
+      size: $font-size-medium
+    line-height: $font-size-medium * 3
+
+  input, textarea
+    @include box-shadow-border($color-gray-dark, $default-border-radius, darken($color-gray-dark, 10%))
+
+  input
+    height: $inputs-size
+
+  label
+    margin-top: $m / 2
+
+  textarea
+    height: $inputs-size * 3
+
+  .btn
+    @include box-shadow-border($color-green, $default-border-radius, darken($color-green, 10%))
+
+  .icon-team:after
+    @include circle-icons($color-green, $color-white)
+    font-size: $icon-size / 2
+    margin-bottom: $m / 2
+    padding: $m / 2
+
+  .rep-counter
+    color: $color-green
+    font-size: $font-size-big
+    line-height: $font-size-big

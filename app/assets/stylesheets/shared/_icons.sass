@@ -78,8 +78,20 @@
   src: font-url('cursors.eot')
   src: font-url('cursors.eot?#iefix') format('embedded-opentype'), font-url('cursors.woff') format('woff'), font-url('cursors.ttf') format('truetype'), font-url('cursors.svg#cursors') format('svg')
 
-.cursor-right:after, .cursor-left:after, .cursor-up:after, .cursor-down:after,
+.cursor-right:after, .cursor-left:after, .cursor-up:after, .cursor-down:after
   font:
     family: 'cursors'
     size: $icon-size
+  @extend %font-icons
+
+//----- profile icons -----
+@font-face
+  font-family: 'profile'
+  src: font-url('profile.eot')
+  src: font-url('profile.eot?#iefix') format('embedded-opentype'), font-url('profile.woff') format('woff'), font-url('profile.ttf') format('truetype'), font-url('profile.svg#profile') format('svg')
+
+.icon-team:after
+  content: '\e600'
+  font:
+    family: 'profile'
   @extend %font-icons
