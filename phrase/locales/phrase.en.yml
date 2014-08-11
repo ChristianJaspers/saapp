@@ -64,9 +64,6 @@ en:
         subject: Reset password instructions
       unlock_instructions:
         subject: Unlock Instructions
-    omniauth_callbacks:
-      failure: Could not authenticate you from %{kind} because "%{reason}".
-      success: Successfully authenticated from %{kind} account.
     passwords:
       change_your_password: Change your password
       choose_password: Choose password
@@ -116,8 +113,6 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
-  hello:
-    world: Hello World
   helpers:
     submit:
       user:
@@ -128,11 +123,14 @@ en:
     free_30: 30 day free trial
     header: The app that helps you sell more, sell faster, and sell better
     selling_points:
-      easy_setup: Easy use 5 min setup
-      gain_confidence: Gain confidence
-      save_money: Save money
-      save_time: Save time
-      sell_more: Sell more
+      easy_setup: Easy use and set-up in 5 minutes
+      gain_confidence: 'Control and track team and individual activity and commitment '
+      save_money: Save Money – spend less than € 16 monthly per rep providing them
+        with their own app
+      save_time: Save Time wasted on expensive product training – have your reps train
+        each other!
+      sell_more: Sell more through the best arguments focusing on benefits for your
+        customers
     testimonials_header: Testimonials
   manager:
     categories:

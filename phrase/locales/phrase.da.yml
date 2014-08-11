@@ -1,8 +1,28 @@
 ---
 da:
+  api:
+    errors:
+      account_not_exist: Konto findes ikke
+      argument_already_rated: Argument allerede bedømt
+      argument_not_found: Argument ikke fundet
+      file_is_too_big: Filen er for stor
+      invalid_credentials: Ugyldigt brugernavn
+      invalid_file_parameter: Ugyldig fil parameter
+      invalid_file_type: Ugyldig fil type
+      invalid_password: Ugyldig adgangskode
+      missing_feature_or_benefit: Feature eller benefit mangler
+      missing_product_group: Produkt gruppe mangler
+      no_access: Du har ikke adgang
   application_name: BetterSalesman
   common:
-    benefit: ''
+    argument:
+      many: Argumenter
+    benefit: Benefit
+    email: Email
+    feature: Feature
+    invitation:
+      many: Invitationer
+    name: Navn
     save_changes: Gem ændringer
     unauthorized: Du kan ikke komme ind på denne side. Venligst log ind med korrekt
       brugernavn og adgangskode.
@@ -27,7 +47,7 @@ da:
       unconfirmed: Du skal bekræfte din konto før du fortsætter.
     links:
       activate: Aktivér
-      change_my_password: Skift adgangskode
+      change_my_password: Skift min adgangskode
       forgot_your_password: Glemt adgangskode
       new_confirmation: Har du ikke modtaget bekræftelsesmail?
       new_unlock: Har du ikke modtaget instruktion om, hvordan kontoen låses op?
@@ -42,9 +62,6 @@ da:
         subject: Instruktion om at nulstille adgangskoden
       unlock_instructions:
         subject: Instruktion om at låse op
-    omniauth_callbacks:
-      failure: Kunne ikke godkende dig til %{kind} pga. "%{reason}".
-      success: Succesfuldt godkendt af %{kind} konto.
     passwords:
       change_your_password: Skift din adgangskode
       choose_password: Vælg adgangskode
@@ -90,12 +107,29 @@ da:
       expired: er udløbet, venligst anmod om en ny
       not_found: ikke fundet
       not_locked: blev ikke låst
+      not_saved:
+        one: '1 fejl forhindrede at %{resource} blev gemt:'
+        other: "%{count} fejl forhindrede at %{resource} blev gemt:"
   helpers:
     submit:
       user:
         create: Tilføj sælger
       wizard:
         create: Prøv 30 dage gratis!
+  landing:
+    free_30: Prøv 30 dage gratis
+    header: App'en der hjælper dig med at sælge mere, hurtigere og bedre
+    selling_points:
+      easy_setup: Nemt og hurtigt – læg jeres produkter og de første argumenter ind
+        på under 5 minutter. Så er du i gang.
+      gain_confidence: 'Kontroller og hold styr på individuel og team aktivitet og
+        dokumentér fokus på fx kampagneprodukter '
+      save_money: 'Spar penge – brug mindre end kr. 120,- om måneden pr. sælger '
+      save_time: Spar tid – spild ikke tiden med besværlig produkttræning – lad sælgerne
+        træne hinanden løbende via app’en
+      sell_more: Sælg mere gennem de bedste salgsargumenter, der fokuserer på benefits
+        for kunden
+    testimonials_header: Kunderne siger
   manager:
     categories:
       destroy:
@@ -149,6 +183,7 @@ da:
           actions:
             destroy_confirmation: Er du sikker?
             destroy_link: Fjern
+            edit_link: Ret
           headers:
             actions: Ret
             display_name: Vis navn
@@ -184,6 +219,7 @@ da:
       header: Inviter dine sælgere
       next_step_button: NÆSTE
     step_4:
+      benefit: benefits med
       categories_and_arguments_header: Produkt grupper og argumenter
       header: Gennemse og bekræft
       invitations_header: Sælgere
