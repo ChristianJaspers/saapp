@@ -56,7 +56,8 @@
   input, textarea
     @include box-shadow-border($color-gray-dark, $default-border-radius, darken($color-gray-dark, 10%))
 
-  input
+  input[type='text'],
+  input[type='email']
     height: $inputs-size
 
   label
@@ -78,3 +79,20 @@
     color: $color-green
     font-size: $font-size-big
     line-height: $font-size-big
+
+  .add-benefit
+    @extend %left-corners
+    float: left
+    width: calc(100% - (#{$inputs-size}))
+
+  .add-benefit-submit
+    @extend %submit-on-enter
+    float: right
+
+  .product-groups
+    li
+      list-style: none
+      margin-top: $m-half
+
+    .btn-icon
+      margin-top: $m-quarter

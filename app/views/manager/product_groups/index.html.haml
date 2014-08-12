@@ -13,8 +13,8 @@
             %td= product_group.arguments_count
             %td.text-center
               = product_group.publishing_link
-              = product_group.removal_link
               = product_group.edit_link
+              = product_group.removal_link
     = paginate product_groups
 
     = simple_form_for [:manager, product_group] do |f|

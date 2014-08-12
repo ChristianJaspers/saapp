@@ -1,28 +1,32 @@
 .my-account
   .col-md-8.col-md-offset-1
-    %h4= t('manager.product_groups.edit.header', name: product_group.name)
     %div{'ng-app' => 'editProductGroupApp', 'ng-controller' => 'editProductGroupCtrl'}
+      %h4= t('manager.product_groups.edit.header', name: product_group.name)
       %label= t('common.name')
-      %input{'ng-model' => 'productGroup.name', autofocus: true}
-      %ul{'ng-repeat' => 'argument in arguments'}
-        %li
+      %input.form-control{'ng-model' => 'productGroup.name', type: 'text', autofocus: true}
+      %ul.product-groups
+        %li{'ng-repeat' => 'argument in arguments'}
           %span{'ng-hide' => 'argument.is_editable'}
             {{argument.feature}} - {{argument.benefit}}
-          %span{'ng-show' => 'argument.is_editable'}
-            %label= t('common.feature')
-            %input{'ng-model' => 'argument.feature'}
-            %label= t('common.benefit')
-            %input{'ng-model' => 'argument.benefit'}
-          %span.glyphicon.glyphicon-trash{'ng-show' => 'argument.is_removable', 'ng-click' => 'removeArgument(argument)'}
+          .row{'ng-show' => 'argument.is_editable'}
+            .col-sm-5
+              %input.form-control{'ng-model' => 'argument.feature', type: 'text'}
+            .col-sm-5
+              %input.form-control{'ng-model' => 'argument.benefit', type: 'text'}
+            .col-sm-2
+              %a.btn-icon.icon-trash{'ng-show' => 'argument.is_removable', 'ng-click' => 'removeArgument(argument)'}
 
       %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument()'}
-        %label= t('common.feature')
-        %input{'ng-model' => 'argument.feature', required: true}
-        %label= t('common.benefit')
-        %input{'ng-model' => 'argument.benefit', required: true}
-        %input.glyphicon.glyphicon-plus{type: 'submit'}
-
-      = link_to t('common.cancel'), manager_product_groups_path, class: 'btn'
-
-      %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()'}
-        = t('common.save_changes')
+        %h4= t('manager.tabs.add_argument')
+        .row
+          .col-sm-6
+            %label= t('common.feature')
+            %input.form-control{'ng-model' => 'argument.feature', type: 'text', required: true}
+          .col-sm-6
+            %label= t('common.benefit')
+            %input.form-control.add-benefit{'ng-model' => 'argument.benefit', type: 'text', required: true}
+            %span.add-benefit-submit
+              %input{type: 'submit'}
+        %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()'}
+          = t('common.save_changes')
+        = link_to t('common.cancel'), manager_product_groups_path, class: 'btn'
