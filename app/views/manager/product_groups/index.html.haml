@@ -11,14 +11,15 @@
           %tr
             %td= product_group.name
             %td= product_group.arguments_count
-            %td
+            %td.text-center
               = product_group.publishing_link
               = product_group.removal_link
               = product_group.edit_link
     = paginate product_groups
 
     = simple_form_for [:manager, product_group] do |f|
-      .col-md-8
-        = f.input :name
-      .col-md-4
-        = f.submit class: 'btn btn-primary f-right'
+      .row
+        .col-md-7
+          = f.input :name
+        .col-md-5
+          = f.submit class: 'btn btn-primary f-right'
