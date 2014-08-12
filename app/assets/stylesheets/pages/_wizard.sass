@@ -23,19 +23,6 @@
       &.wizard-input
         @extend %left-corners
         width: calc(100% - (#{$inputs-size}))
-    .wizard-add
-      display: inline-block
-      width: $inputs-size
-      &:before
-        @extend %right-corners
-        @include box-shadow($color-gray)
-        position: absolute
-        right: 0
-      &:hover:before
-        background-color: $color-green
-      input
-        opacity: 0
-        width: $inputs-size
 
     &.arguments-form, &.representative-form
       select
@@ -121,6 +108,34 @@
     position: absolute
     top: 0
     width: $mockup-width
+
+%submit-on-enter
+  display: inline-block
+  position: relative
+  width: $inputs-size
+  &:before
+    @extend %right-corners
+    @include box-shadow($color-gray)
+    position: absolute
+    right: 0
+
+    background-color: $color-gray-dark
+    color: $color-white
+    content: '\e41c'
+    font-size: $icon-size-half
+    line-height: $inputs-size
+    text-align: center
+    width: $inputs-size
+
+  &:hover:before
+    background-color: $color-green
+  input
+    height: $inputs-size
+    opacity: 0
+    width: $inputs-size
+
+.wizard-add
+  @extend %submit-on-enter
 
 .argument-list, .representative-list
   margin-top: $interval-small * 2.5

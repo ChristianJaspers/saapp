@@ -9,11 +9,11 @@
   text-transform: uppercase
 
 .btn-primary, .btn-primary[disabled], %btn-primary
+  @include box-shadow(darken($btn-primary-bg, 10%))
   background-color: $btn-primary-bg
   border-color: $btn-primary-border
-  @include box-shadow(darken($btn-primary-bg, 10%))
   &:hover
+    @include box-shadow($btn-primary-bg)
     background-color: (lighten($btn-primary-bg,10%))
     border-color: (lighten($btn-primary-bg,10%))
-    @include box-shadow($btn-primary-bg)
-
+    cursor: pointer

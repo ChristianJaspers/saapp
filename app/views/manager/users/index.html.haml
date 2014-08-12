@@ -1,21 +1,29 @@
-%table.table.table-striped
-  %thead
-    %th= t('manager.users.index.table.headers.email')
-    %th= t('manager.users.index.table.headers.display_name')
-    %th= t('manager.users.index.table.headers.role')
-    %th= t('manager.users.index.table.headers.actions')
-  %tbody
-    - users.each do |user|
-      %tr
-        %td= user.email
-        %td= user.display_name
-        %td= user.role
-        %td
-          = user.edit_link
-          = user.removal_link
-= paginate users
+.my-account
+  .col-md-8.col-md-offset-1
+    %h4= t('manager.tabs.users')
+    %table.table.saapp-table
+      %thead
+        %th= t('manager.users.index.table.headers.email')
+        %th= t('manager.users.index.table.headers.display_name')
+        %th= t('manager.users.index.table.headers.role')
+        %th= t('manager.users.index.table.headers.actions')
+      %tbody
+        - users.each do |user|
+          %tr
+            %td= user.email
+            %td= user.display_name
+            %td= user.role
+            %td.text-center
+              = user.edit_link
+              = user.removal_link
+    = paginate users
 
-= simple_form_for [:manager, user] do |f|
-  = f.input :display_name
-  = f.input :email
-  = f.submit
+    = simple_form_for [:manager, user] do |f|
+      .row
+        .col-md-12
+          = f.input :display_name
+      .row
+        .col-md-7
+          = f.input :email
+        .col-md-5
+          = f.submit class: 'btn btn-primary f-right'

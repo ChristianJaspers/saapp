@@ -1,5 +1,7 @@
-= simple_form_for [:manager, user] do |f|
-  = f.input :email
-  = f.input :display_name
-  = f.input :manager, as: :boolean
-  = f.button :submit, t('common.save_changes'), class: 'btn-primary'
+.my-account
+  .col-md-8.col-md-offset-1
+    = simple_form_for [:manager, user] do |f|
+      = f.input :email
+      = f.input :display_name
+      = f.input :manager, as: :boolean
+      = f.button :submit, t('common.save_changes'), class: 'btn-primary'
