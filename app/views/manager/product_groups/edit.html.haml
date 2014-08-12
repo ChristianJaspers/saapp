@@ -1,18 +1,23 @@
-%div{'ng-app' => 'editProductGroupApp', 'ng-controller' => 'editProductGroupCtrl'}
-  %input{'ng-model' => 'productGroup.name'}
-  %ul{'ng-repeat' => 'argument in arguments'}
-    %li
-      %span{'ng-hide' => 'argument.is_editable'}
-        {{argument.feature}} - {{argument.benefit}}
-      %span{'ng-show' => 'argument.is_editable'}
-        %input{'ng-model' => 'argument.feature'}
-        %input{'ng-model' => 'argument.benefit'}
-      %span.glyphicon.glyphicon-trash{'ng-show' => 'argument.is_removable', 'ng-click' => 'removeArgument(argument)'}
+.my-account
+  .col-md-8.col-md-offset-1
+    %h4= t('manager.product_groups.edit.header', name: product_group.name)
+    %div{'ng-app' => 'editProductGroupApp', 'ng-controller' => 'editProductGroupCtrl'}
+      %input{'ng-model' => 'productGroup.name', autofocus: true}
+      %ul{'ng-repeat' => 'argument in arguments'}
+        %li
+          %span{'ng-hide' => 'argument.is_editable'}
+            {{argument.feature}} - {{argument.benefit}}
+          %span{'ng-show' => 'argument.is_editable'}
+            %input{'ng-model' => 'argument.feature'}
+            %input{'ng-model' => 'argument.benefit'}
+          %span.glyphicon.glyphicon-trash{'ng-show' => 'argument.is_removable', 'ng-click' => 'removeArgument(argument)'}
 
-  %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument()'}
-    %input{'ng-model' => 'argument.feature', required: true}
-    %input{'ng-model' => 'argument.benefit', required: true}
-    %input.glyphicon.glyphicon-plus{type: 'submit'}
+      %form{name: 'newArgumentForm', 'ng-submit' =>'addArgument()'}
+        %input{'ng-model' => 'argument.feature', required: true}
+        %input{'ng-model' => 'argument.benefit', required: true}
+        %input.glyphicon.glyphicon-plus{type: 'submit'}
 
-  %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()'}
-    = t('common.save_changes')
+      = link_to t('common.cancel'), manager_product_groups_path, class: 'btn'
+
+      %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()'}
+        = t('common.save_changes')
