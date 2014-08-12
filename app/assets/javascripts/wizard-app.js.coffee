@@ -40,14 +40,14 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
 
   $scope.steps = [
     { title: 'PRODUCT GROUPS', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
-    { title: 'ARGUMENTS', template: 'step-two.html', disabled: true, class: ' ng-isolate-scope arguments_step' },
+    { title: 'ARGUMENTS', template: 'step-two.html', disabled: true, class: 'ng-isolate-scope arguments_step' },
     { title: 'INVITATIONS', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
     { title: 'SUMMARY', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
   ]
 
-  $scope.focusArgument = ->
+  $scope.autoFocus = ->
     $timeout ->
-      angular.element('input[ng-model="argument.feature"]').trigger('focus')
+      autofocus_visible_inputs()
     , 100
     return true
 
@@ -56,12 +56,12 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
 
     switch tabCode
       when 'product_groups_step'
-        $timeout ->
-          angular.element('input[ng-model="productGroup.name"]').trigger('focus')
-        , 100
+        $scope.autoFocus()
       when 'arguments_step'
         $scope.argument = {productGroup: $scope.wizard.productGroups[0]}
-        $scope.focusArgument()
+        $scope.autoFocus()
+      when 'invitations_step'
+        $scope.autoFocus()
     return true
 
   $scope.atProductGroupsLimit = ->
@@ -83,7 +83,7 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
   $scope.$watchCollection('wizard.arguments', ->
     $scope.steps[2].disabled = not $scope.secondStepValid()
     $scope.steps[3].disabled = not $scope.secondStepValid() or not $scope.thirdStepValid()
-    $scope.focusArgument()
+    $scope.autoFocus()
   )
 
   $scope.$watchCollection('wizard.invitations', ->
@@ -153,4 +153,5 @@ wizardApp.controller('invitationCtrl', ['$scope', ($scope) ->
   $scope.addInvitation = (wizard) ->
     wizard.invitations.push({email: $scope.invitation.email, displayName: $scope.invitation.displayName})
     $scope.invitation = {}
+    $scope.autoFocus();
 ])

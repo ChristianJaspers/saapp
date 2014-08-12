@@ -16,10 +16,10 @@
   .clearfix
 
   %form.representative-form{name: 'newInvitationForm', 'ng-submit' =>'addInvitation(wizard)'}
-    %input{'ng-model' => 'invitation.email', required: true}
+    %input{'ng-model' => 'invitation.email', required: true, autofocus: true, type: 'email', }
     %input{'ng-model' => 'invitation.displayName'}
     %span.wizard-add.four-corners
-      %input{type: 'submit'}
+      %input{type: 'submit', tabindex: -1}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
     = I18n.t('wizard.step_3.next_step_button')

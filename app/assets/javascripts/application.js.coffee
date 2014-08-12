@@ -25,4 +25,5 @@
 
 #= require_tree .
 
+window.autofocus_visible_inputs = -> $("input[autofocus]:visible").trigger('focus')
 window.bind_submit_buttons_with_loader = -> Ladda.bind('.ladda-button')

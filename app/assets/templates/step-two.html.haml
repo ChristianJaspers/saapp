@@ -21,7 +21,7 @@
 
   %form.arguments-form{name: 'newArgumentForm', 'ng-submit' =>'addArgument(wizard)'}
     %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true}
-    %input.feature{'ng-model' => 'argument.feature', required: true}
+    %input.feature{'ng-model' => 'argument.feature', required: true, autofocus: true}
     %input.benefit{'ng-model' => 'argument.benefit', required: true}
     %span.wizard-add.four-corners
       %input{type: 'submit'}
