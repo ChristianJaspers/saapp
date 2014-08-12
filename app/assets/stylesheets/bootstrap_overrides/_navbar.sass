@@ -5,15 +5,21 @@
 
   .navbar-nav
     li
-      a
+      a, span
         color: $color-gray
         font:
           family: $font-family-base
           weight: $font-weight-bold
         line-height: 42px
-
+        padding: $font-size-base
         &:hover
           color: $color-green
+      span
+        color: $color-gray
+        display: inline-block
+        font-weight: $font-weight-regular
+        &:hover
+          color: $color-gray
 
     &.navbar-right
       li

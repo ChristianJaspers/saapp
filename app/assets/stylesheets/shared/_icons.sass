@@ -5,13 +5,6 @@
   font-weight: normal
   font-style: normal
 
-@font-face
-  font-family: 'saapp-landing-icons'
-  src: font-url('saapp-landing-icons.eot')
-  src: font-url('saapp-landing-icons.eot?#iefix') format('embedded-opentype'), font-url('saapp-landing-icons.woff') format('woff'), font-url('saapp-landing-icons.ttf') format('truetype'), font-url('saapp-landing-icons.svg#saapp-landing-icons') format('svg')
-  font-weight: normal
-  font-style: normal
-
 .icon-enter:before,
 .icon-trash:before,
 .icon-archive:before,
@@ -28,7 +21,9 @@
 .icon-set:before,
 .icon-edit:before,
 .icon-publish:before,
-.icon-unpublish:before
+.icon-unpublish:before,
+.cursor-right:after,
+.icon-team:after
   font:
     family: 'saapp-icons'
     size: $icon-size
@@ -40,7 +35,7 @@
 .icon-gain:before,
 .icon-set:before
   font:
-    family: 'saapp-landing-icons'
+    family: 'saapp-icons'
 
 .icon-enter:before
   content: '\e600'
@@ -61,19 +56,19 @@
   content: '\e605'
 
 .icon-progress:before
-  content: '\e604'
+  content: '\e607'
 
 .icon-money:before
-  content: '\e602'
+  content: '\e605'
 
 .icon-time:before
-  content: '\e603'
+  content: '\e606'
 
 .icon-gain:before
-  content: '\e600'
+  content: '\e602'
 
 .icon-set:before
-  content: '\e601'
+  content: '\e604'
 
 .icon-edit:before
   content: '\e00d'
@@ -84,26 +79,5 @@
 .icon-unpublish:before
   content: '\e2da'
 
-//----- cursors icons -----
-@font-face
-  font-family: 'cursors'
-  src: font-url('cursors.eot')
-  src: font-url('cursors.eot?#iefix') format('embedded-opentype'), font-url('cursors.woff') format('woff'), font-url('cursors.ttf') format('truetype'), font-url('cursors.svg#cursors') format('svg')
-
-.cursor-right:after, .cursor-left:after, .cursor-up:after, .cursor-down:after
-  font:
-    family: 'cursors'
-    size: $icon-size
-  @extend %font-icons
-
-//----- profile icons -----
-@font-face
-  font-family: 'profile'
-  src: font-url('profile.eot')
-  src: font-url('profile.eot?#iefix') format('embedded-opentype'), font-url('profile.woff') format('woff'), font-url('profile.ttf') format('truetype'), font-url('profile.svg#profile') format('svg')
-
 .icon-team:after
-  content: '\e600'
-  font:
-    family: 'profile'
-  @extend %font-icons
+  content: '\e601'

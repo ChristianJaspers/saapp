@@ -208,7 +208,7 @@
         @extend %font-icons
         color: $color-orange
         content: '\e603'
-        font-family: 'cursors'
+        font-family: 'saapp-icons'
         position: absolute
         right: $m-half
         top: $m-half
@@ -250,6 +250,8 @@
   input
     margin-right: $m-quarter
     width: calc(50% - (6px) - (#{$inputs-size}) / 2)
+    &[type='submit']
+      width: $inputs-size
 
 ul.representative-preview.ng-scope
   margin-top: -($m-third)
