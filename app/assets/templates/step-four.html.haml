@@ -19,5 +19,5 @@
         {{invitation.displayName}}
 
     .clearfix
-    %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitWizard()'}
+    %button.btn.btn-primary.ladda-button{type: 'button', 'ng-click' => 'submitWizard()', data: {style: 'zoom-out'}}
       = I18n.t('wizard.step_4.submit_button')

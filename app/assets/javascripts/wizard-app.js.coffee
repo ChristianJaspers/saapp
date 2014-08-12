@@ -91,6 +91,8 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
   )
 
   $scope.submitWizard = ->
+    Ladda.create( document.querySelector('.ladda-button') ).start()
+
     wizard = new Wizard({email: $scope.wizard.email, invitations: $scope.wizard.invitations})
 
     wizard.productGroups = _.map($scope.wizard.productGroups, (productGroup) ->
