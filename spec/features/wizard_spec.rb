@@ -64,7 +64,7 @@ feature 'Wizard' do
     # Choose password
     password = '1' * 8
     find("input[name='user[password]']").set(password)
-    find("input[type='submit']").click
+    find("button[type='submit']").click
     expect(page).to have_content I18n.t('devise.confirmations.confirmed')
 
     expect(Argument).to exist.with(feature: feature_name, benefit: benefit_description)
