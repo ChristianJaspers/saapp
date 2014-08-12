@@ -155,6 +155,8 @@ en:
       destroy:
         notifications:
           success: Product group removed successfully
+      edit:
+        header: Editing product group %{name}
       index:
         table:
           actions:
@@ -170,8 +172,13 @@ en:
         notifications:
           failure: Changes could not be saved
           success: Changes saved successfully
+    profile:
+      edit:
+        sales_reps: SALES REPS
+        team_size: YOUR TEAM HAS
     tabs:
       categories: Categories
+      my_profile: My profile
       product_groups: Product groups
       users: Users
     users:
