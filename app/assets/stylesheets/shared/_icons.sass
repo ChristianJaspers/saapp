@@ -25,7 +25,10 @@
 .icon-money:before,
 .icon-time:before,
 .icon-gain:before,
-.icon-set:before
+.icon-set:before,
+.icon-edit:before,
+.icon-publish:before,
+.icon-unpublish:before
   font:
     family: 'saapp-icons'
     size: $icon-size
@@ -43,7 +46,7 @@
   content: '\e600'
 
 .icon-trash:before
-  content: '\e601'
+  content: '\e251'
 
 .icon-archive:before
   content: '\e602'
@@ -72,14 +75,35 @@
 .icon-set:before
   content: '\e601'
 
+.icon-edit:before
+  content: '\e00d'
+
+.icon-publish:before
+  content: '\e2d9'
+
+.icon-unpublish:before
+  content: '\e2da'
+
 //----- cursors icons -----
 @font-face
   font-family: 'cursors'
   src: font-url('cursors.eot')
   src: font-url('cursors.eot?#iefix') format('embedded-opentype'), font-url('cursors.woff') format('woff'), font-url('cursors.ttf') format('truetype'), font-url('cursors.svg#cursors') format('svg')
 
-.cursor-right:after, .cursor-left:after, .cursor-up:after, .cursor-down:after,
+.cursor-right:after, .cursor-left:after, .cursor-up:after, .cursor-down:after
   font:
     family: 'cursors'
     size: $icon-size
+  @extend %font-icons
+
+//----- profile icons -----
+@font-face
+  font-family: 'profile'
+  src: font-url('profile.eot')
+  src: font-url('profile.eot?#iefix') format('embedded-opentype'), font-url('profile.woff') format('woff'), font-url('profile.ttf') format('truetype'), font-url('profile.svg#profile') format('svg')
+
+.icon-team:after
+  content: '\e600'
+  font:
+    family: 'profile'
   @extend %font-icons
