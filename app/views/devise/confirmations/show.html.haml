@@ -2,8 +2,10 @@
   %h2= t('devise.confirmations.account_activation_title')
   .col-md-6.col-md-offset-3.bottom-default
     = simple_form_for resource, as: resource_name, url: update_user_confirmation_path, html: {method: 'patch'}, id: 'activation-form' do |f|
-      = f.error_notification
-      = f.full_error :password
+      - if resource.errors.any?
+        .form-warning.center
+          = f.error_notification
+          = f.full_error :password
       .form-inputs
         %fieldset
           - if @requires_password
@@ -13,4 +15,9 @@
           = hidden_field_tag :confirmation_token, @confirmation_token
           .clearfix
       .form-actions.center
-        = f.button :submit, t('devise.links.activate'), {class: "btn-primary"}
+        = submit_button_with_loader t('devise.links.activate')
+
+:javascript
+  $(function() {
+    bind_submit_buttons_with_loader();
+  });

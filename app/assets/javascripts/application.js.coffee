@@ -20,5 +20,9 @@
 #= require angular-resource.min
 #= require angular-rails-templates
 #= require_tree ../templates
+#= require spin
+#= require ladda
 
 #= require_tree .
+
+window.bind_submit_buttons_with_loader = -> Ladda.bind('.ladda-button')

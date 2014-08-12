@@ -33,6 +33,7 @@ gem 'ng-rails-csrf', '~> 0.1.0'
 gem 'phrase', '~> 0.4.26'
 gem 'keepass-password-generator', '~> 0.1.1'
 gem 'http_accept_language', '~> 2.0.2'
+gem 'ladda-rails', :git => 'git://github.com/Promptus/ladda-rails.git'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
