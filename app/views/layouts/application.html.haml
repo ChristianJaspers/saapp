@@ -20,7 +20,6 @@
     .navbar
       .container
         .navbar-header
-          -#= image_tag 'logo.png'
           = link_to '', localized_path(I18n.locale, root_path), title: t('application_name'), class: 'navbar-brand'
 
         %ul.nav.navbar-nav
