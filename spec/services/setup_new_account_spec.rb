@@ -7,8 +7,9 @@ describe SetupNewAccount do
     let(:perform) { described_class.call(parameter_object) }
 
     before do
-      allow(ApplicationMailer).to receive(:user_invitation)
+      allow(ApplicationMailer).to receive(:user_invitation).and_call_original
       allow(MandrillDeviseMailer).to receive(:confirmation_instructions).and_call_original
+      allow_any_instance_of(EmailTemplates::Sender).to receive(:send).and_return([])
     end
 
     context 'manager email is provided' do

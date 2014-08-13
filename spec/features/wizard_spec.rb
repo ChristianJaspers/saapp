@@ -8,7 +8,11 @@ feature 'Wizard' do
   let(:invitee_email) { 'invitee@bettersalesman.dev' }
   let(:invitee_display_name) { 'John Doe' }
 
-  before { allow(ApplicationMailer).to receive(:user_invitation) }
+  before do
+    allow(ApplicationMailer).to receive(:user_invitation).and_call_original
+    allow(MandrillDeviseMailer).to receive(:confirmation_instructions).and_call_original
+    allow_any_instance_of(EmailTemplates::Sender).to receive(:send).and_return([])
+  end
 
   scenario 'Happy path', js: true do
     visit '/'

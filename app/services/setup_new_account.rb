@@ -1,4 +1,7 @@
 class SetupNewAccount < BusinessProcess::Base
+  extend BusinessProcess::Transactional
+  transaction_for User
+
   needs :wizard
 
   delegate :raw_confirmation_token, to: :manager, prefix: true
