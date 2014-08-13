@@ -22,6 +22,7 @@ en:
     category:
       many: Categories
     email: Email
+    experience: XP
     feature: Feature
     invitation:
       many: Invitations
