@@ -1,0 +1,56 @@
+.how-it-works
+  background:
+    image: image-url('bg-how-it-works.jpg')
+    position: bottom center
+    repeat: no-repeat
+    size: contain
+  margin: $m-double 0
+    
+  .container
+    background:
+      image: image-url('how-it-works.png')
+      position: top
+      repeat: no-repeat
+    height: 750px
+    width: 100%
+
+  .sales-manager,
+  .sales-reps
+    font:
+      size: $font-size-medium
+      weight: $font-weight-light
+    line-height: 1
+
+  .sales-manager
+    color: $color-white
+    height: 200px
+    margin: 130px 0 0 70%
+    width: 220px
+
+  .sales-reps
+    color: $color-green
+    margin-top: 240px
+    text-align: right
+    width: 22%
+
+  @media (min-width: $screen-md)
+    .sales-manager,
+    .sales-reps
+      font-size: $font-size-large
+
+    .sales-manager
+      margin-left: 68%
+
+    .sales-reps
+      width: 29%
+
+  @media (min-width: $screen-lg)
+    .sales-manager,
+    .sales-reps
+      font-size: $font-size-big
+
+    .sales-manager
+      margin-left: 64%
+
+    .sales-reps
+      width: 32%

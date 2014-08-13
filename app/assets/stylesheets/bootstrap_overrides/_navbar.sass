@@ -1,6 +1,7 @@
 .navbar
   background-color: $color-white
   border-bottom: 1px solid $color-gray-light
+  font-size: $font-size-small
 
   li a, span
     line-height: 42px
@@ -12,7 +13,7 @@
     font-family: $font-family-second
 
   li a
-    color: $color-green
+    color: $color-black
     font-family: $font-family-base
     font-weight: $font-weight-bold
     text-transform: uppercase
@@ -20,6 +21,9 @@
     &:hover
       background-color: $color-transparent
       color: $color-gray
+
+  .navbar-right a
+    color: $color-green
 
   .dropdown-toggle
     background-color: $color-transparent
@@ -43,5 +47,6 @@
   box-sizing: content-box
   color: $color-transparent
   height: 40px
-  padding: $font-size-base
+  margin: $font-size-base
+  padding: 0
   width: 235px
