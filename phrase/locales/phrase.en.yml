@@ -151,6 +151,11 @@ en:
         notifications:
           failure: Changes could not be saved
           success: Changes saved successfully
+    dashboard:
+      show:
+        links:
+          argument_ranking: Argument ranking
+          user_activity: User activity
     product_groups:
       destroy:
         notifications:
