@@ -1,42 +1,47 @@
-.navbar-inverse
+.navbar
   background-color: $color-white
-  border:
-    bottom: 1px solid $color-gray-light
+  border-bottom: 1px solid $color-gray-light
 
-  .navbar-nav
-    li
-      a, span
-        color: $color-gray
-        font:
-          family: $font-family-base
-          weight: $font-weight-bold
-        line-height: 42px
-        padding: $font-size-base
-        &:hover
-          color: $color-green
-      span
-        color: $color-gray
-        display: inline-block
-        font-weight: $font-weight-regular
-        &:hover
-          color: $color-gray
+  li a, span
+    line-height: 42px
+    padding: $font-size-base
 
-    &.navbar-right
-      li
-        a
-          color: $color-green
+  span
+    color: $color-gray
+    display: inline-block
+    font-family: $font-family-second
 
-          &:hover
-            color: $color-gray
+  li a
+    color: $color-green
+    font-family: $font-family-base
+    font-weight: $font-weight-bold
+    text-transform: uppercase
 
-  .navbar-header
-    .navbar-brand
-      background:
-        image: image-url('logo.png')
-        repeat: no-repeat
-      color: $color-transparent
-      height: $navbar-brand
-      padding: $navbar-brand / 4 $navbar-brand
+    &:hover
+      background-color: $color-transparent
+      color: $color-gray
 
-  &.navbar-fixed-top
-    position: static
+  .dropdown-toggle
+    background-color: $color-transparent
+    border: none
+    line-height: 38px
+    padding: $font-size-base
+
+  .dropdown-menu
+    a
+      line-height: inherit
+      padding: $m-quarter 0 $m-quarter $m-half
+    img
+      vertical-align: baseline
+
+.navbar-brand
+  background:
+    image: image-url('logo.png')
+    repeat: no-repeat
+    position: center
+    size: 100%
+  box-sizing: content-box
+  color: $color-transparent
+  height: 40px
+  padding: $font-size-base
+  width: 235px
