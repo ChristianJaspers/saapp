@@ -188,6 +188,8 @@ en:
     reports:
       argument_ranking:
         header: Argument ranking
+      user_activity:
+        header: User activity
     tabs:
       categories: Categories
       my_profile: My profile
