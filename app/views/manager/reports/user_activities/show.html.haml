@@ -1,0 +1,16 @@
+.my-account
+  .col-md-8.col-md-offset-1
+    %h4= t('manager.reports.user_activity.header')
+    %table.table.saapp-table
+      %thead
+        %th= t('manager.users.index.table.headers.display_name')
+        %th= t('common.email')
+        %th= t('common.experience')
+      %tbody
+        - users.each do |user|
+          %tr
+            %td= user.display_name
+            %td= user.email
+            %td= user.score
+
+= link_to t('common.back'), manager_reports_root_path
