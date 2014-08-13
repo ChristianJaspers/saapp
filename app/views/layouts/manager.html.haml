@@ -8,7 +8,7 @@
         = link_to t('manager.tabs.product_groups'), manager_product_groups_path
       %li{class: ('active' if controller_name == 'users')}
         = link_to t('manager.tabs.users'), manager_users_path
-      %li{class: ('active' if controller_name == 'dashboard')}
+      %li{class: ('active' if request.path['/reports/'])}
         = link_to t('manager.tabs.reports'), manager_reports_root_path
 
 = render template: 'layouts/application'

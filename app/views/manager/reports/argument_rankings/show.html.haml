@@ -1,0 +1,16 @@
+.my-account
+  .col-md-8.col-md-offset-1
+    %h4= t('manager.reports.argument_ranking.header')
+    %table.table.saapp-table
+      %thead
+        %th= t('common.feature')
+        %th= t('common.benefit')
+        %th= t('common.rating')
+      %tbody
+        - arguments.each do |arguemnt|
+          %tr
+            %td= arguemnt.feature
+            %td= arguemnt.rating
+            %td= arguemnt.cached_rating
+
+= link_to t('common.back'), manager_reports_root_path

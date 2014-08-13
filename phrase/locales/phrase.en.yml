@@ -17,6 +17,7 @@ en:
   common:
     argument:
       many: Arguments
+    back: Back
     benefit: Benefit
     category:
       many: Categories
@@ -27,6 +28,7 @@ en:
     name: Name
     product_group:
       many: Product groups
+    rating: Rating
     save_changes: Save changes
     unauthorized: You cannot access this page. Please login with proper credentatials.
   devise:
@@ -182,6 +184,9 @@ en:
       edit:
         sales_reps: SALES REPS
         team_size: YOUR TEAM HAS
+    reports:
+      argument_ranking:
+        header: Argument ranking
     tabs:
       categories: Categories
       my_profile: My profile
