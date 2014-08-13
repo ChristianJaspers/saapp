@@ -21,7 +21,8 @@ class ProductGroupDecorator < ApplicationDecorator
               h.manager_product_group_path(object.id),
               title: I18n.t('manager.product_groups.index.table.actions.destroy_link'),
               class: 'btn-icon icon-trash',
-              method: :delete
+              method: :delete,
+              data: {confirm: I18n.t('manager.product_groups.index.table.actions.destroy_confirmation')}
     end
   end
 

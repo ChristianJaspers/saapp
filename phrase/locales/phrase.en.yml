@@ -161,6 +161,7 @@ en:
         table:
           actions:
             archive_link: Unpublish
+            destroy_confirmation: Are you sure?
             destroy_link: Remove
             edit_link: Edit
             unarchive_link: Publish
@@ -204,6 +205,7 @@ en:
           success: Sales representative updated
   navbar:
     admin_link: Admin
+    logged_as: Logged as
     login_link: Login
     logout_link: Logout
     my_account_link: My Account
