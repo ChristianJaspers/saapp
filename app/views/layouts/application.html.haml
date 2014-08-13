@@ -23,7 +23,7 @@
           = link_to '', localized_path(I18n.locale, root_path), title: t('application_name'), class: 'navbar-brand'
 
         %ul.nav.navbar-nav
-          - static_pages.each do |page|
+          - cms_static_pages.each do |page|
             %li
               = link_to page.label, localized_cms_page_path(page)
         %ul.nav.navbar-nav.navbar-right

@@ -11,17 +11,13 @@ class ApplicationController < ActionController::Base
     strategy DecentExposure::StrongParametersStrategy
   end
 
-  expose(:static_pages) do
-    site = Comfy::Cms::Site.find_by_locale(I18n.locale)
-    pages = if site
-      home_page = site.pages.find_by(slug: 'index')
-      if home_page
-        home_page.children.published.includes(:site)
-      else
-        []
-      end
+  expose(:cms_site) { Comfy::Cms::Site.find_by_locale(I18n.locale) }
+  expose(:cms_static_pages) do
+    if cms_site
+      cms_site.static_pages
+    else
+      []
     end
-    Array.wrap(pages)
   end
 
   private
