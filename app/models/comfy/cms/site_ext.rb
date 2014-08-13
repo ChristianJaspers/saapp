@@ -1,11 +1,14 @@
 module Comfy::Cms::SiteExt
   extend ActiveSupport::Concern
 
-  included do
-  end
-
   def root_page
     @root_page ||= pages.find_by(slug: 'index')
+  end
+
+  def root_page_content
+    if root_page && root_page.is_published
+      root_page.content_cache
+    end
   end
 
   def static_pages

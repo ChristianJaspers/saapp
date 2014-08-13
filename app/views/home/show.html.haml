@@ -18,45 +18,5 @@
 .landing-mobile.col-md-4
 .clearfix
 
-.landing-testimonials.col-md-12
-  %h3= t('landing.testimonials_header')
-
-  / testimonials demo contents start /
-
-  .col-md-3.col-md-offset-1.testimonial
-    %p Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
-    %p Gumbo beet greens corn soko endive gumbo gourd.
-
-    .testimonial-photo
-
-    .testimonial-author
-      %h4 Veggies es bonus
-      %h5 lorem ipsum dolor
-
-    .clearfix
-
-  .col-md-3.col-md-offset-1.testimonial
-    %p Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
-    %p Gumbo beet greens corn soko endive gumbo gourd.
-
-    .testimonial-photo
-
-    .testimonial-author
-      %h4 Veggies es bonus
-      %h5 lorem ipsum dolor
-
-    .clearfix
-
-  .col-md-3.col-md-offset-1.testimonial
-    %p Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
-    %p Gumbo beet greens corn soko endive gumbo gourd.
-
-    .testimonial-photo
-
-    .testimonial-author
-      %h4 Veggies es bonus
-      %h5 lorem ipsum dolor
-
-    .clearfix
-
-  / testimonials demo contents end /
+- if cms_site
+  = raw cms_site.root_page_content
