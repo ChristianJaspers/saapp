@@ -9,7 +9,7 @@ class SetupNewAccount < BusinessProcess::Base
         create_manager and
         create_product_groups_and_arguments and
         create_invitees and
-        send_invitations
+        send_emails
   end
 
   private
@@ -19,6 +19,7 @@ class SetupNewAccount < BusinessProcess::Base
   def create_manager
     @manager = team.users.create(email: wizard.email) do |user|
       user.role = 'manager'
+      user.skip_confirmation_notification!
     end
   end
 
@@ -51,7 +52,12 @@ class SetupNewAccount < BusinessProcess::Base
     end
   end
 
-  def send_invitations
+  def send_emails
+    manager.send_confirmation_instructions
+    send_inivitations
+  end
+
+  def send_inivitations
     ApplicationMailer.user_invitation(*invitees)
   end
 end

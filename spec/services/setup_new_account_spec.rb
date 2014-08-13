@@ -6,7 +6,10 @@ describe SetupNewAccount do
     let(:parameter_object) { double(wizard: wizard) }
     let(:perform) { described_class.call(parameter_object) }
 
-    before { allow(ApplicationMailer).to receive(:user_invitation) }
+    before do
+      allow(ApplicationMailer).to receive(:user_invitation)
+      allow(MandrillDeviseMailer).to receive(:confirmation_instructions).and_call_original
+    end
 
     context 'manager email is provided' do
       let(:manager_email) { 'manager@saapp.dev' }
@@ -39,6 +42,7 @@ describe SetupNewAccount do
             before { perform }
 
             it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
+            it { expect(MandrillDeviseMailer).to have_received(:confirmation_instructions).with(User.managers.first, kind_of(String), {}) }
 
             describe 'manager' do
               subject { User.managers.first }
@@ -73,7 +77,7 @@ describe SetupNewAccount do
               its(:feature) { is_expected.to eq feature_description }
               its(:owner) { is_expected.to eq manager }
               its(:benefit) { is_expected.to eq benefit_description  }
-            end           
+            end
           end
         end
       end
