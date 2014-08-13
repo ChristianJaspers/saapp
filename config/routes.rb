@@ -28,6 +28,11 @@ Rails.application.routes.draw do
       resource :profile, only: [:edit, :update]
       resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy]
       resources :users, only: [:index, :create, :edit, :update, :destroy]
+      namespace :reports do
+        root 'dashboard#show'
+        resource :user_activity, only: [:show]
+        resource :argument_ranking, only: [:show]
+      end
     end
   end
 

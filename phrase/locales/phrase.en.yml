@@ -181,6 +181,7 @@ en:
       categories: Categories
       my_profile: My profile
       product_groups: Product groups
+      reports: Reports
       users: Users
     users:
       create:
