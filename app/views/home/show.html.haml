@@ -9,7 +9,7 @@
     %li.icon-set= t('landing.selling_points.easy_setup')
 
   - if guest?
-    %h3= t('landing.free_30')
+    %h2= t('landing.free_30')
     .landing-form.clearfix
       = simple_form_for wizard, method: :get, url: localized_path(I18n.locale, new_wizard_path)  do |f|
         = f.input :email, autofocus: true, input_html: {tabindex: 1}

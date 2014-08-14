@@ -1,7 +1,7 @@
 .my-account
   .col-md-8.col-md-offset-1
     %h4= t('manager.tabs.product_groups')
-    %table.table.table-striped.saapp-table
+    %table.table.saapp-table
       %thead
         %th= t('manager.product_groups.index.table.headers.product_group_name')
         %th= t('manager.product_groups.index.table.headers.features_count')
@@ -18,8 +18,8 @@
     = paginate product_groups
 
     = simple_form_for [:manager, product_group] do |f|
-      .row
+      .row-dark
         .col-md-7
-          = f.input :name
+          = f.input :name, label: false, placeholder: t('manager.product_groups.index.table.headers.actions')
         .col-md-5
-          = f.submit class: 'btn btn-primary f-right'
+          = f.submit class: 'btn btn-primary btn-block'

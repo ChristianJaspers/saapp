@@ -1,7 +1,7 @@
 .saapp-table
-  font-family: $font-family-second
-
-  tbody > tr > td
+  margin-bottom: 0
+  
+  tbody tr td
     border:
       color: $color-gray-light
       style: solid
@@ -11,19 +11,16 @@
 
     &:last-child
       border-right: 0
-    .btn-icon
-      line-height: $font-size-base
 
-  tbody > tr:nth-child(odd) > td
-    background-color: $color-white
+  .btn-icon
+    line-height: $font-size-base
 
-  tbody > tr:nth-child(even) > td
-    background-color: $color-gray-lighten
+  th
+    background-color: $color-gray-light
+    border-right: 1px solid $color-white
+    color: $color-gray
+    font-size: $font-size-base
+    text-align: center
 
-  thead
-    th
-      background-color: $color-gray-light
-      border-right: 1px solid $color-white
-      color: $color-gray
-      font-size: $font-size-base
-      text-align: center
+    &:last-child
+      border-right-width: 0
