@@ -1,4 +1,6 @@
-%h4= t('manager.tabs.reports')
+.my-account
+  .col-md-8.col-md-offset-1
+    %h4= t('manager.tabs.reports')
 
-= link_to t('manager.dashboard.show.links.user_activity'), manager_reports_user_activity_path
-= link_to t('manager.dashboard.show.links.argument_ranking'), manager_reports_argument_ranking_path
+    = link_to t('manager.dashboard.show.links.user_activity'), manager_reports_user_activity_path, class: 'btn-round icon-team'
+    = link_to t('manager.dashboard.show.links.argument_ranking'), manager_reports_argument_ranking_path, class: 'btn-round icon-graph'

@@ -9,3 +9,22 @@ a.btn-icon
   &:before
     font-size: $icon-size-small
     vertical-align: middle
+
+.btn-round
+  color: $color-green
+  display: inline-block
+  margin-right: $m
+  text:
+    align: center
+    transform: uppercase
+
+  &:before
+    @include circle-icons($color-green, $color-white)
+    content: ''
+    display: block !important
+    height: $wizard-icons
+    line-height: $wizard-icons
+    margin: 0 auto 14px
+    padding-top: $m
+    text-align: center
+    width: $wizard-icons

@@ -1,6 +1,8 @@
 .my-account
   .col-md-8.col-md-offset-1
-    %h4= t('manager.reports.user_activity.header')
+    %h4
+      = link_to '', manager_reports_root_path, title: t('common.back'), class: 'icon-back'
+      = t('manager.reports.user_activity.header')
     %table.table.saapp-table
       %thead
         %th= t('manager.users.index.table.headers.display_name')
@@ -12,5 +14,3 @@
             %td= user.display_name
             %td= user.email
             %td= user.score
-
-= link_to t('common.back'), manager_reports_root_path
