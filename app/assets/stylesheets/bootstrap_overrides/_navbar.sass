@@ -3,14 +3,18 @@
   border-bottom: 1px solid $color-gray-light
   font-size: $font-size-small
 
-  li a, span
-    line-height: 42px
-    padding: $font-size-base
+  li a, .logged-as
+    line-height: 1
+    padding: $m-quarter 10px
 
-  span
+  .logged-as
     color: $color-gray
     display: inline-block
     font-family: $font-family-second
+
+    .logged-as-label
+      display: inline-block
+      font-weight: $font-weight-light
 
   li a
     color: $color-black
@@ -28,8 +32,6 @@
   .dropdown-toggle
     background-color: $color-transparent
     border: none
-    line-height: 38px
-    padding: $font-size-base
 
   .dropdown-menu
     a
@@ -50,3 +52,10 @@
   margin: $font-size-base
   padding: 0
   width: 235px
+
+@media (min-width: $screen-sm)
+  .navbar-header
+    margin: -26px 0
+
+  .navbar
+    padding: 16px 0
