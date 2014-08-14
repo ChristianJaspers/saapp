@@ -185,6 +185,9 @@ en:
       edit:
         sales_reps: SALES REPS
         team_size: YOUR TEAM HAS
+      update:
+        notifications:
+          success: Your profile has been updated.
     reports:
       argument_ranking:
         header: Argument ranking

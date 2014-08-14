@@ -17,12 +17,15 @@ da:
   common:
     argument:
       many: Argumenter
+    back: Tilbage
     benefit: Benefit
     email: Email
+    experience: XP
     feature: Feature
     invitation:
       many: Invitationer
     name: Navn
+    rating: Bedømmelse
     save_changes: Gem ændringer
     unauthorized: Du kan ikke komme ind på denne side. Venligst log ind med korrekt
       brugernavn og adgangskode.
@@ -149,14 +152,22 @@ da:
         notifications:
           failure: "Ændringerne kunne ikke gemmes"
           success: "Ændringerne er gemt"
+    dashboard:
+      show:
+        links:
+          argument_ranking: Argument hitliste
+          user_activity: Brugeraktivitet
     product_groups:
       destroy:
         notifications:
           success: Produkt gruppen fjernet
+      edit:
+        header: Retter produktgruppe %{name}
       index:
         table:
           actions:
             archive_link: Træk tilbage
+            destroy_confirmation: Er du sikker?
             destroy_link: Fjern
             edit_link: Ret
             unarchive_link: Publicer
@@ -168,8 +179,20 @@ da:
         notifications:
           failure: "Ændringer kunne ikke gemmes"
           success: "Ændringer gemt"
+    profile:
+      edit:
+        sales_reps: SÆLGERE
+        team_size: DIT TEAM HAR
+    reports:
+      argument_ranking:
+        header: Argument hitliste
+      user_activity:
+        header: Brugeraktivitet
     tabs:
+      categories: Kategorier
+      my_profile: Min profil
       product_groups: Produkt grupper
+      reports: Rapporter
       users: Brugere
     users:
       create:
@@ -194,6 +217,7 @@ da:
           success: Sælger opdateret
   navbar:
     admin_link: Admin
+    logged_as: Logget ind som
     login_link: Log ind
     logout_link: Log ud
     my_account_link: Min konto
