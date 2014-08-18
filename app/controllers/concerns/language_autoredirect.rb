@@ -44,11 +44,11 @@ module LanguageAutoredirect
   end
 
   def redirect_to_back_with_locale(locale)
-    redirect_to (locale == I18n.default_locale) ? raw_request_path : "/#{locale}#{raw_request_path}"
+    redirect_to (locale == I18n.default_locale) ? raw_request_fullpath : "/#{locale}#{raw_request_fullpath}"
   end
 
-  def raw_request_path
-    request.path.sub(LANG_PATH_REGEX, '/')
+  def raw_request_fullpath
+    request.fullpath.sub(LANG_PATH_REGEX, '/')
   end
 
   def extracted_locale
