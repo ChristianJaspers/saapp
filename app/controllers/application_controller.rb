@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :set_current_locale
-
-  helper_method :localized_path, :localized_current_path
+  include LanguageAutoredirect
 
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
@@ -38,21 +36,5 @@ class ApplicationController < ActionController::Base
     {
       locale: (I18n.locale == I18n.default_locale) ? nil : I18n.locale
     }
-  end
-
-  def set_current_locale
-    I18n.locale = params[:locale] if params[:locale]
-  end
-
-  def localized_path(locale, path)
-    if locale == I18n.default_locale
-      path
-    else
-      "/#{locale}#{path}"
-    end
-  end
-
-  def localized_current_path(locale)
-    localized_path(locale, '/')
   end
 end

@@ -50,7 +50,7 @@
             %ul.dropdown-menu{role: 'menu'}
               - I18n.available_locales.each do |locale|
                 %li
-                  = link_to localized_current_path(locale) do
+                  = link_to language_path(lang: locale), method: :patch do
                     = image_tag locale_flag_filename(locale)
                     = locale.to_s.upcase
 
