@@ -28,3 +28,13 @@ a.btn-icon
     padding-top: $m
     text-align: center
     width: $wizard-icons
+
+.btn-dark.btn-dark
+  @include box-shadow(darken($color-gray-dark, 10%))
+  background-color: $color-gray-dark
+  color: $color-white
+  &:hover
+    @include box-shadow($color-gray-dark)
+    background-color: (lighten($color-gray-dark,10%))
+    border-color: (lighten($color-gray-dark,10%))
+    color: $color-white

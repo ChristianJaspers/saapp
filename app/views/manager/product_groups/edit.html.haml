@@ -27,6 +27,9 @@
             %input.form-control.add-benefit{'ng-model' => 'argument.benefit', type: 'text', required: true}
             %span.add-benefit-submit
               %input{type: 'submit'}
-        %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()'}
-          = t('common.save_changes')
-        = link_to t('common.cancel'), manager_product_groups_path, class: 'btn'
+        .pull-right
+          = link_to t('common.cancel'), manager_product_groups_path, class: 'btn btn-dark'
+          %span.or
+            = t('common.or')
+          %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()'}
+            = t('common.save_changes')

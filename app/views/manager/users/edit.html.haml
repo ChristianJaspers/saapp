@@ -4,4 +4,8 @@
       = f.input :email
       = f.input :display_name
       = f.input :manager, as: :boolean
-      = f.button :submit, t('common.save_changes'), class: 'btn-primary'
+      .pull-right
+        = link_to t('common.cancel'), manager_users_path, class: 'btn btn-dark'
+        %span.or
+          = t('common.or')
+        = f.button :submit, t('common.save_changes'), class: 'btn-primary'
