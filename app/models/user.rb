@@ -48,10 +48,6 @@ class User < ActiveRecord::Base
     object.owner_id == id
   end
 
-  def locale
-    'en'
-  end
-
   alias_method :manager, :manager?
 
   def manager=(value)
