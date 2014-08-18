@@ -12,6 +12,7 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery.cookie
 #= require bootstrap
 #= require underscore-min
 #= require angular.min
@@ -19,6 +20,9 @@
 #= require angular-ui-bootstrap-tpls
 #= require angular-resource.min
 #= require angular-rails-templates
+#= require angular-translate
+#= require angular-cookies
+#= require angular-translate-storage-cookie
 #= require_tree ../templates
 #= require spin
 #= require ladda

@@ -1,4 +1,4 @@
-wizardApp = angular.module('wizardApp', ['ngResource', 'ui.bootstrap', 'templates', 'ng-rails-csrf'])
+wizardApp = angular.module('wizardApp', ['ngResource', 'pascalprecht.translate', 'ngCookies', 'ui.bootstrap', 'templates', 'ng-rails-csrf'])
 
 wizardApp.factory('Wizard', ['$resource', ($resource) ->
   $resource('/wizards')
@@ -155,3 +155,5 @@ wizardApp.controller('invitationCtrl', ['$scope', ($scope) ->
     $scope.invitation = {}
     $scope.autoFocus();
 ])
+
+window.wizardApp = wizardApp

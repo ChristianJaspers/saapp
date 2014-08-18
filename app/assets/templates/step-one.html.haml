@@ -1,5 +1,6 @@
 .wizard-window.col-md-7{'ng-controller' => 'productGroupCtrl'}
-  %h2= I18n.t('wizard.step_1.header')
+  %h2
+    {{ 'i18n.t.wizard.step_1.header' | translate }}
   %ul{'ng-repeat' => 'productGroup in wizard.productGroups'}
     %li
       {{$index + 1}} - {{productGroup.name}}
