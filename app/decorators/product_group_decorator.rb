@@ -13,7 +13,7 @@ class ProductGroupDecorator < ApplicationDecorator
 
   def removal_link
     if object.removable_by?(current_user)
-      icon_link_to 'trash', h.manager_product_group_path(object.id),
+      icon_link_to 'trash btn-dark', h.manager_product_group_path(object.id),
                    title: I18n.t('manager.product_groups.index.table.actions.destroy_link'),
                    method: :delete,
                    data: {confirm: I18n.t('manager.product_groups.index.table.actions.destroy_confirmation')}

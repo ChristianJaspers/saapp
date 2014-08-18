@@ -53,7 +53,9 @@
       size: $font-size-medium
     line-height: $font-size-medium * 3
 
-  input, textarea
+  input[type='text'],
+  input[type='email'],
+  textarea
     @include box-shadow-border($color-gray-dark, $default-border-radius, darken($color-gray-dark, 10%))
 
   input[type='text'],
@@ -65,9 +67,6 @@
 
   textarea
     height: $inputs-size * 3
-
-  .btn
-    @include box-shadow-border($color-green, $default-border-radius, darken($color-green, 10%))
 
   .icon-team:after
     @include circle-icons($color-green, $color-white)
@@ -96,3 +95,35 @@
 
     .btn-icon
       margin-top: $m-quarter
+      
+.row-dark
+  background-color: $color-gray-light
+  border-top: 1px solid #ddd
+  
+  .btn
+    margin-top: 0
+
+  .col-md-12
+    border-bottom: 1px solid $color-white
+
+  .col-md-7
+    border-right: 1px solid $color-white
+
+  .col-md-5,
+  .col-md-7,
+  .col-md-12
+    margin: 0
+    padding-top: $m-half
+
+  &:after
+    clear: both
+    content: ''
+    display: block
+
+.or
+  color: $color-gray-dark
+  display: inline-block
+  margin-top: $default-button-margin
+  padding: 0 $m-quarter
+  text-transform: uppercase
+  vertical-align: middle
