@@ -13,37 +13,41 @@ module EmailTemplates
     end
 
     def send
-      # TODO language might differ per users
-      language = recipients.first.language
-      mandrill_template_name = BuildTemplateName.call(language, template_name)
       messages.map do |message|
-        api.messages.send_template(mandrill_template_name, template_content, message, async, ip_pool, send_at)
+        api.messages.send_template(message[:template], template_content, message[:data], async, ip_pool, send_at)
       end.flatten
     end
 
     def messages
-      [
+      recipients_grouped_by_locale.map do |locale, recipients_in_locale|
         {
-          to: Array.wrap(to),
-          merge_vars: Array.wrap(merge_vars),
-          from_email: from_email,
-          from_name: from_name,
+          template: BuildTemplateName.call(locale, template_name),
+          data: {
+            to: Array.wrap(to(locale)),
+            merge_vars: Array.wrap(merge_vars(locale)),
+            from_email: from_email,
+            from_name: from_name
+          }
         }
-      ]
+      end
     end
 
   private
+
+    def recipients_grouped_by_locale
+      @recipients_grouped_by_locale ||= recipients.group_by(&:locale)
+    end
 
     def template_content
       []
     end
 
-    def to
-      recipients.map(&:to)
+    def to(locale)
+      recipients_grouped_by_locale[locale].map(&:to)
     end
 
-    def merge_vars
-      recipients.map(&:merge_vars)
+    def merge_vars(locale)
+      recipients_grouped_by_locale[locale].map(&:merge_vars)
     end
 
     def from_email

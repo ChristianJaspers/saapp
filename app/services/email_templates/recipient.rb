@@ -1,5 +1,5 @@
 module EmailTemplates
-  class Recipient < Struct.new(:language, :email, :variables)
+  class Recipient < Struct.new(:locale, :email, :variables)
     def to
       {
         type: 'bcc',

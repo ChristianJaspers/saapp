@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe EmailTemplates::Recipient do
-  subject { described_class.new(language, email, variables) }
-  let(:language) { 'en' }
+  subject { described_class.new(locale, email, variables) }
+  let(:locale) { 'en' }
   let(:email) { 'x@example.com' }
   let(:variables) do
     {
