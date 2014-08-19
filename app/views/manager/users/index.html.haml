@@ -1,12 +1,13 @@
 .my-account
   .col-md-8.col-md-offset-1
     %h4= t('manager.tabs.users')
-    %table.table.saapp-table
+    %table.table.saapp-table-users
       %thead
         %th= t('manager.users.index.table.headers.email')
         %th= t('manager.users.index.table.headers.display_name')
         %th= t('manager.users.index.table.headers.role')
-        %th= t('manager.users.index.table.headers.actions')
+        %th
+          .table-actions= t('manager.users.index.table.headers.actions')
       %tbody
         - users.each do |user|
           %tr
