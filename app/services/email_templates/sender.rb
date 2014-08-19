@@ -19,7 +19,7 @@ module EmailTemplates
     end
 
     def messages
-      recipients_grouped_by_locale.map do |locale, recipients_in_locale|
+      recipients_grouped_by_locale.map do |locale, _|
         {
           template: BuildTemplateName.call(locale, template_name),
           data: {
