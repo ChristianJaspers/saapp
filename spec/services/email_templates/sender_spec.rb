@@ -1,17 +1,18 @@
 require 'rails_helper'
 
 shared_examples 'mandrill bulk message' do
-  it { expect(message[:to]).to eq message_to }
-  it { expect(message[:merge_vars]).to eq message_vars }
-  it { expect(message[:from_email]).to eq 'noreply@example.com' }
-  it { expect(message[:from_name]).to eq 'BetterSalesman' }
+  it { expect(messages).to have(1).item }
+  it { expect(messages.first[:to]).to eq message_to }
+  it { expect(messages.first[:merge_vars]).to eq message_vars }
+  it { expect(messages.first[:from_email]).to eq 'noreply@example.com' }
+  it { expect(messages.first[:from_name]).to eq 'BetterSalesman' }
 end
 
 describe EmailTemplates::Sender do
   subject { described_class.new(recipients, 'test') }
 
-  describe '#message' do
-    let(:message) { subject.message }
+  describe '#messages' do
+    let(:messages) { subject.messages }
 
     context 'one recipient is defined' do
       let(:recipients) { [EmailTemplates::Recipient.new('en', 'a@example.com', {name: 'Someone'})] }

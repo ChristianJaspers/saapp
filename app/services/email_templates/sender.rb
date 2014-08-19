@@ -16,16 +16,20 @@ module EmailTemplates
       # TODO language might differ per users
       language = recipients.first.language
       mandrill_template_name = BuildTemplateName.call(language, template_name)
-      api.messages.send_template(mandrill_template_name, template_content, message, async, ip_pool, send_at)
+      messages.map do |message|
+        api.messages.send_template(mandrill_template_name, template_content, message, async, ip_pool, send_at)
+      end.flatten
     end
 
-    def message
-      {
-        to: Array.wrap(to),
-        merge_vars: Array.wrap(merge_vars),
-        from_email: from_email,
-        from_name: from_name,
-      }
+    def messages
+      [
+        {
+          to: Array.wrap(to),
+          merge_vars: Array.wrap(merge_vars),
+          from_email: from_email,
+          from_name: from_name,
+        }
+      ]
     end
 
   private
