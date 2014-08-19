@@ -23,6 +23,11 @@ class PrepareWizardTranslations
     wizard.step_4.benefit
     wizard.step_4.invitations_header
     wizard.step_4.submit_button
+
+    wizard.steps.arguments
+    wizard.steps.invitations
+    wizard.steps.product_groups
+    wizard.steps.summary
   )
 
   def self.call(gon)

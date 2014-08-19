@@ -39,10 +39,10 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
   $scope.maxProductGroups = 20
 
   $scope.steps = [
-    { title: 'PRODUCT GROUPS', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
-    { title: 'ARGUMENTS', template: 'step-two.html', disabled: true, class: 'ng-isolate-scope arguments_step' },
-    { title: 'INVITATIONS', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
-    { title: 'SUMMARY', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
+    { title: 'wizard.steps.product_groups', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
+    { title: 'wizard.steps.arguments', template: 'step-two.html', disabled: true, class: 'ng-isolate-scope arguments_step' },
+    { title: 'wizard.steps.invitations', template: 'step-three.html', disabled: true, class: 'ng-isolate-scope invitations_step' },
+    { title: 'wizard.steps.summary', template: 'step-four.html', disabled: true, class: 'ng-isolate-scope summary_step' },
   ]
 
   $scope.autoFocus = ->
