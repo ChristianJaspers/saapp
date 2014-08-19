@@ -1,4 +1,4 @@
-.saapp-table
+.saapp-table, %saapp-table
   margin-bottom: 0
   
   tbody tr td
@@ -6,8 +6,8 @@
       color: $color-gray-light
       style: solid
       width: 0 1px 1px 0
-    line-height: $font-size-base * 2
-    padding: $m / 2 $m
+    line-height: $font-size-medium
+    padding: $m-half
 
     &:last-child
       border-right: 0
@@ -24,3 +24,38 @@
 
     &:last-child
       border-right-width: 0
+
+.saapp-table-arguments
+  @extend %saapp-table
+
+  th
+    width: 42%
+
+    &:last-child
+      width: 16%
+
+.saapp-table-users
+  @extend %saapp-table
+
+  th
+    width: 45%
+
+  td
+    max-width: 100px
+    text-overflow: ellipsis
+    overflow: hidden
+
+  .table-actions
+    width: 110px
+
+.saapp-table-product-groups
+  @extend %saapp-table
+
+  th
+    width: 40%
+
+    &:last-child
+      width: 20%
+
+  .table-actions
+    width: 120px
