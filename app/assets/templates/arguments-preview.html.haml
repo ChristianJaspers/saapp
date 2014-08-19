@@ -1,7 +1,7 @@
 .mobile-preview-container.col-md-3.col-md-offset-2
   .preview-underlay
     %span.preview-head
-      = I18n.t('common.argument.many')
+      {{ 'common.argument.many' | translate }}
     .box
       %tabset{type: 'pills'}
         %tab{'ng-repeat' => 'productGroup in wizard.productGroups', heading: '{{productGroup.name}}', active: 'productGroup.active'}

@@ -1,9 +1,12 @@
 .wizard-window.col-md-7{'ng-controller' => 'argumentCtrl'}
-  %h2= I18n.t('wizard.step_2.header')
+  %h2
+    {{ 'wizard.step_2.header' | translate }}
 
   .argument-list
-    %h4.right= I18n.t('common.feature')
-    %h4.center= I18n.t('common.benefit')
+    %h4.right
+      {{ 'common.feature' | translate }}
+    %h4.center
+      {{ 'common.benefit' | translate }}
     .clearfix
 
     .row{'ng-repeat' => "argument in wizard.arguments"}
@@ -27,6 +30,6 @@
       %input{type: 'submit'}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true'}
-    = I18n.t('wizard.step_2.next_step_button')
+    {{ 'wizard.step_2.next_step_button' | translate }}
 
 %arguments-preview

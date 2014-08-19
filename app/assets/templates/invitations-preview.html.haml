@@ -1,7 +1,7 @@
 .mobile-preview-container.col-md-3.col-md-offset-2
   .preview-underlay
     %span.preview-head
-      = I18n.t('common.invitation.many')
+      {{ 'common.invitation.many' | translate }}
     .box
       .preview-list
         %ul.representative-preview{'ng-repeat' => 'invitation in wizard.invitations'}

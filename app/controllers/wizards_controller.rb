@@ -4,6 +4,7 @@ class WizardsController < ApplicationController
   def new
     render 'home/show' unless wizard.valid?
     gon.email = wizard.email
+    PrepareWizardTranslations.call(gon)
   end
 
   def create

@@ -25,6 +25,8 @@ da:
     invitation:
       many: Invitationer
     name: Navn
+    product_group:
+      many: Product groups
     rating: Bedømmelse
     save_changes: Gem ændringer
     unauthorized: Du kan ikke komme ind på denne side. Venligst log ind med korrekt
@@ -189,7 +191,6 @@ da:
       user_activity:
         header: Brugeraktivitet
     tabs:
-      categories: Kategorier
       my_profile: Min profil
       product_groups: Produkt grupper
       reports: Rapporter
@@ -230,9 +231,7 @@ da:
       notifications:
         success: Invitationer er sendt!
     step_1:
-      at_categories_limit_notification: Du kan maksimalt oprette %{maximum_amount}
-        produkt grupper.
-      at_product_groups_limit_notification: Du kan maksimalt oprette %{maximum_amount}
+      at_product_groups_limit_notification: Du kan maksimalt oprette {{maximum_amount}}
         produkt grupper.
       header: Skriv produkt grupper
       next_step_button: NÆSTE

@@ -1,9 +1,12 @@
 .wizard-window.col-md-7{'ng-controller' => 'invitationCtrl'}
-  %h2= I18n.t('wizard.step_3.header')
+  %h2
+    {{ 'wizard.step_3.header' | translate }}
 
   .representative-list
-    %h4.right= I18n.t('common.email')
-    %h4.center= I18n.t('common.name')
+    %h4.right
+      {{ 'common.email' | translate }}
+    %h4.center
+      {{ 'common.name' | translate }}
     .clearfix
     .row{'ng-repeat' => 'invitation in wizard.invitations'}
       .representative-item
@@ -22,6 +25,6 @@
       %input{type: 'submit', tabindex: -1}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
-    = I18n.t('wizard.step_3.next_step_button')
+    {{ 'wizard.step_3.next_step_button' | translate }}
 
 %invitations-preview

@@ -19,8 +19,6 @@ en:
       many: Arguments
     back: Back
     benefit: Benefit
-    category:
-      many: Categories
     email: Email
     experience: XP
     feature: Feature
@@ -194,7 +192,6 @@ en:
       user_activity:
         header: User activity
     tabs:
-      categories: Categories
       my_profile: My profile
       product_groups: Product groups
       reports: Reports
@@ -235,9 +232,7 @@ en:
       notifications:
         success: Invitations were sent successfuly!
     step_1:
-      at_categories_limit_notification: You can create maximum %{maximum_amount} products
-        groups.
-      at_product_groups_limit_notification: 'You can create maximum %{maximum_amount}
+      at_product_groups_limit_notification: 'You can create maximum {{maximum_amount}}
         product_groups '
       header: Enter product groups
       next_step_button: NEXT STEP

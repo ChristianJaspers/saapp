@@ -1,6 +1,6 @@
 .wizard-window.col-md-7{'ng-controller' => 'productGroupCtrl'}
   %h2
-    {{ 'i18n.t.wizard.step_1.header' | translate }}
+    {{ 'wizard.step_1.header' | translate }}
   %ul{'ng-repeat' => 'productGroup in wizard.productGroups'}
     %li
       {{$index + 1}} - {{productGroup.name}}
@@ -14,9 +14,9 @@
     %span.wizard-add
       %input{type: 'submit', value: ' '}
   %span{'ng-show' => 'atProductGroupsLimit()'}
-    = I18n.t('wizard.step_1.at_product_groups_limit_notification', maximum_amount: 20)
+    {{ 'wizard.step_1.at_product_groups_limit_notification' | translate:'{"maximum_amount": 20}' }}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!firstStepValid()', 'ng-click' => 'steps[1].active = true', tabindex: 2}
-    = I18n.t('wizard.step_1.next_step_button')
+    {{ 'wizard.step_1.next_step_button' | translate }}
 
 %product-groups-preview

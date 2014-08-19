@@ -1,18 +1,22 @@
 .wizard-window.col-md-7.summary
-  %h2= I18n.t('wizard.step_4.header')
+  %h2
+    {{ 'wizard.step_4.header' | translate }}
 
   .left-default
 
-    %h3= I18n.t('wizard.step_4.categories_and_arguments_header')
+    %h3
+      {{ 'wizard.step_4.categories_and_arguments_header' | translate }}
     .review{'ng-repeat' => 'productGroup in wizard.productGroups'}
       %strong {{productGroup.name}}
       %ul.inline{'ng-repeat' => 'argument in productGroup.arguments'}
         %li.inline
           {{argument.feature}}
-          %span= I18n.t('wizard.step_4.benefit')
+          %span
+            {{ 'wizard.step_4.benefit' | translate }}
           {{argument.benefit}}
 
-    %h3= I18n.t('wizard.step_4.invitations_header')
+    %h3
+      {{ 'wizard.step_4.invitations_header' | translate }}
     %ul{'ng-repeat' => 'invitation in wizard.invitations'}
       %li.block
         %strong {{invitation.email}}
@@ -20,4 +24,4 @@
 
     .clearfix
     %button.btn.btn-primary.ladda-button{type: 'button', 'ng-click' => 'submitWizard()', data: {style: 'zoom-out'}}
-      = I18n.t('wizard.step_4.submit_button')
+      {{ 'wizard.step_4.submit_button' | translate }}

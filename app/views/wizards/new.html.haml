@@ -2,3 +2,11 @@
   %tabset
     %tab{'class' => '{{step.class}}', 'select' => 'initTab(step.class)', 'ng-repeat' => 'step in steps', heading: '{{step.title}}', active: 'step.active', disabled: 'step.disabled'}
       %div{'ng-include' => true, src: 'step.template'}
+
+:javascript
+  wizardApp.config(['$translateProvider', function ($translateProvider) {
+    $translateProvider.preferredLanguage('en');
+    $translateProvider.useCookieStorage();
+    $translateProvider.storageKey('lang');
+    $translateProvider.translations(gon.locale, gon.translations);
+  }]);
