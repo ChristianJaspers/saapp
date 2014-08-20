@@ -66,13 +66,13 @@
     %footer
       .container
         .col-md-2
-          = raw cms_site.footer_snippet_content(:footer_column_1)
+          = raw cms_site.footer_snippet_content(:footer_column_1) if cms_site
 
         .col-md-2
-          = raw cms_site.footer_snippet_content(:footer_column_2)
+          = raw cms_site.footer_snippet_content(:footer_column_2) if cms_site
 
         .col-md-2
-          = raw cms_site.footer_snippet_content(:footer_column_3)
+          = raw cms_site.footer_snippet_content(:footer_column_3) if cms_site
 
         .col-md-3.col-md-offset-3.footer-logo
           %h3 BetterSalesman
