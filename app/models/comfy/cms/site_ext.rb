@@ -20,6 +20,14 @@ module Comfy
           []
         end
       end
+
+      def footer_snippet_content(identifier)
+        footer_snippets.detect { |snippet| snippet.identifier == identifier.to_s }.try(:content)
+      end
+
+      def footer_snippets
+        @footer_snippets ||= snippets.where(identifier: ['footer_column_1', 'footer_column_2', 'footer_column_3']).all
+      end
     end
   end
 end

@@ -66,22 +66,13 @@
     %footer
       .container
         .col-md-2
-          %h2 ABOUT US
-          %ul
-            %li
-              %a Nori grape
+          = raw cms_site.footer_snippet_content(:footer_column_1)
 
         .col-md-2
-          %h2 CATEGORIES
-          %ul
-            %li
-              %a Nori grape
+          = raw cms_site.footer_snippet_content(:footer_column_2)
 
         .col-md-2
-          %h2 OTHER STUFF
-          %ul
-            %li
-              %a Nori grape
+          = raw cms_site.footer_snippet_content(:footer_column_3)
 
         .col-md-3.col-md-offset-3.footer-logo
           %h3 BetterSalesman
