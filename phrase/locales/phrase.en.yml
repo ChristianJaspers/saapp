@@ -147,7 +147,7 @@ en:
           headers:
             actions: Actions
             category_name: Product group name
-            features_count: Features count
+            features_count: Number of arguments
       update:
         notifications:
           failure: Changes could not be saved

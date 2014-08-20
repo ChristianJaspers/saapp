@@ -149,7 +149,7 @@ da:
           headers:
             actions: Handlinger
             category_name: Produkt gruppe navn
-            features_count: Features antal
+            features_count: Antal argumenter
       update:
         notifications:
           failure: "Ændringerne kunne ikke gemmes"
@@ -185,6 +185,9 @@ da:
       edit:
         sales_reps: SÆLGERE
         team_size: DIT TEAM HAR
+      update:
+        notifications:
+          success: Din profil er blevet opdateret.
     reports:
       argument_ranking:
         header: Argument hitliste
@@ -248,3 +251,8 @@ da:
       invitations_header: Sælgere
       product_groups_and_arguments_header: Produkt grupper og argumenter
       submit_button: SEND INVITATIONER
+    steps:
+      arguments: ARGUMENTER
+      invitations: INVITATIONER
+      product_groups: PRODUKT GRUPPER
+      summary: SAMMENFATNING
