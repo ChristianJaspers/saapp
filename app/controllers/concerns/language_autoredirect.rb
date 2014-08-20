@@ -30,9 +30,13 @@ module LanguageAutoredirect
   end
 
   def autodetect_language
-    return unless request.get?
+    return unless autodetection_should_be_performed?
     save_locale(web_browser_locale) unless cookies[:lang].present?
     redirect_to_back_with_locale(read_locale) if different_locale?
+  end
+
+  def autodetection_should_be_performed?
+    request.get? && !request.path['/admin/']
   end
 
   def different_locale?
