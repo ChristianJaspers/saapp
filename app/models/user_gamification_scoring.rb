@@ -3,6 +3,6 @@ class UserGamificationScoring < ActiveRecord::Base
     where(company_id: user.team.company_id, role: User.roles[:user]).
       group(:id, :email, :display_name).
       order('score DESC').
-      select('id, email, display_name, SUM(amount) AS score')
+      select('id, email, display_name, SUM(COALESCE(amount, 0)) AS score')
   end
 end

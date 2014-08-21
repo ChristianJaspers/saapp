@@ -231,5 +231,5 @@ ActiveRecord::Schema.define(version: 20140820151934) do
     t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   end
 
-  create_view "user_gamification_scorings", " SELECT usr.id,\n    t.company_id,\n    usr.team_id,\n    usr.role,\n    usr.email,\n    usr.display_name,\n    scoring.amount,\n    scoring.event_name\n   FROM ((users usr\n   JOIN teams t ON ((t.id = usr.team_id)))\n   JOIN gamification_scorings scoring ON ((scoring.beneficiary_id = usr.id)))", :force => true
+  create_view "user_gamification_scorings", " SELECT usr.id,\n    t.company_id,\n    usr.team_id,\n    usr.role,\n    usr.email,\n    usr.display_name,\n    scoring.amount,\n    scoring.event_name\n   FROM ((users usr\n   JOIN teams t ON ((t.id = usr.team_id)))\n   LEFT JOIN gamification_scorings scoring ON ((scoring.beneficiary_id = usr.id)))", :force => true
 end
