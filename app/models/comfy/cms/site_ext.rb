@@ -15,7 +15,7 @@ module Comfy
 
       def static_pages
         if root_page
-          root_page.children.published.includes(:site).all
+          root_page.children.published.includes(:site).limit(3).all
         else
           []
         end
