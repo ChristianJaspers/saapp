@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.admin?
       admin_root_url
+    elsif resource.manager?
+      manager_root_url
     else
       root_url
     end
