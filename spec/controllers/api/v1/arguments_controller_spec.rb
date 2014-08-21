@@ -47,7 +47,7 @@ describe Api::V1::ArgumentsController do
                 "email": "#{current_user.email}",
                 "avatar_url": null,
                 "avatar_thumb_url": null,
-                "experience": 2,
+                "experience": 9,
                 "my_activity": 50,
                 "my_team_activity": 50,
                 "all_teams_activity": 50
@@ -184,7 +184,7 @@ describe Api::V1::ArgumentsController do
                 "email": "#{current_user.email}",
                 "avatar_url": null,
                 "avatar_thumb_url": null,
-                "experience": 2,
+                "experience": 9,
                 "my_activity": 50,
                 "my_team_activity": 50,
                 "all_teams_activity": 50

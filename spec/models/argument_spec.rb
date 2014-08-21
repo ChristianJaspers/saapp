@@ -34,7 +34,7 @@ describe Argument do
       describe 'argument creator scoring' do
         subject { argument_creator.scorings.last }
 
-        its(:amount) { is_expected.to eq 2 }
+        its(:amount) { is_expected.to eq 9 }
       end
     end
   end
