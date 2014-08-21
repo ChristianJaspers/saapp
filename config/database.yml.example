@@ -7,8 +7,8 @@ common: &common
 
 development:
   <<: *common
-  database: saaap
+  database: bs
 
 test:
   <<: *common
-  database: saaap_test
+  database: bs_test
