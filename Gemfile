@@ -37,7 +37,6 @@ gem 'http_accept_language', '~> 2.0.2'
 gem 'ladda-rails', :git => 'git://github.com/Promptus/ladda-rails.git'
 gem 'puma', '~> 2.9.0'
 gem 'rollbar', '~> 1.0.0'
-gem 'schema_plus', '~> 1.5.3'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'

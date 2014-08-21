@@ -1,9 +1,9 @@
 class AddUserGamificationScorings < ActiveRecord::Migration
   def up
-    create_view :user_gamification_scorings, File.read(Rails.root.join('db/views/user_gamification_scorings.sql'))
+    execute "CREATE VIEW user_gamification_scorings AS #{ File.read(Rails.root.join('db/views/user_gamification_scorings.sql')) }"
   end
 
   def down
-    drop_view :user_gamification_scorings
+    execute "DROP VIEW user_gamification_scorings"
   end
 end

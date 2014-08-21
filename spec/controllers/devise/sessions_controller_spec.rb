@@ -27,7 +27,7 @@ describe Devise::SessionsController do
 
   context 'manager login' do
     let(:user) { create(:user, :manager) }
-    let(:redirect_path) { '/' }
+    let(:redirect_path) { '/manager' }
     it_behaves_like 'user signs in'
   end
 
