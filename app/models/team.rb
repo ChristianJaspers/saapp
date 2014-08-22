@@ -7,6 +7,4 @@ class Team < ActiveRecord::Base
   has_many :product_groups, through: :users
   has_many :scorings, class_name: Gamification::Scoring, through: :users
   has_many :arguments, through: :product_groups
-
-
 end
