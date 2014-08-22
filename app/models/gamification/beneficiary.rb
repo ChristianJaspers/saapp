@@ -19,17 +19,7 @@ module Gamification
     end
 
     def goal_score
-      [max_score, average_score * 2].max
-    end
-
-    private
-
-    def max_score
-      scorings.within_period.group(:beneficiary_id).sum(:amount).values.max || 0
-    end
-
-    def average_score
-      scorings.within_period.average(:amount).to_i
+      raise NotImplementedError
     end
   end
 end

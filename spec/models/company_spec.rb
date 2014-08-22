@@ -71,7 +71,7 @@ describe Company do
       end
 
       it 'goal score is average multiplied by 2' do
-        expect(described_class.overall_goal_score).to eq ((20 + 30 + 150) / 3) * 2
+        expect(described_class.overall_goal_score).to eq ((20 + 30 + 150) / 3.0) * 2
       end
     end
   end

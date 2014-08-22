@@ -6,6 +6,10 @@ class Company < ActiveRecord::Base
   has_many :scorings, class_name: Gamification::Scoring, through: :users
 
   def self.overall_goal_score
-    Gamification::Scoring.within_period.average(:amount).to_i * 2
+    GoalLevelScore.for_platform
+  end
+
+  def goal_score
+    GoalLevelScore.for_company(self)
   end
 end
