@@ -136,24 +136,6 @@ da:
         for kunden
     testimonials_header: Kunderne siger
   manager:
-    categories:
-      destroy:
-        notifications:
-          success: Produkt gruppe er blevet fjernet
-      index:
-        table:
-          actions:
-            archive_link: Træk tilbage
-            destroy_link: Fjern
-            unarchive_link: Publicer
-          headers:
-            actions: Handlinger
-            category_name: Produkt gruppe navn
-            features_count: Antal argumenter
-      update:
-        notifications:
-          failure: "Ændringerne kunne ikke gemmes"
-          success: "Ændringerne er gemt"
     dashboard:
       show:
         links:
@@ -175,6 +157,7 @@ da:
             unarchive_link: Publicer
           headers:
             actions: Handlinger
+            arguments_count: Antal argumenter
             features_count: Features antal
             product_group_name: Produkt gruppe navn
       update:
