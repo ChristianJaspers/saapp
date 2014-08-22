@@ -192,6 +192,7 @@ en:
       user_activity:
         header: User activity
     tabs:
+      billing: Billing
       my_profile: My profile
       product_groups: Product groups
       reports: Reports
