@@ -14,17 +14,17 @@ class Api::UserSerializer < ActiveModel::Serializer
   end
 
   def my_activity
-    return 0 if object.team.goal_score.zero?
-    (object.score_in_period * 100.0 / GoalLevelScore.for_team(object.team)).to_i
+    return 0 if (goal_score = GoalLevelScore.for_team(object.team)).zero?
+    (object.score_in_period * 100.0 / goal_score).to_i
   end
 
   def my_team_activity
-    return 0 if object.company.goal_score.zero?
-    (object.team.score_in_period * 100.0 / GoalLevelScore.for_company(object.company)).to_i
+    return 0 if (goal_score = GoalLevelScore.for_company(object.company)).zero?
+    (object.team.score_in_period * 100.0 / goal_score).to_i
   end
 
   def all_teams_activity
-    return 0 if Company.overall_goal_score.zero?
-    (object.company.score_in_period * 100.0 / GoalLevelScore.for_platform).to_i
+    return 0 if (goal_score = GoalLevelScore.for_platform).zero?
+    (object.company.score_in_period * 100.0 / goal_score).to_i
   end
 end

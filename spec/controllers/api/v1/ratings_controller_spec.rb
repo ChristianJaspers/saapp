@@ -74,9 +74,9 @@ describe Api::V1::RatingsController do
           let(:expected_values) do
             {
               experience: 5,
-              my_activity: 45,
-              my_team_activity: 145,
-              all_teams_activity: 160,
+              my_activity: 31,
+              my_team_activity: 100,
+              all_teams_activity: 100,
               rating: 2,
               my_rating: 2
             }
@@ -90,9 +90,9 @@ describe Api::V1::RatingsController do
           let(:expected_values) do
             {
               experience: 5,
-              my_activity: 38,
-              my_team_activity: 138,
-              all_teams_activity: 150,
+              my_activity: 27,
+              my_team_activity: 100,
+              all_teams_activity: 100,
               rating: 3,
               my_rating: 3
             }
