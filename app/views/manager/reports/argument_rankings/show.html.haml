@@ -9,8 +9,8 @@
         %th= t('common.benefit')
         %th= t('common.rating')
       %tbody
-        - arguments.each do |arguemnt|
+        - arguments.each do |argument|
           %tr
-            %td= arguemnt.feature
-            %td= arguemnt.benefit
-            %td= arguemnt.cached_rating
+            %td= argument.feature
+            %td= argument.benefit
+            %td= number_with_precision(argument.cached_rating, precision: 1)
