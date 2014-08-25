@@ -30,31 +30,15 @@ describe Api::V1::ProfilesController do
     end
 
     context 'no access' do
-      let(:no_access_response) do
-        <<-EOS
-          {
-            "error": {
-              "code": 1010,
-              "message": "#{ I18n.t('api.errors.no_access') }"
-            }
-          }
-        EOS
-      end
       before { get :show, {format: :json} }
 
       context 'no access token provided' do
-        it do
-          expect(response.status).to eq 403
-          expect(response.body).to be_json_eql no_access_response
-        end
+        it_behaves_like 'api: forbidden'
       end
 
       context 'invalid access token provided' do
         before { api_authorize_with('wrong-access-token') }
-        it do
-          expect(response.status).to eq 403
-          expect(response.body).to be_json_eql no_access_response
-        end
+        it_behaves_like 'api: forbidden'
       end
     end
   end

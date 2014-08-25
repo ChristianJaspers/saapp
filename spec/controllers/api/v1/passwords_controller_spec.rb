@@ -118,18 +118,7 @@ describe Api::V1::PasswordsController do
       let(:params) { {} }
       before { call_request }
 
-      it { expect(response.status).to eq 403 }
-
-      it do
-        expect(response.body).to be_json_eql <<-EOS
-          {
-            "error": {
-              "code": 1010,
-              "message": "#{ I18n.t('api.errors.no_access') }"
-            }
-          }
-        EOS
-      end
+      it_behaves_like 'api: forbidden'
     end
   end
 end

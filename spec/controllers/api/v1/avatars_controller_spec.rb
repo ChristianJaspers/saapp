@@ -96,18 +96,9 @@ describe Api::V1::AvatarsController do
       let(:file) { 'avatar.png' }
       let(:mime) { 'image/png' }
 
-      it 'renders unauthorized' do
-        perform
-        expect(response.status).to eq 403
-        expect(response.body).to be_json_eql <<-EOS
-          {
-            "error": {
-              "code": 1010,
-              "message": "#{ I18n.t('api.errors.no_access') }"
-            }
-          }
-        EOS
-      end
+      before { perform }
+
+      it_behaves_like 'api: forbidden'
     end
   end
 end
