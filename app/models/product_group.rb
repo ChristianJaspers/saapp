@@ -8,6 +8,8 @@ class ProductGroup < ActiveRecord::Base
 
   validates :name, presence: true
 
+  scope :active_only, -> { where(archived_at: nil) }
+
   def archive=(val)
     self.archived_at = val.eql?('true') ? Time.zone.now : nil
   end

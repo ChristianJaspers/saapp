@@ -11,7 +11,7 @@ class Api::TeamSerializer < ActiveModel::Serializer
   end
 
   def product_groups
-    object.product_groups.order(:id).map.with_index do |product_group, index|
+    object.product_groups.active_only.order(:id).map.with_index do |product_group, index|
       Api::ProductGroupSerializer.new(product_group, root: false, position: index + 1)
     end
   end

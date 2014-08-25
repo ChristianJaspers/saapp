@@ -9,6 +9,7 @@ describe Api::V1::ResourcesController do
   let!(:api_token) { create(:api_token, user: current_user) }
   let!(:product_group_1) { create(:product_group, owner: manager, name: "Group A") }
   let!(:product_group_2) { create(:product_group, owner: manager, name: "Group B") }
+  let!(:product_group_3) { create(:product_group, owner: manager, name: "Archived", archive: 'true') }
   let!(:argument_1) { create(:argument, owner: manager, product_group: product_group_1, feature: 'F #1', benefit: 'B #1') }
   let!(:argument_2) { create(:argument, owner: manager, product_group: product_group_2, feature: 'F #2', benefit: 'B #2') }
   let(:expected_timestamp) { '2014-07-30T12:00:00Z' }
