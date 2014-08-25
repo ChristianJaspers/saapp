@@ -11,6 +11,7 @@ class ConfirmationsController < Devise::ConfirmationsController
         params[:user][:password_confirmation] = params[:user][:password]
         @confirmable.attempt_set_password(params[:user])
         if @confirmable.valid? and @confirmable.password_match?
+          I18n.locale = @confirmable.locale
           do_confirm
         else
           do_show

@@ -116,6 +116,8 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
   helpers:
     submit:
+      product_group:
+        create: Create product group
       user:
         create: Add sales representative
       wizard:

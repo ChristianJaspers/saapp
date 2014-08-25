@@ -8,6 +8,7 @@ class WizardsController < ApplicationController
   end
 
   def create
+    I18n.locale = read_locale
     setup_new_account = SetupNewAccount.call(self)
     flash[:notice] = t('wizard.create.notifications.success')
     render json: {

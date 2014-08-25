@@ -22,6 +22,7 @@ class SetupNewAccount < BusinessProcess::Base
   def create_manager
     @manager = team.users.create(email: wizard.email) do |user|
       user.role = 'manager'
+      user.locale = I18n.locale
       user.skip_confirmation_notification!
     end
   end
