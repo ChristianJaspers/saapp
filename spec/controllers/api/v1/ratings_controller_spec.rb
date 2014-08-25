@@ -146,6 +146,30 @@ describe Api::V1::RatingsController do
       end
     end
 
+    context 'user tries to rate own argument' do
+      let(:id) { argument.id }
+      let(:params) { {rating: 1} }
+
+      before do
+        argument.update_column(:owner_id, current_user.id)
+        api_authorize_with(api_token.access_token)
+        call_request
+      end
+
+      it { expect(response.status).to eq 403 }
+
+      it do
+        expect(response.body).to be_json_eql <<-EOS
+          {
+            "error": {
+              "code": 1010,
+              "message": "#{ I18n.t('api.errors.no_access') }"
+            }
+          }
+        EOS
+      end
+    end
+
     context 'invalid api token' do
       let(:params) { {} }
       let(:id) { argument.id }

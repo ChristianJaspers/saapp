@@ -8,6 +8,7 @@ class Api::RateArgument < BusinessProcess::Base
 
   def call
     find_argument and
+      make_sure_owner_does_not_rate_own_arguments and
       validate_rating_value and
       rate_argument and
       rating
@@ -20,6 +21,12 @@ class Api::RateArgument < BusinessProcess::Base
   def find_argument
     check_for_error :argument_not_found do
       @argument = current_user.team.arguments.find_by_id(params[:argument_id])
+    end
+  end
+
+  def make_sure_owner_does_not_rate_own_arguments
+    check_for_error :forbidden do
+      argument.owner_id != current_user.id
     end
   end
 
