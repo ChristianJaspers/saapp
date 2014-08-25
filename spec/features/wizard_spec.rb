@@ -71,7 +71,6 @@ feature 'Wizard' do
       find("input[name='user[password]']").set(password)
       find("button[type='submit']").click
 
-      save_and_open_page
       expect(page).to have_content I18n.t('devise.confirmations.confirmed', locale: locale)
 
       expect(Argument).to exist.with(feature: feature_name, benefit: benefit_description)
