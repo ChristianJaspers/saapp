@@ -35,6 +35,11 @@ editProductGroupApp.controller('editProductGroupCtrl', ['$scope', 'ProductGroups
     $scope.arguments.push(argument)
     $scope.argument = {}
 
+  $scope.canSaveProductGroup = ->
+    feature_text = $('form input[ng-model="argument.feature"]').val()
+    benefit_text = $('form input[ng-model="argument.benefit"]').val()
+    (feature_text != '') || (benefit_text != '')
+
   $scope.submitProductGroup = ->
     productGroup = {
       product_group:  {
