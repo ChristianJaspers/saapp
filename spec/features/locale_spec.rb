@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 feature 'Locale' do
+  after do
+    delete_cookie('lang')
+  end
+
   context 'user is a guest' do
     context 'my web browser is EN' do
       scenario 'en guest visits / path', js: true do

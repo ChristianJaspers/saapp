@@ -117,6 +117,8 @@ da:
         other: "%{count} fejl forhindrede at %{resource} blev gemt:"
   helpers:
     submit:
+      product_group:
+        create: Opret produkt gruppe
       user:
         create: Tilføj sælger
       wizard:

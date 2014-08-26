@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Api::ErrorMapping do
   let(:user) { create(:user) }
   let(:params) { {} }
+  before { I18n.locale = I18n.default_locale }
   subject { described_class.new(error_key, user, params) }
 
   describe '#http_code' do
