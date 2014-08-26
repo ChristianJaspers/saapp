@@ -1,11 +1,11 @@
 subject: Welcome to BetterSalesman
 body: |
-  <p>Welcome *|display_name|*!</p>
+  <p>Hi *|display_name|*!</p>
 
-  <p>Welcome in BetterSalesman!</p>
+  <p>Welcome to BetterSalesman!</p>
 
   <p>There will be a link here for you to download an app... soon ;)</p>
 
-  <p>Here is your password</p>
+  <p>Here is your password that you can change after your first login:</p>
 
   <p>*|password|*</p>

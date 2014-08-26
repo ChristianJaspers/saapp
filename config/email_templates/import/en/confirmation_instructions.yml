@@ -2,6 +2,6 @@ subject: Confirmation instructions
 body: |
   <p>Welcome *|email|*!</p>
 
-  <p>You can confirm your account email through the link below:</p>
+  <p>If you have not activated your account so far, you can activate it through the link below:</p>
 
-  <p><a href="*|confirmation_url|*">Confirm my account</a></p>
+  <p><a href="*|confirmation_url|*">Activate my account</a></p>

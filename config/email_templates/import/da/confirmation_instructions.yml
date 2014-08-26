@@ -1,0 +1,7 @@
+subject: TODO confirmation_instructions
+body: |
+  <p>Velkommen *|email|*!</p>
+
+  <p>Hvis du endnu ikke har aktiveret din konto, kan du gøre det nu via nedenstående link:</p>
+
+  <p><a href="*|confirmation_url|*">Aktivér min konto</a></p>

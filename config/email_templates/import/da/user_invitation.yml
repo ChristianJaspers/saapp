@@ -1,0 +1,11 @@
+subject: TODO user_invitation
+body: |
+  <p>Hej *|display_name|*!</p>
+
+  <p>Velkommen til BetterSalesman!</p>
+
+  <p>Her kommer et link til at hente appen... snart ;)</p>
+
+  <p>Dette er din adgangskode, som du kan ændre senere:</p>
+
+  <p>*|password|*</p>
