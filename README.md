@@ -21,12 +21,17 @@ You need following files in you config directory
 
 To setup test database, run `RAILS_ENV=test rake db:create db:migrate`
 
-#### Cms setup
+#### Cms setup (only once)
 
 Run to create cms pages placeholders
 
 ```
 rake cms:setup
+```
+
+#### Email templates setup (only once)
+```
+rake email_templates:setup
 ```
 
 ## Testing
