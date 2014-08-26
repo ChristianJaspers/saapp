@@ -74,8 +74,8 @@ Staging app can be accessed through:
 
 ```
 git push -f production master
-figaro heroku:set -e production --app saapp-production
-heroku run rake db:migrate db:seed --app saapp-production
+figaro heroku:set -e production --app bettersalesman
+heroku run rake db:migrate db:seed --app bettersalesman
 ```
 
 ### HowTo
