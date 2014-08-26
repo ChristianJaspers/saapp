@@ -1,8 +1,8 @@
 ---
-label: Pricing
+label: Home
 layout: default
-parent: index
+parent: 
 target_page: 
 categories: []
 is_published: true
-position: 2
+position: 0

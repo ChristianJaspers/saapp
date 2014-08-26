@@ -1,8 +1,8 @@
 ---
 label: Home
 layout: default
-parent:
-target_page: "/how-it-works"
+parent: 
+target_page: 
 categories: []
-is_published: true
+is_published: false
 position: 0
