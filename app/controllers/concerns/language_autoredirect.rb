@@ -48,7 +48,7 @@ module LanguageAutoredirect
   end
 
   def redirect_to_back_with_locale(locale)
-    redirect_to (locale == I18n.default_locale) ? raw_request_fullpath : "/#{locale}#{raw_request_fullpath}"
+    redirect_to (locale == I18n.default_locale) ? raw_request_fullpath : normalize_trailing_slash("/#{locale}#{raw_request_fullpath}")
   end
 
   def raw_request_fullpath
@@ -73,5 +73,10 @@ module LanguageAutoredirect
 
   def set_current_locale
     I18n.locale = params[:locale] if params[:locale]
+  end
+
+  def normalize_trailing_slash(path)
+    return path[0..2] if path.size == 4 && path.ends_with?('/')
+    path
   end
 end

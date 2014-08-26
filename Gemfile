@@ -63,6 +63,8 @@ group :test do
   gem 'json_spec', '~> 1.1.2'
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 2.6.2'
+  gem 'show_me_the_cookies', '~> 2.5.0'
+  gem 'rack_session_access', '~> 0.1.1'
 end
 
 group :development, :test do
