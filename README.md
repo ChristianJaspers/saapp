@@ -77,7 +77,10 @@ Staging app can be accessed through:
 
 ## Deployment to heroku (production) [needs setup]
 
+REMEMBER TO HAVE PROPER DATA SET (i.e. AWS keys, Mandrill etc.) IN YOUR APPLICATION YAML - IF YOU ARE NOT SURE CONTACT @bart.
+
 ```
+figaro heroku:set -e production --app bettersalesman
 git push -f production master
 figaro heroku:set -e production --app bettersalesman
 heroku run rake db:migrate db:seed --app bettersalesman
