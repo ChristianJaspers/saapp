@@ -146,6 +146,7 @@ en:
         notifications:
           success: Product group removed successfully
       edit:
+        add_argument: Add argument
         header: Editing product group %{name}
       index:
         table:
