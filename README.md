@@ -26,12 +26,12 @@ To setup test database, run `RAILS_ENV=test rake db:create db:migrate`
 Run to create cms pages placeholders
 
 ```
-rake cms:setup
+rake cms:setup --app saapp-staging
 ```
 
 #### Email templates setup (only once)
 ```
-rake email_templates:setup
+rake email_templates:setup --app saapp-staging
 ```
 
 ## Testing
