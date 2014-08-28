@@ -148,6 +148,7 @@ da:
         notifications:
           success: Produkt gruppen fjernet
       edit:
+        add_argument: Tilføj argument
         header: Retter produktgruppe %{name}
       index:
         table:
