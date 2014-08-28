@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   include User::DeviseConfirmableActivation
 
   has_many :product_groups, inverse_of: :owner, foreign_key: :owner_id
-  has_many :arguments, inverse_of: :owner
+  has_many :arguments, inverse_of: :owner, foreign_key: :owner_id
   has_many :ratings, class_name: ArgumentRating, inverse_of: :rater, foreign_key: :rater_id
 
   has_one :api_token, inverse_of: :user
@@ -46,6 +46,13 @@ class User < ActiveRecord::Base
 
   def is_owner_of?(object)
     object.owner_id == id
+  end
+
+  alias_method :original_remove!, :remove!
+
+  def remove!
+    TransferOwnershipToManager.call(user: self)
+    original_remove!
   end
 
   alias_method :manager, :manager?

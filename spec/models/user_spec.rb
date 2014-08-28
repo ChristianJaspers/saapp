@@ -89,6 +89,12 @@ describe User do
     subject { user }
 
     it { expect{ subject.remove! }.to change{ subject.reload.remove_at }.from(nil) }
+
+    it 'transfer ownerships when deleting' do
+      allow(TransferOwnershipToManager).to receive(:call)
+      subject.remove!
+      expect(TransferOwnershipToManager).to have_received(:call).once
+    end
   end
 
   describe '#score' do
