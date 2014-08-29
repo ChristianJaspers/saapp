@@ -2,9 +2,10 @@
   %h2 Resend confirmation instructions
   .col-md-6.col-md-offset-3
     = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-      .form-warning.center
-        = f.error_notification
-        = f.full_error :confirmation_token
+      - if f.error_notification.present?
+        .form-warning.center
+          = f.error_notification
+          = f.full_error :confirmation_token
       .form-inputs
         = f.input :email, required: true, autofocus: true
       .form-actions.center.clearfix
