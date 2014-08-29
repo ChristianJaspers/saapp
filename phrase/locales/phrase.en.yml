@@ -29,7 +29,7 @@ en:
       many: Product groups
     rating: Rating
     save_changes: Save changes
-    unauthorized: You cannot access this page. Please login with proper credentatials.
+    unauthorized: You cannot access this page. Please login with proper credentials.
   devise:
     confirmations:
       account_activation_title: Account Activation
