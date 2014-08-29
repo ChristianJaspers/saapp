@@ -77,3 +77,5 @@
         .col-md-3.col-md-offset-3.footer-logo
           %h3 BetterSalesman
           %p © 2013
+
+    = render partial: 'shared/analytics_script' if Rails.env.production? && !user_signed_in?
