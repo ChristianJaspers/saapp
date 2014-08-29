@@ -14,7 +14,7 @@ class Api::ArgumentSerializer < ActiveModel::Serializer
   end
 
   def rating
-    object.rating.to_i
+    object.rating.to_f
   end
 
   # PERF n+1

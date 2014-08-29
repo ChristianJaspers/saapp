@@ -37,7 +37,7 @@ describe Api::V1::ArgumentsController do
               "argument": {
                 "user_id": #{current_user.id},
                 "product_group_id": #{product_group.id},
-                "rating": 0,
+                "rating": 0.0,
                 "my_rating": 0,
                 "feature": "F",
                 "benefit": "B"
@@ -163,7 +163,7 @@ describe Api::V1::ArgumentsController do
               "argument": {
                 "user_id": #{current_user.id},
                 "product_group_id": #{product_group.id},
-                "rating": 0,
+                "rating": 0.0,
                 "my_rating": 0,
                 "feature": "F",
                 "benefit": "B"
