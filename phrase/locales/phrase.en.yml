@@ -216,6 +216,14 @@ en:
         email: Your company email
   wizard:
     create:
+      errors:
+        argument_not_created: Argument can not be created
+        company_not_created: Company can not be created
+        invitee_not_created: One of sales representatives can not be created. Maybe
+          email is already taken?
+        manager_not_created: Manager can not be created
+        product_group_not_created: Product group can not be created
+        team_not_created: Team can not be created
       notifications:
         success: Invitations were sent successfuly!
     step_1:
@@ -230,7 +238,7 @@ en:
       header: Invite your sales representatives
       next_step_button: NEXT STEP
     step_4:
-      benefit: benefits with
+      benefit: 'Benefit is:'
       categories_and_arguments_header: Product groups and arguments
       header: Review and accept
       invitations_header: Sales representatives

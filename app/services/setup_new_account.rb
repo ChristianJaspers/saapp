@@ -1,4 +1,5 @@
 class SetupNewAccount < BusinessProcess::Base
+  include BusinessProcess::Errorable
   extend BusinessProcess::Transactional
   transaction_for User
 
@@ -20,40 +21,59 @@ class SetupNewAccount < BusinessProcess::Base
   attr_reader :manager, :company, :team, :invitees
 
   def create_manager
-    @manager = team.users.create(email: wizard.email) do |user|
-      user.role = 'manager'
-      user.locale = I18n.locale
-      user.skip_confirmation_notification!
+    check_for_error :manager_not_created do
+      @manager = team.users.create(email: wizard.email) do |user|
+        user.role = 'manager'
+        user.locale = I18n.locale
+        user.skip_confirmation_notification!
+      end
+      manager.persisted?
     end
   end
 
   def create_company
-    @company = Company.create
+    check_for_error :company_not_created do
+      @company = Company.create
+      company.persisted?
+    end
   end
 
   def create_team
-    @team = company.teams.create
+    check_for_error :team_not_created do
+      @team = company.teams.create
+      team.persisted?
+    end
   end
 
   def create_product_groups_and_arguments
     wizard.product_groups.each do |wizard_product_group|
-      manager.product_groups.create(name: wizard_product_group.name).tap do |product_group|
-        Array.wrap(wizard_product_group.arguments).each do |wizard_argument|
-          product_group.arguments.create(feature: wizard_argument.feature,
-                                         benefit: wizard_argument.benefit,
-                                         owner_id: manager.id)
-        end
+      check_for_error :product_group_not_created do
+        manager.product_groups.create(name: wizard_product_group.name).tap do |product_group|
+          Array.wrap(wizard_product_group.arguments).each do |wizard_argument|
+            check_for_error :argument_not_created do
+              product_group.arguments.create(feature: wizard_argument.feature,
+                                             benefit: wizard_argument.benefit,
+                                             owner_id: manager.id).persisted?
+            end
+          end
+        end.persisted?
       end
     end
   end
 
   def create_invitees
     @invitees = wizard.invitations.map do |invitation|
-      team.users.build(email: invitation.email, display_name: invitation.display_name).tap do |invitee|
-        invitee.skip_confirmation_notification!
-        invitee.save
+      invitee = nil
+      check_for_error :invitee_not_created do
+        invitee = team.users.build(email: invitation.email, display_name: invitation.display_name).tap do |invitee|
+          invitee.skip_confirmation_notification!
+          invitee.save
+        end
+        invitee.persisted?
       end
+      invitee.persisted? ? invitee : nil
     end
+    !invitees.any? { |invitee| invitee.nil? }
   end
 
   def send_emails

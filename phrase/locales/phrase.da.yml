@@ -232,7 +232,7 @@ da:
       header: Inviter dine sælgere
       next_step_button: NÆSTE
     step_4:
-      benefit: benefits med
+      benefit: 'Benefit er:'
       categories_and_arguments_header: Produkt grupper og argumenter
       header: Gennemse og bekræft
       invitations_header: Sælgere

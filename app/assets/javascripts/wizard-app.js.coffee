@@ -102,7 +102,16 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
     )
 
     wizard.$save().then((u, putResponseHeaders) ->
-      document.location.href = '/confirmation?confirmation_token=' + u.confirmation_token
+      if u.success
+        document.location.href = '/confirmation?confirmation_token=' + u.confirmation_token
+      else
+        $('.alert.alert-danger').remove()
+        flashContainer = $('<div class="alert alert-danger" alert-dismissable></div>')
+        closeButton = $('<button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>')
+        flashContainer.text(u.error)
+        flashContainer.prepend(closeButton)
+        $('body > .container').prepend(flashContainer)
+        Ladda.stopAll()
     )
 ])
 
