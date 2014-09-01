@@ -1,33 +1,43 @@
-.landing-page
-  margin-top: $interval-small
+$icon-margin: 48px
 
 .landing-mobile
   background:
     image: image-url('mobile.png')
+    position: top center
     repeat: no-repeat
+    size: 80%
   margin-top: $interval-default * 1.5
   max-width: $mockup-width
-  min-height: $mockup-width * 2.2
+  min-height: 500px
 
 .landing-list
-  margin: $interval-default 0 $interval-default * 1.8 0
+  margin:
+    bottom: $interval-default
+    top: $interval-default
   padding: 0
+
   li
     color: $color-gray
     font:
       family: $font-family-second
       size: $font-size-medium
-
+    line-height: $line-height-small
     list-style: none
-    margin: $interval-small $interval-default * 1.5
+    margin: $m $interval-default $m $interval-default * 1.5
+    padding-left: $icon-margin
+
     &:before
       @include circle-icons($default-icon-background, $default-icon-color)
       font-size: $icon-size-small
-      margin: 0 $interval-small 0 0
+      margin:
+        left: -$icon-margin
+        top: -$m-quarter
       padding: $font-size-base  / 2
+      position: absolute
 
 .landing-form
-  margin: $interval-small * 2 0 $interval-small $interval-default * 1.5
+  margin: 0 0 $interval-default * 1.5 $interval-default * 1.5
+
   .wizard_email input
     @extend %left-corners
     float: left
@@ -90,3 +100,12 @@
 
     &:hover
       text-decoration: underline
+
+@media (max-height: 768px)
+  .landing-list
+    margin:
+      bottom: $interval-default / 2
+      top: 0
+
+  .landing-form
+    margin-bottom: $interval-small
