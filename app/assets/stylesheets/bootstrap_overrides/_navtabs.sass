@@ -1,3 +1,10 @@
+.nav-tabs > li > a
+  &:hover
+    cursor: pointer
+
+  &:hover:after
+    cursor: default
+
 .ng-isolate-scope
   .nav-tabs
     border: 0
@@ -31,7 +38,7 @@
           text-align: center
           width: $wizard-icons
 
-        &:hover,&:focus
+        &:hover, &:focus
           background-color: $color-transparent
           border: 0
 
@@ -41,6 +48,7 @@
           &:before
             background-color: $color-gray-light
             box-shadow: 0 2px 0 0 darken($color-gray-light, 10%)
+            cursor: not-allowed
 
           &:after
             background-color: $color-gray-light
