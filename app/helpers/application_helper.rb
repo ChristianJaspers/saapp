@@ -23,4 +23,27 @@ module ApplicationHelper
     html_options[:class] = html_options[:class] ? "#{css_class} #{html_options[:class]}" : css_class
     content_tag :button, content, html_options
   end
+
+  def desktop_favicon_link_tag(size = nil)
+    if size
+      sizes = "#{size}x#{size}"
+      favicon_link_tag("/favicon-#{sizes}.png", rel: 'icon', sizes: sizes, type: 'image/png')
+    else
+      favicon_link_tag("/favicon.ico", rel: 'icon', type: 'image/png')
+    end
+  end
+
+  def apple_favicon_link_tag(size = nil)
+    if size
+      size = "#{size}x#{size}" if size.class == Fixnum
+      generic_apple_favicon_link_tag("/apple-touch-icon-#{size}.png", sizes: size)
+    else
+      generic_apple_favicon_link_tag("/apple-touch-icon.png")
+    end
+  end
+
+  def generic_apple_favicon_link_tag(path, options={})
+    with_options(options) { |cfg| cfg.favicon_link_tag path, rel: 'apple-touch-icon', type: 'image/png' }
+  end
+
 end
