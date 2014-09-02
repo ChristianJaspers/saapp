@@ -61,7 +61,6 @@
     list-style: none
     margin: $mockup-margin 0
     padding: $m / 2 $m
-    text-transform: capitalize
 
   ul.ng-scope
     &:nth-child(8n+1) li
@@ -221,12 +220,14 @@
     &:nth-child(even) li
       background-color: $color-mobile-gray
 
-  ul.preview-argument li
-    color: $color-gray-dark
-    span
+  .preview-argument
+    li
+      color: $color-gray-dark
+    .preview-feature
       color: $color-gray
-      display: block
       font-weight: bold
+    div:first-letter
+      text-transform: capitalize
 
 .representative-list
   .row

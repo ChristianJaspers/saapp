@@ -7,7 +7,7 @@
         %tab{'ng-repeat' => 'productGroup in wizard.productGroups', heading: '{{productGroup.name}}', active: 'productGroup.active'}
           %ul.preview-argument{'ng-repeat' => 'argument in productGroup.arguments', 'ng-animate' => 'animate'}
             %li
-              %span {{argument.feature}}
-              {{argument.benefit}}
+              .preview-feature {{argument.feature}}
+              %div {{argument.benefit}}
 
     .preview-overlay
