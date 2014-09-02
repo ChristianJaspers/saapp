@@ -19,6 +19,7 @@ da:
       many: Argumenter
     back: Tilbage
     benefit: Benefit
+    cancel: Afbryd
     email: Email
     experience: XP
     feature: Feature
@@ -35,6 +36,7 @@ da:
     confirmations:
       account_activation_title: Aktivering af konto
       confirmed: Din adgangskode blev oprettet!
+      header: Send instruktion om bekræftelse igen
       send_instructions: Du vil om et øjeblik modtage en email med instruktion om,
         hvordan du bekræfter din konto.
       send_paranoid_instructions: Hvis din email adresse allerede findes i vores database,
@@ -218,6 +220,14 @@ da:
         email: Din firma email
   wizard:
     create:
+      errors:
+        argument_not_created: Argument kan ikke oprettes
+        company_not_created: Virksomhed kan ikke oprettes
+        invitee_not_created: En af sælgerne kan ikke oprettes. Måske er e-mailen allerede
+          i brug?
+        manager_not_created: Manager kan ikke oprettes
+        product_group_not_created: Produkt gruppe kan ikke oprettes
+        team_not_created: Team kan ikke oprettes
       notifications:
         success: Invitationer er sendt!
     step_1:
