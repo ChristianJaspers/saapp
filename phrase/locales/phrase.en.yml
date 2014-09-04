@@ -26,6 +26,7 @@ en:
     invitation:
       many: Invitations
     name: Name
+    none: None
     product_group:
       many: Product groups
     rating: Rating
@@ -238,12 +239,14 @@ en:
       header: Enter first arguments
       next_step_button: NEXT STEP
     step_3:
+      add_message: Add message
       header: Invite your sales representatives
       next_step_button: NEXT STEP
     step_4:
       benefit: 'Benefit is:'
       categories_and_arguments_header: Product groups and arguments
       header: Review and accept
+      invitation_message_header: Invitation message
       invitations_header: Sales representatives
       product_groups_and_arguments_header: Product groups and arguments
       submit_button: SEND INVITATIONS

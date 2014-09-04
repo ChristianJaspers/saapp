@@ -65,7 +65,11 @@ class SetupNewAccount < BusinessProcess::Base
     @invitees = wizard.invitations.map do |invitation|
       invitee = nil
       check_for_error :invitee_not_created do
-        invitee = team.users.build(email: invitation.email, display_name: invitation.display_name).tap do |invitee|
+        invitee = team.users.build(
+          email: invitation.email,
+          display_name: invitation.display_name,
+          invitation_message: wizard.invitation_message
+        ).tap do |invitee|
           invitee.skip_confirmation_notification!
           invitee.save
         end

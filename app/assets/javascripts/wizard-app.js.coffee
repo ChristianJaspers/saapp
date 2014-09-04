@@ -33,7 +33,8 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
     email: gon.email,
     productGroups: [],
     arguments: [],
-    invitations: []
+    invitations: [],
+    invitationMessage: ''
   }
 
   $scope.maxProductGroups = 20
@@ -93,7 +94,11 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
   $scope.submitWizard = ->
     Ladda.create( document.querySelector('.ladda-button') ).start()
 
-    wizard = new Wizard({email: $scope.wizard.email, invitations: $scope.wizard.invitations})
+    wizard = new Wizard({
+      email: $scope.wizard.email,
+      invitations: $scope.wizard.invitations,
+      invitationMessage: $scope.wizard.invitationMessage
+    })
 
     wizard.productGroups = _.map($scope.wizard.productGroups, (productGroup) ->
       {name: productGroup.name, arguments: _.map(productGroup.arguments, (argument) ->

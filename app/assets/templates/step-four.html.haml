@@ -22,6 +22,13 @@
         %strong {{invitation.email}}
         {{invitation.displayName}}
 
+    %div{'ng-if' => "wizard.invitationMessage != ''"}
+      %h3
+        {{ 'wizard.step_4.invitation_message_header' | translate }}
+      %ul
+        %li.block
+          {{wizard.invitationMessage}}
+
     .clearfix
     %button.btn.btn-primary.ladda-button{type: 'button', 'ng-click' => 'submitWizard()', data: {style: 'zoom-out'}}
       {{ 'wizard.step_4.submit_button' | translate }}

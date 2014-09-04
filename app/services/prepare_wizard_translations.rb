@@ -1,6 +1,7 @@
 class PrepareWizardTranslations
   WIZARD_KEYS = %w(
     common.name
+    common.none
     common.email
     common.feature
     common.benefit
@@ -16,12 +17,14 @@ class PrepareWizardTranslations
     wizard.step_2.next_step_button
 
     wizard.step_3.header
+    wizard.step_3.add_message
     wizard.step_3.next_step_button
 
     wizard.step_4.header
     wizard.step_4.categories_and_arguments_header
     wizard.step_4.benefit
     wizard.step_4.invitations_header
+    wizard.step_4.invitation_message_header
     wizard.step_4.submit_button
 
     wizard.steps.arguments

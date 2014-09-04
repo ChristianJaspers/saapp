@@ -23,6 +23,10 @@
     %input{'ng-model' => 'invitation.displayName', autocomplete: 'off'}
     %span.wizard-add.four-corners
       %input{type: 'submit', tabindex: -1}
+    %textarea{'ng-model' => 'wizard.invitationMessage'}
+
+  %button.btn.btn-primary{type: 'button', 'ng-click' => 'steps[3].active = true'}
+    {{ 'wizard.step_3.add_message' | translate }}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
     {{ 'wizard.step_3.next_step_button' | translate }}
