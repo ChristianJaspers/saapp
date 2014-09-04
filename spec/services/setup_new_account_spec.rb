@@ -14,8 +14,10 @@ describe SetupNewAccount do
 
     context 'manager email is provided' do
       let(:manager_email) { 'manager@saapp.dev' }
+      let(:invitation_message) { 'Hello' }
 
       before { allow(wizard).to receive(:email).and_return(manager_email) }
+      before { allow(wizard).to receive(:invitation_message).and_return(invitation_message) }
 
       context 'one product_group with one argument is provided' do
         let(:product_group_name) { 'iPad' }
