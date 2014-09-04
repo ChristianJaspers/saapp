@@ -43,7 +43,7 @@
 
         %ul.nav.navbar-nav
           - cms_static_pages.each do |page|
-            %li
+            %li{class: request.path[page.full_path] ? 'active' : nil}
               = link_to page.label, localized_cms_page_path(page)
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in? && !current_user.admin?
