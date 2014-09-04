@@ -39,6 +39,8 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
 
   $scope.maxProductGroups = 20
 
+  $scope.invitationMessageVisible = false
+
   $scope.steps = [
     { title: 'wizard.steps.product_groups', template: 'step-one.html', class: 'ng-isolate-scope product_groups_step' },
     { title: 'wizard.steps.arguments', template: 'step-two.html', disabled: true, class: 'ng-isolate-scope arguments_step' },

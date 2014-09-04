@@ -23,12 +23,12 @@
     %input{'ng-model' => 'invitation.displayName', autocomplete: 'off'}
     %span.wizard-add.four-corners
       %input{type: 'submit', tabindex: -1}
-    %textarea{'ng-model' => 'wizard.invitationMessage'}
-
-  %button.btn.btn-primary{type: 'button', 'ng-click' => 'steps[3].active = true'}
-    {{ 'wizard.step_3.add_message' | translate }}
+    %textarea#invitation_message{'ng-show' => 'invitationMessageVisible', 'ng-model' => 'wizard.invitationMessage'}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!thirdStepValid()', 'ng-click' => 'steps[3].active = true'}
     {{ 'wizard.step_3.next_step_button' | translate }}
+
+  %button.btn.btn-default{type: 'button', 'ng-click' => "invitationMessageVisible = true"}
+    {{ 'wizard.step_3.add_message' | translate }}
 
 %invitations-preview
