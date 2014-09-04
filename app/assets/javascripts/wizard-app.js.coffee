@@ -156,7 +156,7 @@ wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
     wizard.arguments.push(feature)
 
     productGroup.active = true
-    $scope.argument = {productGroup: $scope.wizard.productGroups[0]}
+    $scope.argument = {productGroup: productGroup}
 ])
 
 wizardApp.controller('invitationCtrl', ['$scope', ($scope) ->
