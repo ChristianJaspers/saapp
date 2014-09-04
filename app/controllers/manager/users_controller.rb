@@ -32,6 +32,6 @@ class Manager::UsersController < Manager::ManagerController
   end
 
   def user_params
-    params.require(:user).permit(:display_name, :email)
+    params.require(:user).permit(:display_name, :email, :invitation_message)
   end
 end

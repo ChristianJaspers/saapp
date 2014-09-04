@@ -22,8 +22,14 @@
     = simple_form_for [:manager, user] do |f|
       .row-dark
         .col-md-12
-          = f.input :display_name, label: false, placeholder: t('manager.users.index.table.headers.display_name')
-        .col-md-7
-          = f.input :email, label: false, placeholder: t('manager.users.index.table.headers.email')
-        .col-md-5
+          .row
+            .col-md-6
+              = f.input :display_name, label: false, placeholder: t('manager.users.index.table.headers.display_name')
+            .col-md-6
+              = f.input :email, label: false, placeholder: t('manager.users.index.table.headers.email')
+        .col-md-12
+          = f.input :invitation_message, label: false, as: :text, placeholder: t('manager.users.index.optional_invitation')
+        .col-md-12
           = f.submit class: 'btn btn-primary f-right'
+          .row
+            .col-md-12

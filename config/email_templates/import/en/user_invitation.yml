@@ -9,3 +9,5 @@ body: |
   <p>Here is your password that you can change after your first login:</p>
 
   <p>*|password|*</p>
+
+  <p>*|message|*</p>

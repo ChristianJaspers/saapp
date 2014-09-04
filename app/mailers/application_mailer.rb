@@ -1,7 +1,11 @@
 class ApplicationMailer < ActionMailer::Base
   def user_invitation(*users)
     recipients = users.map do |user|
-      EmailTemplates::Recipient.new(user.locale, user.email, {display_name: user.display_name, password: activate_user_with_generated_password(user)})
+      EmailTemplates::Recipient.new(user.locale, user.email, {
+        display_name: user.display_name,
+        password: activate_user_with_generated_password(user),
+        message: user_invitation_message(user)
+      })
     end
     EmailTemplates::Sender.new(recipients, :user_invitation).send
   end
@@ -17,5 +21,9 @@ class ApplicationMailer < ActionMailer::Base
   def activate_user_with_generated_password(user)
     user.activate_with_new_password!(password = GenerateRandomPassword.call)
     password
+  end
+
+  def user_invitation_message(user)
+    user.invitation_message.present? ? user.invitation_message : ''
   end
 end

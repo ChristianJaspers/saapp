@@ -193,6 +193,7 @@ en:
         notifications:
           success: Sales representative removed
       index:
+        optional_invitation: Optional invitation message
         table:
           actions:
             destroy_confirmation: Are you sure?

@@ -9,3 +9,5 @@ body: |
   <p>Dette er din adgangskode, som du kan ændre senere:</p>
 
   <p>*|password|*</p>
+
+  <p>*|message|*</p>

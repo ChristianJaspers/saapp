@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Gamification::Beneficiary
   include Model::DelayedDestroy
 
+  attr_accessor :invitation_message
+
   enum role: {
       user: 0,
       manager: 1,
