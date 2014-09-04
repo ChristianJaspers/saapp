@@ -51,6 +51,8 @@ feature 'Wizard' do
       find("input[ng-model='invitation.displayName']").set(invitee_display_name)
       find("input[type='submit']").click
       expect(page).to have_selector('div.tab-pane ul li')
+      #find('button', text: I18n.t('wizard.step_3.add_message', locale: locale)).click
+      #find("textarea[ng-model='wizard.invitationMessage']").set('hello')
 
       # Summary page
       find('button', text: I18n.t('wizard.step_3.next_step_button', locale: locale)).click
