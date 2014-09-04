@@ -19,8 +19,8 @@
   .clearfix
 
   %form.representative-form{name: 'newInvitationForm', 'ng-submit' =>'addInvitation(wizard)'}
-    %input{'ng-model' => 'invitation.email', required: true, autofocus: true, type: 'email', }
-    %input{'ng-model' => 'invitation.displayName'}
+    %input{'ng-model' => 'invitation.email', required: true, autofocus: true, type: 'email', autocomplete: 'off'}
+    %input{'ng-model' => 'invitation.displayName', autocomplete: 'off'}
     %span.wizard-add.four-corners
       %input{type: 'submit', tabindex: -1}
 

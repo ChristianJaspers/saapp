@@ -10,7 +10,7 @@
   %form{name: 'newProductGroupForm',
   'ng-submit' =>'addProductGroup(wizard)',
   'ng-hide' => 'atProductGroupsLimit()'}
-    %input.wizard-input{'ng-model' => 'productGroup.name', required: true, tabindex: 1, autofocus: true}
+    %input.wizard-input{'ng-model' => 'productGroup.name', required: true, tabindex: 1, autofocus: true, autocomplete: 'off'}
     %span.wizard-add
       %input{type: 'submit', value: ' '}
   %span{'ng-show' => 'atProductGroupsLimit()'}

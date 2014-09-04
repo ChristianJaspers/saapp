@@ -12,7 +12,7 @@
     %h2= t('landing.free_30')
     .landing-form.clearfix
       = simple_form_for wizard, method: :get, url: localized_path(I18n.locale, new_wizard_path)  do |f|
-        = f.input :email, autofocus: true, input_html: {tabindex: 1}
+        = f.input :email, autofocus: true, input_html: {tabindex: 1, autocomplete: 'off'}
         = f.submit t('helpers.submit.wizard.create'), class: 'btn btn-primary', tabindex: 2
 
 .landing-mobile.col-md-3
