@@ -187,6 +187,13 @@
     @extend %ellipsis-overflow
     width: 40%
 
+#invitation_message
+  @include box-shadow-border($color-gray-dark, $default-border-radius, darken($color-gray-dark, 10%))
+  max-height: $inputs-size * 6
+  min-height: $inputs-size * 3
+  resize: vertical
+  width: 100%
+
 //----- mobile arguments preview -----
 
 .mobile-preview-container .nav-pills
