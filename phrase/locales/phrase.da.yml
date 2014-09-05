@@ -26,6 +26,7 @@ da:
     invitation:
       many: Invitationer
     name: Navn
+    none: Ingen
     product_group:
       many: Produkt grupper
     rating: Bedømmelse
@@ -195,6 +196,7 @@ da:
         notifications:
           success: Sælger fjernet
       index:
+        optional_invitation: Valgfri besked i invitationen
         table:
           actions:
             destroy_confirmation: Er du sikker?
@@ -239,12 +241,14 @@ da:
       header: Skriv de første argumenter
       next_step_button: NÆSTE
     step_3:
+      add_message: Tilføj besked
       header: Inviter dine sælgere
       next_step_button: NÆSTE
     step_4:
       benefit: 'Benefit er:'
       categories_and_arguments_header: Produkt grupper og argumenter
       header: Gennemse og bekræft
+      invitation_message_header: Besked i invitationen
       invitations_header: Sælgere
       product_groups_and_arguments_header: Produkt grupper og argumenter
       submit_button: SEND INVITATIONER
