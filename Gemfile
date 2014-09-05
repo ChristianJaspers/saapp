@@ -50,6 +50,7 @@ group :development do
   gem 'better_errors', '~> 1.1.0'
   gem 'thin', '~> 1.6.2'
   gem 'proxylocal', '~> 0.3.1', require: false
+  gem 'request-log-analyzer', '~> 1.13.0', require: false
 end
 
 group :test do
