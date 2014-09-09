@@ -90,7 +90,7 @@ describe Api::V1::PasswordsController do
                 "experience": 0,
                 "my_activity": 0,
                 "my_team_activity": 0,
-                "all_teams_activity": 0
+                "all_teams_activity": 100
               }
             }
           EOS

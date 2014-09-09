@@ -59,7 +59,7 @@ describe Api::V1::RatingsController do
             {
               experience: 5,
               my_activity: 35,
-              my_team_activity: 100,
+              my_team_activity: 77,
               all_teams_activity: 100,
               rating: 1.0,
               my_rating: 1
@@ -75,7 +75,7 @@ describe Api::V1::RatingsController do
             {
               experience: 5,
               my_activity: 31,
-              my_team_activity: 100,
+              my_team_activity: 72,
               all_teams_activity: 100,
               rating: 2.0,
               my_rating: 2
@@ -91,7 +91,7 @@ describe Api::V1::RatingsController do
             {
               experience: 5,
               my_activity: 27,
-              my_team_activity: 100,
+              my_team_activity: 69,
               all_teams_activity: 100,
               rating: 3.0,
               my_rating: 3

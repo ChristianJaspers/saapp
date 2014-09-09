@@ -48,7 +48,7 @@ describe Api::V1::AuthController do
                 "experience": 0,
                 "my_activity": 0,
                 "my_team_activity": 0,
-                "all_teams_activity": 0
+                "all_teams_activity": 100
               },
               "access_token": "#{user.access_token}"
             }

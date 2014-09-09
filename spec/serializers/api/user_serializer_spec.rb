@@ -27,19 +27,15 @@ describe Api::UserSerializer do
 
   describe '#my_team_activity' do
     context 'company goal score is 0' do
-      before { allow(GoalLevelScore).to receive(:for_company).and_return(0) }
+      before { allow(GoalLevelScore).to receive(:my_team_activity).and_return(0) }
 
       its(:my_team_activity) { is_expected.to eq 0 }
     end
 
     context 'company goal score is 200' do
-      before { allow(GoalLevelScore).to receive(:for_company).and_return(200) }
+      before { allow(GoalLevelScore).to receive(:my_team_activity).and_return(100) }
 
-      context 'my team score in comparison period is 20' do
-        before { allow_any_instance_of(Team).to receive(:score_in_period).and_return(20) }
-
-        its(:my_team_activity) { is_expected.to eq 10 }
-      end
+      its(:my_team_activity) { is_expected.to eq 100 }
     end
   end
 
@@ -47,7 +43,7 @@ describe Api::UserSerializer do
     context 'overall goal score is 0' do
       before { allow(GoalLevelScore).to receive(:for_platform).and_return(0) }
 
-      its(:all_teams_activity) { is_expected.to eq 0 }
+      its(:all_teams_activity) { is_expected.to eq 100 }
     end
 
     context 'overall goal score is 200' do
@@ -56,7 +52,7 @@ describe Api::UserSerializer do
       context 'my company score in comparison period is 20' do
         before { allow_any_instance_of(Company).to receive(:score_in_period).and_return(20) }
 
-        its(:all_teams_activity) { is_expected.to eq 10 }
+        its(:all_teams_activity) { is_expected.to eq 100 }
       end
     end
   end

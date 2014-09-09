@@ -49,8 +49,8 @@ describe Api::V1::ArgumentsController do
                 "avatar_thumb_url": null,
                 "experience": 9,
                 "my_activity": 50,
-                "my_team_activity": 50,
-                "all_teams_activity": 50
+                "my_team_activity": 100,
+                "all_teams_activity": 100
               }
             }
           EOS
@@ -175,8 +175,8 @@ describe Api::V1::ArgumentsController do
                 "avatar_thumb_url": null,
                 "experience": 9,
                 "my_activity": 50,
-                "my_team_activity": 50,
-                "all_teams_activity": 50
+                "my_team_activity": 100,
+                "all_teams_activity": 100
               }
             }
           EOS

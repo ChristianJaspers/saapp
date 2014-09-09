@@ -114,4 +114,34 @@ describe GoalLevelScore do
       end
     end
   end
+
+  describe '.my_team_activity' do
+    subject { GoalLevelScore.my_team_activity(team) }
+
+    context 'most sales representatives have lower xp' do
+      before do
+        create(:gamification_scoring, beneficiary_id: sales_representative_1.id, amount: 20)
+        create(:gamification_scoring, beneficiary_id: sales_representative_2.id, amount: 5)
+        create(:gamification_scoring, beneficiary_id: sales_representative_2.id, amount: 5)
+        create(:gamification_scoring, beneficiary_id: sales_representative_3.id, amount: 70)
+      end
+
+      it do
+        expect(subject).to eq (((20 / 70.0) + ((5 + 5) / 70.0) + (70 / 70.0)) * 100.0 / 3)
+      end
+    end
+
+    context 'most sales representatives have higher xp' do
+      before do
+        create(:gamification_scoring, beneficiary_id: sales_representative_1.id, amount: 10)
+        create(:gamification_scoring, beneficiary_id: sales_representative_2.id, amount: 40)
+        create(:gamification_scoring, beneficiary_id: sales_representative_2.id, amount: 30)
+        create(:gamification_scoring, beneficiary_id: sales_representative_3.id, amount: 70)
+      end
+
+      it do
+        expect(subject).to eq ((10 / 70.0) + ((40 + 30) / 70.0) + (70 / 70.0)) * 100.0 / 3
+      end
+    end
+  end
 end
