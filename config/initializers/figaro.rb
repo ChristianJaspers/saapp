@@ -10,6 +10,9 @@ if Rails.env.production?
     'AWS_SECRET_ACCESS_KEY',
     'HOST',
     'NOREPLY_EMAIL'
+    'SAASY_NOTIFICATION_KEY',
+    'SAASY_API_USER',
+    'SAASY_API_PASSWORD'
   ]
 end
 
