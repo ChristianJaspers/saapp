@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
   delegate :access_token, to: :api_token, allow_nil: true
   delegate :company, to: :team
+  delegate :sales_reps_count, to: :company
 
   has_attached_file :avatar, styles: {thumb: '200x200#'}, default_url: ''
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
