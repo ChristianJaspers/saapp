@@ -1,7 +1,7 @@
 module Saasy
   module ApiModules
     class Subscription
-      def intialize(fastspring)
+      def initialize(fastspring)
         @fastspring = fastspring
       end
 
