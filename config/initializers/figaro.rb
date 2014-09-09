@@ -9,7 +9,7 @@ if Rails.env.production?
     'AWS_ACCESS_KEY_ID',
     'AWS_SECRET_ACCESS_KEY',
     'HOST',
-    'NOREPLY_EMAIL'
+    'NOREPLY_EMAIL',
     'SAASY_NOTIFICATION_KEY',
     'SAASY_API_USER',
     'SAASY_API_PASSWORD'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814090040) do
+ActiveRecord::Schema.define(version: 20140909173218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,21 @@ ActiveRecord::Schema.define(version: 20140814090040) do
 
   add_index "product_groups", ["name"], name: "index_product_groups_on_name", using: :btree
   add_index "product_groups", ["owner_id"], name: "index_product_groups_on_owner_id", using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "company_id"
+    t.string   "reference"
+    t.integer  "referrer_id"
+    t.integer  "quantity"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["company_id"], name: "index_subscriptions_on_company_id", using: :btree
+  add_index "subscriptions", ["reference"], name: "index_subscriptions_on_reference", using: :btree
+  add_index "subscriptions", ["referrer_id"], name: "index_subscriptions_on_referrer_id", using: :btree
+  add_index "subscriptions", ["status"], name: "index_subscriptions_on_status", using: :btree
 
   create_table "teams", force: true do |t|
     t.integer  "company_id"
