@@ -128,17 +128,19 @@ da:
         create: Prøv 30 dage gratis!
   landing:
     free_30: Prøv 30 dage gratis
-    header: App'en der hjælper dig med at sælge mere, hurtigere og bedre
+    header: Sælg mere, hurtigere og bedre igennem de bedste salgsargumenter lige ved
+      hånden
     selling_points:
-      easy_setup: Nemt og hurtigt – læg jeres produkter og de første argumenter ind
-        på under 5 minutter. Så er du i gang.
-      gain_confidence: 'Kontroller og hold styr på individuel og team aktivitet og
-        dokumentér fokus på fx kampagneprodukter '
-      save_money: 'Spar penge – brug mindre end kr. 120,- om måneden pr. sælger '
-      save_time: Spar tid – spild ikke tiden med besværlig produkttræning – lad sælgerne
-        træne hinanden løbende via app’en
-      sell_more: Sælg mere gennem de bedste salgsargumenter, der fokuserer på benefits
-        for kunden
+      easy_setup: 'Læg produkt grupper og argumenter ind og få sælgerne i gang på
+        få minutter. '
+      gain_confidence: 'Hent rapporter der dokumenterer sælgernes aktivitet og fokus
+        på fx kampagneprodukter '
+      save_money: Brug mindre end kr. 149,- om måneden pr. sælger til vidensdeling,
+        øget motivation og en sjovere hverdag
+      save_time: Spar tid – undgå besværlig produkttræning og lad sælgerne træne hinanden
+        via app’en
+      sell_more: Sælg mere ved at få de bedste salgsargumenter ud til kunderne og
+        rundt blandt alle sælgerne
     testimonials_header: Kunderne siger
   manager:
     dashboard:

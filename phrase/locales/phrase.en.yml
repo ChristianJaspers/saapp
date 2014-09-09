@@ -127,16 +127,18 @@ en:
         create: Try 30 days for free!
   landing:
     free_30: 30 day free trial
-    header: The app that helps you sell more, sell faster, and sell better
+    header: Sell more, sell faster, and sell better through the best sales arguments
+      right at your finger tips
     selling_points:
-      easy_setup: Easy use and set-up in 5 minutes
-      gain_confidence: 'Control and track team and individual activity and commitment '
-      save_money: Save Money – spend less than € 16 monthly per rep providing them
-        with their own app
-      save_time: Save Time wasted on expensive product training – have your reps train
-        each other!
-      sell_more: Sell more through the best arguments focusing on benefits for your
-        customers
+      easy_setup: Easy use and set-up in only a few minutes
+      gain_confidence: Track which sales arguments work best for your reps and monitor
+        their digestion of vital product information
+      save_money: Spend less than € 20 monthly per rep to increase motivation, knowledge
+        sharing and fun in your team
+      save_time: Reduce expensive product training – have your reps train each other
+        on daily basis instead
+      sell_more: The app that make your team find and share sales arguments that make
+        customers buy
     testimonials_header: Testimonials
   manager:
     dashboard:
