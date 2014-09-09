@@ -1,6 +1,7 @@
 MANDRILL_APIKEY: n9YjeEKAFHuog92W-qBAvA
 MANDRILL_USERNAME: your-mandril-account-mail@domain.com
 NOREPLY_EMAIL: noreply@example.com
+SAASY_NOTIFICATION_KEY: ~
 
 development:
   PHRASE_EDITOR_ENABLED: true
@@ -19,3 +20,4 @@ production:
   AWS_SECRET_ACCESS_KEY: ~
   HOST: ~
   NOREPLY_EMAIL: noreply@bettersalesman.com
+  SAASY_NOTIFICATION_KEY: ~
