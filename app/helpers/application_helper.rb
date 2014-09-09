@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def billing_link(user)
+    "https://sites.fastspring.com/copenhagenapphouse/instant/bettersalesman?quantity=#{user.sales_reps_count}&referrer=#{user.id}"
+  end
+
   def logged_in?
     current_user.present?
   end
@@ -45,5 +49,4 @@ module ApplicationHelper
   def generic_apple_favicon_link_tag(path, options={})
     with_options(options) { |cfg| cfg.favicon_link_tag path, rel: 'apple-touch-icon', type: 'image/png' }
   end
-
 end

@@ -6,15 +6,13 @@ class Saasy::CallbacksController < ApplicationController
   before_action :authenticate_saasy!
 
   def create
-    api = Saasy::Api.new
-    subscription = api.subscription.find(params[:reference])
-    binding.pry
+    SubscriptionProcessor.call(self) unless params[:OrderID].present?
     head :ok
   end
 
   private
 
   def authenticate_saasy!
-    render status: :forbidden unless Saasy::Api.authenticate_callback?(params[:security_data], params[:security_hash])
+    render status: :forbidden # unless Saasy::Api.authenticate_callback?(params[:security_data], params[:security_hash])
   end
 end

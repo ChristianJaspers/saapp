@@ -11,6 +11,6 @@
       %li{class: ('active' if request.path['/reports'])}
         = link_to t('manager.tabs.reports'), manager_reports_root_path
       %li{class: ('active' if request.path['/billing'])}
-        = link_to t('manager.tabs.billing'), "https://sites.fastspring.com/copenhagenapphouse/instant/bettersalesman?quantity=#{current_user.sales_reps_count}"
+        = link_to t('manager.tabs.billing'), billing_link(current_user)
 
 = render template: 'layouts/application'
