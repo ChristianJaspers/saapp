@@ -1,8 +1,8 @@
 ---
-label: Home
+label: Terms and Conditions
 layout: default
-parent: 
+parent: index
 target_page: 
 categories: []
 is_published: true
-position: 0
+position: 5
