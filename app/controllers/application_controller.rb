@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
       []
     end
   end
+  expose(:cms_root_page_content) do
+    if cms_site
+      cms_site.root_page_content
+    else
+      ''
+    end
+  end
 
   private
 
