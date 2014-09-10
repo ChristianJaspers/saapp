@@ -135,11 +135,12 @@ rake delayed_removal:perform
 
 #### Download heroku database to test it locally
 ```
-heroku pgbackups:capture --app saapp-staging
-curl -o tmp/latest.dump `heroku pgbackups:url --app saapp-staging`
+heroku pgbackups:capture --app bettersalesman
+curl -o tmp/latest.dump `heroku pgbackups:url --app bettersalesman`
 pg_restore --verbose --clean --no-acl --no-owner tmp/latest.dump > tmp/b.sql
 rake db:drop db:create
 psql -d sap < tmp/b.sql
 rake db:migrate
+RAILS_ENV=test rake db:drop db:create db:migrate
 ```
 
