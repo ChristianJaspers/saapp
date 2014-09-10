@@ -9,6 +9,12 @@ module Saasy
         fastspring.get_subscription(reference_number)
       end
 
+      def update_quantity(reference_number, quantity)
+        remote_subscription = find(reference_number)
+        remote_subscription.quantity = quantity
+        fastspring.update_subscription(remote_subscription)
+      end
+
       private
 
       attr_reader :fastspring

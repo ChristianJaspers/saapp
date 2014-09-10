@@ -5,6 +5,7 @@ class Company < ActiveRecord::Base
   has_many :users, through: :teams
   has_many :scorings, class_name: Gamification::Scoring, through: :users
   has_many :sales_representatives, through: :teams
+  has_many :subscriptions
 
   def sales_reps_count
     sales_representatives.count
