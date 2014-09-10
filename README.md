@@ -141,6 +141,7 @@ pg_restore --verbose --clean --no-acl --no-owner tmp/latest.dump > tmp/b.sql
 rake db:drop db:create
 psql -d sap < tmp/b.sql
 rake db:migrate
+rails runner "puts Comfy::Cms::Site.update_all(hostname: 'localhost:3000')"
 RAILS_ENV=test rake db:drop db:create db:migrate
 ```
 
