@@ -10,10 +10,10 @@ class SubscriptionUpdater < BusinessProcess::Base
 
   private
 
-  attr_reader :api, :quantity
+  attr_reader :api, :quantity, :subscription
 
   def find_subscription
-    company.subscriptions.active.first # for now
+    @subscription = company.subscriptions.active.first # for now
   end
 
   def init_saasy_api
@@ -25,6 +25,6 @@ class SubscriptionUpdater < BusinessProcess::Base
   end
 
   def update_remote_subscription
-    api.subscription.update_quantity(quantity)
+    api.subscription.update_quantity(subscription.reference, quantity)
   end
 end

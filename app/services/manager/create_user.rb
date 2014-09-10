@@ -3,6 +3,7 @@ class Manager::CreateUser < BusinessProcess::Base
 
   def call
     create_user and
+      update_remote_subscription and
       send_invitation
   end
 
@@ -11,6 +12,11 @@ class Manager::CreateUser < BusinessProcess::Base
   def create_user
     user.skip_confirmation_notification!
     user.save
+  end
+
+  def update_remote_subscription
+    true
+    #SubscriptionUpdater.call(company: user.company).success?
   end
 
   def send_invitation

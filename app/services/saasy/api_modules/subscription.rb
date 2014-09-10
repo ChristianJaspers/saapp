@@ -10,9 +10,9 @@ module Saasy
       end
 
       def update_quantity(reference_number, quantity)
-        remote_subscription = find(reference_number)
-        remote_subscription.quantity = quantity
-        fastspring.update_subscription(remote_subscription)
+        remote_subscription_update = FsprgSubscriptionUpdate.new(reference_number)
+        remote_subscription_update.quantity = quantity.to_s
+        fastspring.update_subscription(remote_subscription_update)
       end
 
       private
