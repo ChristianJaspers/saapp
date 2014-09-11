@@ -1,0 +1,5 @@
+subject: Your BetterSalesman trial has expired
+body: |
+  <p>Hi *|email|*!</p>
+
+  <p>We are sorry to see you go</p>

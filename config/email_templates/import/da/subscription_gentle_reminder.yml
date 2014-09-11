@@ -1,0 +1,5 @@
+subject: Your BetterSalesman trial expires in 7 days
+body: |
+  <p>Hi *|email|*!</p>
+
+  <p>Your trail will expire in one week. Please update you subscription</p>
