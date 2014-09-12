@@ -1,0 +1,4 @@
+- form = Saasy::BillingForm.new(current_user)
+= form_tag form.action, id: 'external_billing_system', method: form.method, authenticity_token: form.authenticity_token do
+  - form.params.each do |name, value|
+    = hidden_field_tag name, value

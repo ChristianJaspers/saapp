@@ -13,6 +13,6 @@ class Saasy::CallbacksController < ApplicationController
   private
 
   def authenticate_saasy!
-    render status: :forbidden # unless Saasy::Api.authenticate_callback?(params[:security_data], params[:security_hash])
+    render status: :forbidden unless Saasy::Api.authenticate_callback?(params[:security_data], params[:security_hash])
   end
 end
