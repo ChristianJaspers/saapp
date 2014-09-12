@@ -23,21 +23,9 @@ class Saasy::BillingForm
       destination: 'checkout',
       product_1_path: '/bettersalesman',
       product_1_quantity: user.sales_reps_count,
-      contact_fname: user_first_name,
-      contact_lname: user_last_name,
       contact_email: user.email,
       referrer: user.id,
       language: user.locale
     }
-  end
-
-  private
-
-  def user_first_name
-    ''
-  end
-
-  def user_last_name
-    ''
   end
 end
