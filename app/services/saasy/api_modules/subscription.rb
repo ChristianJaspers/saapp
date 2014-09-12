@@ -15,7 +15,10 @@ module Saasy
         fastspring.update_subscription(remote_subscription_update)
       end
 
-      private
+      def management_url(reference_number)
+        remote_subscription = find(reference_number)
+        remote_subscription.customer_url
+      end
 
       attr_reader :fastspring
     end

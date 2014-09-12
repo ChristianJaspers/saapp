@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :saasy do
     resources :callbacks, only: [:create]
+    resources :subscriptions, only: [:show]
   end
 
   scope "(:locale)", locale: /da/, defaults: {locale: 'en'} do

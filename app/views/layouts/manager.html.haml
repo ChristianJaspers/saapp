@@ -11,7 +11,9 @@
       %li{class: ('active' if request.path['/reports'])}
         = link_to t('manager.tabs.reports'), manager_reports_root_path
       %li{class: ('active' if request.path['/billing'])}
-        = link_to t('manager.tabs.billing'), "javascript:$('#external_billing_system').submit()"
-    = render partial: 'manager/saasy/billing_form'
+        - if (negotiator = Saasy::BillingLinkNegotiator.new(current_user))
+          = link_to t('manager.tabs.billing'), negotiator.link
+          - if negotiator.render_form?
+            = render partial: 'manager/saasy/billing_form'
 
 = render template: 'layouts/application'
