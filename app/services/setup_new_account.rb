@@ -13,6 +13,7 @@ class SetupNewAccount < BusinessProcess::Base
         create_manager and
         create_product_groups_and_arguments and
         create_invitees and
+        create_trial_subscription and
         send_emails
   end
 
@@ -78,6 +79,10 @@ class SetupNewAccount < BusinessProcess::Base
       invitee.persisted? ? invitee : nil
     end
     !invitees.any? { |invitee| invitee.nil? }
+  end
+
+  def create_trial_subscription
+    Subscription.start_trial_for_manager(manager)
   end
 
   def send_emails

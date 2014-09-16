@@ -9,6 +9,7 @@ describe SetupNewAccount do
     before do
       allow(ApplicationMailer).to receive(:user_invitation).and_call_original
       allow(MandrillDeviseMailer).to receive(:confirmation_instructions).and_call_original
+      allow(Subscription).to receive(:start_trial_for_manager).and_call_original
       allow_any_instance_of(EmailTemplates::Sender).to receive(:send).and_return([])
     end
 
@@ -46,6 +47,7 @@ describe SetupNewAccount do
 
             it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
             it { expect(MandrillDeviseMailer).to have_received(:confirmation_instructions).with(User.managers.first, kind_of(String), {}) }
+            it { expect(Subscription).to have_received(:start_trial_for_manager).with(User.managers.first) }
 
             describe 'manager' do
               subject { User.managers.first }
