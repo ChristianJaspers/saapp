@@ -38,6 +38,26 @@ describe Subscription do
     end
   end
 
+  describe '.detect_active_subscription_for_user' do
+    let(:user) { create(:manager) }
+    let(:perform) { described_class.detect_active_subscription_for_user(user) }
+
+    pending
+  end
+
+  describe '.active_remote' do
+    let(:perform) { described_class.active_remote.pluck(:id) }
+
+    before do
+      allow(Subscription).to receive(:remote_subscriptions).and_call_original
+      allow(Subscription).to receive(:active).and_call_original
+      perform
+    end
+
+    it { expect(Subscription).to have_received(:remote_subscriptions) }
+    it { expect(Subscription).to have_received(:active) }
+  end
+
   describe '.active' do
     let!(:subscription_1) { create(:subscription, ends_at: nil) }
     let!(:subscription_2) { create(:subscription, ends_at: now + 1.hour) }
@@ -58,6 +78,17 @@ describe Subscription do
     before do
       create(:subscription, reference: 'abc')
       create(:subscription, reference: '123')
+    end
+
+    it { expect(perform).to eq [subscription_1.id] }
+  end
+
+  describe '.remote_subscriptions' do
+    let!(:subscription_1) { create(:subscription, reference: 'whatever') }
+    let(:perform) { described_class.remote_subscriptions.pluck(:id) }
+
+    before do
+      create(:subscription, reference: 'trial')
     end
 
     it { expect(perform).to eq [subscription_1.id] }

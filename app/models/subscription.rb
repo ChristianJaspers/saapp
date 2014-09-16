@@ -5,8 +5,10 @@ class Subscription < ActiveRecord::Base
   belongs_to :company
   belongs_to :referrer, class_name: User
 
+  scope :active_remote, -> { remote_subscriptions.active }
   scope :active, -> { where(status: 'active').deos_not_end_yet }
   scope :trials, -> { where(reference: 'trial') }
+  scope :remote_subscriptions, -> { where("subscriptions.reference != 'trial'") }
   scope :deos_not_end_yet, -> { where('subscriptions.ends_at IS NULL OR subscriptions.ends_at > ?', Time.now) }
   scope :non_empty_end_date, -> { where('subscriptions.ends_at IS NOT NULL') }
 
@@ -20,6 +22,10 @@ class Subscription < ActiveRecord::Base
       status: 'active',
       ends_at: (Time.now + TRIAL_DURATION)
     ).save
+  end
+
+  def self.detect_active_subscription_for_user(user)
+    user.company.subscriptions.active.first
   end
 
   def trial?
