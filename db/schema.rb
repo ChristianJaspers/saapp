@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909173218) do
+ActiveRecord::Schema.define(version: 20140916130243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,9 +215,11 @@ ActiveRecord::Schema.define(version: 20140909173218) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "ends_at"
   end
 
   add_index "subscriptions", ["company_id"], name: "index_subscriptions_on_company_id", using: :btree
+  add_index "subscriptions", ["ends_at"], name: "index_subscriptions_on_ends_at", using: :btree
   add_index "subscriptions", ["reference"], name: "index_subscriptions_on_reference", using: :btree
   add_index "subscriptions", ["referrer_id"], name: "index_subscriptions_on_referrer_id", using: :btree
   add_index "subscriptions", ["status"], name: "index_subscriptions_on_status", using: :btree
