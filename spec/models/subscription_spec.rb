@@ -38,13 +38,6 @@ describe Subscription do
     end
   end
 
-  describe '.detect_active_subscription_for_user' do
-    let(:user) { create(:manager) }
-    let(:perform) { described_class.detect_active_subscription_for_user(user) }
-
-    pending
-  end
-
   describe '.active_remote' do
     let(:perform) { described_class.active_remote.pluck(:id) }
 

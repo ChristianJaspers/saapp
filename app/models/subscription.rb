@@ -24,10 +24,6 @@ class Subscription < ActiveRecord::Base
     ).save
   end
 
-  def self.detect_active_subscription_for_user(user)
-    user.company.subscriptions.active.first
-  end
-
   def trial?
     reference == 'trial'
   end

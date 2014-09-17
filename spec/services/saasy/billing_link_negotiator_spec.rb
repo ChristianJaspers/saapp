@@ -1,12 +1,6 @@
 describe Saasy::BillingLinkNegotiator do
-  subject { described_class.new(user) }
-  let(:user) { create(:manager) }
-
-  describe '#subscription' do
-    let(:perform) { subject.subscription }
-
-    pending
-  end
+  let(:company_subscription) { build(:company_subscription) }
+  subject { described_class.new(company_subscription) }
 
   describe '#link' do
     let(:perform) { subject.link }
@@ -32,7 +26,7 @@ describe Saasy::BillingLinkNegotiator do
 
     context 'subscription exists' do
       before do
-        allow(subject).to receive(:subscription).and_return(subscription)
+        allow(company_subscription).to receive(:needs_to_buy_subscription?).and_return(false)
       end
 
       it { expect(perform).to be_falsey }
@@ -40,7 +34,7 @@ describe Saasy::BillingLinkNegotiator do
 
     context 'no active subscription' do
       before do
-        allow(subject).to receive(:subscription).and_return(nil)
+        allow(company_subscription).to receive(:needs_to_buy_subscription?).and_return(true)
       end
 
       it { expect(perform).to be_truthy }

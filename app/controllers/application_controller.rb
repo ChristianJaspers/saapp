@@ -24,6 +24,9 @@ class ApplicationController < ActionController::Base
       ''
     end
   end
+  expose(:company_subscription) do
+    CompanySubscription.new(current_user)
+  end
 
   private
 
