@@ -46,6 +46,8 @@ describe Api::V1::RatingsController do
     let(:call_request) { post :create, params.merge(argument_id: id), {format: :json} }
 
     context 'valid api token' do
+      include_context 'all subscriptions allow to use system'
+
       before { api_authorize_with(api_token.access_token) }
 
       context 'existing argument' do

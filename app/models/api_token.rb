@@ -10,6 +10,8 @@ class ApiToken < ActiveRecord::Base
 
   scope :for_access_token, ->(access_token) { where(access_token: access_token.to_s) }
 
+  delegate :company, to: :user
+
   private
 
   def generate_access_token

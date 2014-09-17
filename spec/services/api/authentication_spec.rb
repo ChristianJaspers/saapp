@@ -7,8 +7,17 @@ describe Api::Authentication do
       let(:api_token) { create(:api_token) }
       let(:access_token) { api_token.access_token }
 
-      its(:authenticate!) { should be_truthy }
-      its(:user) { should eq api_token.user }
+      context 'active subscription exists' do
+        include_context 'all subscriptions allow to use system'
+
+        its(:authenticate!) { should be_truthy }
+        its(:user) { should eq api_token.user }
+      end
+
+      context 'no subscription' do
+        its(:authenticate!) { should be_falsey }
+        its(:user) { should be_nil }
+      end
     end
 
     context 'wrong api token is used' do

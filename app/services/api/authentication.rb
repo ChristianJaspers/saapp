@@ -16,8 +16,20 @@ module Api
     def api_token
       @api_token ||= begin
         token = ApiToken.for_access_token(param_token).includes(:user).first
-        token if token && Devise.secure_compare(token.access_token, param_token)
+        if token_valid?(token, param_token) && can_use_system?(token)
+          token
+        else
+          nil
+        end
       end
+    end
+
+    def token_valid?(token, param_token)
+      token && Devise.secure_compare(token.access_token, param_token)
+    end
+
+    def can_use_system?(token)
+      CompanySubscription.new(token.user).can_use_system?
     end
   end
 end

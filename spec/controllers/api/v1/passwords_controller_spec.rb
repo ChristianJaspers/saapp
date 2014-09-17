@@ -62,6 +62,9 @@ describe Api::V1::PasswordsController do
 
     context 'valid access token' do
       let(:api_token) { create(:api_token, user: user) }
+
+      include_context 'all subscriptions allow to use system'
+
       before do
         api_authorize_with(api_token.access_token)
         call_request

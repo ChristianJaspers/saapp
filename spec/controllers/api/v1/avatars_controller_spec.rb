@@ -12,6 +12,8 @@ describe Api::V1::AvatarsController do
       let(:file) { 'avatar.png' }
       let(:mime) { 'image/png' }
 
+      include_context 'all subscriptions allow to use system'
+
       before { api_authorize_with(api_token.access_token) }
 
       context 'valid file provided' do

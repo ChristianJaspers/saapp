@@ -11,6 +11,8 @@ describe Api::V1::ArgumentsController do
     let(:call_request) { post :create, params, format: 'json' }
 
     context 'valid api token' do
+      include_context 'all subscriptions allow to use system'
+
       before do
         api_authorize_with(api_token.access_token)
         call_request
@@ -138,6 +140,8 @@ describe Api::V1::ArgumentsController do
     let(:call_request) { put :update, params.merge(id: id), format: 'json' }
 
     context 'valid api token' do
+      include_context 'all subscriptions allow to use system'
+
       before { api_authorize_with(api_token.access_token) }
 
       context 'valid params' do

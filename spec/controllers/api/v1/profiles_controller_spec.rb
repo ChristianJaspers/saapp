@@ -6,6 +6,8 @@ describe Api::V1::ProfilesController do
 
   describe '#show' do
     context 'valid access token provided' do
+      include_context 'all subscriptions allow to use system'
+
       before { api_authorize_with(api_token.access_token) }
 
       it 'renders user profile' do

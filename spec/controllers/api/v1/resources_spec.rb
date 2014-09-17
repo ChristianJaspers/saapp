@@ -18,6 +18,8 @@ describe Api::V1::ResourcesController do
     let(:call_request) { get :index, {format: :json} }
 
     context 'valid access token' do
+      include_context 'all subscriptions allow to use system'
+
       before do
         api_authorize_with(api_token.access_token)
         call_request

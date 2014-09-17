@@ -17,3 +17,9 @@ shared_context 'user has active subscription' do
     ApplicationController.any_instance.stub(:company_subscription) { company_subscription }
   end
 end
+
+shared_context 'all subscriptions allow to use system' do
+  before do
+    allow_any_instance_of(CompanySubscription).to receive(:can_use_system?).and_return(true)
+  end
+end
