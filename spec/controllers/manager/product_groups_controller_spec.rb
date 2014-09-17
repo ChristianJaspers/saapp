@@ -16,6 +16,9 @@ describe Manager::ProductGroupsController do
 
     context 'logged in as manager' do
       include_context 'manager is logged in'
+      include_context 'user has active subscription' do
+        let(:company_subscription_user) { manager }
+      end
 
       context 'there is one product_group defined' do
         before { create(:product_group, owner: manager) }
@@ -29,6 +32,9 @@ describe Manager::ProductGroupsController do
 
   describe '#create' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     let(:attributes){ {name: 'New product_group!'} }
     let(:call_request) { post :create, product_group: attributes }
@@ -45,6 +51,9 @@ describe Manager::ProductGroupsController do
 
   describe '#update' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     context 'un-publishing' do
       let!(:product_group) { create(:product_group, owner: manager) }
@@ -63,6 +72,9 @@ describe Manager::ProductGroupsController do
 
   describe '#destroy' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     let(:call_request) { delete :destroy, id: product_group.id }
 
@@ -85,6 +97,9 @@ describe Manager::ProductGroupsController do
 
   describe '#product_groups' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     context 'product_group owned by manager exists' do
       let(:product_group) { create(:product_group, owner: manager) }

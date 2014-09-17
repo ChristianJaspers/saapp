@@ -6,6 +6,9 @@ describe Manager::ProfilesController do
 
   describe '#update' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     let(:call_request) { patch(:update, user: attributes) }
 

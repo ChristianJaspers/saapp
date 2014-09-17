@@ -2,8 +2,6 @@ class Manager::ProductGroupsController < Manager::ManagerController
   expose_decorated(:product_groups, ancestor: :team) { |relation| relation.order(name: :asc).page(params[:page]) }
   expose(:product_group, attributes: :product_group_params)
 
-  layout 'manager'
-
   def show
     render json: product_group, root: false
   end

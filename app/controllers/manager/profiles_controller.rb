@@ -1,8 +1,6 @@
 class Manager::ProfilesController < Manager::ManagerController
   expose(:sales_reps_count) { current_user.team.sales_representatives.count }
 
-  layout 'manager'
-
   def update
     current_user.attributes = user_params
     if current_user.save

@@ -137,8 +137,8 @@ en:
         sharing and fun in your team
       save_time: Reduce expensive product training – have your reps train each other
         on daily basis instead
-      sell_more: The app that make your team find and share sales arguments that make
-        customers buy
+      sell_more: The app which helps your team find and share sales arguments that
+        make customers buy
     testimonials_header: Testimonials
   manager:
     dashboard:
@@ -220,6 +220,8 @@ en:
     placeholders:
       wizard:
         email: Your company email
+  subscriptions:
+    subscription_expired_or_invalid: Your subscription has expired or is invalid
   wizard:
     create:
       errors:

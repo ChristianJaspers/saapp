@@ -2,8 +2,6 @@ class Manager::UsersController < Manager::ManagerController
   expose_decorated(:users, ancestor: :team) { |relation| relation.order(:email).page(params[:page]) }
   expose(:user, attributes: :user_params)
 
-  layout 'manager'
-
   def create
     if Manager::CreateUser.call(self).success?
       redirect_to manager_users_path, notice: t('manager.users.create.notifications.success')

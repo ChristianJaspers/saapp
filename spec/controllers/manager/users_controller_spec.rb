@@ -9,11 +9,18 @@ describe Manager::UsersController do
 
     context 'logged in as user' do
       include_context 'user is logged in'
+      include_context 'user has active subscription' do
+        let(:company_subscription_user) { user }
+      end
+
       it_behaves_like 'an action redirecting to', -> { root_path }
     end
 
     context 'logged in as manager' do
       include_context 'manager is logged in'
+      include_context 'user has active subscription' do
+        let(:company_subscription_user) { manager }
+      end
 
       context 'there is one user defined' do
         it_behaves_like 'an action rendering view' do
@@ -25,6 +32,9 @@ describe Manager::UsersController do
 
   describe '#create' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     let(:attributes) do
       {
@@ -47,6 +57,9 @@ describe Manager::UsersController do
 
   describe '#update' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     let(:call_request) { patch(:update, id: user.id, user: attributes) }
 
@@ -93,6 +106,9 @@ describe Manager::UsersController do
 
   describe '#destroy' do
     include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
 
     let(:call_request) { delete :destroy, id: user.id }
 
