@@ -3,6 +3,11 @@ require 'rails_helper'
 describe Manager::UsersController do
   subject { controller }
   render_views
+  before do
+    allow_any_instance_of(SubscriptionUpdater).to receive(:success?).and_return(true)
+    allow_any_instance_of(SubscriptionUpdater).to receive(:update_remote_subscription).and_return(true)
+    allow(SubscriptionUpdater).to receive(:call).and_call_original
+  end
 
   describe '#index' do
     let(:call_request) { get :index }

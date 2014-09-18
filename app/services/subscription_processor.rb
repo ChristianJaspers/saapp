@@ -38,6 +38,7 @@ class SubscriptionProcessor < BusinessProcess::Base
     subscription.reference = remote_subscription.reference
     subscription.quantity  = remote_subscription.quantity.to_i
     subscription.status    = remote_subscription.status
+    subscription.ends_at   = remote_subscription.end_date
     subscription.save
   end
 end
