@@ -221,6 +221,8 @@ da:
     placeholders:
       wizard:
         email: Din firma email
+  subscriptions:
+    subscription_expired_or_invalid: Dit abonnement er udløbet eller ugyldigt
   wizard:
     create:
       errors:

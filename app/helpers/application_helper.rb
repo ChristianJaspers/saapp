@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def flash_message_color(flash_key_name)
+    if flash_key_name == 'warning'
+      flash_key_name
+    else
+      ['error', 'alert'].include?(flash_key_name) ? 'danger' : 'success'
+    end
+  end
+
   def billing_link(user)
     "https://sites.fastspring.com/copenhagenapphouse/instant/bettersalesman?quantity=#{user.sales_reps_count}&referrer=#{user.id}"
   end
