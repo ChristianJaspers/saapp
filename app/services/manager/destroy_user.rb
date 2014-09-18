@@ -13,6 +13,6 @@ class Manager::DestroyUser < BusinessProcess::Base
   end
 
   def update_remote_subscription
-    true
+    SubscriptionUpdater.call(company: user.company).success?
   end
 end

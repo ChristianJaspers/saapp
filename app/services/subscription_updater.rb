@@ -26,5 +26,6 @@ class SubscriptionUpdater < BusinessProcess::Base
 
   def update_remote_subscription
     api.subscription.update_quantity(subscription.reference, quantity)
+    quantity
   end
 end

@@ -15,8 +15,7 @@ class Manager::CreateUser < BusinessProcess::Base
   end
 
   def update_remote_subscription
-    true
-    #SubscriptionUpdater.call(company: user.company).success?
+    SubscriptionUpdater.call(company: user.company).success?
   end
 
   def send_invitation
