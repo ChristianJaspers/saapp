@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Saasy::BillingLinkNegotiator do
   let(:company_subscription) { build(:company_subscription) }
   subject { described_class.new(company_subscription) }

@@ -11,7 +11,7 @@ class Manager::UsersController < Manager::ManagerController
   end
 
   def destroy
-    user.remove!
+    Manager::DestroyUser.call(self)
     redirect_to manager_users_path, notice: t('manager.users.destroy.notifications.success')
   end
 

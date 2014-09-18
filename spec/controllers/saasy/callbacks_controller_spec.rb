@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Saasy::CallbacksController do
   let(:call_request) { post :create, params }
   let(:security_data) { '12345' }

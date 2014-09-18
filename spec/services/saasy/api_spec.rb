@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Saasy::Api do
   describe '.authenticate_callback?' do
     let(:perform) { described_class.authenticate_callback?(security_data, security_hash) }

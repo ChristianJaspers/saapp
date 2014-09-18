@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe CompanySubscription do
   before { travel_to(Time.new(2014, 7, 30, 12, 0, 0, "+00:00")) }
   after { travel_back }

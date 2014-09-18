@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe Saasy::BillingForm do
   subject { described_class.new(manager) }
   let(:manager) { create(:manager) }

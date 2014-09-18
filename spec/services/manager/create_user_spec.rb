@@ -14,6 +14,10 @@ describe Manager::CreateUser do
       it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
       it { expect(user.reload.instance_variable_get('@skip_confirmation_notification')).to be_truthy }
       it { expect(User).to exist.with(email: 'fake@email.com') }
+
+      pending 'remote subscription is updated'
+
+      pending 'trial subscription is not updated'
     end
   end
 end
