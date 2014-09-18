@@ -29,11 +29,11 @@ class CompanySubscription
 
   # determines if user can use system
   def active_subscription
-    @active_subscription ||= company.subscriptions.active.limit(1).order(:id).reverse_order.first
+    @active_subscription ||= company.subscriptions.active.limit(1).order('ends_at DESC NULLS FIRST, id DESC').first
   end
 
   # determines if user should buy subscription
   def active_remote_subscription
-    @active_remote_subscription ||= company.subscriptions.active_remote.limit(1).order(:id).reverse_order.first
+    @active_remote_subscription ||= company.subscriptions.active_remote.limit(1).order('ends_at DESC NULLS FIRST, id DESC').first
   end
 end

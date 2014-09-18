@@ -7,5 +7,9 @@ FactoryGirl.define do
     reference '123'
     quantity 0
     status 'active'
+
+    trait :trial do
+      reference 'trial'
+    end
   end
 end
