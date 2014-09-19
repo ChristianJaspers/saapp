@@ -19,7 +19,7 @@ describe Manager::CreateUser do
       it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
       it { expect(user.reload.instance_variable_get('@skip_confirmation_notification')).to be_truthy }
       it { expect(User).to exist.with(email: 'fake@email.com') }
-      it { expect(SubscriptionUpdater).to have_received(:call).with(company: user.company).once }
+      it { expect(SubscriptionUpdater).to have_received(:call).with(user: user).once }
     end
   end
 end

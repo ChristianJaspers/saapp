@@ -1,5 +1,5 @@
 class SubscriptionUpdater < BusinessProcess::Base
-  needs :company
+  needs :user
 
   def call
     find_subscription and
@@ -13,7 +13,7 @@ class SubscriptionUpdater < BusinessProcess::Base
   attr_reader :api, :quantity, :subscription
 
   def find_subscription
-    @subscription = company.subscriptions.active.first # for now
+    @subscription = CompanySubscription.new(user).active_remote_subscription
   end
 
   def init_saasy_api

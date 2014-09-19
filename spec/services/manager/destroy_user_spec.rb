@@ -17,7 +17,7 @@ describe Manager::DestroyUser do
       before { perform }
 
       it { expect(user).to have_received(:remove!).once }
-      it { expect(SubscriptionUpdater).to have_received(:call).with(company: user.company).once }
+      it { expect(SubscriptionUpdater).to have_received(:call).with(user: user).once }
     end
   end
 end
