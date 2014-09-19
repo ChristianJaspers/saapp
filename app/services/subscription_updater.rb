@@ -21,7 +21,7 @@ class SubscriptionUpdater < BusinessProcess::Base
   end
 
   def get_new_quantity
-    @quantity = company.sales_reps_count
+    @quantity = user.company.sales_reps_count
   end
 
   def update_remote_subscription

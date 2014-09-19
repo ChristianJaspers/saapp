@@ -15,6 +15,7 @@ en:
       no_access: You don't have access
   application_name: BetterSalesman
   common:
+    add: Add
     argument:
       many: Arguments
     back: Back
