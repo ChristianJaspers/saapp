@@ -1,6 +1,7 @@
 MANDRILL_APIKEY: n9YjeEKAFHuog92W-qBAvA
 MANDRILL_USERNAME: your-mandril-account-mail@domain.com
 NOREPLY_EMAIL: noreply@example.com
+ENABLE_SAASY_PRODUCTION_MODE: 'false'
 
 development:
   PHRASE_EDITOR_ENABLED: true
@@ -22,3 +23,4 @@ production:
   SAASY_NOTIFICATION_KEY: ~
   SAASY_API_USER: ~
   SAASY_API_PASSWORD: ~
+  ENABLE_SAASY_PRODUCTION_MODE: ~

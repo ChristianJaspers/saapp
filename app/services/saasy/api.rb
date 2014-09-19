@@ -3,7 +3,7 @@ class Saasy::Api
 
   def initialize
     @fastspring = FastSpring.new('copenhagenapphouse', ENV['SAASY_API_USER'], ENV['SAASY_API_PASSWORD'])
-    @fastspring.test_mode = true
+    @fastspring.test_mode = test_mode?
     @subscription = Saasy::ApiModules::Subscription.new(fastspring)
   end
 
@@ -12,6 +12,14 @@ class Saasy::Api
   end
 
   private
+
+  def test_mode?
+    !production_mode?
+  end
+
+  def production_mode?
+    ENV['ENABLE_SAASY_PRODUCTION_MODE'] == 'true'
+  end
 
   attr_reader :fastspring
 end

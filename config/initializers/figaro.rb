@@ -12,7 +12,8 @@ if Rails.env.production?
     'NOREPLY_EMAIL',
     'SAASY_NOTIFICATION_KEY',
     'SAASY_API_USER',
-    'SAASY_API_PASSWORD'
+    'SAASY_API_PASSWORD',
+    'ENABLE_SAASY_PRODUCTION_MODE'
   ]
 end
 
