@@ -26,7 +26,7 @@
     %select{'ng-model' => 'argument.productGroup', 'ng-options' => 'productGroup as productGroup.name for productGroup in wizard.productGroups', required: true}
     %input.feature{'ng-model' => 'argument.feature', required: true, autofocus: true, autocomplete: 'off'}
     %input.benefit{'ng-model' => 'argument.benefit', required: true, autocomplete: 'off'}
-    %input.wizard-add.four-corners{type: 'submit', value: 'Add'}
+    %input.wizard-add.four-corners{type: 'submit', value: "{{'common.add' | translate }}"}
 
   %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true'}
     {{ 'wizard.step_2.next_step_button' | translate }}
