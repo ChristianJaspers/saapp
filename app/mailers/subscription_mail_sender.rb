@@ -1,16 +1,16 @@
 class SubscriptionMailSender
-  def self.subscription_gentle_reminder(user)
-    recipient = prepare_recipient(user, {})
+  def self.subscription_gentle_reminder(user, payment_url)
+    recipient = prepare_recipient(user, {payment_url: payment_url})
     EmailTemplates::Sender.new([recipient], :subscription_gentle_reminder).send
   end
 
-  def self.subscription_critical_reminder(user)
-    recipient = prepare_recipient(user, {})
+  def self.subscription_critical_reminder(user, payment_url)
+    recipient = prepare_recipient(user, {payment_url: payment_url})
     EmailTemplates::Sender.new([recipient], :subscription_critical_reminder).send
   end
 
-  def self.subscription_trial_expired(user)
-    recipient = prepare_recipient(user, {})
+  def self.subscription_trial_expired(user, payment_url)
+    recipient = prepare_recipient(user, {payment_url: payment_url})
     EmailTemplates::Sender.new([recipient], :subscription_trial_expired).send
   end
 

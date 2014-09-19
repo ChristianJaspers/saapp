@@ -111,6 +111,26 @@ describe Subscription do
     it { expect(perform).to eq [subscription_1.id] }
   end
 
+  describe '.to_be_sent_as_reminders' do
+    let(:perform) { described_class.to_be_sent_as_reminders.pluck(:id) }
+    let!(:subscription_1) { create(:subscription, reference: 'trial', send_reminder_at: now - 2.days) }
+    let!(:subscription_2) { create(:subscription, reference: 'trial', send_reminder_at: now - 1.day) }
+    let!(:subscription_3) { create(:subscription, reference: 'trial', send_reminder_at: now) }
+    let!(:subscription_4) { create(:subscription, reference: 'trial', send_reminder_at: now + 1.day) }
+    let!(:subscription_5) { create(:subscription, reference: '123', send_reminder_at: now - 2.days) }
+    let!(:subscription_6) { create(:subscription, reference: '123', send_reminder_at: now - 1.day) }
+    let!(:subscription_7) { create(:subscription, reference: '123', send_reminder_at: now) }
+    let!(:subscription_8) { create(:subscription, reference: '123', send_reminder_at: now + 1.day) }
+
+    it do
+      expect(perform).to match_array [
+        subscription_1.id,
+        subscription_2.id,
+        subscription_3.id
+      ]
+    end
+  end
+
   describe '#save' do
     let(:perform) { subscription.save }
 
@@ -178,24 +198,89 @@ describe Subscription do
       it { expect(perform).to be_falsey }
     end
 
-    context 'ends at is set 8 days after current time' do
+    context 'ends at is set to 8 days after current time' do
       let(:ends_at) { now + 8.days }
       it { expect(perform).to be_falsey }
     end
 
-    context 'ends at is set 7 days after current time' do
+    context 'ends at is set to 7 days after current time' do
       let(:ends_at) { now + 7.days }
       it { expect(perform).to be_truthy }
     end
 
-    context 'ends at is set 2 days after current time' do
+    context 'ends at is set to 2 days after current time' do
       let(:ends_at) { now + 2.days }
       it { expect(perform).to be_truthy }
     end
 
-    context 'ends at is set 1 hour before current time' do
+    context 'ends at is set to 1 hour before current time' do
       let(:ends_at) { now - 1.hour }
       it { expect(perform).to be_falsey }
+    end
+  end
+
+  describe '#ends_within_few_days?' do
+    let(:subscription) { create(:subscription, ends_at: ends_at) }
+    let(:perform) { subscription.ends_within_few_days? }
+
+    context 'ends at is nil' do
+      let(:ends_at) { nil }
+      it { expect(perform).to be_falsey }
+    end
+
+    context 'ends at is set to 3 days after current time' do
+      let(:ends_at) { now + 3.days }
+      it { expect(perform).to be_falsey }
+    end
+
+    context 'ends at is set to 1 days after current time' do
+      let(:ends_at) { now + 1.days }
+      it { expect(perform).to be_truthy }
+    end
+
+    context 'ends at is set to 1 hour before current time' do
+      let(:ends_at) { now - 1.hour }
+      it { expect(perform).to be_falsey }
+    end
+  end
+
+  describe '#send_reminder!' do
+    let(:subscription) { create(:subscription, ends_at: ends_at) }
+    let(:perform) { subscription.send_reminder! }
+
+    context 'ends at is nil' do
+      let(:ends_at) { nil }
+      it { expect { perform }.to_not change { subscription.send_reminder_at } }
+    end
+
+    context 'ends at is set to 8 days after current time' do
+      let(:ends_at) { now + 8.days }
+      it { expect { perform }.to_not change { subscription.send_reminder_at } }
+    end
+
+    context 'ends at is set to 5 days after current time' do
+      let(:ends_at) { now + 5.days }
+      it { expect { perform }.to change { subscription.send_reminder_at }.to(ends_at - 2.days) }
+    end
+
+    context 'ends at is set to 3 days after current time' do
+      let(:ends_at) { now + 3.days }
+      it { expect { perform }.to change { subscription.send_reminder_at }.to(ends_at - 2.days) }
+    end
+
+    context 'ends at is set to 1 day after current time' do
+      let(:ends_at) { now + 1.day }
+      it { expect { perform }.to change { subscription.send_reminder_at }.to(ends_at + 1.hour) }
+    end
+
+    context 'ends at is set to 1 hour before current time' do
+      let(:ends_at) { now - 1.hour }
+      it { expect { perform }.to change { subscription.send_reminder_at }.to(nil) }
+    end
+
+    context 'ends at is set to 1 day before current time' do
+      let(:ends_at) { now - 1.day }
+      it { expect { perform }.to change { subscription.send_reminder_at }.to(nil) }
     end
   end
 end

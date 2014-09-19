@@ -1,5 +1,6 @@
 class Subscription < ActiveRecord::Base
   ENDS_WITHIN_WEEK_DURATION = 7.days
+  ENDS_WITHIN_FEW_DAYS_DURATION = 2.days
   TRIAL_DURATION = 30.days
 
   belongs_to :company
@@ -11,6 +12,7 @@ class Subscription < ActiveRecord::Base
   scope :remote_subscriptions, -> { where.not(reference: 'trial') }
   scope :deos_not_end_yet, -> { where('subscriptions.ends_at IS NULL OR subscriptions.ends_at > ?', Time.now) }
   scope :non_empty_end_date, -> { where('subscriptions.ends_at IS NOT NULL') }
+  scope :to_be_sent_as_reminders, -> { trials.where('subscriptions.send_reminder_at <= ?', Time.now) }
 
   before_create :setup_week_reminder
 
@@ -34,6 +36,22 @@ class Subscription < ActiveRecord::Base
 
   def ends_within_week?
     ends_within?(ENDS_WITHIN_WEEK_DURATION)
+  end
+
+  def ends_within_few_days?
+    ends_within?(ENDS_WITHIN_FEW_DAYS_DURATION)
+  end
+
+  def send_reminder!
+    if ends_at.present?
+      if Time.now >= ends_at
+        update_column(:send_reminder_at, nil)
+      elsif ends_within_few_days?
+        update_column(:send_reminder_at, ends_at + 1.hour)
+      elsif ends_within_week?
+        update_column(:send_reminder_at, ends_at - ENDS_WITHIN_FEW_DAYS_DURATION)
+      end
+    end
   end
 
   private
