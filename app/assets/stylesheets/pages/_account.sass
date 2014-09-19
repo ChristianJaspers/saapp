@@ -75,9 +75,12 @@
     padding: $m / 2
 
   .rep-counter
-    color: $color-green
     font-size: $font-size-big
     line-height: $font-size-big
+    a
+      color: $color-green
+      &:hover
+        color: (lighten($color-green, 10%))
 
   .add-benefit
     @extend %left-corners
