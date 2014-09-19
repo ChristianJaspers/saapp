@@ -3,3 +3,5 @@ body: |
   <p>Hi *|email|*!</p>
 
   <p>Your trail will expire in one week. Please update you subscription</p>
+
+  <p><a href="*|payment_url|*">*|payment_url|*</a></p>
