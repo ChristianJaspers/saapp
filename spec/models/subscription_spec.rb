@@ -145,7 +145,7 @@ describe Subscription do
 
     context 'subscription does not exist yet' do
       let(:reminder_expected_at) { now - 7.days }
-      let(:subscription) { build(:subscription) }
+      let(:subscription) { build(:subscription, :trial) }
       before { subscription.ends_at = now }
 
       context 'after save' do
@@ -245,42 +245,104 @@ describe Subscription do
   end
 
   describe '#send_reminder!' do
-    let(:subscription) { create(:subscription, ends_at: ends_at) }
+    let!(:subscription) { create(:subscription, :trial, ends_at: ends_at) }
     let(:perform) { subscription.send_reminder! }
+
+    before do
+      allow(SubscriptionMailSender).to receive(:subscription_trial_expired)
+      allow(SubscriptionMailSender).to receive(:subscription_critical_reminder)
+      allow(SubscriptionMailSender).to receive(:subscription_gentle_reminder)
+    end
 
     context 'ends at is nil' do
       let(:ends_at) { nil }
       it { expect { perform }.to_not change { subscription.send_reminder_at } }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
+      end
     end
 
     context 'ends at is set to 8 days after current time' do
       let(:ends_at) { now + 8.days }
       it { expect { perform }.to_not change { subscription.send_reminder_at } }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
+      end
     end
 
     context 'ends at is set to 5 days after current time' do
       let(:ends_at) { now + 5.days }
       it { expect { perform }.to change { subscription.send_reminder_at }.to(ends_at - 2.days) }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_gentle_reminder) }
+      end
     end
 
     context 'ends at is set to 3 days after current time' do
       let(:ends_at) { now + 3.days }
       it { expect { perform }.to change { subscription.send_reminder_at }.to(ends_at - 2.days) }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_gentle_reminder) }
+      end
     end
 
     context 'ends at is set to 1 day after current time' do
       let(:ends_at) { now + 1.day }
       it { expect { perform }.to change { subscription.send_reminder_at }.to(ends_at + 1.hour) }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
+      end
     end
 
     context 'ends at is set to 1 hour before current time' do
       let(:ends_at) { now - 1.hour }
       it { expect { perform }.to change { subscription.send_reminder_at }.to(nil) }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(SubscriptionMailSender).to have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
+      end
     end
 
     context 'ends at is set to 1 day before current time' do
       let(:ends_at) { now - 1.day }
       it { expect { perform }.to change { subscription.send_reminder_at }.to(nil) }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(SubscriptionMailSender).to have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
+      end
     end
   end
 end

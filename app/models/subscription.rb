@@ -14,7 +14,7 @@ class Subscription < ActiveRecord::Base
   scope :non_empty_end_date, -> { where('subscriptions.ends_at IS NOT NULL') }
   scope :to_be_sent_as_reminders, -> { trials.where('subscriptions.send_reminder_at <= ?', Time.now) }
 
-  before_create :setup_week_reminder
+  before_create :setup_week_reminder, if: :trial?
 
   def self.start_trial_for_manager(manager)
     manager.company.subscriptions.build(
@@ -46,15 +46,22 @@ class Subscription < ActiveRecord::Base
     if ends_at.present?
       if Time.now >= ends_at
         update_column(:send_reminder_at, nil)
+        SubscriptionMailSender.subscription_trial_expired(referrer, payment_url)
       elsif ends_within_few_days?
         update_column(:send_reminder_at, ends_at + 1.hour)
+        SubscriptionMailSender.subscription_critical_reminder(referrer, payment_url)
       elsif ends_within_week?
         update_column(:send_reminder_at, ends_at - ENDS_WITHIN_FEW_DAYS_DURATION)
+        SubscriptionMailSender.subscription_gentle_reminder(referrer, payment_url)
       end
     end
   end
 
   private
+
+  def payment_url
+
+  end
 
   def setup_week_reminder
     self.send_reminder_at = (ends_at - ENDS_WITHIN_WEEK_DURATION) if ends_at.present?
