@@ -60,7 +60,7 @@ class Subscription < ActiveRecord::Base
   private
 
   def payment_url
-
+    'http://www.bettersalesman.com/manager'
   end
 
   def setup_week_reminder

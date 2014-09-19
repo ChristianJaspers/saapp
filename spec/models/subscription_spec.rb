@@ -246,6 +246,8 @@ describe Subscription do
 
   describe '#send_reminder!' do
     let!(:subscription) { create(:subscription, :trial, ends_at: ends_at) }
+    let(:payment_url) { 'http://www.bettersalesman.com/manager' }
+    let(:referrer) { subscription.referrer }
     let(:perform) { subscription.send_reminder! }
 
     before do
@@ -289,7 +291,7 @@ describe Subscription do
 
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
-        it { expect(SubscriptionMailSender).to have_received(:subscription_gentle_reminder) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_gentle_reminder).with(referrer, payment_url) }
       end
     end
 
@@ -302,7 +304,7 @@ describe Subscription do
 
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
-        it { expect(SubscriptionMailSender).to have_received(:subscription_gentle_reminder) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_gentle_reminder).with(referrer, payment_url) }
       end
     end
 
@@ -314,7 +316,7 @@ describe Subscription do
         before { perform }
 
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_trial_expired) }
-        it { expect(SubscriptionMailSender).to have_received(:subscription_critical_reminder) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_critical_reminder).with(referrer, payment_url) }
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
       end
     end
@@ -326,7 +328,7 @@ describe Subscription do
       context 'after perform' do
         before { perform }
 
-        it { expect(SubscriptionMailSender).to have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_trial_expired).with(referrer, payment_url) }
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
       end
@@ -339,7 +341,7 @@ describe Subscription do
       context 'after perform' do
         before { perform }
 
-        it { expect(SubscriptionMailSender).to have_received(:subscription_trial_expired) }
+        it { expect(SubscriptionMailSender).to have_received(:subscription_trial_expired).with(referrer, payment_url) }
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_critical_reminder) }
         it { expect(SubscriptionMailSender).to_not have_received(:subscription_gentle_reminder) }
       end
