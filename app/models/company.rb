@@ -18,4 +18,8 @@ class Company < ActiveRecord::Base
   def goal_score
     GoalLevelScore.for_company(self)
   end
+
+  def to_s
+    "Company ##{id}"
+  end
 end
