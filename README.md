@@ -72,7 +72,6 @@ heroku run rake email_templates:setup cms:setup --app saapp-staging
 
 Staging app can be accessed through:
 
-* saapp-staging.herokuapp.com
 * staging.bettersalesman.com
 
 ## Deployment to heroku (production) [needs setup]
