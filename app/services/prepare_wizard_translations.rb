@@ -1,5 +1,6 @@
 class PrepareWizardTranslations
   WIZARD_KEYS = %w(
+    common.add
     common.name
     common.none
     common.email
