@@ -40,38 +40,43 @@
       .container
         .navbar-header
           = link_to '', localized_path(I18n.locale, root_path), title: t('application_name'), class: 'navbar-brand'
-
-        %ul.nav.navbar-nav
-          - cms_static_pages.each do |page|
-            %li{class: request.path[page.full_path] ? 'active' : nil}
-              = link_to page.label, localized_cms_page_path(page)
-        %ul.nav.navbar-nav.navbar-right
-          - if user_signed_in? && !current_user.admin?
+          %button.navbar-toggle.collapsed{data: {toggle: 'collapse', target: '.bs-navbar-collapse'}, type: 'button'}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+        .collapse.navbar-collapse.bs-navbar-collapse
+          %ul.nav.navbar-nav
+            - cms_static_pages.each do |page|
+              %li{class: request.path[page.full_path] ? 'active' : nil}
+                = link_to page.label, localized_cms_page_path(page)
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in? && !current_user.admin?
+              %li
+                .logged-as
+                  .logged-as-label
+                    = t('navbar.logged_as')
+                  = current_user.email
+              %li
+                = link_to t('navbar.my_account_link'), manager_root_path
             %li
-              .logged-as
-                .logged-as-label
-                  = t('navbar.logged_as')
-                = current_user.email
-            %li
-              = link_to t('navbar.my_account_link'), manager_root_path
-          %li
+              - if user_signed_in?
+                - if current_user.admin?
+                  = link_to t('navbar.admin_link'), admin_root_path
+              - else
+                = link_to t('navbar.login_link'), new_user_session_path(locale: I18n.locale)
             - if user_signed_in?
-              - if current_user.admin?
-                = link_to t('navbar.admin_link'), admin_root_path
-            - else
-              = link_to t('navbar.login_link'), new_user_session_path(locale: I18n.locale)
-          - if user_signed_in?
-            %li
-              = link_to t('navbar.logout_link'), destroy_user_session_path, method: 'delete'
-          %li
-            %button.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
-              = image_tag locale_flag_filename(I18n.locale)
-            %ul.dropdown-menu{role: 'menu'}
-              - I18n.available_locales.each do |locale|
-                %li
-                  = link_to language_path(lang: locale), method: :patch do
-                    = image_tag locale_flag_filename(locale)
-                    = locale.to_s.upcase
+              %li
+                = link_to t('navbar.logout_link'), destroy_user_session_path, method: 'delete'
+            %li.language
+              %button.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+                = image_tag locale_flag_filename(I18n.locale)
+              %ul.dropdown-menu{role: 'menu'}
+                - I18n.available_locales.each do |locale|
+                  %li
+                    = link_to language_path(lang: locale), method: :patch do
+                      = image_tag locale_flag_filename(locale)
+                      = locale.to_s.upcase
 
     .container
       - flash.each do |name, msg|

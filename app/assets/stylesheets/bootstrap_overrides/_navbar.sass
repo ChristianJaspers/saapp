@@ -46,8 +46,8 @@
 .navbar-brand
   background:
     image: image-url('logo.png')
-    repeat: no-repeat
     position: center
+    repeat: no-repeat
     size: 100%
   box-sizing: content-box
   color: $color-transparent
@@ -55,6 +55,37 @@
   margin: $font-size-base
   padding: 0
   width: 235px
+
+.navbar-toggle
+  padding: $m-half
+  margin-top: $font-size-base
+  .icon-bar
+    background-color: $color-black
+
+@media (max-width: $screen-xs-max)
+  .navbar
+    margin-bottom: 0
+
+  .navbar-brand
+    width: 150px
+
+  .navbar-collapse
+    padding-bottom: $m-quarter
+  
+  .dropdown-toggle
+    padding: $m-eight $m-half $m-quarter $m-half
+
+  .dropdown-menu
+    font-size: $font-size-small
+    padding-top: 0
+
+  .navbar-nav
+    margin: 0
+
+    .open .dropdown-menu > li > a
+      padding:
+        bottom: $m-eight
+        top: $m-eight
 
 @media (min-width: $screen-sm)
   .navbar-header

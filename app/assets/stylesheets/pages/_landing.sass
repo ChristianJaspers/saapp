@@ -6,7 +6,7 @@ $icon-margin: 48px
     position: top center
     repeat: no-repeat
     size: 80%
-  margin-top: $interval-default * 1.5
+  margin: ($interval-default * 1.5) auto 0
   max-width: $mockup-width
   min-height: 500px
 
@@ -41,7 +41,7 @@ $icon-margin: 48px
   .wizard_email input
     @extend %left-corners
     float: left
-    width: 60%
+    width: 58%
   label
     display: none
   .help-block
@@ -87,6 +87,8 @@ $icon-margin: 48px
 
 /* ----- CMS ----- */
 .cms
+  @extend .row
+
   img[style="float: left;"]
     margin-right: $m
 
@@ -102,6 +104,7 @@ $icon-margin: 48px
     &:hover
       text-decoration: underline
 
+/* ----- Media queries ----- */
 @media (max-height: 768px)
   .landing-list
     margin:
@@ -110,3 +113,27 @@ $icon-margin: 48px
 
   .landing-form
     margin-bottom: $interval-small
+
+@media (max-width: $screen-xs-max)
+  .landing-list
+    margin:
+      bottom: $m-double
+      top: $m
+
+    li
+      font-size: $font-size-base
+      margin: $m-half 0 $m
+
+  .landing-form
+    margin: 0
+
+    .wizard_email input
+      border-right-width: 1px
+      float: none
+      width: 100%
+
+    .btn-primary
+      width: 100%
+
+  .landing-mobile
+    margin-top: $interval-default

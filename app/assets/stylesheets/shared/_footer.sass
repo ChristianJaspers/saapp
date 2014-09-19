@@ -32,3 +32,20 @@ footer
   .footer-logo
     color: $color-gray-dark
     text-align: right
+
+@media (max-width: $screen-xs-max)
+  footer
+    padding: $m 0
+    text-align: center
+
+    a
+      display: block
+      padding: $m-eight 0
+
+    h3
+      font-size: $font-size-base
+  
+    .footer-logo
+      font-size: $font-size-small
+      margin-top: $m-quarter
+      text-align: center
