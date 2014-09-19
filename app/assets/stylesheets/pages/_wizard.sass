@@ -26,15 +26,15 @@
 
     &.arguments-form, &.representative-form
       select
-        margin-left: 15%
+        margin-left: 10%
         margin-right: $m-quarter
-        width: calc(15% - (#{$m-quarter}))
+        width: calc(23% - (#{$m-quarter}))
       .feature
         margin-right: $m-quarter
         width: calc(30% - (#{$m-quarter}))
       .benefit
         margin-right: $m-quarter
-        width: calc(40% - (#{$inputs-size}) - (#{$m-quarter}))
+        width: calc(37% - (#{$inputs-size}) - (#{$m-quarter}))
       .four-corners:before
         @extend %four-corners
 
@@ -153,9 +153,14 @@
     height: $inputs-size
     line-height: $inputs-size
 
-  .argument-item, .argument-delete
+  .argument-delete
     margin-right: $m-quarter
-    width: calc(15% - (#{$m-quarter}))
+    width: calc(10% - (#{$m-quarter}))
+
+  .argument-item
+    margin-right: $m-quarter
+    width: calc(23% - (#{$m-quarter}))
+
   .argument-item, .representative-item
     position: relative
     span
@@ -177,7 +182,7 @@
 
   .benefit
     @extend %ellipsis-overflow
-    width: 40%
+    width: 37%
 
 #invitation_message
   @include box-shadow-border($color-gray-dark, $default-border-radius, darken($color-gray-dark, 10%))
