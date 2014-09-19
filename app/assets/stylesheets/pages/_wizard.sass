@@ -186,6 +186,7 @@
 
 #invitation_message
   @include box-shadow-border($color-gray-dark, $default-border-radius, darken($color-gray-dark, 10%))
+  margin-top: $m-half
   max-height: $inputs-size * 6
   min-height: $inputs-size * 3
   resize: vertical
@@ -254,9 +255,10 @@
 .representative-form
   margin-left: $interval-default
   input
-    margin-right: $m-eight
+    margin-right: $m-quarter
     width: calc(50% - (6px) - (#{$inputs-size}) / 2)
     &[type='submit']
+      margin-right: 0
       width: $inputs-size
 
 ul.representative-preview.ng-scope
