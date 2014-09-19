@@ -18,7 +18,8 @@ class SubscriptionProcessor < BusinessProcess::Base
 
   def find_local_company_by_referrer
     @referrer = User.find_by_id(params[:SubscriptionReferrer])
-    @company = @referrer.company
+    @company = @referrer.try :company
+    @company
   end
 
   def find_remote_subscription
