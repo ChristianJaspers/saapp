@@ -21,8 +21,7 @@
   %form.representative-form{name: 'newInvitationForm', 'ng-submit' =>'addInvitation(wizard)'}
     %input{'ng-model' => 'invitation.email', required: true, autofocus: true, type: 'text', autocomplete: 'off', pattern: "^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$"}
     %input{'ng-model' => 'invitation.displayName', autocomplete: 'off'}
-    %span.wizard-add.four-corners
-      %input{type: 'submit', tabindex: -1}
+    %input.wizard-add.four-corners{type: 'submit', value: 'Add', tabindex: -1}
     .my-account
       %textarea#invitation_message{'ng-show' => 'invitationMessageVisible', 'ng-model' => 'wizard.invitationMessage'}
 

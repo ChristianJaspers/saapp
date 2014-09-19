@@ -25,8 +25,7 @@
           .col-sm-6
             %label= t('common.benefit')
             %input.form-control.add-benefit{'ng-model' => 'argument.benefit', type: 'text', required: true}
-            %span.add-benefit-submit
-              %input{type: 'submit'}
+            %input.wizard-add.four-corners.pull-right{type: 'submit', value: 'Add'}
         .pull-right
           = link_to t('common.cancel'), manager_product_groups_path, class: 'btn btn-dark'
           %span.or

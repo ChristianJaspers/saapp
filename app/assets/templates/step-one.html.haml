@@ -11,8 +11,7 @@
   'ng-submit' =>'addProductGroup(wizard)',
   'ng-hide' => 'atProductGroupsLimit()'}
     %input.wizard-input{'ng-model' => 'productGroup.name', required: true, tabindex: 1, autofocus: true, autocomplete: 'off'}
-    %span.wizard-add
-      %input{type: 'submit', value: ' '}
+    %input.wizard-add{type: 'submit', value: 'Add'}
   %span{'ng-show' => 'atProductGroupsLimit()'}
     {{ 'wizard.step_1.at_product_groups_limit_notification' | translate:'{"maximum_amount": 20}' }}
 

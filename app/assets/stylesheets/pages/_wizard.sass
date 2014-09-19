@@ -109,32 +109,24 @@
     width: $mockup-width
 
 %submit-on-enter
+  @include box-shadow(darken($color-green, 10%))
+  background-color: $color-green
+  color: $color-white
   display: inline-block
+  font-size: $font-size-small
+  height: $inputs-size
   position: relative
+  text-align: center
   width: $inputs-size
-  &:before
-    @extend %right-corners
-    @include box-shadow($color-gray)
-    position: absolute
-    right: 0
-
-    background-color: $color-gray-dark
-    color: $color-white
-    content: '\e41c'
-    font-size: $icon-size-half
-    line-height: $inputs-size
-    text-align: center
-    width: $inputs-size
 
   &:hover:before
     background-color: $color-green
-  input
-    height: $inputs-size
-    opacity: 0
-    width: $inputs-size
 
 .wizard-add
   @extend %submit-on-enter
+
+[name='newProductGroupForm'] .wizard-add
+  @extend %right-corners
 
 .argument-list, .representative-list
   margin-top: $interval-small * 2.5
@@ -257,7 +249,7 @@
 .representative-form
   margin-left: $interval-default
   input
-    margin-right: $m-quarter
+    margin-right: $m-eight
     width: calc(50% - (6px) - (#{$inputs-size}) / 2)
     &[type='submit']
       width: $inputs-size
