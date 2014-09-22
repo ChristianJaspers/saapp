@@ -20,10 +20,12 @@ en:
       many: Arguments
     back: Back
     benefit: Benefit
+    benefit_description: Enter argument benefit here
     cancel: Cancel
     email: Email
     experience: XP
     feature: Feature
+    feature_description: Enter argument feature here
     invitation:
       many: Invitations
     name: Name

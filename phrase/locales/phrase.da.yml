@@ -15,6 +15,7 @@ da:
       no_access: Du har ikke adgang
   application_name: BetterSalesman
   common:
+    add: Tilføj
     argument:
       many: Argumenter
     back: Tilbage
@@ -223,6 +224,8 @@ da:
         email: Din firma email
   subscriptions:
     subscription_expired_or_invalid: Dit abonnement er udløbet eller ugyldigt
+    trial_subscription_will_expire_within_week: 'Din prøveadgang udløber om 7 dage.
+      Køb et abonnement for at fortsætte med at bruge systemet. '
   wizard:
     create:
       errors:
@@ -234,7 +237,7 @@ da:
         product_group_not_created: Produkt gruppe kan ikke oprettes
         team_not_created: Team kan ikke oprettes
       notifications:
-        success: Invitationer er sendt!
+        success: Invitationer blev sendt!
     step_1:
       at_product_groups_limit_notification: Du kan maksimalt oprette {{maximum_amount}}
         produkt grupper.
@@ -246,6 +249,7 @@ da:
     step_3:
       add_message: Tilføj besked
       header: Inviter dine sælgere
+      message_placeholder: Skriv en personlige besked til dit salgsteam her
       next_step_button: NÆSTE
     step_4:
       benefit: 'Benefit er:'

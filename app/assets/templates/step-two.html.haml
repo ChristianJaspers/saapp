@@ -5,8 +5,10 @@
   .argument-list
     %h4.right
       {{ 'common.feature' | translate }}
+      %i.icon-help{data:{toggle: 'tooltip'}, title: "{{ 'common.feature_description' | translate }}"}
     %h4.center
       {{ 'common.benefit' | translate }}
+      %i.icon-help{data:{toggle: 'tooltip'}, title: "{{ 'common.benefit_description' | translate }}"}
     .clearfix
 
     .row{'ng-repeat' => "argument in wizard.arguments"}
@@ -32,3 +34,6 @@
     {{ 'wizard.step_2.next_step_button' | translate }}
 
 %arguments-preview
+
+%script
+  $('.icon-help').tooltip()

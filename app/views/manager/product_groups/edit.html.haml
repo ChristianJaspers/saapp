@@ -20,10 +20,14 @@
         %h4= t('manager.product_groups.edit.add_argument')
         .row
           .col-sm-6
-            %label= t('common.feature')
+            %label
+              = t('common.feature')
+              %i.icon-help{data:{toggle: 'tooltip'}, title: t('common.feature_description')}
             %input.form-control{'ng-model' => 'argument.feature', type: 'text', required: true}
           .col-sm-6
-            %label= t('common.benefit')
+            %label
+              = t('common.benefit')
+              %i.icon-help{data:{toggle: 'tooltip'}, title: t('common.benefit_description')}
             %input.form-control.add-benefit{'ng-model' => 'argument.benefit', type: 'text', required: true}
             %input.wizard-add.four-corners.pull-right{type: 'submit', value: t('common.add')}
         .pull-right
@@ -32,3 +36,6 @@
             = t('common.or')
           %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()', 'ng-disabled' => 'canSaveProductGroup()'}
             = t('common.save_changes')
+
+%script
+  $('.icon-help').tooltip()
