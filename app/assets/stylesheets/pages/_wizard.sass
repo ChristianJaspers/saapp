@@ -1,3 +1,5 @@
+$wizard-size-small: $m * 3
+
 .wizard-window, .landing-page
   ul.ng-scope
     margin:
@@ -299,3 +301,41 @@ ul.representative-preview li
 .mobile-preview-container .tab-content
   height: 300px
   overflow-y: auto
+
+//----- media queries -----
+@media (max-height: 830px)
+  .ng-isolate-scope .nav-tabs
+    max-width: 67%
+    margin-left: 0
+
+    .ng-isolate-scope
+      a:before
+        font-size: 24px
+        height: $wizard-size-small
+        line-height: $wizard-size-small
+        margin:
+          left: auto
+          right: auto
+        width: $wizard-size-small
+
+      &:after
+        top: $wizard-size-small / 2
+
+  .mobile-preview-container
+    margin-top: -123px
+
+    .preview-underlay
+      min-height: 580px
+
+@media (max-height: 930px)
+  .navbar
+    margin-bottom: 0
+
+  .ng-isolate-scope .nav-tabs
+    padding-top: $m
+
+    .ng-isolate-scope a
+      margin-top: 0
+
+  .wizard-window
+    margin-top: $m
