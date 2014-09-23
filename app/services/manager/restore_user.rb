@@ -17,8 +17,6 @@ class Manager::RestoreUser
 
   private
 
-  attr_reader :restoree
-
   def restore_user
     restoree.remove_at = nil
     restoree.save
