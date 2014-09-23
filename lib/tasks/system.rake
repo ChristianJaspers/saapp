@@ -14,6 +14,7 @@ namespace :system do
       User.unscoped.where('id != ?', admin.id).delete_all
       Team.unscoped.where('id != ?', team.id).delete_all
       Company.unscoped.where('id != ?', company.id).delete_all
+      Subscription.unscoped.delete_all
     end
   end
 end
