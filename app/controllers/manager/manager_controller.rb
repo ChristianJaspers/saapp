@@ -10,7 +10,7 @@ class Manager::ManagerController < ApplicationController
   def authorize_manager!
     authorization_checks.each do |notice, check|
       unless check.call
-        redirect_to root_path, notice: notice
+        redirect_to root_path, alert: notice
         break
       end
     end
