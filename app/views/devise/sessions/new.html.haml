@@ -1,11 +1,11 @@
 .wizard-window.sign-in
-  %h2 Sign in
+  %h2= t('devise.sessions.sign_in_header')
   .col-md-6.col-md-offset-3
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-inputs
-        = f.input :email, required: false, autofocus: true
-        = f.input :password, required: false
-        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+        = f.input :email, required: false, autofocus: true, label: t('devise.sessions.email')
+        = f.input :password, required: false, label: t('devise.sessions.password')
+        = f.input :remember_me, as: :boolean, label: t('devise.sessions.remember_me') if devise_mapping.rememberable?
       .form-actions.center.clearfix
         = f.button :submit, t('devise.links.sign_in'), {class: "btn-primary"}
     .center.bottom-default
