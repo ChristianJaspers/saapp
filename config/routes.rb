@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resource :language, only: [:update]
 
-  namespace :saasy do
-    resources :callbacks, only: [:create]
-    resources :subscriptions, only: [:show]
-  end
-
   scope "(:locale)", locale: /da/, defaults: {locale: 'en'} do
+    namespace :saasy do
+      resources :callbacks, only: [:create]
+      resources :subscriptions, only: [:show]
+    end
+
     as :user do
       patch 'confirmation' => 'confirmations#update', as: :update_user_confirmation, controller: 'confirmations'
     end
