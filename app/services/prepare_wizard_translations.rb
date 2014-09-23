@@ -20,6 +20,7 @@ class PrepareWizardTranslations
     wizard.step_3.header
     wizard.step_3.add_message
     wizard.step_3.next_step_button
+    wizard.step_3.message_placeholder
 
     wizard.step_4.header
     wizard.step_4.categories_and_arguments_header
