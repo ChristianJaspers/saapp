@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916143728) do
+ActiveRecord::Schema.define(version: 20140923171204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 20140916143728) do
     t.datetime "updated_at"
     t.datetime "ends_at"
     t.datetime "send_reminder_at"
+    t.boolean  "is_test"
   end
 
   add_index "subscriptions", ["company_id"], name: "index_subscriptions_on_company_id", using: :btree

@@ -62,6 +62,7 @@ describe SubscriptionProcessor do
           it { expect(subscription.quantity).to eq 3 }
           it { expect(subscription.status).to eq 'active' }
           it { expect(subscription.ends_at).to be_nil }
+          it { expect(subscription.is_test).to be_nil }
         end
 
         context 'with end date' do
@@ -71,6 +72,15 @@ describe SubscriptionProcessor do
           end
 
           it { expect(subscription.ends_at).to_not be_nil }
+        end
+
+        context 'with test' do
+          before do
+            fsprg_subscription.test = true
+            perform
+          end
+
+          it { expect(subscription.is_test).to be_truthy }
         end
       end
 
