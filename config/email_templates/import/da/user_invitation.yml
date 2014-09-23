@@ -4,12 +4,14 @@ body: |
 
   <p>Velkommen til BetterSalesman!</p>
 
+  <p>*|message|*</p>
+
   <p>
-    <a href="https://itunes.apple.com/us/app/bettersalesman/id911319758">https://itunes.apple.com/us/app/bettersalesman/id911319758</a>
+  <a href="https://itunes.apple.com/us/app/bettersalesman/id911319758">https://itunes.apple.com/us/app/bettersalesman/id911319758</a>
   </p>
 
   <p>Dette er din adgangskode, som du kan ændre senere:</p>
 
-  <p>*|password|*</p>
+  <p>Username = *|email|*</p>
 
-  <p>*|message|*</p>
+  <p>Password = *|password|*</p>
