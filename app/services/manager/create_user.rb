@@ -3,7 +3,7 @@ class Manager::CreateUser < BusinessProcess::Base
   needs :current_user
 
   def call
-    create_or_restore_user and
+    create_user and
       update_remote_subscription and
       send_invitation
   end
@@ -26,7 +26,7 @@ class Manager::CreateUser < BusinessProcess::Base
 
   def create_user
     user.skip_confirmation_notification!
-    saved = user.save
+    user.save
   end
 
   def update_remote_subscription

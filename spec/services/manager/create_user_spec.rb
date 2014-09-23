@@ -22,5 +22,9 @@ describe Manager::CreateUser do
       it { expect(User).to exist.with(email: 'fake@email.com') }
       it { expect(SubscriptionUpdater).to have_received(:call).with(user: user).once }
     end
+
+    context 'user is removed' do
+      pending
+    end
   end
 end
