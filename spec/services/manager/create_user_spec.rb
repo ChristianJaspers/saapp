@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe Manager::CreateUser do
   describe '.call' do
-    let(:user) { build(:user, email: 'fake@email.com') }
-    let(:parameter_object) { double(user: user) }
+    let(:current_user) { create(:user, :manager) }
+    let(:user) { build(:user, email: 'fake@email.com', team_id: current_user.team_id) }
+    let(:parameter_object) { double(user: user, current_user: current_user) }
     let(:perform) { described_class.call(parameter_object) }
 
     before do
