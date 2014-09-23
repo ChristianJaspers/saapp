@@ -9,6 +9,14 @@ class Api::RestrictedApplicationController < Api::ApplicationController
       @api_authentication = Api::Authentication.new(token)
       @api_authentication.authenticate!
     end
-    render_fail_json(:forbidden) unless result
+    render_fail_json(authentication_error_key) unless result
+  end
+
+  def authentication_error_key
+    if @api_authentication
+      @api_authentication.error_key
+    else
+      :forbidden
+    end
   end
 end

@@ -3,3 +3,7 @@ body: |
   <p>Hi *|email|*!</p>
 
   <p>We are sorry to see you go</p>
+
+  <p>You can renew your subscription here:</p>
+
+  <p><a href="*|payment_url|*">*|payment_url|*</a></p>

@@ -152,11 +152,14 @@ describe Api::V1::RatingsController do
       let(:id) { argument.id }
       let(:params) { {rating: 1} }
 
+      include_context 'all subscriptions allow to use system'
+
       before do
         argument.update_column(:owner_id, current_user.id)
         api_authorize_with(api_token.access_token)
         call_request
       end
+
 
       it_behaves_like 'api: forbidden'
     end
@@ -166,6 +169,8 @@ describe Api::V1::RatingsController do
       let(:id) { argument.id }
 
       before { call_request }
+
+      include_context 'all subscriptions allow to use system'
 
       it_behaves_like 'api: forbidden'
     end

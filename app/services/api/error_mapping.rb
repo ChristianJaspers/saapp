@@ -54,6 +54,11 @@ class Api::ErrorMapping
       http_code: 422,
       internal_code: 1112,
       message: 'api.errors.argument_already_rated'
+    },
+    forbidden_no_subscription: {
+      http_code: 403,
+      internal_code: 1113,
+      message: 'api.errors.no_subscription'
     }
   }
 
