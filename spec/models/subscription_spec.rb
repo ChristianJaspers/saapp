@@ -245,8 +245,11 @@ describe Subscription do
   end
 
   describe '#send_reminder!' do
-    let!(:subscription) { create(:subscription, :trial, ends_at: ends_at) }
-    let(:payment_url) { 'http://www.bettersalesman.com/manager' }
+    let!(:subscription) { create(:subscription, :trial, ends_at: ends_at, referrer: manager) }
+    let(:manager) { create(:user, :manager, email: 'test@example.com') }
+    let(:payment_url_base) { 'https://sites.fastspring.com/copenhagenapphouse/checkout/bettersalesman' }
+    let(:payment_url_params) { "quantity=0&referrer=#{subscription.referrer.id}&contact_email=test%40example.com&contact_fname=+&contact_lname=+" }
+    let(:payment_url) { "#{payment_url_base}?#{payment_url_params}" }
     let(:referrer) { subscription.referrer }
     let(:perform) { subscription.send_reminder! }
 
