@@ -3,6 +3,7 @@ class Manager::CreateUser < BusinessProcess::Base
   needs :current_user
 
   def call
+    assign_user_to_process and
     create_or_restore_user and
       update_remote_subscription and
       send_invitation
@@ -10,13 +11,16 @@ class Manager::CreateUser < BusinessProcess::Base
 
   private
 
+  def assign_user_to_process
+    self.user_to_process = user
+  end
+
   def create_or_restore_user
-    @user_to_process = user
-    restore_user = Manager::RestoreUser.new(user.email, current_user)
+    restore_user = Manager::RestoreUser.new(user_to_process.email, current_user)
 
     if restore_user.find_user_to_restore_by_email
       if restore_user.call
-        @user_to_process = restore_user.restoree
+        self.user_to_process = restore_user.restoree
       else
         nil
       end
@@ -38,7 +42,5 @@ class Manager::CreateUser < BusinessProcess::Base
     ApplicationMailer.user_invitation(user_to_process)
   end
 
-  private
-
-  attr_reader :user_to_process
+  attr_accessor :user_to_process
 end

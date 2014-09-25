@@ -29,8 +29,15 @@ describe Manager::CreateUser do
       let!(:deleted_user) { create(:user, email: email, team_id: current_user.team_id, remove_at: Time.now, display_name: 'Old John') }
       let!(:user) { build(:user, email: email, team_id: current_user.team_id, display_name: 'New john') }
 
-      it { expect(perform.user).to eq deleted_user }
       it { expect { perform }.to change { deleted_user.reload.remove_at }.to(nil) }
+
+      context 'after perform' do
+        before { perform }
+
+        it { expect(ApplicationMailer).to have_received(:user_invitation).with(deleted_user) }
+        it { expect(User).to exist.with(email: email) }
+        it { expect(SubscriptionUpdater).to have_received(:call).with(user: deleted_user).once }
+      end
     end
   end
 end
