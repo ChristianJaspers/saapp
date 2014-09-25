@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe Manager::CreateUser do
   describe '.call' do
-    let(:current_user) { create(:user, :manager) }
-    let(:user) { build(:user, email: 'fake@email.com', team_id: current_user.team_id) }
-    let(:parameter_object) { double(user: user, current_user: current_user) }
+    let!(:current_user) { create(:user, :manager) }
+    let(:parameter_object) { {user: user, current_user: current_user} }
+    let(:email) { 'fake@email.com' }
     let(:perform) { described_class.call(parameter_object) }
 
     before do
@@ -15,16 +15,22 @@ describe Manager::CreateUser do
     end
 
     context 'after perform' do
+      let!(:user) { build(:user, email: email, team_id: current_user.team_id) }
+
       before { perform }
 
       it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
       it { expect(user.reload.instance_variable_get('@skip_confirmation_notification')).to be_truthy }
-      it { expect(User).to exist.with(email: 'fake@email.com') }
+      it { expect(User).to exist.with(email: email) }
       it { expect(SubscriptionUpdater).to have_received(:call).with(user: user).once }
     end
 
     context 'user is removed' do
-      pending
+      let!(:deleted_user) { create(:user, email: email, team_id: current_user.team_id, remove_at: Time.now, display_name: 'Old John') }
+      let!(:user) { build(:user, email: email, team_id: current_user.team_id, display_name: 'New john') }
+
+      it { expect(perform.user).to eq deleted_user }
+      it { expect { perform }.to change { deleted_user.reload.remove_at }.to(nil) }
     end
   end
 end

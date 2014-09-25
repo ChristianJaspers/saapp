@@ -3,7 +3,7 @@ class Manager::CreateUser < BusinessProcess::Base
   needs :current_user
 
   def call
-    create_user and
+    create_or_restore_user and
       update_remote_subscription and
       send_invitation
   end
@@ -15,7 +15,7 @@ class Manager::CreateUser < BusinessProcess::Base
 
     if restore_user.find_user_to_restore_by_email
       if restore_user.call
-        @user = restore_user.restoree
+         @parameter_object[:user] = restore_user.restoree
       else
         nil
       end
