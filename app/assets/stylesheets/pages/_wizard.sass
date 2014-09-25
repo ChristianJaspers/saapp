@@ -283,13 +283,17 @@ ul.representative-preview li
   h3
     color: $color-gray
     font-size: $font-size-large
-    margin: $interval-default / 2 0
-  ul.ng-scope
-    margin: 0
+    margin: $m 0 $m-half
+  ul
+    margin: $m-half 0 $m
     padding: 0
     li
-      font-size: $font-size-medium
-      font-weight: $font-weight-light
+      font:
+        size: 19px
+        weight: $font-weight-light
+      line-height: $line-height-small
+      list-style: none
+      margin-bottom: $m-half
       span
         color: $color-green
         left: 0

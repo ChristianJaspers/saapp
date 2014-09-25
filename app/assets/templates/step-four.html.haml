@@ -1,33 +1,38 @@
-.wizard-window.col-md-8.summary
+.wizard-window.col-md-12.summary
   %h2
     {{ 'wizard.step_4.header' | translate }}
 
-  .left-default
+  %h3
+    {{ 'wizard.step_4.categories_and_arguments_header' | translate }}
 
-    %h3
-      {{ 'wizard.step_4.categories_and_arguments_header' | translate }}
-    .review{'ng-repeat' => 'productGroup in wizard.productGroups'}
-      %strong {{productGroup.name}}
-      %ul.inline{'ng-repeat' => 'argument in productGroup.arguments'}
-        %li.inline
-          {{argument.feature}}
-          %span
-            {{ 'wizard.step_4.benefit' | translate }}
-          {{argument.benefit}}
+  .row
+    .col-sm-12.col-md-11.col-md-offset-1
+      .review{'ng-repeat' => 'productGroup in wizard.productGroups'}
+        %h4.h4 {{productGroup.name}}
+        %ul
+          %li{'ng-repeat' => 'argument in productGroup.arguments'}
+            {{argument.feature}}
+            %span
+              {{ 'wizard.step_4.benefit' | translate }}
+            {{argument.benefit}}
 
-    %h3
-      {{ 'wizard.step_4.invitations_header' | translate }}
-    %ul{'ng-repeat' => 'invitation in wizard.invitations'}
-      %li.block
-        %strong {{invitation.email}}
-        {{invitation.displayName}}
-
-    %div{'ng-if' => "wizard.invitationMessage != ''"}
-      %h3
-        {{ 'wizard.step_4.invitation_message_header' | translate }}
+  %h3
+    {{ 'wizard.step_4.invitations_header' | translate }}
+  .row
+    .col-sm-12.col-md-11.col-md-offset-1
       %ul
-        %li.block
-          {{wizard.invitationMessage}}
+        %li{'ng-repeat' => 'invitation in wizard.invitations'}
+          %strong {{invitation.email}}
+          {{invitation.displayName}}
+
+  %div{'ng-if' => "wizard.invitationMessage != ''"}
+    %h3
+      {{ 'wizard.step_4.invitation_message_header' | translate }}
+    .row
+      .col-sm-12.col-md-11.col-md-offset-1
+        %ul
+          %li
+            {{wizard.invitationMessage}}
 
     .clearfix
 
