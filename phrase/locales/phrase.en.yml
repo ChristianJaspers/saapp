@@ -21,12 +21,14 @@ en:
       many: Arguments
     back: Back
     benefit: Benefit
-    benefit_description: Enter argument benefit here
+    benefit_description: Explains how a feature solves the customer's problem and
+      adds value to his business
     cancel: Cancel
     email: Email
     experience: XP
     feature: Feature
-    feature_description: Enter argument feature here
+    feature_description: A characteristic of your product that is a quantifiable,
+      indisputable fact
     invitation:
       many: Invitations
     name: Name
@@ -231,7 +233,7 @@ en:
   subscriptions:
     subscription_expired_or_invalid: Your subscription has expired or is invalid
     trial_subscription_will_expire_within_week: Your trial version will expire within
-      7 days. Please buy a subscription to continue using system.
+      7 days. Please start a subscription to continue using system.
   wizard:
     create:
       errors:
