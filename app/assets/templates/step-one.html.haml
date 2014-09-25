@@ -15,7 +15,7 @@
   %span{'ng-show' => 'atProductGroupsLimit()'}
     {{ 'wizard.step_1.at_product_groups_limit_notification' | translate:'{"maximum_amount": 20}' }}
 
-  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!firstStepValid()', 'ng-click' => 'steps[1].active = true', tabindex: 2}
+  %button.btn.btn-primary.pull-right{type: 'button', 'ng-disabled' => '!firstStepValid()', 'ng-click' => 'steps[1].active = true', tabindex: 2}
     {{ 'wizard.step_1.next_step_button' | translate }}
 
 %product-groups-preview

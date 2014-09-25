@@ -13,6 +13,7 @@ da:
       missing_feature_or_benefit: Feature eller benefit mangler
       missing_product_group: Produkt gruppe mangler
       no_access: Du har ikke adgang
+      no_subscription: Dit abonnement er udløbet
   application_name: BetterSalesman
   common:
     add: Tilføj
@@ -20,10 +21,13 @@ da:
       many: Argumenter
     back: Tilbage
     benefit: Benefit
+    benefit_description: Forklarer hvordan en feature løser et konkret problem og
+      skaber værdi for kunden
     cancel: Afbryd
     email: Email
     experience: XP
     feature: Feature
+    feature_description: En faktuel og kvantificerbar egenskab ved dit produkt
     invitation:
       many: Invitationer
     name: Navn
@@ -100,6 +104,10 @@ da:
         for at færdiggøre bekræftelsen af din nye email adresse.
       updated: Du har nu opdateret din konto.
     sessions:
+      email: Email
+      password: Adgangskode
+      remember_me: Husk mig
+      sign_in_header: Log ind
       signed_in: Logget ind.
       signed_out: Logget ind.
     unlocks:

@@ -30,7 +30,10 @@
     %input.benefit{'ng-model' => 'argument.benefit', required: true, autocomplete: 'off'}
     %input.wizard-add.four-corners{type: 'submit', value: "{{'common.add' | translate }}"}
 
-  %button.btn.btn-primary{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true'}
+  %button.btn.btn-dark.pull-left{type: 'button', 'ng-click' => 'steps[0].active = true'}
+    {{ 'wizard.step_2.prev_step_button' | translate }}
+
+  %button.btn.btn-primary.pull-right{type: 'button', 'ng-disabled' => '!secondStepValid()', 'ng-click' => 'steps[2].active = true'}
     {{ 'wizard.step_2.next_step_button' | translate }}
 
 %arguments-preview

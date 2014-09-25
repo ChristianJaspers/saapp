@@ -1,4 +1,4 @@
-.wizard-window.col-md-7.summary
+.wizard-window.col-md-8.summary
   %h2
     {{ 'wizard.step_4.header' | translate }}
 
@@ -30,5 +30,9 @@
           {{wizard.invitationMessage}}
 
     .clearfix
-    %button.btn.btn-primary.ladda-button{type: 'button', 'ng-click' => 'submitWizard()', data: {style: 'zoom-out'}}
+
+    %button.btn.btn-dark.pull-left{type: 'button', 'ng-click' => 'steps[2].active = true'}
+      {{ 'wizard.step_4.prev_step_button' | translate }}
+
+    %button.btn.btn-primary.ladda-button.pull-right{type: 'button', 'ng-click' => 'submitWizard()', data: {style: 'zoom-out'}}
       {{ 'wizard.step_4.submit_button' | translate }}
