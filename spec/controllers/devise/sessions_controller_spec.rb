@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Devise::SessionsController do
+describe SessionsController do
   before { @request.env["devise.mapping"] = Devise.mappings[:user] }
 
   shared_examples 'user signs in' do
