@@ -254,17 +254,20 @@ da:
     step_2:
       header: Skriv de første argumenter
       next_step_button: NÆSTE
+      prev_step_button: Forrige
     step_3:
       add_message: Tilføj besked
       header: Inviter dine sælgere
       message_placeholder: Skriv en personlige besked til dit salgsteam her
       next_step_button: NÆSTE
+      prev_step_button: Forrige
     step_4:
       benefit: 'Benefit er:'
       categories_and_arguments_header: Produkt grupper og argumenter
       header: Gennemse og bekræft
       invitation_message_header: Besked i invitationen
       invitations_header: Sælgere
+      prev_step_button: Forrige
       product_groups_and_arguments_header: Produkt grupper og argumenter
       submit_button: SEND INVITATIONER
     steps:
