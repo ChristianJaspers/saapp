@@ -19,7 +19,8 @@ Rails.application.routes.draw do
         sign_out_via: [:delete]
       },
       controllers: {
-        confirmations: 'confirmations'
+        confirmations: 'confirmations',
+        sessions: 'sessions'
       }
     }
 

@@ -15,6 +15,12 @@ class CompanySubscription
     !active_remote_subscription
   end
 
+  def any_remote_subscription
+    if_company do
+      @any_remote_subscription ||= company.subscriptions.remote_subscriptions.limit(1).order('ends_at DESC NULLS FIRST, id DESC').first
+    end
+  end
+
   def display_reminder?
     active_subscription && active_subscription.trial? && active_subscription.ends_within_week?
   end
