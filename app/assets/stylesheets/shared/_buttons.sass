@@ -17,6 +17,7 @@ a.btn-icon
   text:
     align: center
     transform: uppercase
+  vertical-align: top
 
   &:before
     @include circle-icons($color-green, $color-white)
@@ -29,6 +30,13 @@ a.btn-icon
     text-align: center
     width: $wizard-icons
 
+  &.icon-graph
+    margin-right: 0
+
+  @media (max-width: $screen-xs-max)
+    line-height: 1
+    width: 45%
+
 .btn-dark.btn-dark
   @include box-shadow(darken($color-gray-dark, 10%))
   background-color: $color-gray-dark
@@ -38,3 +46,6 @@ a.btn-icon
     background-color: (lighten($color-gray-dark,10%))
     border-color: (lighten($color-gray-dark,10%))
     color: $color-white
+
+  &.icon-trash
+    margin-right: 0

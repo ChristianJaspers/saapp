@@ -1,7 +1,7 @@
 = content_for :top do
   .my-account
     %h2= t('navbar.my_account_link')
-    %ul.nav.nav-tabs.col-md-3
+    %ul.nav.nav-tabs.col-sm-3
       %li{class: ('active' if controller_name == 'profiles')}
         = link_to t('manager.tabs.my_profile'), edit_manager_profile_path
       %li{class: ('active' if controller_name == 'product_groups')}

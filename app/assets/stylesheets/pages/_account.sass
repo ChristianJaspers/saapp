@@ -1,6 +1,8 @@
 .my-account
   .nav-tabs
     border: 0
+    margin-bottom: $m
+
   .nav-tabs > li
     border: solid $color-green
       width: 0 0 1px 0
@@ -10,9 +12,11 @@
       background-color: $color-transparent
       border: 0
       color: $color-gray
-      font-family: $font-family-base
-      font-weight: $font-weight-bold
-      padding: $button-base-padding
+      font:
+        family: $font-family-base
+        weight: $font-weight-bold
+      line-height: 1
+      padding: $m-half
       text-transform: uppercase // till translations
       &:hover
         color: $color-gray-dark
@@ -25,16 +29,6 @@
         background-color: $color-green
         border-top-right-radius: 0
         color: $color-white
-
-    &.active:after
-      border-bottom: 22px solid $color-transparent
-      border-left: 12px solid $color-green
-      border-top: 22px solid $color-transparent
-      content: ''
-      display: block
-      position: absolute
-      right: -10px
-      top: 0
 
     &.active:hover a
       background-color: lighten($color-green, 10%)
@@ -100,6 +94,7 @@
   border-top: 1px solid #ddd
   
   .btn
+    margin-bottom: $m-half
     margin-top: 0
 
   .col-md-12
@@ -107,6 +102,9 @@
 
   .col-md-7
     border-right: 1px solid $color-white
+
+  .col-md-5
+    padding-bottom: $m-half
 
   .col-md-5,
   .col-md-7,
@@ -126,3 +124,33 @@
   padding: 0 $m-quarter
   text-transform: uppercase
   vertical-align: middle
+
+@media (max-width: $screen-xs-max)
+  .my-account > div
+    padding: 0
+
+  .table > thead > tr > th
+    font-size: 12px
+    line-height: 1
+
+  .btn
+    padding: $m-quarter $m-half
+
+@media (min-width: $screen-md)
+  .my-account
+    .nav-tabs
+      margin-bottom: 0
+
+      .active:after
+        border-bottom: 22px solid $color-transparent
+        border-left: 12px solid $color-green
+        border-top: 22px solid $color-transparent
+        content: ''
+        display: block
+        position: absolute
+        right: -10px
+        top: 0
+
+      & > li a
+        line-height: $line-height-base
+        padding: $button-base-padding
