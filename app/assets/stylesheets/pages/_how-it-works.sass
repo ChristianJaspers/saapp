@@ -1,9 +1,4 @@
 .how-it-works
-  background:
-    image: image-url('bg-how-it-works.jpg')
-    position: bottom center
-    repeat: no-repeat
-    size: contain
   margin: $m-double 0
     
   .container
@@ -11,7 +6,7 @@
       image: image-url('how-it-works.png')
       position: top
       repeat: no-repeat
-    height: 750px
+      size: contain
     width: 100%
 
   .sales-manager,
@@ -20,37 +15,65 @@
       size: $font-size-medium
       weight: $font-weight-light
     line-height: 1
+    text-align: center
 
   .sales-manager
-    color: $color-white
-    height: 200px
-    margin: 130px 0 0 70%
-    width: 220px
+    color: $color-green
+    height: 240px
+    margin-top: -$m * 1.5
 
   .sales-reps
     color: $color-green
-    margin-top: 240px
-    text-align: right
-    width: 22%
+    margin-bottom: -$m * 1.5
+
+  @media (min-width: $screen-sm)
+    &
+      background:
+        image: image-url('bg-how-it-works.jpg')
+        position: bottom center
+        repeat: no-repeat
+        size: contain
+
+    .container
+      background-size: 100%
+      height: 470px
+
+    .sales-manager
+      color: $color-white
+      margin: 110px 0 0 64%
+      text-align: left
+      width: 220px
+
+    .sales-reps
+      margin-bottom: 0
+      text-align: right
+      width: 31%
 
   @media (min-width: $screen-md)
+    .container
+      height: 630px
+
     .sales-manager,
     .sales-reps
       font-size: $font-size-large
 
     .sales-manager
-      margin-left: 68%
+      height: 200px
+      margin: 130px 0 0 70%
+      margin-left: 64%
 
     .sales-reps
+      margin-top: 170px
       width: 29%
 
   @media (min-width: $screen-lg)
+    .container
+      height: 750px
+
     .sales-manager,
     .sales-reps
       font-size: $font-size-big
 
-    .sales-manager
-      margin-left: 64%
-
     .sales-reps
+      margin-top: 240px
       width: 32%
