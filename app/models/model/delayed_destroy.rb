@@ -7,7 +7,11 @@ module Model
     end
 
     def remove!
-      update_column(:remove_at, Date.today + 30.days)
+      update_column(:remove_at, Date.today + lifetime_before_is_removed)
+    end
+
+    def lifetime_before_is_removed
+      30.days
     end
 
     module ClassMethods
