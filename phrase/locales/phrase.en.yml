@@ -254,17 +254,20 @@ en:
     step_2:
       header: Enter first arguments
       next_step_button: NEXT STEP
+      prev_step_button: Previous
     step_3:
       add_message: Add message
       header: Invite your sales representatives
       message_placeholder: Write you personal message to your sales team here
       next_step_button: NEXT STEP
+      prev_step_button: Previous
     step_4:
       benefit: 'Benefit is:'
       categories_and_arguments_header: Product groups and arguments
       header: Review and accept
       invitation_message_header: Invitation message
       invitations_header: Sales representatives
+      prev_step_button: Previous
       product_groups_and_arguments_header: Product groups and arguments
       submit_button: SEND INVITATIONS
     steps:

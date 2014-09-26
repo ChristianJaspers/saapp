@@ -9,6 +9,10 @@
     line-height: $font-size-medium
     padding: $m-half
 
+    @media (max-width: $screen-xs-max)
+      padding: $m-half $m-quarter
+      word-break: break-all
+
     &:last-child
       border-right: 0
 
@@ -20,6 +24,7 @@
     border-right: 1px solid $color-white
     color: $color-gray
     font-size: $font-size-base
+    min-width: 50px
     text-align: center
 
     &:last-child
@@ -46,7 +51,7 @@
     overflow: hidden
 
   .table-actions
-    width: 110px
+    width: 80px
 
 .saapp-table-product-groups
   @extend %saapp-table
@@ -58,4 +63,4 @@
       width: 20%
 
   .table-actions
-    width: 120px
+    width: 110px

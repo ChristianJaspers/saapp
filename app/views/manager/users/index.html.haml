@@ -1,5 +1,5 @@
 .my-account
-  .col-md-8.col-md-offset-1
+  .col-sm-9.col-md-8.col-md-offset-1
     %h4= t('manager.tabs.users')
     %table.table.saapp-table-users
       %thead
@@ -29,7 +29,5 @@
               = f.input :display_name, label: false, placeholder: t('manager.users.index.table.headers.display_name')
         .col-md-12
           = f.input :invitation_message, label: false, as: :text, placeholder: t('manager.users.index.optional_invitation')
-        .col-md-12
+        .col-md-12.clearfix
           = f.submit class: 'btn btn-primary f-right'
-          .row
-            .col-md-12
