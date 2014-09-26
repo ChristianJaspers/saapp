@@ -36,8 +36,8 @@
 
     .clearfix
 
-    %button.btn.btn-dark.pull-left{type: 'button', 'ng-click' => 'steps[2].active = true'}
-      {{ 'wizard.step_4.prev_step_button' | translate }}
+  %button.btn.btn-dark.pull-left{type: 'button', 'ng-click' => 'steps[2].active = true'}
+    {{ 'wizard.step_4.prev_step_button' | translate }}
 
-    %button.btn.btn-primary.ladda-button.pull-right{type: 'button', 'ng-click' => 'submitWizard()', data: {style: 'zoom-out'}}
-      {{ 'wizard.step_4.submit_button' | translate }}
+  %button.btn.btn-primary.ladda-button.pull-right{type: 'button', 'ng-click' => 'submitWizard()', data: {style: 'zoom-out'}}
+    {{ 'wizard.step_4.submit_button' | translate }}
