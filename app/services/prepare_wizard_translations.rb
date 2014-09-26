@@ -16,10 +16,12 @@ class PrepareWizardTranslations
 
     wizard.step_2.header
     wizard.step_2.next_step_button
+    wizard.step_2.prev_step_button
 
     wizard.step_3.header
     wizard.step_3.add_message
     wizard.step_3.next_step_button
+    wizard.step_3.prev_step_button
     wizard.step_3.message_placeholder
 
     wizard.step_4.header
@@ -28,6 +30,7 @@ class PrepareWizardTranslations
     wizard.step_4.invitations_header
     wizard.step_4.invitation_message_header
     wizard.step_4.submit_button
+    wizard.step_4.prev_step_button
 
     wizard.steps.arguments
     wizard.steps.invitations
