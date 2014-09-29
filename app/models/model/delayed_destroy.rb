@@ -7,7 +7,15 @@ module Model
     end
 
     def remove!
-      update_column(:remove_at, Date.today + lifetime_before_is_removed)
+      remove_at!(Date.today + lifetime_before_is_removed)
+    end
+
+    def do_not_remove!
+      update_column(:remove_at, nil)
+    end
+
+    def remove_at!(date)
+      update_column(:remove_at, date)
     end
 
     def lifetime_before_is_removed

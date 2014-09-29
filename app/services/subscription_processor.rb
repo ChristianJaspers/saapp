@@ -5,7 +5,8 @@ class SubscriptionProcessor < BusinessProcess::Base
     init_saasy_api and
       find_local_company_by_referrer and
       find_remote_subscription and
-      update_or_create_local_subscription
+      update_or_create_local_subscription and
+      update_company_lifetime_from_subscription
   end
 
   private
@@ -18,8 +19,7 @@ class SubscriptionProcessor < BusinessProcess::Base
 
   def find_local_company_by_referrer
     @referrer = User.find_by_id(params[:SubscriptionReferrer])
-    @company = @referrer.try :company
-    @company
+    @company = referrer ? Company.unscoped.find_by_id(referrer.team.company_id) : nil
   end
 
   def find_remote_subscription
@@ -42,5 +42,16 @@ class SubscriptionProcessor < BusinessProcess::Base
     subscription.ends_at   = remote_subscription.end_date
     subscription.is_test   = remote_subscription.test
     subscription.save
+  end
+
+  def update_company_lifetime_from_subscription
+    # first we take active remote subscription - it will give the best subscription (the latest ends_at or even nil)
+    # if not found take subscription that was created or updated moment ago
+    better_subscription = (CompanySubscription.new(referrer).active_remote_subscription || subscription)
+    if better_subscription.ends_at.present?
+      company.remove_at!(better_subscription.ends_at + company.lifetime_before_is_removed)
+    else
+      company.do_not_remove!
+    end
   end
 end

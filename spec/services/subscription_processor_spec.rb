@@ -4,7 +4,9 @@ describe SubscriptionProcessor do
   describe '.call' do
     before { travel_to(Time.new(2014, 7, 30, 12, 0, 0, "+00:00")) }
     after { travel_back }
-    let(:manager) { create(:user, :manager) }
+    let(:team) { create(:team) }
+    let!(:company) { team.company }
+    let(:manager) { create(:user, :manager, team: team) }
     let(:parameter_object) { double(params: params) }
     let(:perform) { described_class.call(parameter_object) }
     let(:fsprg_subscription) { build(:fsprg_subscription) }
@@ -65,13 +67,23 @@ describe SubscriptionProcessor do
           it { expect(subscription.is_test).to be_nil }
         end
 
+        context 'has remove at' do
+          before { company.update_column(:remove_at, Time.now) }
+          it { expect { perform }.to change { company.reload.remove_at }.from(Time.now.to_date).to(nil) }
+        end
+
         context 'with end date' do
           before do
             fsprg_subscription.end_date = Time.now.to_date + 5.days
-            perform
           end
 
-          it { expect(subscription.ends_at).to_not be_nil }
+          it { expect { perform }.to change { company.reload.remove_at }.from(nil).to(Time.now.to_date + (6 * 30 + 5).days) }
+
+          context 'after process' do
+            before { perform }
+
+            it { expect(subscription.ends_at).to_not be_nil }
+          end
         end
 
         context 'with test' do
