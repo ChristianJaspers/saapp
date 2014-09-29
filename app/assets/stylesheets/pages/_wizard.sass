@@ -1,7 +1,11 @@
-$wizard-size-small: $m * 3
+$wizard-size-medium:  $m * 3
+$wizard-size-small:   $m * 2
+$wizard-size-xs:      $m * 1.5
 
-.wizard-window, .landing-page
-  ul.ng-scope
+.wizard-window
+  @extend .clearfix
+
+  .groups-list
     margin:
       bottom: 8px
       left: 60px
@@ -22,20 +26,25 @@ $wizard-size-small: $m * 3
       @include box-shadow-border($color-gray-dark, $default-border-radius, $color-gray)
       float: left
       height: $inputs-size
+      padding: 0
       &.wizard-input
         @extend %left-corners
-        width: calc(100% - (#{$inputs-size}))
+        margin-right: -$inputs-size
+        width: 100%
 
     &.arguments-form, &.representative-form
       select
         margin-left: 10%
         margin-right: $m-quarter
+        width: 20%
         width: calc(23% - (#{$m-quarter}))
       .feature
         margin-right: $m-quarter
+        width: 27%
         width: calc(30% - (#{$m-quarter}))
       .benefit
         margin-right: $m-quarter
+        width: 29%
         width: calc(37% - (#{$inputs-size}) - (#{$m-quarter}))
       .four-corners:before
         @extend %four-corners
@@ -156,11 +165,11 @@ $wizard-size-small: $m * 3
     line-height: $inputs-size
 
   .argument-delete
-    margin-right: $m-quarter
-    width: calc(10% - (#{$m-quarter}))
+    width: 10%
 
   .argument-item
     margin-right: $m-quarter
+    width: 20%
     width: calc(23% - (#{$m-quarter}))
 
   .argument-item, .representative-item
@@ -180,6 +189,7 @@ $wizard-size-small: $m * 3
   .feature
     @extend %ellipsis-overflow
     margin-right: $m-quarter
+    width: 27%
     width: calc(30% - (#{$m-quarter}))
 
   .benefit
@@ -192,6 +202,7 @@ $wizard-size-small: $m * 3
   max-height: $inputs-size * 6
   min-height: $inputs-size * 3
   resize: vertical
+  width: 100%
   width: calc(100% - 49px)
 
 //----- mobile arguments preview -----
@@ -241,6 +252,7 @@ $wizard-size-small: $m * 3
     @extend %left-default
     .representative-item, .representative-name
       margin-right: $m-quarter
+      width: 43%
       width: calc(50% - (6px) - (#{$inputs-size}) / 2)
     .representative-delete
       cursor: pointer
@@ -249,18 +261,22 @@ $wizard-size-small: $m * 3
   h4.right
     margin-left: $inputs-size
     text-align: center
+    width: 40%
     width: calc(50% - (#{$inputs-size}))
   h4.center
     margin-right: $inputs-size
+    width: 40%
     width: calc(50% - (#{$inputs-size}))
 
 .representative-form
   margin-left: $interval-default
   input
     margin-right: $m-quarter
+    width: 43%
     width: calc(50% - (6px) - (#{$inputs-size}) / 2)
     &[type='submit']
       margin-right: 0
+      padding: 0
       width: $inputs-size
 
 ul.representative-preview.ng-scope
@@ -302,6 +318,9 @@ ul.representative-preview li
   .review
     font-size: $font-size-medium
 
+.tab-content
+  @extend .row
+
 .mobile-preview-container .tab-content
   height: 300px
   overflow-y: auto
@@ -311,6 +330,23 @@ ul.representative-preview li
   margin-right: $m-quarter
 
 //----- media queries -----
+@media (max-height: 930px)
+  .navbar
+    margin-bottom: 0
+
+  .ng-isolate-scope .nav-tabs
+    padding-top: $m
+
+    .ng-isolate-scope
+      a
+        margin-top: 0
+
+      &:after
+        top: 52px
+
+  .wizard-window
+    margin-top: $m
+
 @media (max-height: 830px)
   .ng-isolate-scope .nav-tabs
     max-width: 67%
@@ -319,15 +355,12 @@ ul.representative-preview li
     .ng-isolate-scope
       a:before
         font-size: 24px
-        height: $wizard-size-small
-        line-height: $wizard-size-small
-        margin:
-          left: auto
-          right: auto
-        width: $wizard-size-small
+        height: $wizard-size-medium
+        line-height: $wizard-size-medium
+        width: $wizard-size-medium
 
       &:after
-        top: $wizard-size-small / 2
+        top: $wizard-size-medium / 2
 
   .mobile-preview-container
     margin-top: -123px
@@ -335,15 +368,111 @@ ul.representative-preview li
     .preview-underlay
       min-height: 580px
 
-@media (max-height: 930px)
-  .navbar
-    margin-bottom: 0
+@media (max-width: $screen-sm-max)
+  .mobile-preview-container
+    margin-top: $m-double
+
+    .preview-underlay
+      float: none
+      margin: 0 auto
 
   .ng-isolate-scope .nav-tabs
-    padding-top: $m
+    max-width: 100%
 
-    .ng-isolate-scope a
-      margin-top: 0
+    .ng-isolate-scope
+      &:after
+        top: $wizard-size-small / 2
+        width: calc(100% - 120px)
 
-  .wizard-window
-    margin-top: $m
+      a
+        font-size: 12px
+        line-height: 1
+
+        &:before
+          font-size: $font-size-base
+          height: $wizard-size-small
+          line-height: $wizard-size-small
+          margin:
+            left: auto
+            right: auto
+          width: $wizard-size-small
+
+  .wizard-window .groups-list
+    margin-left: 0
+    padding-left: 0
+
+    .glyphicon
+      float: left
+      margin-right: $m-half
+      position: static
+
+@media (max-width: 400px)
+  .wizard-window form.arguments-form
+    select
+      line-height: 43px
+      margin: 0
+      padding-bottom: 8px
+      padding-top: 8px
+      width: 25%
+    .feature, .benefit
+      margin-right: 0
+      width: 30%
+
+  .ng-isolate-scope .nav-tabs
+    .ng-isolate-scope
+      &,
+      &.summary_step
+        width: 100%
+
+      &:after
+        content: none
+
+      a
+        text-align: left
+        width: 100%
+
+        &:before
+          display: inline-block
+          height: $wizard-size-xs
+          line-height: $wizard-size-xs
+          margin-right: $m-quarter
+          width: $wizard-size-xs
+
+  .argument-list, .representative-list
+    .feature, .benefit, .representative-item, .representative-name
+      margin-right: 0
+      width: 100%
+
+  .argument-list .argument-item
+    float: right
+    margin-right: 0
+    width: 80%
+
+  .representative-list
+    h4.right, h4.center
+      margin:
+        left: 0
+        right: 0
+      text-align: left
+      width: 40%
+
+    .row, .cms, .tab-content
+      margin-left: 0
+
+    .row
+      .representative-item, .representative-name
+        margin-right: 0
+        width: 40%
+
+  .representative-form
+    margin-left: 0
+
+    input
+      margin-right: 0
+      width: 40%
+
+  #invitation_message
+    width: 100%
+
+  .btn.add-message
+    margin-right: 0
