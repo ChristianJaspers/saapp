@@ -9,7 +9,7 @@ class Company < ActiveRecord::Base
   has_many :subscriptions, dependent: :destroy
 
   def lifetime_before_is_removed
-    (6 * 30).days
+    30.days
   end
 
   def sales_reps_count

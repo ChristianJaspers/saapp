@@ -77,7 +77,7 @@ describe SubscriptionProcessor do
             fsprg_subscription.end_date = Time.now.to_date + 5.days
           end
 
-          it { expect { perform }.to change { company.reload.remove_at }.from(nil).to(Time.now.to_date + (6 * 30 + 5).days) }
+          it { expect { perform }.to change { company.reload.remove_at }.from(nil).to(Time.now.to_date + (30 + 5).days) }
 
           context 'after process' do
             before { perform }
