@@ -119,11 +119,6 @@ $icon-margin: 48px
     img
       max-width: 100%
 
-    img[style="float: left;"],
-    img[style="float: right;"]
-      height: auto
-      width: 44px
-
 @media (max-width: $screen-xs-max)
   .landing-list
     margin:
@@ -147,3 +142,9 @@ $icon-margin: 48px
 
   .landing-mobile
     margin-top: $interval-default
+
+@media (max-width: 400px)
+  img[style="float: left;"],
+  img[style="float: right;"]
+    height: auto
+    width: 44px
