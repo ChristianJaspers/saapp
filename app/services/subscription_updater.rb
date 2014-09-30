@@ -2,15 +2,27 @@ class SubscriptionUpdater < BusinessProcess::Base
   needs :user
 
   def call
-    find_subscription and
-      init_saasy_api and
-      get_new_quantity and
-      update_remote_subscription
+    find_subscription
+    process_update
   end
 
   private
 
   attr_reader :api, :quantity, :subscription
+
+  def update_remote_subscription
+    init_saasy_api and
+    get_new_quantity and
+    update_remote_subscription
+  end
+
+  def process_update
+    if subscription
+      update_remote_subscription
+    else
+      true
+    end
+  end
 
   def find_subscription
     @subscription = CompanySubscription.new(user).active_remote_subscription
