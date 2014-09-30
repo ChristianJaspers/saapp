@@ -38,8 +38,10 @@ $icon-margin: 48px
   margin: 0 0 $interval-default * 1.5 $interval-default * 1.5
 
   .wizard_email input
+    @include box-shadow($color-gray)
     @extend %left-corners
     float: left
+    height: $inputs-size
     width: 58%
   label
     display: none
