@@ -16,6 +16,7 @@ shared_examples 'an invalid password update' do
 end
 
 describe Api::V1::PasswordsController do
+  before { allow_any_instance_of(EmailTemplates::Sender).to receive(:send).and_return([]) }
   let(:user) { create(:user, display_name: 'Batman', email: 'a@a.com') }
 
   describe '#create' do
