@@ -12,7 +12,12 @@ class CompanySubscription
   end
 
   def needs_to_buy_subscription?
-    !active_remote_subscription
+    if active_remote_subscription
+      # if ends_at presents then your subscription will be over soon, you need to buy new one
+      active_remote_subscription.ends_at.present?
+    else
+      true
+    end
   end
 
   def any_remote_subscription

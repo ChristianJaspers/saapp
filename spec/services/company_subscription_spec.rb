@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe CompanySubscription do
-  before { travel_to(Time.new(2014, 7, 30, 12, 0, 0, "+00:00")) }
+  let(:now) { Time.new(2014, 7, 30, 12, 0, 0, "+00:00") }
+  before { travel_to(now) }
   after { travel_back }
   subject { described_class.new(user) }
 
@@ -39,16 +40,34 @@ describe CompanySubscription do
     context 'user not nil' do
       let(:user) { create(:manager) }
 
-      context 'active remote subscription exist' do
-        before { allow(subject).to receive(:active_remote_subscription).and_return(subscription) }
+      context 'ends_at is empty' do
+        context 'active remote subscription exist' do
+          before { allow(subject).to receive(:active_remote_subscription).and_return(subscription) }
 
-        it { expect(perform).to eq false }
+          it { expect(perform).to eq false }
+        end
+
+        context 'active remote subscription does not exist' do
+          before { allow(subject).to receive(:active_remote_subscription).and_return(nil) }
+
+          it { expect(perform).to eq true }
+        end
       end
 
-      context 'active remote subscription does not exist' do
-        before { allow(subject).to receive(:active_remote_subscription).and_return(nil) }
+      context 'ends_at is exists' do
+        before { subscription.update_column(:ends_at, now + 1.day)  }
 
-        it { expect(perform).to eq true }
+        context 'active remote subscription exist' do
+          before { allow(subject).to receive(:active_remote_subscription).and_return(subscription) }
+
+          it { expect(perform).to eq true }
+        end
+
+        context 'active remote subscription does not exist' do
+          before { allow(subject).to receive(:active_remote_subscription).and_return(nil) }
+
+          it { expect(perform).to eq true }
+        end
       end
     end
 
