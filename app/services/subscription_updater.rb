@@ -10,18 +10,18 @@ class SubscriptionUpdater < BusinessProcess::Base
 
   attr_reader :api, :quantity, :subscription
 
-  def update_remote_subscription
-    init_saasy_api and
-    get_new_quantity and
-    update_remote_subscription
-  end
-
   def process_update
     if subscription
-      update_remote_subscription
+      process_update_remote_subscription
     else
       true
     end
+  end
+
+  def process_update_remote_subscription
+    init_saasy_api and
+    get_new_quantity and
+    update_remote_subscription
   end
 
   def find_subscription
