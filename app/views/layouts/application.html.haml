@@ -97,7 +97,11 @@
         .col-md-2
           = raw cms_site.footer_snippet_content(:footer_column_3) if cms_site
 
-        .col-md-3.col-md-offset-3.footer-logo
+        .col-md-2.col-md-offset-1
+          %h2
+            =  mail_to t('footer.support_link'), t('footer.support'), class: 'support icon-mail'
+
+        .col-md-3.footer-logo
           %h3 BetterSalesman
           %p © 2014
 
