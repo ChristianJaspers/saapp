@@ -9,6 +9,8 @@ class PrepareWizardTranslations
     common.argument.many
     common.invitation.many
     common.product_group.many
+    common.feature_description
+    common.benefit_description
 
     wizard.step_1.header
     wizard.step_1.at_product_groups_limit_notification
