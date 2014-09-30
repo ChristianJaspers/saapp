@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe ApplicationMailer do
   describe '#user_invitation' do
+    before { allow_any_instance_of(EmailTemplates::Sender).to receive(:send).and_return([]) }
     let(:user) { create(:user, :unconfirmed_user, display_name: 'Batman', invitation_message: 'Hello') }
     let(:perform) { described_class.user_invitation(user) }
 
@@ -29,6 +30,7 @@ describe ApplicationMailer do
     let(:user) { create(:user) }
     let(:perform) { described_class.reset_user_password(user) }
     before do
+      allow_any_instance_of(EmailTemplates::Sender).to receive(:send).and_return([])
       expect_any_instance_of(EmailTemplates::Sender).to receive(:send)
     end
 

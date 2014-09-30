@@ -2,31 +2,42 @@ require 'rails_helper'
 
 describe Company do
   let(:now) { Time.new(2014, 7, 30, 12, 0, 0, "+00:00") }
-  before { travel_to(now) }
-  after { travel_back }
-  subject(:company) { create(:company) }
+  let(:company) { create(:company) }
   let(:team) { create(:team, company: company) }
+  subject { company }
 
   describe '#lifetime_before_is_removed' do
-    let(:perform) { company.lifetime_before_is_removed }
+    let(:perform) { subject.lifetime_before_is_removed }
+
     it { expect(perform).to eq 30.days }
   end
 
-  describe '#remove!' do
-    let(:remove_at) { now + 30.days }
-    let(:perform) { company.remove! }
-
-    it { expect { perform }.to change { company.remove_at }.to(remove_at.to_date).from(nil) }
-    it { expect { perform }.to change { company.send_removal_reminder_at }.to(remove_at.to_date - 7.days).from(nil) }
-  end
-
   describe '#do_not_remove!' do
-    before { company.remove! }
+    before { travel_to(now) }
+    after { travel_back }
+
     let(:remove_at) { now + 30.days }
     let(:perform) { company.do_not_remove! }
 
-    it { expect { perform }.to change { company.remove_at }.to(nil).from(remove_at.to_date) }
-    it { expect { perform }.to change { company.send_removal_reminder_at }.to(nil).from(remove_at.to_date - 7.days) }
+    context 'company is removed' do
+      before { subject.remove! }
+
+      it { expect { perform }.to change { company.remove_at }.to(nil).from(remove_at.to_date) }
+      it { expect { perform }.to change { company.send_removal_reminder_at }.to(nil).from(remove_at.to_date - 7.days) }
+    end
+  end
+
+  describe '#remove!' do
+    before { travel_to(now) }
+    after { travel_back }
+
+    let(:remove_at) { now + 30.days }
+    let(:perform) { subject.remove! }
+
+    context 'company is not marked as removed' do
+      it { expect { perform }.to change { company.remove_at }.to(remove_at.to_date).from(nil) }
+      it { expect { perform }.to change { company.send_removal_reminder_at }.to(remove_at.to_date - 7.days).from(nil) }
+    end
   end
 
   describe '#goal_score' do

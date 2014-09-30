@@ -7,7 +7,7 @@ describe GoalLevelScore do
   let(:sales_representative_3) { create(:user, team: team) }
 
   describe '.for_platform' do
-    subject { GoalLevelScore.for_platform }
+    let(:perform) { GoalLevelScore.for_platform }
 
     let(:team2) { create(:team) }
     let(:sales_representative_4) { create(:user, team: team2) }
@@ -30,7 +30,7 @@ describe GoalLevelScore do
       let(:user_sums) { [10, 10, 10, 10, (1 + 1), 30] }
 
       it 'platform goal score is always average of sums multiplied by 2 per user scope' do
-        expect(subject).to eq average * 2
+        expect(perform).to eq average * 2
       end
     end
 
@@ -48,13 +48,13 @@ describe GoalLevelScore do
       let(:user_sums) { [50, 50, 50, 50, (1 + 1), 50] }
 
       it 'platform goal score is always average of sums multiplied by 2 per user scope' do
-        expect(subject).to eq average * 2
+        expect(perform).to eq average * 2
       end
     end
   end
 
   describe '.for_company' do
-    subject { GoalLevelScore.for_company(team.company) }
+    let(:perform) { GoalLevelScore.for_company(team.company) }
 
     context 'most sales representatives have lower xp' do
       before do
@@ -65,7 +65,7 @@ describe GoalLevelScore do
       end
 
       it 'maximum sum of users xp is considered a goal level' do
-        expect(subject).to eq 50
+        expect(perform).to eq 50
       end
     end
 
@@ -80,13 +80,13 @@ describe GoalLevelScore do
       let(:average) { (50 + (50 + 50) + 100) / 3.0 }
 
       it 'average of sums multiplied by 2 is considered a goal level' do
-        expect(subject).to eq average * 2
+        expect(perform).to eq average * 2
       end
     end
   end
 
   describe '.for_team' do
-    subject { GoalLevelScore.for_company(team) }
+    let(:perform) { GoalLevelScore.for_team(team) }
 
     context 'most sales representatives have lower xp' do
       before do
@@ -97,7 +97,7 @@ describe GoalLevelScore do
       end
 
       it 'maximum sum of users xp is considered a goal level' do
-        expect(subject).to eq 70
+        expect(perform).to eq 70
       end
     end
 
@@ -110,13 +110,13 @@ describe GoalLevelScore do
       end
 
       it 'average of sums multiplied by 2 is considered a goal level' do
-        expect(subject).to eq ((10 + (40 + 30) + 70) / 3.0) * 2
+        expect(perform).to eq ((10 + (40 + 30) + 70) / 3.0) * 2
       end
     end
   end
 
   describe '.my_team_activity' do
-    subject { GoalLevelScore.my_team_activity(team) }
+    let(:perform) { GoalLevelScore.my_team_activity(team) }
 
     context 'most sales representatives have lower xp' do
       before do
@@ -127,7 +127,7 @@ describe GoalLevelScore do
       end
 
       it do
-        expect(subject).to eq (((20 / 70.0) + ((5 + 5) / 70.0) + (70 / 70.0)) * 100.0 / 3)
+        expect(perform).to eq (((20 / 70.0) + ((5 + 5) / 70.0) + (70 / 70.0)) * 100.0 / 3)
       end
     end
 
@@ -140,7 +140,7 @@ describe GoalLevelScore do
       end
 
       it do
-        expect(subject).to eq ((10 / 70.0) + ((40 + 30) / 70.0) + (70 / 70.0)) * 100.0 / 3
+        expect(perform).to eq ((10 / 70.0) + ((40 + 30) / 70.0) + (70 / 70.0)) * 100.0 / 3
       end
     end
   end
