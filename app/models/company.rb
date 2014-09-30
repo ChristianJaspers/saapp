@@ -24,6 +24,19 @@ class Company < ActiveRecord::Base
     GoalLevelScore.for_company(self)
   end
 
+  alias_method :original_remove_at!, :remove_at!
+  alias_method :original_do_not_remove!, :do_not_remove!
+
+  def do_not_remove!
+    update_column(:send_removal_reminder_at, nil)
+    original_do_not_remove!
+  end
+
+  def remove_at!(date)
+    update_column(:send_removal_reminder_at, date - 7.days)
+    original_remove_at!(date)
+  end
+
   def to_s
     "Company ##{id}"
   end
