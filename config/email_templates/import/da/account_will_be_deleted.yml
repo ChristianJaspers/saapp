@@ -1,0 +1,9 @@
+subject: Your BetterSalesman subscription has expired
+body: |
+  <p>Hi *|email|*!</p>
+
+  <p>Within 7 days you account will be completely removed</p>
+
+  <p>You can renew your subscription here:</p>
+
+  <p><a href="*|payment_url|*">*|payment_url|*</a></p>
