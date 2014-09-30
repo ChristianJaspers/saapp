@@ -42,4 +42,11 @@ describe SubscriptionMailSender do
 
     it_behaves_like 'SubscriptionMailSender that sends template'
   end
+
+  describe '.account_will_be_deleted' do
+    let(:perform) { described_class.account_will_be_deleted(user, payment_url) }
+    let(:template_key) { :account_will_be_deleted }
+
+    it_behaves_like 'SubscriptionMailSender that sends template'
+  end
 end

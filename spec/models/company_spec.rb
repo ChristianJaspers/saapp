@@ -2,9 +2,26 @@ require 'rails_helper'
 
 describe Company do
   let(:now) { Time.new(2014, 7, 30, 12, 0, 0, "+00:00") }
-  let(:company) { create(:company) }
+  let(:manager) { create(:user, :manager) }
+  let(:company) { manager.company }
   let(:team) { create(:team, company: company) }
   subject { company }
+
+  describe '#send_removal_reminder!' do
+    let(:perform) { subject.send_removal_reminder! }
+    before do
+      allow_any_instance_of(Saasy::BillingForm).to receive(:payment_url).and_return('http://pay')
+      allow(SubscriptionMailSender).to receive(:account_will_be_deleted)
+      allow(company).to receive(:clear_removal_reminder!)
+    end
+
+    context 'after perform' do
+      before { perform }
+
+      it { expect(SubscriptionMailSender).to have_received(:account_will_be_deleted).once.with(manager, 'http://pay') }
+      it { expect(company).to have_received(:clear_removal_reminder!).once }
+    end
+  end
 
   describe '#lifetime_before_is_removed' do
     let(:perform) { subject.lifetime_before_is_removed }

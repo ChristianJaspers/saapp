@@ -5,4 +5,10 @@ namespace :subscriptions do
       subscription.send_reminder!
     end
   end
+
+  task send_expiration_reminders: :environment do
+    Company.to_be_sent_as_reminders.each do |subscription|
+      subscription.send_removal_reminder!
+    end
+  end
 end

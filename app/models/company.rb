@@ -8,6 +8,13 @@ class Company < ActiveRecord::Base
   has_many :sales_representatives, through: :teams
   has_many :subscriptions, dependent: :destroy
 
+  scope :to_be_sent_as_reminders, -> { where('companies.send_removal_reminder_at <= ?', Time.now) }
+
+  def send_removal_reminder!
+    SubscriptionMailSender.account_will_be_deleted(first_manager, payment_url)
+    clear_removal_reminder!
+  end
+
   def lifetime_before_is_removed
     30.days
   end
@@ -28,7 +35,7 @@ class Company < ActiveRecord::Base
   alias_method :original_do_not_remove!, :do_not_remove!
 
   def do_not_remove!
-    update_column(:send_removal_reminder_at, nil)
+    clear_removal_reminder!
     original_do_not_remove!
   end
 
@@ -39,5 +46,19 @@ class Company < ActiveRecord::Base
 
   def to_s
     "Company ##{id}"
+  end
+
+  private
+
+  def first_manager
+    @first_manager ||= users.managers.first
+  end
+
+  def payment_url
+    Saasy::BillingForm.new(first_manager).payment_url
+  end
+
+  def clear_removal_reminder!
+    update_column(:send_removal_reminder_at, nil)
   end
 end

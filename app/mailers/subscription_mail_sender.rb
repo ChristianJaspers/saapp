@@ -14,6 +14,11 @@ class SubscriptionMailSender
     EmailTemplates::Sender.new([recipient], :subscription_trial_expired).send
   end
 
+  def self.account_will_be_deleted(user, payment_url)
+    recipient = prepare_recipient(user, {payment_url: payment_url})
+    EmailTemplates::Sender.new([recipient], :account_will_be_deleted).send
+  end
+
   private
 
   def self.prepare_recipient(user, vars = {})
