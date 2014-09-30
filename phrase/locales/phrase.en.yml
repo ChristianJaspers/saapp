@@ -33,6 +33,7 @@ en:
       many: Invitations
     name: Name
     none: None
+    or: OR
     product_group:
       many: Product groups
     rating: Rating
