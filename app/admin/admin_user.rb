@@ -33,4 +33,9 @@ ActiveAdmin.register User do
       User.unscoped
     end
   end
+
+  batch_action :destroy do |selection|
+    User.unscoped.find(selection).each(&:destroy)
+    redirect_to collection_path, :notice => "Users deleted"
+  end
 end
