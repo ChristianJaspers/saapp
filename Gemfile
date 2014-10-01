@@ -41,6 +41,7 @@ gem 'rollbar', '~> 1.0.0'
 gem 'activerecord-database-views', '~> 0.1.0'
 gem 'FastSpring', github: 'FastSpring/fastspring-ruby'
 gem 'httparty', '~> 0.13.1'
+gem 'rpush', '~> 2.0.1'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
