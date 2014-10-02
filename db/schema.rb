@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001104722) do
+ActiveRecord::Schema.define(version: 20141002090104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,15 @@ ActiveRecord::Schema.define(version: 20141001104722) do
 
   create_table "api_tokens", force: true do |t|
     t.integer  "user_id"
-    t.string   "access_token", null: false
+    t.string   "access_token",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "notification_token"
+    t.string   "platform"
   end
 
   add_index "api_tokens", ["access_token"], name: "index_api_tokens_on_access_token", unique: true, using: :btree
+  add_index "api_tokens", ["notification_token"], name: "index_api_tokens_on_notification_token", using: :btree
   add_index "api_tokens", ["user_id"], name: "index_api_tokens_on_user_id", using: :btree
 
   create_table "argument_ratings", force: true do |t|

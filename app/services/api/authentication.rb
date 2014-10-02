@@ -1,14 +1,17 @@
 module Api
   class Authentication
-    attr_reader :param_token, :error_key
+    attr_reader :param_token, :error_key, :params
+
     delegate :user, to: :api_token, allow_nil: true
 
-    def initialize(param_token)
+    def initialize(params, param_token)
+      @params = params
       @param_token = param_token
       @error_key = :forbidden
     end
 
     def authenticate!
+      update_device_info!
       !!user
     end
 
@@ -34,6 +37,10 @@ module Api
       can = CompanySubscription.new(token.user).can_use_system?
       @error_key = :forbidden_no_subscription if !can
       can
+    end
+
+    def update_device_info!
+      PushNotifications::DeviceTokenUpdater.new(user, params).perform if user
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::Authentication do
-  subject { described_class.new(access_token) }
+  subject { described_class.new({}, access_token) }
   describe '#authenticate!' do
     context 'good api token is used' do
       let(:api_token) { create(:api_token) }

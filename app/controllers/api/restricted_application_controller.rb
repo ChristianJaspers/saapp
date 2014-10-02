@@ -6,7 +6,7 @@ class Api::RestrictedApplicationController < Api::ApplicationController
 
   def restrict_access
     result = authenticate_with_http_token do |token, options|
-      @api_authentication = Api::Authentication.new(token)
+      @api_authentication = Api::Authentication.new(params, token)
       @api_authentication.authenticate!
     end
     render_fail_json(authentication_error_key) unless result
