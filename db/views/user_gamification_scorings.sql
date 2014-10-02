@@ -1,3 +1,4 @@
+CREATE OR REPLACE VIEW user_gamification_scorings AS
 SELECT
   usr.id,
   t.company_id,
