@@ -1,26 +1,31 @@
 class PushNotifications::Sender
-  attr_reader :user, :notifcation, :api_token
+  attr_reader :users_with_unrated_arguments, :user_ids, :api_tokens
 
-  def initialize(user)
-    @user = user
+  def initialize(users_with_unrated_arguments = {})
+    @users_with_unrated_arguments = users_with_unrated_arguments
+    @user_ids = users_with_unrated_arguments.keys
   end
 
   def send
-    @api_token = user.api_token
-    if api_token && user_device_token.present?
-      prepare_notifcation
-      notifcation.save!
-    end
+    @api_tokens = ApiToken.with_notification_token.where(user_id: user_ids)
+    queue_notifcations if api_tokens.present?
   end
 
   private
 
-  def prepare_notifcation
-    @notifcation = notification_class.new
-    notifcation.app = app
-    set_token
-    set_payload
-    notifcation
+  def queue_notifcations
+    api_tokens.each do |api_token|
+      notification = build_notification(api_token)
+      notification.save!
+    end
+  end
+
+  def build_notification(api_token)
+    notification = notification_class.new
+    notification.app = app
+    set_token(notification, api_token)
+    set_payload(notification, api_token)
+    notification
   end
 
   def notification_class
@@ -31,20 +36,11 @@ class PushNotifications::Sender
     @app ||= Rpush::Apns::App.find_by_name("ios") # OR in future Rpush::Gcm::App.find_by_name("android")
   end
 
-  def set_token
-    notifcation.device_token = user_device_token # OR in future notifcation.registration_ids = ['token', ...]
+  def set_token(notification, api_token)
+    notification.device_token = api_token.notification_token # OR in future notification.registration_ids = ['token', ...]
   end
 
-  def set_payload
-    notifcation.badge = unrated_arguments_count
+  def set_payload(notification, api_token)
+    notification.badge = users_with_unrated_arguments[api_token.user_id]
   end
-
-  def unrated_arguments_count
-    2
-  end
-
-  def user_device_token
-    api_token.notifcation_token
-  end
-
 end

@@ -3,7 +3,7 @@ class GenerateDatabaseViews < ActiveRecord::Migration
     user_gamification_scorings
     arguments_per_team
     rating_table
-    unrated_arguments_per_users
+    all_arguments_per_users
   ]
 
   def up

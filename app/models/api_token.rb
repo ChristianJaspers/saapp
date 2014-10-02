@@ -9,6 +9,7 @@ class ApiToken < ActiveRecord::Base
   validates :user_id, presence: true
 
   scope :for_access_token, ->(access_token) { where(access_token: access_token.to_s) }
+  scope :with_notification_token, -> { where('notification_token IS NOT NULL') }
 
   delegate :company, to: :user
 

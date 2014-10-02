@@ -9,6 +9,7 @@ class Api::CreateArgument < BusinessProcess::Base
   def call
     find_product_group and
       create_argument and
+      send_push_notification_to_team and
       prepare_result
   end
 
@@ -18,6 +19,11 @@ class Api::CreateArgument < BusinessProcess::Base
 
   def prepare_result
     ArgumentRating.new(argument: argument, rater: current_user)
+  end
+
+  def send_push_notification_to_team
+    AllArgumentsPerUser.send_to_team(current_user.team)
+    true
   end
 
   def create_argument

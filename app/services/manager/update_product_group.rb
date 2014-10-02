@@ -10,7 +10,8 @@ class Manager::UpdateProductGroup < BusinessProcess::Base
     update_product_group_name and
         create_new_arguments and
         destroy_old_arguments and
-        update_existing_arguments
+        update_existing_arguments and
+        send_push_notification_to_team
   end
 
   private
@@ -71,5 +72,10 @@ class Manager::UpdateProductGroup < BusinessProcess::Base
 
   def attributes
     @attributes ||= Dish(params.fetch(:product_group))
+  end
+
+  def send_push_notification_to_team
+    AllArgumentsPerUser.send_to_team(current_user.team)
+    true
   end
 end
