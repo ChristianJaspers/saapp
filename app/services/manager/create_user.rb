@@ -30,6 +30,7 @@ class Manager::CreateUser < BusinessProcess::Base
   end
 
   def create_user
+    user_to_process.locale = current_user.locale
     user_to_process.skip_confirmation_notification!
     user_to_process.save
   end

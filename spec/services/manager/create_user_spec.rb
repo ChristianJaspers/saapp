@@ -39,5 +39,27 @@ describe Manager::CreateUser do
         it { expect(SubscriptionUpdater).to have_received(:call).with(user: deleted_user).once }
       end
     end
+
+    context 'user with locales' do
+      let!(:user) { build(:user, email: email, team_id: current_user.team_id) }
+
+      context 'manager locale is en' do
+        before do
+          allow(current_user).to receive(:locale).and_return('en')
+          perform
+        end
+
+        it { expect(User.user.last.locale).to eq 'en' }
+      end
+
+      context 'manager locale is da' do
+        before do
+          allow(current_user).to receive(:locale).and_return('da')
+          perform
+        end
+
+        it { expect(User.user.last.locale).to eq 'da' }
+      end
+    end
   end
 end
