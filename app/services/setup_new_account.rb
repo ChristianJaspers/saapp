@@ -69,7 +69,8 @@ class SetupNewAccount < BusinessProcess::Base
         invitee = team.users.build(
           email: invitation.email,
           display_name: invitation.display_name,
-          invitation_message: wizard.invitation_message
+          invitation_message: wizard.invitation_message,
+          locale: manager.locale
         ).tap do |invitee|
           invitee.skip_confirmation_notification!
           invitee.save

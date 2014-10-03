@@ -42,6 +42,33 @@ describe SetupNewAccount do
           it { expect { perform }.to change { ProductGroup.count }.by(1) }
           it { expect { perform }.to change { Argument.count }.by(1) }
 
+          context 'different locales' do
+            let(:all_locales_equal_to_current_locale) do
+              User.all.all? { |user| user.locale == locale }
+            end
+            before { allow(I18n).to receive(:locale).and_return(locale) }
+
+            context 'locale is set to EN' do
+              let(:locale) { 'en' }
+
+              context 'after perform' do
+                before { perform }
+
+                it { expect(all_locales_equal_to_current_locale).to be_truthy }
+              end
+            end
+
+            context 'locale is set to DA' do
+              let(:locale) { 'da' }
+
+              context 'after perform' do
+                before { perform }
+
+                it { expect(all_locales_equal_to_current_locale).to be_truthy }
+              end
+            end
+          end
+
           context 'after perform' do
             before { perform }
 
