@@ -14,9 +14,11 @@ class PushNotifications::Sender
   private
 
   def queue_notifcations
-    api_tokens.each do |api_token|
-      notification = build_notification(api_token)
-      notification.save!
+    if app
+      api_tokens.each do |api_token|
+        notification = build_notification(api_token)
+        notification.save!
+      end
     end
   end
 
