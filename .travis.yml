@@ -8,9 +8,15 @@ env:
   matrix:
   - RAILS_ENV=test
   global:
-  - secure: FV4oLVJDk7ykG2sDl0eDqohLf6415GLhRxDsqm5ggS/bbUp4zJziEAH0nEuPWl4GAzg7usldE1piIkA6qlaz+lToeHVCOrSVr62v/TwdXsp6zXVelKgiBoosDEdwqqVCrPPcbCw7yWIpjoTtyNF1rJrPW6hcslYr0CJpcIfSiMA=
-  - secure: EN8mVqGN4hpBo1XKnnmv3khyP43Y/M3kfVaJqCUuHprhxMRTj0mYBQnRJnHq9YYWwipIlpAy5KcJMo2bAM413okF6qcvOEni030h8K/QA2Cv2GGOWDDeDe9UjPr3851E+YJ2r8itOFUOwdInFe9a9EJanRKxQT6Xy/k4JrFqe78=
-  - secure: kfrTi9k5ABLwZ3ilWGCh4rB82lq+mJjPt9EsLGzULrnfV/L0ZlIKPrHID0UJyapXL3wT3w4Lft6ImI0Ek781G1uVlNJzIOGGdCrdbTtURbvy/EQzQUbeBxtzyjvbjaLERF0zosqWwNqbjGEwmv7B6wbJ5fEsulz0XLRQwruObmo=
+  - secure: o3S7S1UTxOAly7OL2zsDgtAO/eJktCBvvdH6DwRaNn1BSYn/WkTcQ6wVAWCNEMPGipjqPdBOAACH4XrIyCeRYuwkZiQOoUp1ppkyqMEWQu4qS+U928rOEoENUv0FuBj1u6o8ghu14bMciJHw4uzIFHpA7DxPeFiOtev+cGjZHNQ=
+  - secure: kI3la+UXvtu8OYHA98q1UG9BFvmyh+AfwYQkYoyuW021UJ5v+WaShaqK9X4tX1nIenEWLNa8SqIsXd8YC8ITiISXMYI/BkCp4uWiCq3AJCklxGu528XSPxDPYKtunV8J2Xa12mtNWoHuoS8bzfEossnw31/ipvW6Zfc9e1X/u3s=
+  - secure: timSAMJPJHwoCm03rUvEz6M3oY2S7iyrrCt7FCzxywscCuTCw6PZHb1k5OXGVwVtaVH3nozTdZINKMaAeBMBHizSnVW55t8yfYWhCIOrQ4SUh0NPH4tR4hPEMkjw0ppbVzgV3w31Yv2dFESm0Cb07RdpW0JxWtYRMwHbmiYQSbc=
+  - secure: PaxcWFlYBGT7TH9tU8JLQ08pRKxSV20ECxY/jPfqhbkQvDdpa16H/4XbzUOe+MGuHKaHuD4zPiOKL8jRULjF8VKposU6KjF7814fhudhAd7xXUzz9+uU4obxB3ORLqthDG1mPMB7NiuccXhKCsZ7dG2qQR5kqQQRA7oPQ3hrHO8=
+  - secure: LzB7Ig3FNPs6wyifBrI5jDw0AiK7q5pNfmE9RuejqtLyZOsWDa4c53B0WKTKMypKOd06xQd7CoK8KYw5dKdFTLlGVNPWmrIqy2kp2W/XC05IHyh7p1+tBhdd89e3tDjGqhbKUZoyv4uz74p0x3l17IonBwMf+TxLCuR1KsY2YlA=
+  - secure: JoYgPCZKJpvy4KTQk5uheohNqsj3niAlXcjxqBDbrWJ9aCkoWG7DeAUJibM3r/a7NbUC9YSz/cjm2I4II7Q1witW/vSaI8Cp0FwIyOL9jNb0A04P+9Yb9cVfZ2+fgTk/RH7NnJ/6TQUshkxwRUd+3AxSajk/kxHfNwNBfoUqqF4=
+  - secure: Wxahbd9zfo919pGgdmoPKPJTTZO0Sg3TBDEfNOv0Dw80+HlKU5A0RpFtno/oZ6fExYLbfJ5pkVa2TOvdNj568pcDCCbvP80oagZflABfgtNH5jStOyONy/Iev4t1xRTdI5b8s2lnTISxflot2ED5LWwMf7/fzFcVnxAZ0vRy++I=
+  - secure: CidoCHMqGay0F5cAJwfvelzhSigMG4p4pN1Y5P/TMG4h0YO9JxMHHFviNy1Icy2zkvcYcN4sG7DtZZBAfGQ/USU42ZQ38KPh3Yycl5BRocWsBvwrBigujB2I3fCK6jDE6zjfkaTWputrqjfazbVK6YSYKUhELKisiNkmAV1+lyw=
+  - secure: DKM77m5g2MNDUEE+yTXPbv7A8Pt4UoiHkX9qtfwM7LgEC43abVyAsL6PAxonmyCp43LdPtFtm1dUSkrqDXN0LdDbc2wsDBWGDVbTKTEHS9pdzEOgVBU2PyKji5iTLkKeHUADE2p1+qoHtgdUq6c//KLeAp/7buj5atkKhV6Kh1E=
 before_install:
 - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
 - cp -f config/travis/database.yml config/database.yml
@@ -36,5 +42,5 @@ deploy:
   app: saapp-staging
   on:
     repo: Selleo/saapp
-  run: 'rake db:migrate'
+  run: rake db:migrate
   strategy: git
