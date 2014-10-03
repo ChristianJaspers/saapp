@@ -17,7 +17,7 @@ class PushNotifications::Sender
     if app
       api_tokens.each do |api_token|
         notification = build_notification(api_token)
-        notification.save!
+        notification.save
       end
     end
   end
