@@ -1,4 +1,3 @@
-CREATE OR REPLACE VIEW arguments_per_team AS
 SELECT
   u.team_id,
   u.id AS owner_id,

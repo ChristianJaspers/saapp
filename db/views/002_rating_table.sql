@@ -1,4 +1,3 @@
-CREATE OR REPLACE VIEW rating_table AS
 SELECT
   apt.*,
   u.id AS rater_id,
