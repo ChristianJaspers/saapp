@@ -14,6 +14,7 @@ describe Api::V1::ArgumentsController do
       include_context 'all subscriptions allow to use system'
 
       before do
+        allow(AllArgumentsPerUser).to receive(:send_to_team)
         api_authorize_with(api_token.access_token)
         call_request
       end
@@ -32,6 +33,7 @@ describe Api::V1::ArgumentsController do
         it { expect(response.body).to have_json_type(String).at_path 'argument/created_at' }
         it { expect(response.body).to have_json_type(String).at_path 'argument/updated_at' }
         it { expect(response.body).to have_json_type(Integer).at_path 'user/id' }
+        it { expect(AllArgumentsPerUser).to have_received(:send_to_team).with(current_user.team) }
 
         it do
           expect(response.body).to be_json_eql(<<-EOS

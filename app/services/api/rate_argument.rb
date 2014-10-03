@@ -11,7 +11,7 @@ class Api::RateArgument < BusinessProcess::Base
       make_sure_owner_does_not_rate_own_arguments and
       validate_rating_value and
       rate_argument and
-      send_push_notification_to_team and
+      send_push_notification_to_user and
       rating
   end
 
@@ -31,7 +31,7 @@ class Api::RateArgument < BusinessProcess::Base
     end
   end
 
-  def send_push_notification_to_team
+  def send_push_notification_to_user
     AllArgumentsPerUser.send_to_user(current_user)
     true
   end

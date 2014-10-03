@@ -52,10 +52,13 @@ describe Api::V1::RatingsController do
 
       context 'existing argument' do
         let(:id) { argument.id }
-
-        before { call_request }
+        before do
+          allow(AllArgumentsPerUser).to receive(:send_to_user)
+          call_request
+        end
 
         context 'user rates 1' do
+
           let(:params) { {rating: 1} }
           let(:expected_values) do
             {
@@ -69,6 +72,7 @@ describe Api::V1::RatingsController do
           end
 
           it_behaves_like 'rated argument by user'
+          it { expect(AllArgumentsPerUser).to have_received(:send_to_user).with(current_user) }
         end
 
         context 'user rates 2' do

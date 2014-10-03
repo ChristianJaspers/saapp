@@ -9,6 +9,9 @@ describe Manager::UpdateProductGroup do
     let!(:argument_to_remove) { create(:argument, product_group: product_group, owner: current_user) }
     let(:parameter_object) { double(product_group: product_group, params: params, current_user: current_user) }
     let(:perform) { described_class.call(parameter_object) }
+    before do
+      allow(AllArgumentsPerUser).to receive(:send_to_team)
+    end
 
     context 'update/create/remove' do
       let(:params) do
@@ -32,6 +35,7 @@ describe Manager::UpdateProductGroup do
       context 'after perform' do
         before { perform }
 
+        it { expect(AllArgumentsPerUser).to have_received(:send_to_team).with(current_user.team) }
         it { expect(Argument).to exist.with(feature: 'New argument description!', benefit: 'New benefit description!') }
         it { expect(argument_to_remove).not_to exist }
         it { expect(argument_rating).not_to exist }
