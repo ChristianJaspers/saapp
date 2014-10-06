@@ -10,3 +10,7 @@
     $translateProvider.storageKey('lang');
     $translateProvider.translations(gon.locale, gon.translations);
   }]);
+
+- if Rails.env.production?
+  = content_for(:scripts) do
+    = render partial: 'shared/conversion_begin_script'

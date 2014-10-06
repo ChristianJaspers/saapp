@@ -106,3 +106,4 @@
           %p © 2014
 
     = render partial: 'shared/analytics_script' if Rails.env.production? && !user_signed_in?
+    = yield(:scripts) if content_for?(:scripts)
