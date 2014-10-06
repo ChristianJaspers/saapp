@@ -28,13 +28,19 @@ class ApplicationController < ActionController::Base
     CompanySubscription.new(current_user)
   end
 
+  expose(:account_has_been_activated?) { @account_has_been_activated || params[:account_activation] == 'true' }
+
   private
 
   def after_sign_in_path_for(resource)
     if resource.admin?
       admin_root_url
     elsif resource.manager?
-      manager_root_url
+      if account_has_been_activated?
+        manager_root_url(account_activation: true)
+      else
+        manager_root_url
+      end
     else
       root_url
     end

@@ -63,6 +63,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def do_confirm
+    @account_has_been_activated = true
     @confirmable.confirm!
     set_flash_message :notice, :confirmed
     sign_in_and_redirect(resource_name, @confirmable)

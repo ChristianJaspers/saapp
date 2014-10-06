@@ -12,3 +12,7 @@
     .rep-counter
       = link_to sales_reps_count, manager_users_path
     = t('manager.profile.edit.sales_reps')
+
+- if Rails.env.production? && account_has_been_activated?
+  = content_for(:scripts) do
+    = render partial: 'shared/conversion_completed_script'
