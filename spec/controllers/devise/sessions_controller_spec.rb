@@ -37,6 +37,12 @@ describe SessionsController do
     it_behaves_like 'user signs in'
   end
 
+  context 'cms editor login' do
+    let(:user) { create(:user, :cms_editor) }
+    let(:redirect_path) { '/admin' }
+    it_behaves_like 'user signs in'
+  end
+
   context 'logout' do
     context 'user logout' do
       let(:user) { create(:user) }
@@ -50,6 +56,11 @@ describe SessionsController do
 
     context 'admin logout' do
       let(:user) { create(:user, :admin) }
+      it_behaves_like 'user signs out'
+    end
+
+    context 'cms_editor logout' do
+      let(:user) { create(:user, :cms_editor) }
       it_behaves_like 'user signs out'
     end
   end

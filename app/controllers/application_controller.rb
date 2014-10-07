@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(resource)
-    if resource.admin?
+    if resource.admin? || resource.cms_editor?
       admin_root_url
     elsif resource.manager?
       if account_has_been_activated?

@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   enum role: {
       user: 0,
       manager: 1,
-      admin: 2
+      admin: 2,
+      cms_editor: 3
   }
 
   class << self

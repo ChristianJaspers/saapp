@@ -23,3 +23,22 @@ unless Company.exists?
   user.save
   user.confirm!
 end
+
+admin = User.find_by_email('admin@example.com')
+if admin
+  editor_email = 'cms_editor@bettersalesman.com'
+  cms_editor = User.find_by_email(editor_email)
+  unless cms_editor
+    password = 'editor'
+    user = User.new(
+      email: editor_email,
+      password: password,
+      password_confirmation: password,
+      role: 'cms_editor',
+      team: admin.team
+    )
+    user.skip_confirmation_notification!
+    user.save
+    user.confirm!
+  end
+end

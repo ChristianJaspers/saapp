@@ -15,6 +15,10 @@ FactoryGirl.define do
       role 'manager'
     end
 
+    trait :cms_editor do
+      role 'cms_editor'
+    end
+
     trait :unconfirmed_user do
       password nil
       password_confirmation nil
