@@ -9,6 +9,7 @@ class Wizard
   validate :email_uniqueness
 
   def attributes=(attrs)
+    attrs['email'].strip! if attrs && attrs['email'].is_a?(String)
     @attributes = Dish(attrs.deep_transform_keys(&:underscore))
   end
 
