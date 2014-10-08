@@ -65,6 +65,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   def do_confirm
     @account_has_been_activated = true
     @confirmable.confirm!
+    AccountActivationJobManager.new(@confirmable).destroy_job
     set_flash_message :notice, :confirmed
     sign_in_and_redirect(resource_name, @confirmable)
   end

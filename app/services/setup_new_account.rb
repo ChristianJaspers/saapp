@@ -87,7 +87,7 @@ class SetupNewAccount < BusinessProcess::Base
   end
 
   def send_emails
-    manager.send_confirmation_instructions
+    AccountActivationJobManager.new(manager).create_job
     send_inivitations
   end
 
