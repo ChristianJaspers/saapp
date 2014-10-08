@@ -42,6 +42,7 @@ gem 'FastSpring', github: 'FastSpring/fastspring-ruby'
 gem 'httparty', '~> 0.13.1'
 gem 'rpush', '~> 2.0.1'
 gem 'activerecord-database-views', '~> 0.1.0'
+gem 'delayed_job_active_record', '~> 4.0.2'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'

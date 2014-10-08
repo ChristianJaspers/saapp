@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002090104) do
+ActiveRecord::Schema.define(version: 20141008150048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,25 @@ ActiveRecord::Schema.define(version: 20141002090104) do
     t.date     "remove_at"
     t.datetime "send_removal_reminder_at"
   end
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",               default: 0, null: false
+    t.integer  "attempts",               default: 0, null: false
+    t.text     "handler",                            null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "custom_user_id"
+    t.string   "custom_task_identifier"
+  end
+
+  add_index "delayed_jobs", ["custom_user_id", "custom_task_identifier"], name: "index_delayed_jobs_on_custom_user_id_and_custom_task_identifier", using: :btree
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "gamification_scorings", force: true do |t|
     t.integer  "amount"
