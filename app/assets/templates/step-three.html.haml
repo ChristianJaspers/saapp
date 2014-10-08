@@ -19,7 +19,7 @@
   .clearfix
 
   %form.representative-form{name: 'newInvitationForm', 'ng-submit' =>'addInvitation(wizard)'}
-    %input{'ng-model' => 'invitation.email', required: true, autofocus: true, type: 'text', autocomplete: 'off', pattern: "^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$"}
+    %input{'ng-model' => 'invitation.email', 'ng-trim' => 'false', required: true, autofocus: true, type: 'text', autocomplete: 'off', pattern: "^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$"}
     %input{'ng-model' => 'invitation.displayName', autocomplete: 'off'}
     %input.wizard-add.four-corners{type: 'submit', value: "{{'common.add' | translate }}", tabindex: -1}
     .my-account

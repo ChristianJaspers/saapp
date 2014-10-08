@@ -162,6 +162,12 @@ wizardApp.controller('argumentCtrl', ['$scope', ($scope) ->
 wizardApp.controller('invitationCtrl', ['$scope', ($scope) ->
   $scope.invitation = {}
 
+  trimField = ->
+    if ($scope.invitation.email)
+      $scope.invitation.email = $scope.invitation.email.trim()
+
+  $scope.$watch('invitation.email', trimField);
+
   $scope.removeInvitation = (invitation) ->
     index = $scope.wizard.invitations.indexOf(invitation)
     $scope.wizard.invitations.splice(index, 1)
