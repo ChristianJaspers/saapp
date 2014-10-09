@@ -16,5 +16,27 @@ namespace :system do
       Company.unscoped.where('id != ?', company.id).delete_all
       Subscription.unscoped.delete_all
     end
+
+    # create users for Apple approval
+    selleo = Company.create!
+    team = selleo.teams.create!
+    selleo_users = [
+      {role: 'manager', email: 'mobile@selleo.com', password: 'secret4manager'},
+      {role: 'user', email: 'mobile+demo@selleo.com', password: '7Lf2XOoG'}
+    ]
+    selleo_users.each do |user_data|
+      user = User.new(
+        email: user_data[:email],
+        password: user_data[:password],
+        password_confirmation: user_data[:password],
+        role: user_data[:role],
+        team: team
+      )
+      user.skip_confirmation_notification!
+      user.save
+      user.confirm!
+    end
+    manager_email = selleo_users.detect {|x| x[:role] == 'manager' }[:email]
+    Subscription.start_trial_for_manager(User.find_by_email(manager_email))
   end
 end
