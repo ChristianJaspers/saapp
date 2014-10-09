@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  force_ssl if: :ssl_configured?
+
   include LanguageAutoredirect
 
   decent_configuration do
@@ -54,5 +56,11 @@ class ApplicationController < ActionController::Base
     {
       locale: (I18n.locale == I18n.default_locale) ? nil : I18n.locale
     }
+  end
+
+  def ssl_configured?
+    # TO BE CHANGE WHEN MOBILE GUYS SET API URL FOR HTTPS PROTOCOL
+    # !Rails.env.development?
+    false
   end
 end
