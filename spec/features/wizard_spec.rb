@@ -69,12 +69,18 @@ feature 'Wizard' do
       expect(page).to have_content I18n.t('wizard.create.notifications.success', locale: locale)
       expect(page).to have_content I18n.t('devise.confirmations.account_activation_title', locale: locale)
 
+      last_delyed_job = Delayed::Job.last
+      expect(last_delyed_job.custom_user_id).to eq User.find_by_email('user@example.com').id
+      expect(last_delyed_job.custom_task_identifier).to eq 'account_activation'
+
       # Choose password
       password = '1' * 8
       find("input[name='user[password]']").set(password)
       find("button[type='submit']").click
 
       expect(page).to have_content I18n.t('devise.confirmations.confirmed', locale: locale)
+
+      expect(Delayed::Job.last).to be_nil
 
       expect(Argument).to exist.with(feature: feature_name, benefit: benefit_description)
       expect(ProductGroup.all).to have(2).records

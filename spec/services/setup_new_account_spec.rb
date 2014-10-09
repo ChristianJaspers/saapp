@@ -41,6 +41,7 @@ describe SetupNewAccount do
           it { expect { perform }.to change { Company.count }.by(1) }
           it { expect { perform }.to change { ProductGroup.count }.by(1) }
           it { expect { perform }.to change { Argument.count }.by(1) }
+          it { expect { perform }.to change { Delayed::Job.count }.by(1) }
 
           context 'different locales' do
             let(:all_locales_equal_to_current_locale) do
@@ -73,7 +74,7 @@ describe SetupNewAccount do
             before { perform }
 
             it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
-            it { expect(MandrillDeviseMailer).to have_received(:confirmation_instructions).with(User.managers.first, kind_of(String), {}) }
+            it { expect(MandrillDeviseMailer).to_not have_received(:confirmation_instructions).with(User.managers.first, kind_of(String), {}) }
             it { expect(Subscription).to have_received(:start_trial_for_manager).with(User.managers.first) }
 
             describe 'manager' do
