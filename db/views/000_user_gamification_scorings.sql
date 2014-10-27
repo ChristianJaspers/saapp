@@ -5,6 +5,7 @@ SELECT
   usr.role,
   usr.email,
   usr.display_name,
+  usr.remove_at,
   scoring.amount,
   scoring.event_name,
   scoring.created_at
