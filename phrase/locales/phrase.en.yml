@@ -231,6 +231,10 @@ en:
     logout_link: Logout
     my_account_link: My Account
   simple_form:
+    labels:
+      user:
+        edit:
+          display_name: Display name
     placeholders:
       wizard:
         email: Your company email

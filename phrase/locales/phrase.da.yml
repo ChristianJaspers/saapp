@@ -228,6 +228,10 @@ da:
     logout_link: Log ud
     my_account_link: Min konto
   simple_form:
+    labels:
+      user:
+        edit:
+          display_name: Vist navn
     placeholders:
       wizard:
         email: Din firma email
