@@ -26,6 +26,7 @@
 #= require_tree ../templates
 #= require spin
 #= require ladda
+#= require init
 
 #= require_tree .
 

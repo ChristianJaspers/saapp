@@ -81,7 +81,7 @@
 
     .container
       - flash.each do |name, msg|
-        = content_tag :div, :class => "alert alert-#{ flash_message_color(name) } alert-dismissable" do
+        = content_tag :div, :class => "alert alert-#{ flash_message_color(name) } alert-dismissable fade in" do
           %button.close{type: 'button', data:{dismiss: 'alert'}, aria: {hidden: 'true'} } &times;
           = msg
       = yield(:top) if content_for?(:top)
