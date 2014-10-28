@@ -15,7 +15,10 @@ describe Api::V1::ResourcesController do
   let(:expected_timestamp) { '2014-07-30T12:00:00Z' }
 
   describe '#index' do
-    let(:call_request) { get :index, {format: :json} }
+    it { should route(:post, '/api/v1/resources').to(action: :index, format: :json) }
+    it { should route(:get, '/api/v1/resources').to(action: :index, format: :json) }
+
+    let(:call_request) { post :index, {format: :json} }
 
     context 'valid access token' do
       context 'valid subscription' do
