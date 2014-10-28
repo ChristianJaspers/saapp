@@ -44,6 +44,12 @@ class Manager::ProductGroupsController < Manager::ManagerController
     redirect_to :back, notice: t('manager.product_groups.destroy.notifications.success')
   end
 
+  def sort
+    product_group = product_groups.find(params[:id])
+    product_group.insert_at(params[:position].to_i)
+    head :ok
+  end
+
   private
 
   def team

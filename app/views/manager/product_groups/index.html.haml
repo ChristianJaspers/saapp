@@ -3,13 +3,17 @@
     %h4= t('manager.tabs.product_groups')
     %table.table.saapp-table-product-groups
       %thead
+        %th{style: 'width: 40px'}
         %th= t('manager.product_groups.index.table.headers.product_group_name')
         %th= t('manager.product_groups.index.table.headers.arguments_count')
         %th
           .table-actions= t('manager.product_groups.index.table.headers.actions')
-      %tbody
+      %tbody.sortable
         - product_groups.each do |product_group|
-          %tr
+          %tr{data: {id: product_group.id}}
+            %td
+              %span.ui-icon.ui-icon-arrowthick-2-n-s
+              = product_group.position
             %td= product_group.name
             %td= product_group.arguments_count
             %td.text-center
@@ -24,3 +28,20 @@
           = f.input :name, label: false, placeholder: t('manager.product_groups.index.table.headers.product_group_name')
         .col-md-5
           = f.submit class: 'btn btn-primary btn-block'
+
+:javascript
+  $(function() {
+    $('.sortable').sortable({
+      placeholder: "ui-state-highlight",
+      axis: "y",
+      update: function(event, ui) {
+        alert(ui.item.index() + 1);
+        var blockedUI = $.blockUI({message: null});
+        $.post(Routes.sort_manager_product_group_path(ui.item.data('id')), {position: ui.item.index() + 1}, function(data) {
+        }).always(function() {
+          $.unblockUI();
+        });
+      }
+    });
+    $('.sortable').disableSelection();
+  });

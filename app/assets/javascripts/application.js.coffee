@@ -13,6 +13,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.cookie
+#= require jquery.ui.all
+#= require jquery.blockUI
 #= require bootstrap
 #= require underscore-min
 #= require angular.min
@@ -27,6 +29,7 @@
 #= require spin
 #= require ladda
 #= require init
+#= require routes
 
 #= require_tree .
 

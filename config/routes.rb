@@ -34,7 +34,9 @@ Rails.application.routes.draw do
     namespace :manager do
       root 'profiles#edit'
       resource :profile, only: [:edit, :update]
-      resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy]
+      resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy] do
+        post :sort, on: :member
+      end
       resources :users, only: [:index, :create, :edit, :update, :destroy]
       namespace :reports do
         root 'dashboard#show'

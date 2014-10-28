@@ -13,7 +13,7 @@ class ProductGroup < ActiveRecord::Base
   scope :active_only, -> { where(archived_at: nil) }
   scope :sorted, -> { order(:position) }
 
-  acts_as_list scope: :team
+  acts_as_list scope: [:team, :remove_at]
 
   before_validation :store_team_from_owner, on: :create
 

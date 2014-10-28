@@ -31,8 +31,13 @@ namespace :upgrades do
   desc 'Reorder product groups positions to behave as "created_at ASC" (implemented at 2014-10-28)'
   task reorder_product_groups_from_oldest_to_newest: :environment do
     puts 'Start..'
-    ProductGroup.unscoped.includes(:team).order(:created_at).group_by(& :team_id).each do |team_id, product_groups|
-      puts "Team##{team_id}:"
+    ProductGroup.unscoped.includes(:team).order(:created_at).group_by do |product_group|
+      [
+        product_group.team_id,
+        product_group.remove_at
+      ]
+    end.each do |(team_id, remove_at), product_groups|
+      puts "Team##{team_id} (archive_at: #{remove_at ? remove_at : 'nil'}):"
       product_groups.each_with_index do |product_group, index|
         print "  ProductGroup##{product_group.id}, set "
         position = index + 1
