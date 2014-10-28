@@ -25,6 +25,19 @@ class ProductGroup < ActiveRecord::Base
     arguments_count.zero? || owner_id == user.id
   end
 
+  alias_method :original_do_not_remove!, :do_not_remove!
+  alias_method :original_remove!, :remove!
+
+  def remove!
+    remove_from_list
+    original_remove!
+  end
+
+  def do_not_remove!
+    move_to_bottom
+    original_do_not_remove!
+  end
+
   private
 
   def store_team_from_owner
