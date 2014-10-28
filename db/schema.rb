@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028130630) do
+ActiveRecord::Schema.define(version: 20141028141948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,10 +227,12 @@ ActiveRecord::Schema.define(version: 20141028130630) do
     t.integer  "arguments_count"
     t.date     "remove_at"
     t.integer  "position"
+    t.integer  "team_id"
   end
 
   add_index "product_groups", ["name"], name: "index_product_groups_on_name", using: :btree
   add_index "product_groups", ["owner_id"], name: "index_product_groups_on_owner_id", using: :btree
+  add_index "product_groups", ["team_id"], name: "index_product_groups_on_team_id", using: :btree
 
   create_table "rpush_apps", force: true do |t|
     t.string   "name",                                null: false

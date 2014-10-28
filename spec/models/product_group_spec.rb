@@ -3,6 +3,19 @@ require 'rails_helper'
 describe ProductGroup do
   subject { product_group }
 
+  describe '#save' do
+    let(:product_group) { build(:product_group) }
+
+    it { expect(product_group.team).to be_nil }
+
+    context 'after perform' do
+      before { product_group.save }
+
+      it { expect(product_group.team).to eq product_group.owner.team }
+      it { expect(product_group.team).to_not be_nil }
+    end
+  end
+
   describe '#removable_by?' do
     let(:perform) { subject.removable_by?(manager) }
 
