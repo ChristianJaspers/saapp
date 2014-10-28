@@ -78,6 +78,34 @@ describe Manager::ProductGroupsController do
 
     let(:call_request) { delete :destroy, id: product_group.id }
 
+    context 'three product group exist' do
+      let!(:product_group_1) { create(:product_group, owner: manager) }
+      let!(:product_group_2) { create(:product_group, owner: manager) }
+      let!(:product_group_3) { create(:product_group, owner: manager) }
+      before { call_request }
+
+      context '1 is removed' do
+        let(:product_group) { product_group_1 }
+
+        it { expect(product_group_2.reload.position).to eq 1 }
+        it { expect(product_group_3.reload.position).to eq 2 }
+      end
+
+      context '2 is removed' do
+        let(:product_group) { product_group_2 }
+
+        it { expect(product_group_1.reload.position).to eq 1 }
+        it { expect(product_group_3.reload.position).to eq 2 }
+      end
+
+      context '3 is removed' do
+        let(:product_group) { product_group_3 }
+
+        it { expect(product_group_1.reload.position).to eq 1 }
+        it { expect(product_group_2.reload.position).to eq 2 }
+      end
+    end
+
     context 'product_group exists' do
       let!(:product_group) { create(:product_group, owner: manager) }
 
@@ -119,6 +147,103 @@ describe Manager::ProductGroupsController do
       let(:product_group) { create(:product_group, owner: other_user) }
 
       its(:product_groups) { is_expected.not_to include product_group }
+    end
+  end
+
+  describe '#sort' do
+    include_context 'manager is logged in'
+    include_context 'user has active subscription' do
+      let(:company_subscription_user) { manager }
+    end
+
+    let(:call_request) { post :sort, id: product_group, position: position }
+
+    context 'three product groups exist' do
+      let!(:product_group_1) { create(:product_group, owner: manager) }
+      let!(:product_group_2) { create(:product_group, owner: manager) }
+      let!(:product_group_3) { create(:product_group, owner: manager) }
+      before { call_request }
+
+      context '1 is moved to the top' do
+        let(:product_group) { product_group_1 }
+        let(:position) { 1 }
+
+        it { expect(product_group_1.reload.position).to eq 1 }
+        it { expect(product_group_2.reload.position).to eq 2 }
+        it { expect(product_group_3.reload.position).to eq 3 }
+      end
+
+      context '2 is moved to the top' do
+        let(:product_group) { product_group_2 }
+        let(:position) { 1 }
+
+        it { expect(product_group_1.reload.position).to eq 2 }
+        it { expect(product_group_2.reload.position).to eq 1 }
+        it { expect(product_group_3.reload.position).to eq 3 }
+      end
+
+      context '3 is moved to the top' do
+        let(:product_group) { product_group_3 }
+        let(:position) { 1 }
+
+        it { expect(product_group_1.reload.position).to eq 2 }
+        it { expect(product_group_2.reload.position).to eq 3 }
+        it { expect(product_group_3.reload.position).to eq 1 }
+      end
+
+      context '1 is moved to the middle' do
+        let(:product_group) { product_group_1 }
+        let(:position) { 2 }
+
+        it { expect(product_group_1.reload.position).to eq 2 }
+        it { expect(product_group_2.reload.position).to eq 1 }
+        it { expect(product_group_3.reload.position).to eq 3 }
+      end
+
+      context '2 is moved to the middle' do
+        let(:product_group) { product_group_2 }
+        let(:position) { 2 }
+
+        it { expect(product_group_1.reload.position).to eq 1 }
+        it { expect(product_group_2.reload.position).to eq 2 }
+        it { expect(product_group_3.reload.position).to eq 3 }
+      end
+
+      context '3 is moved to the middle' do
+        let(:product_group) { product_group_3 }
+        let(:position) { 2 }
+
+        it { expect(product_group_1.reload.position).to eq 1 }
+        it { expect(product_group_2.reload.position).to eq 3 }
+        it { expect(product_group_3.reload.position).to eq 2 }
+      end
+
+      context '1 is moved to the bottom' do
+        let(:product_group) { product_group_1 }
+        let(:position) { 3 }
+
+        it { expect(product_group_1.reload.position).to eq 3 }
+        it { expect(product_group_2.reload.position).to eq 1 }
+        it { expect(product_group_3.reload.position).to eq 2 }
+      end
+
+      context '2 is moved to the bottom' do
+        let(:product_group) { product_group_2 }
+        let(:position) { 3 }
+
+        it { expect(product_group_1.reload.position).to eq 1 }
+        it { expect(product_group_2.reload.position).to eq 3 }
+        it { expect(product_group_3.reload.position).to eq 2 }
+      end
+
+      context '3 is moved to the bottom' do
+        let(:product_group) { product_group_3 }
+        let(:position) { 3 }
+
+        it { expect(product_group_1.reload.position).to eq 1 }
+        it { expect(product_group_2.reload.position).to eq 2 }
+        it { expect(product_group_3.reload.position).to eq 3 }
+      end
     end
   end
 end

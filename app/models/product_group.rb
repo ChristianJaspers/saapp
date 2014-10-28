@@ -34,8 +34,8 @@ class ProductGroup < ActiveRecord::Base
   end
 
   def do_not_remove!
-    move_to_bottom
     original_do_not_remove!
+    move_to_bottom
   end
 
   private
