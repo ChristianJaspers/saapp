@@ -11,6 +11,9 @@ class ProductGroup < ActiveRecord::Base
   validates :team, presence: true
 
   scope :active_only, -> { where(archived_at: nil) }
+  scope :sorted, -> { order(:position) }
+
+  acts_as_list scope: :team
 
   before_validation :store_team_from_owner, on: :create
 

@@ -27,4 +27,20 @@ namespace :upgrades do
     end
     puts 'Done'
   end
+
+  desc 'Reorder product groups positions to behave as "created_at ASC" (implemented at 2014-10-28)'
+  task reorder_product_groups_from_oldest_to_newest: :environment do
+    puts 'Start..'
+    ProductGroup.unscoped.includes(:team).order(:created_at).group_by(& :team_id).each do |team_id, product_groups|
+      puts "Team##{team_id}:"
+      product_groups.each_with_index do |product_group, index|
+        print "  ProductGroup##{product_group.id}, set "
+        position = index + 1
+        print "position = #{position} .."
+        product_group.update_column(:position, position)
+        puts 'OK'
+      end
+    end
+    puts 'Done'
+  end
 end
