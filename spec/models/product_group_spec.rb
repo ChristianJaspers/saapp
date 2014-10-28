@@ -16,6 +16,29 @@ describe ProductGroup do
     end
   end
 
+  describe '#remove!' do
+    let(:perform) { subject.remove! }
+    let(:manager) { create(:manager) }
+    let!(:product_group_1) { create(:product_group, owner: manager) }
+    let!(:product_group_2) { create(:product_group, owner: manager) }
+    let(:product_group) { product_group_1 }
+
+    it { expect{ perform }.to change{ product_group_2.reload.position }.from(2).to(1) }
+    it { expect{ perform }.to change{ product_group.remove_at }.from(nil) }
+  end
+
+  describe '#do_not_remove!' do
+    let(:perform) { subject.do_not_remove! }
+    let(:manager) { create(:manager) }
+    let!(:product_group_1) { create(:product_group, owner: manager, remove_at: Time.now) }
+    let!(:product_group_2) { create(:product_group, owner: manager) }
+    let(:product_group) { product_group_1 }
+
+    it { expect{ perform }.to change{ product_group_1.reload.position }.from(1).to(2) }
+    it { expect{ perform }.to_not change{ product_group_2.reload.position } }
+    it { expect{ perform }.to change{ product_group.remove_at }.to(nil) }
+  end
+
   describe '#removable_by?' do
     let(:perform) { subject.removable_by?(manager) }
 
