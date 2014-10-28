@@ -43,6 +43,7 @@ gem 'httparty', '~> 0.13.1'
 gem 'rpush', '~> 2.0.1'
 gem 'activerecord-database-views', '~> 0.1.1'
 gem 'delayed_job_active_record', '~> 4.0.2'
+gem 'acts_as_list', '~> 0.4.0'
 
 group :development do
   gem 'guard-rails', '~> 0.5.0'
