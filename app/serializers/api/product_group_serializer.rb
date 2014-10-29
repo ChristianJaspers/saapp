@@ -15,14 +15,7 @@ class Api::ProductGroupSerializer < ActiveModel::Serializer
              :position,
              :color_hex
 
-  attr_reader :position
-
-  def initialize(object, options = {})
-    super
-    @position = options[:position]
-  end
-
   def color_hex
-    COLORS.rotate(position-1).first
+    COLORS.rotate(position - 1).first
   end
 end

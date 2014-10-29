@@ -12,7 +12,7 @@ class Api::TeamSerializer < ActiveModel::Serializer
 
   def product_groups
     object.product_groups.active_only.order(:id).map.with_index do |product_group, index|
-      Api::ProductGroupSerializer.new(product_group, root: false, position: index + 1)
+      Api::ProductGroupSerializer.new(product_group, root: false)
     end
   end
 end
