@@ -4,10 +4,20 @@
       %h4= t('manager.product_groups.edit.header', name: product_group.name)
       %label= t('common.name')
       %input.form-control{'ng-model' => 'productGroup.name', type: 'text', autofocus: true}
+
+      %table.table.saapp-table
+        %thead{'ng-if' => '!arguments[0].is_editable'}
+          %th= t('common.feature')
+          %th= t('common.benefit')
+        %tbody
+          %tr{'ng-repeat' => 'argument in arguments'}
+            %td{'ng-hide' => 'argument.is_editable'}
+              {{argument.feature}}
+            %td{'ng-hide' => 'argument.is_editable'}
+              {{argument.benefit}}
+
       %ul.product-groups
         %li{'ng-repeat' => 'argument in arguments'}
-          %span{'ng-hide' => 'argument.is_editable'}
-            {{argument.feature}} - {{argument.benefit}}
           .row{'ng-show' => 'argument.is_editable'}
             .col-sm-5
               %input.form-control{'ng-model' => 'argument.feature', type: 'text'}
