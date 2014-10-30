@@ -1,12 +1,12 @@
 class ProductGroupDecorator < ApplicationDecorator
   def publishing_link
     if object.archived_at
-      icon_link_to 'publish', h.manager_product_group_path(object, product_group: {archive: false}),
-                   title: I18n.t('manager.product_groups.index.table.actions.unarchive_link'),
+      icon_link_to 'unpublish', h.manager_product_group_path(object, product_group: {archive: false}),
+                   title: I18n.t('manager.product_groups.index.table.actions.archive_link'),
                    method: :patch
     else
-      icon_link_to 'unpublish', h.manager_product_group_path(object, product_group: {archive: true}),
-                   title: I18n.t('manager.product_groups.index.table.actions.archive_link'),
+      icon_link_to 'publish', h.manager_product_group_path(object, product_group: {archive: true}),
+                   title: I18n.t('manager.product_groups.index.table.actions.unarchive_link'),
                    method: :patch
     end
   end
