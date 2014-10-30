@@ -12,5 +12,8 @@
         - arguments.each do |argument|
           %tr
             %td= argument.feature
-            %td= argument.benefit
+            %td
+              =argument.benefit
+              .timestamp
+                //TODO bart add timestamp info here
             %td= number_with_precision(argument.cached_rating, precision: 1)
