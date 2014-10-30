@@ -6,7 +6,7 @@
       %input.form-control{'ng-model' => 'productGroup.name', type: 'text', autofocus: true}
 
       %table.table.saapp-table
-        %thead{'ng-if' => '!arguments[0].is_editable'}
+        %thead.arguments-readonly{'ng-if' => '!arguments[0].is_editable'}
           %th= t('common.feature')
           %th= t('common.benefit')
         %tbody
