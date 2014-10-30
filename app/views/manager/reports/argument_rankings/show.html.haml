@@ -3,8 +3,9 @@
     %h4
       = link_to '', manager_reports_root_path, title: t('common.back'), class: 'icon-back'
       = t('manager.reports.argument_ranking.header')
-      = t('manager.reports.argument_ranking.show_timestamp')
-      = check_box_tag :show_timestamp
+      .timestamp-toggle
+        = check_box_tag :show_timestamp
+        = t('manager.reports.argument_ranking.show_timestamp')
     %table.table.saapp-table-arguments
       %thead
         %th= t('common.feature')
