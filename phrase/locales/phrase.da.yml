@@ -128,6 +128,9 @@ da:
       not_saved:
         one: '1 fejl forhindrede at %{resource} blev gemt:'
         other: "%{count} fejl forhindrede at %{resource} blev gemt:"
+  footer:
+    support: Support
+    support_link: support@bettersalesman.com
   helpers:
     submit:
       product_group:
@@ -137,7 +140,7 @@ da:
       wizard:
         create: Prøv 30 dage gratis!
   landing:
-    free_30: Prøv 30 dage gratis
+    free_30: Kom i gang
     header: Sælg mere, hurtigere og bedre med de bedste salgsargumenter lige ved hånden
     selling_points:
       easy_setup: Læg produkt grupper og argumenter ind og få sælgerne i gang på få
@@ -234,7 +237,7 @@ da:
           display_name: Vist navn
     placeholders:
       wizard:
-        email: Din firma email
+        email: Din email
   subscriptions:
     subscription_expired_or_invalid: Dit abonnement er udløbet eller ugyldigt
     trial_subscription_will_expire_within_week: 'Din prøveadgang udløber om 7 dage.

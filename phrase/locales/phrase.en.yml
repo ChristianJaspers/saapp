@@ -194,6 +194,7 @@ en:
     reports:
       argument_ranking:
         header: Argument ranking
+        show_timestamp: Show timestamp
       user_activity:
         header: User activity
     tabs:
@@ -237,7 +238,7 @@ en:
           display_name: Display name
     placeholders:
       wizard:
-        email: Your company email
+        email: Your email
   subscriptions:
     subscription_expired_or_invalid: Your subscription has expired or is invalid
     trial_subscription_will_expire_within_week: Your trial version will expire within

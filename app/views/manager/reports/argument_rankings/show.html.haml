@@ -3,6 +3,8 @@
     %h4
       = link_to '', manager_reports_root_path, title: t('common.back'), class: 'icon-back'
       = t('manager.reports.argument_ranking.header')
+      = t('manager.reports.argument_ranking.show_timestamp')
+      = check_box_tag :show_timestamp
     %table.table.saapp-table-arguments
       %thead
         %th= t('common.feature')
@@ -13,7 +15,15 @@
           %tr
             %td= argument.feature
             %td
-              =argument.benefit
-              .timestamp
-                //TODO bart add timestamp info here
-            %td= number_with_precision(argument.cached_rating, precision: 1)
+              = argument.benefit
+              .timestamp{style: 'display:none;'}
+                = argument.owner_with_timestamp
+
+            %td= argument.formatted_rating
+
+:javascript
+  $(function() {
+    $('#show_timestamp').change(function() {
+      $('.timestamp').toggle();
+    });
+  });
