@@ -18,6 +18,9 @@ editProductGroupApp.controller('editProductGroupCtrl', ['$scope', 'ProductGroups
   )
   $scope.argumentsToRemoveIds = []
   $scope.argument = {}
+  $scope.hideHeaders = ->
+    if $scope.arguments
+      $scope.arguments[0].is_editable || $scope.arguments.length is 0
 
   $scope.removeArgument = (argument) ->
     argumentIndex = $scope.arguments.indexOf(argument)
