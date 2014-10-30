@@ -30,7 +30,7 @@ class Manager::ProductGroupsController < Manager::ManagerController
         end
       end
       format.html do
-        if product_group.save
+        if Manager::UpdateProductGroupPublishStatus.call(self).success?
           redirect_to :back, notice: t('manager.product_groups.update.notifications.success')
         else
           redirect_to :back, error: t('manager.product_groups.update.notifications.failure')
