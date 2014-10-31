@@ -4,23 +4,27 @@ class AllArgumentsPerUser < ActiveRecord::Base
   scope :grouped_by_rater, -> { group(:rater_id).select('rater_id, SUM(CASE WHEN is_rated IS TRUE THEN 0 ELSE 1 END) AS unrated_arguments_count') }
 
   def self.send_to_user(user)
-    PushNotifications::Sender.new(
-      map_to_unrated_arguments(
-        AllArgumentsPerUser.for_user(user).grouped_by_rater.all
-      )
-    ).send
+    PushNotifications::Sender.new(map_to_unrated_arguments_for_user(user)).send
   end
 
   def self.send_to_team(team)
-    PushNotifications::Sender.new(
-      map_to_unrated_arguments(
-        AllArgumentsPerUser.for_team(team).grouped_by_rater.all
-      )
-    ).send
+    PushNotifications::Sender.new(map_to_unrated_arguments_for_team(team)).send
   end
 
   def unrated_arguments_count
     self[:unrated_arguments_count] || 0
+  end
+
+  def self.map_to_unrated_arguments_for_user(user)
+    map_to_unrated_arguments(
+      AllArgumentsPerUser.for_user(user).grouped_by_rater.all
+    )
+  end
+
+  def self.map_to_unrated_arguments_for_team(team)
+    map_to_unrated_arguments(
+      AllArgumentsPerUser.for_team(team).grouped_by_rater.all
+    )
   end
 
   private

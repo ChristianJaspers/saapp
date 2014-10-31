@@ -121,4 +121,50 @@ describe AllArgumentsPerUser do
       it_behaves_like 'push notification sender initialized with data'
     end
   end
+
+  describe '.map_to_unrated_arguments_for_user' do
+    let(:perform) { described_class.map_to_unrated_arguments_for_user(user_1) }
+    let!(:user_1) { create(:user, team: team) }
+    let!(:user_2) { create(:user, team: team) }
+
+    it do
+      expect(perform).to eq({
+        user_1.id => 2
+      })
+    end
+
+    context 'product group is not published' do
+      before { argument_2.product_group.update_attribute(:archived_at, Time.now) }
+
+      it do
+        expect(perform).to eq({
+          user_1.id => 1
+        })
+      end
+    end
+  end
+
+  describe '.map_to_unrated_arguments_for_team' do
+    let(:perform) { described_class.map_to_unrated_arguments_for_team(team) }
+    let!(:user_1) { create(:user, team: team) }
+    let!(:user_2) { create(:user, team: team) }
+
+    it do
+      expect(perform).to eq({
+        user_1.id => 2,
+        user_2.id => 2,
+      })
+    end
+
+    context 'product group is not published' do
+      before { argument_2.product_group.update_attribute(:archived_at, Time.now) }
+
+      it do
+        expect(perform).to eq({
+          user_1.id => 1,
+          user_2.id => 1,
+        })
+      end
+    end
+  end
 end
