@@ -8,7 +8,7 @@
         = t('manager.reports.argument_ranking.show_timestamp')
 
     - arguments.group_by(&:product_group_id).each do |_, arguments|
-      %h5= arguments.first.product_group_name
+      %h4= arguments.first.product_group_name
 
       %table.table.saapp-table-arguments
         %thead
