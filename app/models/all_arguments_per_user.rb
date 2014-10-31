@@ -1,7 +1,7 @@
 class AllArgumentsPerUser < ActiveRecord::Base
   scope :for_user, -> (user) { where(rater_id: user.id) }
   scope :for_team, -> (team) { where(team_id: team.id) }
-  scope :grouped_by_rater, -> { group(:rater_id).select('rater_id, SUM(CASE WHEN is_rated IS TRUE THEN 0 ELSE 1 END) AS unrated_arguments_count') }
+  scope :grouped_by_rater, -> { group(:rater_id).select('rater_id, SUM(CASE WHEN is_rated IS FALSE AND archived IS FALSE THEN 1 ELSE 0 END) AS unrated_arguments_count') }
 
   def self.send_to_user(user)
     PushNotifications::Sender.new(map_to_unrated_arguments_for_user(user)).send

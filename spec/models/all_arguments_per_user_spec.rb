@@ -120,6 +120,23 @@ describe AllArgumentsPerUser do
       end
       it_behaves_like 'push notification sender initialized with data'
     end
+
+    context 'all is rated' do
+      before do
+        create(:argument_rating, argument: argument_1, rater: user_1)
+        create(:argument_rating, argument: argument_2, rater: user_1)
+        create(:argument_rating, argument: argument_1, rater: user_2)
+        create(:argument_rating, argument: argument_2, rater: user_2)
+      end
+
+      let(:expected_params) do
+        {
+          user_1.id => 0,
+          user_2.id => 0
+        }
+      end
+      it_behaves_like 'push notification sender initialized with data'
+    end
   end
 
   describe '.map_to_unrated_arguments_for_user' do
