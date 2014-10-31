@@ -6,21 +6,25 @@
       .timestamp-toggle
         = check_box_tag :show_timestamp
         = t('manager.reports.argument_ranking.show_timestamp')
-    %table.table.saapp-table-arguments
-      %thead
-        %th= t('common.feature')
-        %th= t('common.benefit')
-        %th= t('common.rating')
-      %tbody
-        - arguments.each do |argument|
-          %tr
-            %td= argument.feature
-            %td
-              = argument.benefit
-              .timestamp{style: 'display:none;'}
-                = argument.owner_with_timestamp
 
-            %td= argument.formatted_rating
+    - arguments.group_by(&:product_group_id).each do |_, arguments|
+      %h5= arguments.first.product_group_name
+
+      %table.table.saapp-table-arguments
+        %thead
+          %th= t('common.feature')
+          %th= t('common.benefit')
+          %th= t('common.rating')
+        %tbody
+          - arguments.each do |argument|
+            %tr
+              %td= argument.feature
+              %td
+                = argument.benefit
+                .timestamp{style: 'display:none;'}
+                  = argument.owner_with_timestamp
+
+              %td= argument.formatted_rating
 
 :javascript
   $(function() {

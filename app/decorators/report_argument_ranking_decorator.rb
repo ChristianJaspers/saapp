@@ -1,4 +1,12 @@
 class ReportArgumentRankingDecorator < ApplicationDecorator
+  def product_group_id
+    model.product_group_id
+  end
+
+  def product_group_name
+    model.product_group.name
+  end
+
   def feature
     model.feature
   end
