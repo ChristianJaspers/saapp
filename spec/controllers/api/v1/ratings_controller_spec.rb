@@ -4,6 +4,9 @@ shared_examples 'rated argument by user' do
   it do
     expect(response.body).to be_json_eql <<-EOS
       {
+        "device_meta_data": {
+          "badge": #{expected_values[:badge]}
+        },
         "user": {
           "id": #{current_user.id},
           "email": "batman@cave.com",
@@ -54,11 +57,11 @@ describe Api::V1::RatingsController do
         let(:id) { argument.id }
         before do
           allow(AllArgumentsPerUser).to receive(:send_to_user)
+          allow_any_instance_of(User).to receive(:unrated_arguments_badge_number).and_return(expected_values[:badge])
           call_request
         end
 
         context 'user rates 1' do
-
           let(:params) { {rating: 1} }
           let(:expected_values) do
             {
@@ -67,7 +70,8 @@ describe Api::V1::RatingsController do
               my_team_activity: 77,
               all_teams_activity: 100,
               rating: 1.0,
-              my_rating: 1
+              my_rating: 1,
+              badge: 0
             }
           end
 
@@ -84,7 +88,8 @@ describe Api::V1::RatingsController do
               my_team_activity: 72,
               all_teams_activity: 100,
               rating: 2.0,
-              my_rating: 2
+              my_rating: 2,
+              badge: 1
             }
           end
 
@@ -100,7 +105,8 @@ describe Api::V1::RatingsController do
               my_team_activity: 69,
               all_teams_activity: 100,
               rating: 3.0,
-              my_rating: 3
+              my_rating: 3,
+              badge: 2
             }
           end
 

@@ -45,6 +45,26 @@ describe User do
     end
   end
 
+  describe '#unrated_arguments_badge_number' do
+    let(:manager) { create(:user, :manager) }
+    let(:user) { create(:user, email: 'user@test.com', team: manager.team) }
+    let(:perform) { user.unrated_arguments_badge_number }
+
+    context 'has no arguments to rate' do
+      it { expect(perform).to eq 0 }
+    end
+
+    context 'has 1 argument to rate' do
+      before { create(:argument, owner: manager) }
+      it { expect(perform).to eq 1 }
+    end
+
+    context 'has 2 arguments to rate' do
+      before { create_list(:argument, 2, owner: manager) }
+      it { expect(perform).to eq 2 }
+    end
+  end
+
   describe '#manager' do
     subject { user }
 
