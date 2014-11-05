@@ -51,7 +51,7 @@ class Company < ActiveRecord::Base
   private
 
   def first_manager
-    @first_manager ||= users.managers.first
+    @first_manager ||= users.managers.order(:id).first
   end
 
   def payment_url
