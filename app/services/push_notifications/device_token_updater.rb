@@ -11,6 +11,7 @@ class PushNotifications::DeviceTokenUpdater
       api_token = user.api_token
       user.update_column(:locale, locale)
       if api_token
+        remove_duplicated_tokens(api_token, notification_token)
         api_token.update_columns(
           notification_token: notification_token,
           platform: platform
@@ -21,6 +22,10 @@ class PushNotifications::DeviceTokenUpdater
   end
 
   private
+
+  def remove_duplicated_tokens(api_token, notification_token)
+    ApiToken.where('id != ? AND notification_token = ?', api_token.id, notification_token).update_all(notification_token: nil)
+  end
 
   def device_info
     @device_info ||= params.fetch(:device_info, {})
