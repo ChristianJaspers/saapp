@@ -7,6 +7,7 @@
       position: top
       repeat: no-repeat
       size: contain
+    margin-bottom: $m * 3
     width: 100%
 
   .sales-manager,
@@ -24,7 +25,7 @@
 
   .sales-reps
     color: $color-green
-    margin-bottom: -$m * 1.5
+    margin-bottom: -$m-double
 
   @media (min-width: $screen-sm)
     &
@@ -59,7 +60,7 @@
 
     .sales-manager
       height: 200px
-      margin: 140px 0 0 63%
+      margin: 130px 0 0 63%
 
     .sales-reps
       margin-top: 160px
@@ -75,8 +76,30 @@
       font-size: $font-size-big
 
     .sales-manager
-      margin: 110px 0 0 61%
+      margin: 110px 0 0 60%
 
     .sales-reps
       margin-top: 150px
       width: 32%
+
+html[lang="da"]
+  @media (min-width: $screen-sm)
+    .sales-manager
+      margin-top: 100px
+      width: 140px
+
+  @media (min-width: $screen-md)
+    .sales-manager
+      margin-top: 120px
+
+  @media (min-width: $screen-lg)
+    .sales-manager
+      margin-top: 100px
+      width: 190px
+
+    .sales-reps
+      margin-top: 160px
+
+    .sales-manager,
+    .sales-reps
+      font-size: 32px
