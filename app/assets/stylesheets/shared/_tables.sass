@@ -57,10 +57,18 @@
   @extend %saapp-table
   table-layout: fixed
 
+  .icon-drag
+    cursor: pointer
+    cursor: -webkit-grab
+
+    &:active
+      cursor: -webkit-grabbing
+
   th, td
     width: 40%
 
     &:first-child
+      text-align: center
       width: 50px
 
     &:last-child
