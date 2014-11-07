@@ -5,7 +5,16 @@ ActiveAdmin.register Subscription do
     selectable_column
     id_column
     column :reference
-    column :company
+    column 'Managers' do |subscription|
+      html = ''
+      subscription.company.users.managers.order(:id).each do |manager|
+        html += manager.display_name.present? ? "#{manager.email} (#{manager.display_name})" : manager.email
+      end
+      html
+    end
+    column 'Company' do |subscription|
+      "##{subscription.company_id}"
+    end
     column :referrer
     column :quantity
     column :status

@@ -61,5 +61,9 @@ describe Manager::CreateUser do
         it { expect(User.user.last.locale).to eq 'da' }
       end
     end
+
+    context 'multiple users' do
+      pending
+    end
   end
 end
