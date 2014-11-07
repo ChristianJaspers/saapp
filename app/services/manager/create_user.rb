@@ -12,7 +12,11 @@ class Manager::CreateUser < BusinessProcess::Base
   private
 
   def assign_user_to_process
-    self.users_to_process = [user]
+    if user.email.to_s.include?(',')
+      self.users_to_process = extract_emails_to_user(user.email)
+    else
+      self.users_to_process = [user]
+    end
   end
 
   def create_or_restore_user
@@ -49,6 +53,17 @@ class Manager::CreateUser < BusinessProcess::Base
 
   def send_invitation
     ApplicationMailer.user_invitation(*successfuly_processed)
+  end
+
+  def extract_emails_to_user(concatenated_emails)
+    concatenated_emails.split(',').map do |raw_email|
+      email = raw_email.strip
+      new_user = User.new(email: email)
+      new_user.team = user.team
+      new_user.invitation_message = user.invitation_message
+      new_user.display_name = new_user.email
+      new_user
+    end
   end
 
   attr_accessor :users_to_process, :successfuly_processed
