@@ -15,7 +15,7 @@ ActiveAdmin.register Subscription do
     column 'Company' do |subscription|
       "##{subscription.company_id}"
     end
-    column :referrer
+    column :referrer_id
     column :quantity
     column :status
     column :ends_at
@@ -39,8 +39,8 @@ ActiveAdmin.register Subscription do
   end
 
   controller do
-    def update
-      updater = Admin::SubscriptionUpdater.new(resource, params)
+    def updater
+      update = Admin::SubscriptionUpdater.new(resource, params)
       updater.save
       redirect_to action: :edit
     end

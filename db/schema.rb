@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028141948) do
+ActiveRecord::Schema.define(version: 20141107154301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 20141028141948) do
 
   add_index "arguments", ["owner_id"], name: "index_arguments_on_owner_id", using: :btree
   add_index "arguments", ["product_group_id"], name: "index_arguments_on_product_group_id", using: :btree
+
+  create_table "autologins", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "token",      null: false
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "autologins", ["expires_at"], name: "index_autologins_on_expires_at", using: :btree
+  add_index "autologins", ["token"], name: "index_autologins_on_token", unique: true, using: :btree
+  add_index "autologins", ["user_id"], name: "index_autologins_on_user_id", using: :btree
 
   create_table "comfy_cms_blocks", force: true do |t|
     t.string   "identifier",     null: false

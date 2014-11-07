@@ -11,7 +11,22 @@ ActiveAdmin.register User do
     column :sign_in_count
     column :created_at
     column :remove_at
+    column 'Autologin' do |user|
+      if user.manager?
+        link_to 'Login to user account', autologin_admin_user_path(user), method: :post
+      end
+    end
     actions
+  end
+
+  member_action :autologin, method: :post do
+    token = Admin::Autologin.new(resource).perform
+
+    if token
+      redirect_to autologin_path(token)
+    else
+      redirect_to({action: :inedx}, {:notice => "Can not autologin"})
+    end
   end
 
   filter :email

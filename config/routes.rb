@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     resources :wizards, only: [:new, :create]
 
+    get 'autologin/:id' => 'autologins#login', as: :autologin
 
     namespace :manager do
       root 'profiles#edit'
