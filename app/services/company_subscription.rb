@@ -27,7 +27,7 @@ class CompanySubscription
   end
 
   def display_reminder?
-    active_subscription && active_subscription.trial? && active_subscription.ends_within_week?
+    active_subscription && active_subscription.trial? && (active_subscription.ends_within_week? || active_subscription.expired?)
   end
 
   def link_negotiator

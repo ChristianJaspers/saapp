@@ -57,6 +57,10 @@ class Subscription < ActiveRecord::Base
     end
   end
 
+  def expired?
+    !does_not_end_yet?
+  end
+
   private
 
   def payment_url

@@ -155,6 +155,21 @@ describe Subscription do
     end
   end
 
+  describe '#expired?' do
+    let(:subscription) { create(:subscription, reference: 'trial') }
+    let(:perform) { subscription.expired? }
+
+    context 'subscription is expired' do
+      before { allow(subscription).to receive(:does_not_end_yet?).and_return(true) }
+      it { expect(perform).to be_falsey }
+    end
+
+    context 'subscription is not expired' do
+      before { allow(subscription).to receive(:does_not_end_yet?).and_return(false) }
+      it { expect(perform).to be_truthy }
+    end
+  end
+
   describe '#trial?' do
     let(:perform) { create(:subscription, reference: 'trial').trial? }
 

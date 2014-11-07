@@ -110,12 +110,25 @@ describe CompanySubscription do
         end
 
         context 'valid subscription' do
-          before do
-            allow(subscription).to receive(:trial?).and_return(true)
-            allow(subscription).to receive(:ends_within_week?).and_return(true)
+          before { allow(subscription).to receive(:trial?).and_return(true) }
+
+          context 'ends within week' do
+            before do
+              allow(subscription).to receive(:ends_within_week?).and_return(true)
+              allow(subscription).to receive(:expired?).and_return(false)
+            end
+
+            it { expect(perform).to be_truthy }
           end
 
-          it { expect(perform).to be_truthy }
+          context 'expired' do
+            before do
+              allow(subscription).to receive(:ends_within_week?).and_return(false)
+              allow(subscription).to receive(:expired?).and_return(true)
+            end
+
+            it { expect(perform).to be_truthy }
+          end
         end
       end
     end
