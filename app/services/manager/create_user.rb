@@ -4,7 +4,7 @@ class Manager::CreateUser < BusinessProcess::Base
 
   def call
     assign_user_to_process and
-    create_or_restore_user and
+      create_or_restore_user and
       update_remote_subscription and
       send_invitation
   end
@@ -12,36 +12,44 @@ class Manager::CreateUser < BusinessProcess::Base
   private
 
   def assign_user_to_process
-    self.user_to_process = user
+    self.users_to_process = [user]
   end
 
   def create_or_restore_user
-    restore_user = Manager::RestoreUser.new(user_to_process.email, current_user)
+    self.successfuly_processed = []
 
-    if restore_user.find_user_to_restore_by_email
-      if restore_user.call
-        self.user_to_process = restore_user.restoree
+    results = users_to_process.map do |user_to_process|
+      restore_user = Manager::RestoreUser.new(user_to_process.email, current_user)
+
+      if restore_user.find_user_to_restore_by_email
+        if restore_user.call
+          successfuly_processed << restore_user.restoree
+        else
+          nil
+        end
       else
-        nil
+        if create_user(user_to_process)
+          successfuly_processed << user_to_process
+        end
       end
-    else
-      create_user
     end
+
+    successfuly_processed.present?
   end
 
-  def create_user
+  def create_user(user_to_process)
     user_to_process.locale = current_user.locale
     user_to_process.skip_confirmation_notification!
     user_to_process.save
   end
 
   def update_remote_subscription
-    SubscriptionUpdater.call(user: user_to_process).success?
+    SubscriptionUpdater.call(user: current_user).success?
   end
 
   def send_invitation
-    ApplicationMailer.user_invitation(user_to_process)
+    ApplicationMailer.user_invitation(*successfuly_processed)
   end
 
-  attr_accessor :user_to_process
+  attr_accessor :users_to_process, :successfuly_processed
 end

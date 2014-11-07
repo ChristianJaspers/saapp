@@ -22,7 +22,7 @@ describe Manager::CreateUser do
       it { expect(ApplicationMailer).to have_received(:user_invitation).with(User.user.last) }
       it { expect(user.reload.instance_variable_get('@skip_confirmation_notification')).to be_truthy }
       it { expect(User).to exist.with(email: email) }
-      it { expect(SubscriptionUpdater).to have_received(:call).with(user: user).once }
+      it { expect(SubscriptionUpdater).to have_received(:call).with(user: current_user).once }
     end
 
     context 'user is removed' do
@@ -36,7 +36,7 @@ describe Manager::CreateUser do
 
         it { expect(ApplicationMailer).to have_received(:user_invitation).with(deleted_user) }
         it { expect(User).to exist.with(email: email) }
-        it { expect(SubscriptionUpdater).to have_received(:call).with(user: deleted_user).once }
+        it { expect(SubscriptionUpdater).to have_received(:call).with(user: current_user).once }
       end
     end
 
