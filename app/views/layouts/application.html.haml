@@ -84,6 +84,8 @@
         = content_tag :div, :class => "alert alert-#{ flash_message_color(name) } alert-dismissable fade in" do
           %button.close{type: 'button', data:{dismiss: 'alert'}, aria: {hidden: 'true'} } &times;
           = msg
+          - if company_subscription.display_reminder? && name == 'warning'
+            = link_to t('subscriptions.trial_subscription_will_expire_go_to_billing_page'), company_subscription.link_negotiator.link
       = yield(:top) if content_for?(:top)
       = yield
 
