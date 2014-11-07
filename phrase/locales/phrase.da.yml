@@ -194,6 +194,7 @@ da:
     reports:
       argument_ranking:
         header: Argument hitliste
+        show_timestamp: Vis forfatter
       user_activity:
         header: Brugeraktivitet
     tabs:

@@ -22,6 +22,15 @@ class ReportArgumentRankingDecorator < ApplicationDecorator
     ].compact.join(', ')
   end
 
+  def link_to_destroy
+    h.link_to '', h.manager_argument_path(model),
+      class: 'btn-icon icon-trash',
+      method: :delete,
+      data: {
+        confirm: I18n.t('manager.product_groups.index.table.actions.destroy_confirmation')
+      }
+  end
+
   def formatted_rating
     h.number_with_precision(model.cached_rating, precision: 1)
   end

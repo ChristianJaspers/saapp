@@ -9,12 +9,15 @@
         %thead.arguments-readonly{'ng-hide' => 'hideHeaders()'}
           %th= t('common.feature')
           %th= t('common.benefit')
+          %th
         %tbody
           %tr{'ng-repeat' => 'argument in arguments'}
             %td{'ng-hide' => 'argument.is_editable'}
               {{argument.feature}}
             %td{'ng-hide' => 'argument.is_editable'}
               {{argument.benefit}}
+            %td{'ng-hide' => 'argument.is_editable'}
+              %a.btn-icon.icon-trash{'ng-click' => 'removeArgument(argument)'}
 
       %ul.product-groups
         %li{'ng-repeat' => 'argument in arguments'}

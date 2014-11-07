@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       resources :product_groups, only: [:index, :show, :create, :edit, :update, :destroy] do
         post :sort, on: :member
       end
+      resources :arguments, only: [:destroy]
       resources :users, only: [:index, :create, :edit, :update, :destroy]
       namespace :reports do
         root 'dashboard#show'

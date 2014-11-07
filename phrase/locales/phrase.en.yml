@@ -155,6 +155,11 @@ en:
         make customers buy
     testimonials_header: Testimonials
   manager:
+    arguments:
+      destroy:
+        notifications:
+          failure: Argument has not been destroyed
+          success: Argument has been destroyed
     dashboard:
       show:
         links:
@@ -194,7 +199,7 @@ en:
     reports:
       argument_ranking:
         header: Argument ranking
-        show_timestamp: Show timestamp
+        show_timestamp: Show author
       user_activity:
         header: User activity
     tabs:
