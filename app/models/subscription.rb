@@ -57,6 +57,14 @@ class Subscription < ActiveRecord::Base
     end
   end
 
+  def days_until_expires
+    if ends_at.present?
+      diff = (ends_at - Time.now) / (24 * 3_600)
+      sign = diff < 0 ? -1 : 1
+      diff.abs.ceil * sign
+    end
+  end
+
   def expired?
     !does_not_end_yet?
   end

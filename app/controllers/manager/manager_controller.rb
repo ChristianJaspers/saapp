@@ -24,6 +24,6 @@ class Manager::ManagerController < ApplicationController
   end
 
   def set_warning_about_possible_subscription_expiration
-    flash[:warning] = I18n.t('subscriptions.trial_subscription_will_expire_within_week') if company_subscription.display_reminder?
+    flash[:warning] = company_subscription.warning_message_for_display_reminder if company_subscription.display_reminder?
   end
 end

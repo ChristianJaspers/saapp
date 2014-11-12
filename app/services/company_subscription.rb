@@ -30,6 +30,16 @@ class CompanySubscription
     active_subscription && active_subscription.trial? && (active_subscription.ends_within_week? || active_subscription.expired?)
   end
 
+  def warning_message_for_display_reminder
+    if display_reminder? && active_subscription
+      if active_subscription.expired?
+        I18n.t('subscriptions.trial_subscription_expired')
+      else
+        I18n.t('subscriptions.trial_subscription_will_expire_within_week', days: active_subscription.days_until_expires)
+      end
+    end
+  end
+
   def link_negotiator
     @link_negotiator ||= Saasy::BillingLinkNegotiator.new(self)
   end

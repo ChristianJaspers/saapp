@@ -169,6 +169,65 @@ describe Subscription do
     end
   end
 
+  describe '#days_until_expires' do
+    let(:perform) { subscription.days_until_expires }
+    let(:subscription) { create(:subscription) }
+    before { travel_to Time.now }
+    after { travel_back }
+
+    context 'ends at is empty' do
+      before { subscription.update_columns(ends_at: nil) }
+      it { expect(perform).to be_nil }
+    end
+
+    context 'ends at is not empty' do
+      context '8 days until ends' do
+        before { subscription.update_columns(ends_at: Time.now + 8.days) }
+        it { expect(perform).to eq 8 }
+      end
+
+      context '4 days until ends' do
+        before { subscription.update_columns(ends_at: Time.now + 4.days) }
+        it { expect(perform).to eq 4 }
+      end
+
+      context '36 hours until ends' do
+        before { subscription.update_columns(ends_at: Time.now + 36.hours) }
+        it { expect(perform).to eq 2 }
+      end
+
+      context '1 day until ends' do
+        before { subscription.update_columns(ends_at: Time.now + 1.day) }
+        it { expect(perform).to eq 1 }
+      end
+
+      context '1 hour until ends' do
+        before { subscription.update_columns(ends_at: Time.now + 1.hour) }
+        it { expect(perform).to eq 1 }
+      end
+
+      context 'expired 1 hours' do
+        before { subscription.update_columns(ends_at: Time.now - 1.hour) }
+        it { expect(perform).to eq -1 }
+      end
+
+      context 'expired 1 day' do
+        before { subscription.update_columns(ends_at: Time.now - 1.day) }
+        it { expect(perform).to eq -1 }
+      end
+
+      context 'expired 36 hours' do
+        before { subscription.update_columns(ends_at: Time.now - 36.hours) }
+        it { expect(perform).to eq -2 }
+      end
+
+      context 'expired 2 days' do
+        before { subscription.update_columns(ends_at: Time.now - 2.days) }
+        it { expect(perform).to eq -2 }
+      end
+    end
+  end
+
   describe '#expired?' do
     let(:subscription) { create(:subscription, reference: 'trial') }
     let(:perform) { subscription.expired? }

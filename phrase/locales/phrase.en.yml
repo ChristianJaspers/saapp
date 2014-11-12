@@ -246,9 +246,10 @@ en:
         email: Your email
   subscriptions:
     subscription_expired_or_invalid: Your subscription has expired or is invalid
+    trial_subscription_expired: Trial subscription expired.
     trial_subscription_will_expire_go_to_billing_page: Go to billing page.
     trial_subscription_will_expire_within_week: Your trial version will expire within
-      7 days. Please start a subscription to continue using system.
+      %{days} day(s). Please start a subscription to continue using system.
   wizard:
     create:
       errors:

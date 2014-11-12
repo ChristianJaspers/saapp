@@ -241,8 +241,8 @@ da:
         email: Din email
   subscriptions:
     subscription_expired_or_invalid: Dit abonnement er udløbet eller ugyldigt
-    trial_subscription_will_expire_within_week: 'Din prøveadgang udløber om 7 dage.
-      Køb et abonnement for at fortsætte med at bruge systemet. '
+    trial_subscription_will_expire_within_week: 'Din prøveadgang udløber om %{days}
+      dage. Køb et abonnement for at fortsætte med at bruge systemet. '
   wizard:
     create:
       errors:
