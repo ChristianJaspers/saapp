@@ -2,10 +2,6 @@ module Model
   module DelayedDestroy
     extend ActiveSupport::Concern
 
-    included do
-      default_scope -> { where(remove_at: nil) }
-    end
-
     def remove!
       remove_at!(Date.today + lifetime_before_is_removed)
     end

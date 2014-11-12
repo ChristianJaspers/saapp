@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Gamification::Beneficiary
   include Model::DelayedDestroy
 
+  default_scope -> { where(remove_at: nil) }
+
   attr_accessor :invitation_message
 
   enum role: {

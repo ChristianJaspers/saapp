@@ -7,8 +7,8 @@ ActiveAdmin.register Subscription do
     column :reference
     column 'Managers' do |subscription|
       html = ''
-      if subscription.company_with_deleted
-        subscription.company_with_deleted.users.managers.order(:id).each do |manager|
+      if subscription.company
+        subscription.company.users.managers.order(:id).each do |manager|
           html += manager.display_name.present? ? "#{manager.email} (#{manager.display_name})" : manager.email
         end
       else

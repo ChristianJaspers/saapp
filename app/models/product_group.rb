@@ -1,6 +1,8 @@
 class ProductGroup < ActiveRecord::Base
   include Model::DelayedDestroy
 
+  default_scope -> { where(remove_at: nil) }
+
   belongs_to :owner, class_name: User, inverse_of: :product_groups
   belongs_to :team
   has_many :arguments, inverse_of: :product_group, dependent: :destroy

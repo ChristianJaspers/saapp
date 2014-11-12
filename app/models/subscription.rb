@@ -30,10 +30,6 @@ class Subscription < ActiveRecord::Base
     reference == 'trial'
   end
 
-  def company_with_deleted
-    @company_with_deleted ||= Company.unscoped.find_by_id(company_id) if company_id.present?
-  end
-
   def active?
     status == 'active' && does_not_end_yet?
   end
