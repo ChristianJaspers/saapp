@@ -155,6 +155,34 @@ describe Subscription do
     end
   end
 
+  describe '#company' do
+    let(:perform) { subscription.reload.company }
+    let(:subscription) { create(:subscription) }
+
+    context 'company is marked as removed' do
+      before { Company.where(id: subscription.company_id).update_all(remove_at: Time.now) }
+      it { expect(perform).to be_nil }
+    end
+
+    context 'company is not marked as removed' do
+      it { expect(perform).to_not be_nil }
+    end
+  end
+
+  describe '#company_with_deleted' do
+    let(:perform) { subscription.company_with_deleted }
+    let(:subscription) { create(:subscription) }
+
+    context 'company is marked as removed' do
+      before { Company.where(id: subscription.company_id).update_all(remove_at: Time.now) }
+      it { expect(perform).to_not be_nil }
+    end
+
+    context 'company is not marked as removed' do
+      it { expect(perform).to_not be_nil }
+    end
+  end
+
   describe '#expired?' do
     let(:subscription) { create(:subscription, reference: 'trial') }
     let(:perform) { subscription.expired? }

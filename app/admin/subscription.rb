@@ -7,8 +7,12 @@ ActiveAdmin.register Subscription do
     column :reference
     column 'Managers' do |subscription|
       html = ''
-      subscription.company.users.managers.order(:id).each do |manager|
-        html += manager.display_name.present? ? "#{manager.email} (#{manager.display_name})" : manager.email
+      if subscription.company_with_deleted
+        subscription.company_with_deleted.users.managers.order(:id).each do |manager|
+          html += manager.display_name.present? ? "#{manager.email} (#{manager.display_name})" : manager.email
+        end
+      else
+        html += 'Deleted'
       end
       html
     end
@@ -25,8 +29,8 @@ ActiveAdmin.register Subscription do
     column :send_reminder_at
     column do |subscription|
       html = ''.html_safe
-      html += link_to('View', admin_subscription_path(subscription), class: 'member_link view_link')
-      html += link_to('Edit', edit_admin_subscription_path(subscription), class: 'member_link edit_link') if subscription.trial?
+      html += link_to(I18n.t('active_admin.view'), admin_subscription_path(subscription), class: 'member_link view_link')
+      html += link_to(I18n.t('active_admin.edit'), edit_admin_subscription_path(subscription), class: 'member_link edit_link') if subscription.trial?
       html
     end
   end
