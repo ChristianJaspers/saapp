@@ -43,8 +43,8 @@ ActiveAdmin.register Subscription do
   end
 
   controller do
-    def updater
-      update = Admin::SubscriptionUpdater.new(resource, params)
+    def update
+      updater = Admin::SubscriptionUpdater.new(resource, params)
       updater.save
       redirect_to action: :edit
     end
