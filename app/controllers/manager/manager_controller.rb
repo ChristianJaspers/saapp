@@ -1,7 +1,6 @@
 class Manager::ManagerController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_manager!
-  before_action :set_warning_about_possible_subscription_expiration
 
   layout 'manager'
 
@@ -21,9 +20,5 @@ class Manager::ManagerController < ApplicationController
       [t('common.unauthorized'), -> { current_user.manager? }],
       [t('subscriptions.subscription_expired_or_invalid'), -> { company_subscription.can_use_system? }]
     ]
-  end
-
-  def set_warning_about_possible_subscription_expiration
-    flash[:warning] = company_subscription.warning_message_for_display_reminder if company_subscription.display_reminder?
   end
 end

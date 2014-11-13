@@ -80,12 +80,20 @@
                       = locale.to_s.upcase
 
     .container
+      - if user_signed_in? && current_user.manager?
+        - if company_subscription.link_negotiator.render_form?
+          = render partial: 'manager/saasy/billing_form'
+
+        - if company_subscription.display_reminder?
+          %div.alert.alert-warning.alert-dismissable.fade.in
+            %button.close{type: 'button', data:{dismiss: 'alert'}, aria: {hidden: 'true'} } &times;
+            = company_subscription.warning_message_for_display_reminder
+            = link_to t('subscriptions.trial_subscription_will_expire_go_to_billing_page'), company_subscription.link_negotiator.link
+
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{ flash_message_color(name) } alert-dismissable fade in" do
           %button.close{type: 'button', data:{dismiss: 'alert'}, aria: {hidden: 'true'} } &times;
           = msg
-          - if company_subscription.display_reminder? && name == 'warning'
-            = link_to t('subscriptions.trial_subscription_will_expire_go_to_billing_page'), company_subscription.link_negotiator.link
       = yield(:top) if content_for?(:top)
       = yield
 

@@ -25,7 +25,7 @@ feature 'Subscription visual reminder' do
     feature 'and his subscription is about to end within week' do
       background do
         allow_any_instance_of(CompanySubscription).to receive(:display_reminder?).and_return(true)
-        allow_any_instance_of(CompanySubscription).to receive(:active_subscription).and_return(double(expired?: false, days_until_expires: days))
+        allow_any_instance_of(CompanySubscription).to receive(:active_subscription).and_return(double(days_until_expires: days))
       end
 
       scenario js: true do

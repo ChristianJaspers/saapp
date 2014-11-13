@@ -12,7 +12,5 @@
         = link_to t('manager.tabs.reports'), manager_reports_root_path
       %li{class: ('active' if request.path['/billing'])}
         = link_to t('manager.tabs.billing'), company_subscription.link_negotiator.link
-        - if company_subscription.link_negotiator.render_form?
-          = render partial: 'manager/saasy/billing_form'
 
 = render template: 'layouts/application'
