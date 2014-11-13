@@ -110,7 +110,7 @@ wizardApp.controller('wizardCtrl', ['$scope', '$animate', '$timeout', 'Wizard', 
 
     wizard.$save().then((u, putResponseHeaders) ->
       if u.success
-        document.location.href = '/confirmation?confirmation_token=' + u.confirmation_token
+        document.location.href = u.confirmation_path
       else
         $('.alert.alert-danger').remove()
         flashContainer = $('<div class="alert alert-danger" alert-dismissable></div>')

@@ -36,7 +36,7 @@ module LanguageAutoredirect
   end
 
   def autodetection_should_be_performed?
-    request.get? && !request.path['/admin/']
+    request.get? && request.path == '/' && !request.path['/admin/']
   end
 
   def different_locale?

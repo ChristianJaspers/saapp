@@ -17,8 +17,8 @@ feature 'Locale' do
       scenario 'en guest visits /da path', js: true do
         expect(get_me_the_cookie('lang')).to be_nil
         visit '/da'
-        expect(current_path).to eq '/'
-        expect(get_me_the_cookie('lang')[:value]).to eq 'en'
+        expect(current_path).to eq '/da'
+        expect(get_me_the_cookie('lang')).to be_nil
       end
 
       context 'guest already was here and chose en language' do
@@ -36,12 +36,12 @@ feature 'Locale' do
 
         scenario 'en guest visits cms page with incorrect locale' do
           visit '/da/login'
-          expect(current_path).to eq '/login'
+          expect(current_path).to eq '/da/login'
         end
 
         scenario 'en guest visits cms page with params and incorrect locale' do
           visit '/da/login?param=1'
-          expect(current_url.sub(current_host, '')).to eq '/login?param=1'
+          expect(current_url.sub(current_host, '')).to eq '/da/login?param=1'
         end
       end
     end
@@ -67,12 +67,12 @@ feature 'Locale' do
 
         scenario 'da guest visits cms page' do
           visit '/login'
-          expect(current_path).to eq '/da/login'
+          expect(current_path).to eq '/login'
         end
 
         scenario 'da guest visits cms page with params' do
           visit '/login?param=1'
-          expect(current_url.sub(current_host, '')).to eq '/da/login?param=1'
+          expect(current_url.sub(current_host, '')).to eq '/login?param=1'
         end
 
         scenario 'da guest visits cms page with correct locale' do
