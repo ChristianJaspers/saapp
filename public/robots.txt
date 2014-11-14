@@ -1,6 +1,11 @@
 User-agent: *
 Disallow: /admin*
+Disallow: /da/admin*
 Disallow: /manager*
+Disallow: /da/manager*
 Disallow: /confirmation*
+Disallow: /da/confirmation*
 Disallow: /wizards/new*
+Disallow: /da/wizards/new*
 Allow: /confirmation/new
+Allow: /da/confirmation/new

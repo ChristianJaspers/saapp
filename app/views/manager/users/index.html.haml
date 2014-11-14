@@ -19,7 +19,7 @@
               = user.removal_link
     = paginate users
 
-    = simple_form_for [:manager, user] do |f|
+    = simple_form_for user, url: manager_users_path(locale: I18n.locale) do |f|
       .row-dark
         .col-md-12
           .row

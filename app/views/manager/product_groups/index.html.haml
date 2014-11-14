@@ -21,7 +21,7 @@
               = product_group.removal_link
     = paginate product_groups
 
-    = simple_form_for [:manager, product_group] do |f|
+    = simple_form_for product_group, url: manager_product_groups_path(locale: I18n.locale) do |f|
       .row-dark
         .col-md-7
           = f.input :name, label: false, placeholder: t('manager.product_groups.index.table.headers.product_group_name')

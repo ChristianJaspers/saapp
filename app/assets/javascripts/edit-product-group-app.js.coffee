@@ -5,7 +5,9 @@ editProductGroupApp.config ['$httpProvider', ($httpProvider) ->
 ]
 
 editProductGroupApp.factory('ProductGroups', ['$resource', ($resource) ->
-  $resource('/manager/product_groups/:id', null,
+  url_prefix = if (gon.routes_prefix && gon.routes_prefix == '/') then '' else gon.routes_prefix
+  url = url_prefix + '/manager/product_groups/:id';
+  $resource(url, null,
     {
       'update': { method: 'PUT' }
     }

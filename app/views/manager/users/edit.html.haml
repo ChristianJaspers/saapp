@@ -1,6 +1,6 @@
 .my-account
   .col-md-8.col-md-offset-1
-    = simple_form_for [:manager, user] do |f|
+    = simple_form_for user, url: manager_user_path(user, locale: I18n.locale) do |f|
       = f.input :email
       = f.input :display_name
       = f.input :manager, as: :boolean

@@ -17,6 +17,7 @@ class Manager::ProductGroupsController < Manager::ManagerController
   end
 
   def edit
+    gon.routes_prefix = root_path(locale: I18n.locale)
     gon.product_group_id = product_group.id
   end
 
