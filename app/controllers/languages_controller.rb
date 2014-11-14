@@ -10,6 +10,11 @@ class LanguagesController < ApplicationController
 
     url_hash = Rails.application.routes.recognize_path URI(request.referer).path
     url_hash[:only_path] = true
-    redirect_to localized_path(read_locale, raw_fullpath_from_request(url_for(url_hash)))
+    redirect_to normalize_trailing_slash(
+      localized_path(
+        read_locale,
+        raw_fullpath_from_request(url_for(url_hash))
+      )
+    )
   end
 end
