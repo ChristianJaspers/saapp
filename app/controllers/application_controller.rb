@@ -39,17 +39,17 @@ class ApplicationController < ActionController::Base
       admin_root_url
     elsif resource.manager?
       if account_has_been_activated?
-        manager_root_url(account_activation: true)
+        manager_root_url(account_activation: true, locale: I18n.locale)
       else
-        manager_root_url
+        manager_root_url(locale: I18n.locale)
       end
     else
-      root_url
+      root_url(locale: I18n.locale)
     end
   end
 
   def after_sign_out_path_for(resource)
-    root_url
+    root_url(locale: I18n.locale)
   end
 
   def default_url_options(options={})

@@ -5,7 +5,7 @@
       = f.input :display_name
       = f.input :manager, as: :boolean
       .pull-right
-        = link_to t('common.cancel'), manager_users_path, class: 'btn btn-dark'
+        = link_to t('common.cancel'), manager_users_path(locale: I18n.locale), class: 'btn btn-dark'
         %span.or
           = t('common.or')
         = f.button :submit, t('common.save_changes'), class: 'btn-primary'

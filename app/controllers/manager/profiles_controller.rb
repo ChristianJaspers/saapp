@@ -4,7 +4,7 @@ class Manager::ProfilesController < Manager::ManagerController
   def update
     current_user.attributes = user_params
     if current_user.save
-      redirect_to edit_manager_profile_path, notice: t('manager.profile.update.notifications.success')
+      redirect_to edit_manager_profile_path(locale: I18n.locale), notice: t('manager.profile.update.notifications.success')
     else
       render :edit
     end

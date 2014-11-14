@@ -10,7 +10,7 @@ class Manager::ProductGroupsController < Manager::ManagerController
     product_group.owner = current_user
 
     if product_group.save
-      redirect_to edit_manager_product_group_path(product_group)
+      redirect_to edit_manager_product_group_path(product_group, locale: I18n.locale)
     else
       render :index
     end

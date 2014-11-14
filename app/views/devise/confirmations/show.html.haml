@@ -1,7 +1,7 @@
 .wizard-window.sign-in
   %h2= t('devise.confirmations.account_activation_title')
   .col-md-6.col-md-offset-3.bottom-default
-    = simple_form_for resource, as: resource_name, url: update_user_confirmation_path, html: {method: 'patch'}, id: 'activation-form' do |f|
+    = simple_form_for resource, as: resource_name, url: update_user_confirmation_path(locale: I18n.locale), html: {method: 'patch'}, id: 'activation-form' do |f|
       - if resource.errors.any?
         .form-warning.center
           = f.error_notification

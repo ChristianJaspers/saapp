@@ -23,7 +23,7 @@ class ReportArgumentRankingDecorator < ApplicationDecorator
   end
 
   def link_to_destroy
-    h.link_to '', h.manager_argument_path(model),
+    h.link_to '', h.manager_argument_path(model, locale: I18n.locale),
       class: 'btn-icon icon-trash',
       method: :delete,
       data: {

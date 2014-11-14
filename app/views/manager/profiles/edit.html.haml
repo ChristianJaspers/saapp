@@ -1,7 +1,7 @@
 .my-account
   .col-sm-6.col-md-offset-1
     %h4= t('manager.tabs.my_profile')
-    = simple_form_for current_user, url: manager_profile_path, method: :patch do |f|
+    = simple_form_for current_user, url: manager_profile_path(locale: I18n.locale), method: :patch do |f|
       = f.input :display_name
       = f.button :submit, t('common.save_changes'), class: 'btn-primary f-right'
       .clearfix.bottom-default
@@ -10,7 +10,7 @@
     .icon-team
     = t('manager.profile.edit.team_size')
     .rep-counter
-      = link_to sales_reps_count, manager_users_path
+      = link_to sales_reps_count, manager_users_path(locale: I18n.locale)
     = t('manager.profile.edit.sales_reps')
 
 - if Rails.env.production? && account_has_been_activated?

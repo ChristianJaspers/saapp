@@ -1,7 +1,7 @@
 .wizard-window.sign-in
   %h2= t('devise.confirmations.header')
   .col-md-6.col-md-offset-3
-    = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+    = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name, locale: I18n.locale), html: { method: :post }) do |f|
       - if f.error_notification.present?
         .form-warning.center
           = f.error_notification

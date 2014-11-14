@@ -40,7 +40,7 @@
     .navbar
       .container
         .navbar-header
-          = link_to '', localized_path(I18n.locale, root_path), title: t('application_name'), class: 'navbar-brand'
+          = link_to '', root_path(locale: I18n.locale), title: t('application_name'), class: 'navbar-brand'
           %button.navbar-toggle.collapsed{data: {toggle: 'collapse', target: '.bs-navbar-collapse'}, type: 'button'}
             %span.sr-only Toggle navigation
             %span.icon-bar
@@ -59,7 +59,7 @@
                     = t('navbar.logged_as')
                   = current_user.email
               %li
-                = link_to t('navbar.my_account_link'), manager_root_path
+                = link_to t('navbar.my_account_link'), manager_root_path(locale: I18n.locale)
             %li
               - if user_signed_in?
                 - if current_user.admin?
@@ -68,7 +68,7 @@
                 = link_to t('navbar.login_link'), new_user_session_path(locale: I18n.locale)
             - if user_signed_in?
               %li
-                = link_to t('navbar.logout_link'), destroy_user_session_path, method: 'delete'
+                = link_to t('navbar.logout_link'), destroy_user_session_path(locale: I18n.locale), method: 'delete'
             %li.language
               %button.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
                 = image_tag locale_flag_filename(I18n.locale)

@@ -4,7 +4,7 @@ class Manager::UsersController < Manager::ManagerController
 
   def create
     if Manager::CreateUser.call(self).success?
-      redirect_to manager_users_path, notice: t('manager.users.create.notifications.success')
+      redirect_to manager_users_path(locale: I18n.locale), notice: t('manager.users.create.notifications.success')
     else
       render :index
     end
@@ -12,12 +12,12 @@ class Manager::UsersController < Manager::ManagerController
 
   def destroy
     Manager::DestroyUser.call(self)
-    redirect_to manager_users_path, notice: t('manager.users.destroy.notifications.success')
+    redirect_to manager_users_path(locale: I18n.locale), notice: t('manager.users.destroy.notifications.success')
   end
 
   def update
     if Manager::UpdateUser.call(self).success?
-      redirect_to manager_users_path, notice: t('manager.users.update.notifications.success')
+      redirect_to manager_users_path(locale: I18n.locale), notice: t('manager.users.update.notifications.success')
     else
       render :edit
     end

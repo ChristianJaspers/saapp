@@ -44,7 +44,7 @@
             %input.form-control.add-benefit{'ng-model' => 'argument.benefit', type: 'text', required: true}
             %input.wizard-add.four-corners.pull-right{type: 'submit', value: t('common.add')}
         .pull-right
-          = link_to t('common.cancel'), manager_product_groups_path, class: 'btn btn-dark'
+          = link_to t('common.cancel'), manager_product_groups_path(locale: I18n.locale), class: 'btn btn-dark'
           %span.or
             = t('common.or')
           %button.btn.btn-primary{type: 'button', 'ng-click' => 'submitProductGroup()', 'ng-disabled' => 'canSaveProductGroup()'}

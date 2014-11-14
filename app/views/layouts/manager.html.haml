@@ -3,13 +3,13 @@
     %h2= t('navbar.my_account_link')
     %ul.nav.nav-tabs.col-sm-3
       %li{class: ('active' if controller_name == 'profiles')}
-        = link_to t('manager.tabs.my_profile'), edit_manager_profile_path
+        = link_to t('manager.tabs.my_profile'), edit_manager_profile_path(locale: I18n.locale)
       %li{class: ('active' if controller_name == 'product_groups')}
-        = link_to t('manager.tabs.product_groups'), manager_product_groups_path
+        = link_to t('manager.tabs.product_groups'), manager_product_groups_path(locale: I18n.locale)
       %li{class: ('active' if controller_name == 'users')}
-        = link_to t('manager.tabs.users'), manager_users_path
+        = link_to t('manager.tabs.users'), manager_users_path(locale: I18n.locale)
       %li{class: ('active' if request.path['/reports'])}
-        = link_to t('manager.tabs.reports'), manager_reports_root_path
+        = link_to t('manager.tabs.reports'), manager_reports_root_path(locale: I18n.locale)
       %li{class: ('active' if request.path['/billing'])}
         = link_to t('manager.tabs.billing'), company_subscription.link_negotiator.link
 

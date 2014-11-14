@@ -24,6 +24,6 @@ private
   end
 
   def saasy_subscription_link
-    Rails.application.routes.url_helpers.saasy_subscription_path(company_subscription.active_remote_subscription.reference)
+    Rails.application.routes.url_helpers.saasy_subscription_path(company_subscription.active_remote_subscription.reference, locale: I18n.locale)
   end
 end
