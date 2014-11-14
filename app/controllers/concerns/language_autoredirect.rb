@@ -52,7 +52,11 @@ module LanguageAutoredirect
   end
 
   def raw_request_fullpath
-    request.fullpath.sub(LANG_PATH_REGEX, '/')
+    raw_fullpath_from_request(request.fullpath)
+  end
+
+  def raw_fullpath_from_request(fullpath)
+    fullpath.sub(LANG_PATH_REGEX, '/')
   end
 
   def extracted_locale
