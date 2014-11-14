@@ -8,6 +8,8 @@ class LanguagesController < ApplicationController
       save_locale(lang) if I18n.available_locales.include?(lang)
     end
 
-    redirect_to :back
+    url_hash = Rails.application.routes.recognize_path URI(request.referer).path
+    url_hash[:locale] = read_locale
+    redirect_to url_hash
   end
 end
