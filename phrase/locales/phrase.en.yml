@@ -158,8 +158,8 @@ en:
     arguments:
       destroy:
         notifications:
-          failure: Argument has not been destroyed
-          success: Argument has been destroyed
+          failure: Argument has not been deleted
+          success: Argument has been deleted
     dashboard:
       show:
         links:
