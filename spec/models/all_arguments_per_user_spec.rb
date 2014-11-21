@@ -159,6 +159,16 @@ describe AllArgumentsPerUser do
         })
       end
     end
+
+    context 'one product group is marked for removal' do
+      before { argument_2.product_group.update_column(:remove_at, Time.now) }
+
+      it do
+        expect(perform).to eq({
+          user_1.id => 1
+        })
+      end
+    end
   end
 
   describe '.map_to_unrated_arguments_for_team' do
@@ -180,6 +190,17 @@ describe AllArgumentsPerUser do
         expect(perform).to eq({
           user_1.id => 1,
           user_2.id => 1,
+        })
+      end
+    end
+
+    context 'one product group is marked for removal' do
+      before { argument_2.product_group.update_column(:remove_at, Time.now) }
+
+      it do
+        expect(perform).to eq({
+          user_1.id => 1,
+          user_2.id => 1
         })
       end
     end
