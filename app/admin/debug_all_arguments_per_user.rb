@@ -12,6 +12,9 @@ ActiveAdmin.register AllArgumentsPerUser do
   end
 
   index do
+    column 'User id' do |rate|
+      rate.rater_id
+    end
     column 'User email' do |rate|
       rater = User.unscoped.find_by(id: rate.rater_id)
 
