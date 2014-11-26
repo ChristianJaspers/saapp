@@ -37,7 +37,12 @@ class SubscriptionUpdater < BusinessProcess::Base
   end
 
   def update_remote_subscription
-    api.subscription.update_quantity(subscription.reference, quantity)
-    quantity
+    begin
+      api.subscription.update_quantity(subscription.reference, quantity)
+      quantity
+    rescue FsprgException => e
+      Rails.logger.error "FsprgException: #{e.message}"
+      nil
+    end
   end
 end
