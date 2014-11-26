@@ -6,13 +6,17 @@ class Manager::UsersController < Manager::ManagerController
     if Manager::CreateUser.call(self).success?
       redirect_to manager_users_path(locale: I18n.locale), notice: t('manager.users.create.notifications.success')
     else
+      flash.now[:alert] = t('manager.users.create.notifications.failure')
       render :index
     end
   end
 
   def destroy
-    Manager::DestroyUser.call(self)
-    redirect_to manager_users_path(locale: I18n.locale), notice: t('manager.users.destroy.notifications.success')
+    if Manager::DestroyUser.call(self).success?
+      redirect_to manager_users_path(locale: I18n.locale), notice: t('manager.users.destroy.notifications.success')
+    else
+      redirect_to manager_users_path(locale: I18n.locale), alert: t('manager.users.destroy.notifications.failure')
+    end
   end
 
   def update

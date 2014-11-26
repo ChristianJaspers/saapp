@@ -211,9 +211,11 @@ en:
     users:
       create:
         notifications:
+          failure: User can not be created
           success: Sales representative created
       destroy:
         notifications:
+          failure: User can not be removed
           success: Sales representative removed
       index:
         optional_invitation: Optional invitation message
