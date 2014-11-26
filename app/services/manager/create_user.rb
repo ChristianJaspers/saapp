@@ -1,4 +1,7 @@
 class Manager::CreateUser < BusinessProcess::Base
+  extend BusinessProcess::Transactional
+  transaction_for User
+
   needs :user
   needs :current_user
 
@@ -53,6 +56,7 @@ class Manager::CreateUser < BusinessProcess::Base
 
   def send_invitation
     ApplicationMailer.user_invitation(*successfuly_processed)
+    true
   end
 
   def extract_emails_to_user(concatenated_emails)

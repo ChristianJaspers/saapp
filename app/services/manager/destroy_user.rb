@@ -1,4 +1,7 @@
 class Manager::DestroyUser < BusinessProcess::Base
+  extend BusinessProcess::Transactional
+  transaction_for User
+
   needs :user
 
   def call
