@@ -41,7 +41,7 @@ class Manager::ProductGroupsController < Manager::ManagerController
   end
 
   def destroy
-    product_group.remove! if product_group.removable_by?(current_user)
+    Manager::DestroyProductGroup.call(self)
     redirect_to :back, notice: t('manager.product_groups.destroy.notifications.success')
   end
 
