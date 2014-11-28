@@ -211,9 +211,11 @@ da:
     users:
       create:
         notifications:
+          failure: Bruger kan ikke oprettes
           success: Sælger oprettet
       destroy:
         notifications:
+          failure: Bruger kan ikke fjernes
           success: Sælger fjernet
       index:
         optional_invitation: Valgfri besked i invitationen

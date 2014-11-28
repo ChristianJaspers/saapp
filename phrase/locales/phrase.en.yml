@@ -211,11 +211,11 @@ en:
     users:
       create:
         notifications:
-          failure: User can not be created
+          failure: User cannot be created
           success: Sales representative created
       destroy:
         notifications:
-          failure: User can not be removed
+          failure: User cannot be removed
           success: Sales representative removed
       index:
         optional_invitation: Optional invitation message
@@ -252,6 +252,12 @@ en:
     trial_subscription_will_expire_go_to_billing_page: Go to billing page.
     trial_subscription_will_expire_within_week: Your trial version will expire within
       %{days} day(s). Please start a subscription to continue using system.
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: Last &raquo;
+      next: Next &rsaquo;
+      previous: "&lsaquo; Prev"
   wizard:
     create:
       errors:
