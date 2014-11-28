@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107154301) do
+ActiveRecord::Schema.define(version: 20141128145656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20141107154301) do
   add_index "autologins", ["expires_at"], name: "index_autologins_on_expires_at", using: :btree
   add_index "autologins", ["token"], name: "index_autologins_on_token", unique: true, using: :btree
   add_index "autologins", ["user_id"], name: "index_autologins_on_user_id", using: :btree
+
+  create_table "cms_page_seo_data", force: true do |t|
+    t.integer "page_id",     null: false
+    t.string  "title"
+    t.text    "description"
+  end
+
+  add_index "cms_page_seo_data", ["page_id"], name: "index_cms_page_seo_data_on_page_id", using: :btree
 
   create_table "comfy_cms_blocks", force: true do |t|
     t.string   "identifier",     null: false

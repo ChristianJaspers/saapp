@@ -1,0 +1,6 @@
+= semantic_form_for [:admin, CmsPageSeoData.find_or_initialize_by(page_id: resource)], url: admin_comfy_cms_page_path(resource), method: :patch do |f|
+  = f.inputs 'General' do
+    = f.input :title
+    = f.input :description
+  = f.actions do
+    = f.action :submit, label: 'Save'

@@ -2,30 +2,29 @@
 %html{lang: I18n.locale}
   %head
     %meta{:charset => 'utf-8'}
-    %title= t('application_name')
+    %title= cms_page_title
+    %meta{name: 'description', content: cms_page_description}
     = include_gon
     %meta{content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no', name: 'viewport'}
-    %meta{content: '', name: 'description'}
     %meta{content: '', name: 'author'}
-    %meta{content: ENV['APP_NAME'], name: 'description'}
-      = desktop_favicon_link_tag 196
-      = desktop_favicon_link_tag 160
-      = desktop_favicon_link_tag 96
-      = desktop_favicon_link_tag 32
-      = desktop_favicon_link_tag 16
-      = desktop_favicon_link_tag
-      = apple_favicon_link_tag 'precomposed'
-      = apple_favicon_link_tag 152
-      = apple_favicon_link_tag 144
-      = apple_favicon_link_tag 120
-      = apple_favicon_link_tag 114
-      = apple_favicon_link_tag 76
-      = apple_favicon_link_tag 72
-      = apple_favicon_link_tag 60
-      = apple_favicon_link_tag 57
-      = apple_favicon_link_tag
-      %meta{name: 'msapplication-TileColor', content: '#00a300'}
-      %meta{name: 'msapplication-TileImage', content: '/mstile-144x144.png'}
+    = desktop_favicon_link_tag 196
+    = desktop_favicon_link_tag 160
+    = desktop_favicon_link_tag 96
+    = desktop_favicon_link_tag 32
+    = desktop_favicon_link_tag 16
+    = desktop_favicon_link_tag
+    = apple_favicon_link_tag 'precomposed'
+    = apple_favicon_link_tag 152
+    = apple_favicon_link_tag 144
+    = apple_favicon_link_tag 120
+    = apple_favicon_link_tag 114
+    = apple_favicon_link_tag 76
+    = apple_favicon_link_tag 72
+    = apple_favicon_link_tag 60
+    = apple_favicon_link_tag 57
+    = apple_favicon_link_tag
+    %meta{name: 'msapplication-TileColor', content: '#00a300'}
+    %meta{name: 'msapplication-TileImage', content: '/mstile-144x144.png'}
 
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
