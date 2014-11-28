@@ -1,5 +1,13 @@
 module EmailTemplates
-  class Recipient < Struct.new(:locale, :email, :variables)
+  class Recipient
+    attr_accessor :locale, :email, :variables
+
+    def initialize(locale, email, variables)
+      @locale = WhitelistLocale.call(locale)
+      @email = email
+      @variables = variables
+    end
+
     def to
       {
         type: 'bcc',
