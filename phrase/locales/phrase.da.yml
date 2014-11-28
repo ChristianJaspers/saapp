@@ -252,6 +252,12 @@ da:
     trial_subscription_will_expire_go_to_billing_page: Gå til betalingsside.
     trial_subscription_will_expire_within_week: 'Din prøveadgang udløber om %{days}
       dage. Køb et abonnement for at fortsætte med at bruge systemet. '
+  views:
+    pagination:
+      first: "&laquo; Første"
+      last: Sidste &raquo;
+      next: Næste &rsaquo;
+      previous: "&lsaquo; Forrige"
   wizard:
     create:
       errors:
