@@ -5,36 +5,12 @@ class ApplicationController < ActionController::Base
 
   force_ssl if: :ssl_configured?
 
-  include LanguageAutoredirect
-
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
 
-  expose(:cms_site) { Comfy::Cms::Site.find_by_locale(I18n.locale) }
-  expose(:cms_static_pages) do
-    if cms_site
-      cms_site.static_pages
-    else
-      []
-    end
-  end
-  expose(:cms_page_title) do
-    t('application_name')
-  end
-  expose(:cms_page_description) do
-    ''
-  end
-  expose(:cms_root_page_content) do
-    if cms_site
-      cms_site.root_page_content
-    else
-      ''
-    end
-  end
-  expose(:company_subscription) do
-    CompanySubscription.new(current_user)
-  end
+  include LanguageAutoredirect
+  include CmsExposures
 
   expose(:account_has_been_activated?) { @account_has_been_activated || params[:account_activation] == 'true' }
 
