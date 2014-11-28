@@ -1,7 +1,7 @@
 ActiveAdmin.register Comfy::Cms::Page do
   menu false
 
-  actions :index, :edit, :show
+  actions :index, :edit
 
   index do
     id_column

@@ -1,5 +1,5 @@
 = semantic_form_for [:admin, CmsPageSeoData.find_or_initialize_by(page_id: resource)], url: admin_comfy_cms_page_path(resource), method: :patch do |f|
-  = f.inputs 'General' do
+  = f.inputs "General for #{localized_cms_page_path(resource)}" do
     = f.input :title
     = f.input :description
   = f.actions do
