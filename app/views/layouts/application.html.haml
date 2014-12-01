@@ -66,7 +66,7 @@
                   = link_to t('navbar.admin_link'), admin_root_path
             - else
               %li
-                = link_to t('navbar.get_started_link'), '#new_wizard', class: 'get-started'
+                = link_to t('navbar.get_started_link'), "#{root_path}#new_wizard", class: 'get-started'
               %li
                 = link_to t('navbar.login_link'), new_user_session_path(locale: I18n.locale)
             - if user_signed_in?
