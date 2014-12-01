@@ -59,14 +59,21 @@ $icon-margin: 48px
       position: absolute
 
 .landing-form
-  margin: 0 0 $interval-default * 1.5 $interval-default * 1.5
+  margin: 0 0 ($interval-default * 1.5) ($interval-default * 1.5)
 
-  .wizard_email input
-    @include box-shadow($color-gray)
-    @extend %left-corners
+  .btn-primary
     float: left
-    height: $inputs-size
-    width: 58%
+    width: 250px
+
+  .wizard_email
+    float: left
+    width: 70%
+
+    input
+      @include box-shadow($color-gray)
+      @extend %left-corners
+      height: $inputs-size
+
   label
     display: none
   .help-block
@@ -147,6 +154,10 @@ $icon-margin: 48px
   .landing-devices
     min-height: 350px
 
+@media (max-width: $screen-md-max)
+  .landing-form .wizard_email
+    width: 58%
+
 @media (max-width: $screen-xs-max)
   .landing-list
     margin:
@@ -160,10 +171,12 @@ $icon-margin: 48px
   .landing-form
     margin: 0
 
-    .wizard_email input
-      border-right-width: 1px
+    .wizard_email
       float: none
       width: 100%
+
+      input
+        border-right-width: 1px
 
     .btn-primary
       width: 100%
