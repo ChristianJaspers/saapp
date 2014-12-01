@@ -1,19 +1,43 @@
 $icon-margin: 48px
 
-.landing-mobile
+.landing-page
+  text-align: center
+
+.landing,
+.landing-devices
   background:
-    image: image-url('mobile.png')
-    position: top center
+    position: center
     repeat: no-repeat
-  margin: ($interval-default * 1.5) auto 0
-  max-width: $mockup-width
   min-height: 500px
+
+.landing
+  background:
+    image: image-url('homepage-bg.jpg')
+    size: cover
+  margin: 0 auto $m
+  position: relative
+
+.landing-devices
+  background:
+    image: image-url('homepage-devices.png')
+    size: contain
+
+.landing-play
+  position: absolute
+  height: 100%
+  width: 100%
+
+.icon-play
+  left: 50%
+  position: absolute
+  top: 50%
 
 .landing-list
   margin:
     bottom: $interval-default
     top: $interval-default
   padding: 0
+  text-align: left
 
   li
     color: $color-gray
@@ -119,6 +143,10 @@ $icon-margin: 48px
     img
       max-width: 100%
 
+  .landing,
+  .landing-devices
+    min-height: 350px
+
 @media (max-width: $screen-xs-max)
   .landing-list
     margin:
@@ -140,8 +168,13 @@ $icon-margin: 48px
     .btn-primary
       width: 100%
 
-  .landing-mobile
-    margin-top: $interval-default
+  .landing,
+  .landing-devices
+    min-height: 200px
+
+  .icon-play
+    margin-left: -14px
+    margin-top: -26px
 
 @media (max-width: 400px)
   img[style="float: left;"],

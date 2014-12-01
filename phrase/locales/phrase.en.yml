@@ -234,6 +234,7 @@ en:
           success: Sales representative updated
   navbar:
     admin_link: Admin
+    get_started_link: Get started
     logged_as: Logged as
     login_link: Login
     logout_link: Logout

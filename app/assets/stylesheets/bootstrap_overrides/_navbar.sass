@@ -2,6 +2,7 @@
   background-color: $color-white
   border-bottom: 1px solid $color-gray-light
   font-size: $font-size-small
+  margin-bottom: 0
 
   li a, .logged-as
     line-height: 1
@@ -42,6 +43,12 @@
       
   .active a
     text-decoration: underline
+    
+  a.get-started
+    background-color: $color-orange
+    border-radius: 20px
+    color: $color-white
+    padding: $m-quarter $m-half
 
 .navbar-brand
   background:
@@ -63,9 +70,6 @@
     background-color: $color-black
 
 @media (max-width: $screen-xs-max)
-  .navbar
-    margin-bottom: 0
-
   .navbar-brand
     width: 150px
 

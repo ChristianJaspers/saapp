@@ -1,3 +1,9 @@
+= content_for :landing do
+  .landing
+    .landing-devices
+      -#= link_to '', class: 'landing-play' do
+      -#  .icon-play
+
 - if guest?
   .landing-form.clearfix
     = simple_form_for wizard, method: :get, url: new_wizard_path(locale: I18n.locale) do |f|
