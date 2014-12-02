@@ -234,6 +234,7 @@ da:
           success: Sælger opdateret
   navbar:
     admin_link: Admin
+    get_started_link: KOM I GANG
     logged_as: Logget ind som
     login_link: Log ind
     logout_link: Log ud
