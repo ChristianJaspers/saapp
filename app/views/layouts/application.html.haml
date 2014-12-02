@@ -82,8 +82,6 @@
                       = image_tag locale_flag_filename(locale)
                       = locale.to_s.upcase
 
-    = yield(:landing) if content_for?(:landing)
-
     .container
       - if user_signed_in? && current_user.manager?
         - if company_subscription.link_negotiator.render_form?
@@ -99,6 +97,10 @@
         = content_tag :div, :class => "alert alert-#{ flash_message_color(name) } alert-dismissable fade in" do
           %button.close{type: 'button', data:{dismiss: 'alert'}, aria: {hidden: 'true'} } &times;
           = msg
+
+    = yield(:landing) if content_for?(:landing)
+
+    .container
       = yield(:top) if content_for?(:top)
       = yield
 
