@@ -7,5 +7,5 @@
 - if guest?
   .landing-form.clearfix
     = simple_form_for wizard, method: :get, url: new_wizard_path(locale: I18n.locale) do |f|
-      = f.input :email, autofocus: true, input_html: {tabindex: 1, autocomplete: 'off'}
+      = f.input :email, input_html: {tabindex: 1, autocomplete: 'off'}
       = f.submit t('helpers.submit.wizard.create'), class: 'btn btn-primary', tabindex: 2
