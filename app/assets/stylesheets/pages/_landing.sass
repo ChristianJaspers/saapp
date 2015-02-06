@@ -17,10 +17,54 @@ $icon-margin: 48px
   margin: 0 auto $m
   position: relative
 
+  & ~ .modal-backdrop.fade.in
+    opacity: .8
+
+#videoModal
+  .modal-dialog, .modal-header
+    padding: 0
+
+  .modal-dialog
+    margin: 0 auto
+    max-width: 70%
+    width: auto
+
+  .modal-header
+    +clearfix()
+    border-bottom: none
+
+  .close
+    color: $color-white
+    font-size: 32px
+    opacity: 1
+    padding: $m-half
+    text-shadow: none
+
+  .modal-content
+    +box-shadow($color-transparent)
+    background: $color-transparent
+    border: none
+
 .landing-devices
   background:
     image: image-url('homepage-devices.png')
     size: contain
+  margin: 0 auto
+  max-width: 814px
+  position: relative
+
+.video-container
+  height: 0
+  overflow: hidden
+  padding-bottom: 56.25%
+  position: relative
+
+  iframe
+    height: 100%
+    left: 0
+    position: absolute
+    top: 0
+    width: 100%
 
 .landing-play
   position: absolute
@@ -29,6 +73,10 @@ $icon-margin: 48px
 
 .icon-play
   left: 50%
+  margin:
+    left: -$m
+    top: -$m-double
+  padding: $m
   position: absolute
   top: 50%
 
@@ -186,8 +234,10 @@ $icon-margin: 48px
     min-height: 200px
 
   .icon-play
+    left: 45%
     margin-left: -14px
     margin-top: -26px
+    top: 40%
 
 @media (max-width: 400px)
   img[style="float: left;"],

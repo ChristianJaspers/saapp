@@ -1,11 +1,33 @@
 = content_for :landing do
   .landing
     .landing-devices
-      -#= link_to '', class: 'landing-play' do
-      -#  .icon-play
+      = link_to '', {'data-target' => '#videoModal', 'data-toggle' => 'modal'}, class: 'landing-play' do
+        .icon-play
+
+      #videoModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'videoModalLabel', :role => 'dialog', :tabindex => '-1'}
+        .modal-dialog
+          .modal-content
+            .modal-header
+              %button.close{'aria-label' => 'Close', 'data-dismiss' => 'modal', :type => 'button'}
+                %span{'aria-hidden' => 'true'} ×
+            .modal-body
+              .video-container
+                %iframe{allowfullscreen: '', frameborder: '0', src: 'https://www.youtube.com/embed/YrVdo9MIe5E'}
 
 - if guest?
   .landing-form.clearfix
     = simple_form_for wizard, method: :get, url: new_wizard_path(locale: I18n.locale) do |f|
       = f.input :email, input_html: {tabindex: 1, autocomplete: 'off'}
       = f.submit t('helpers.submit.wizard.create'), class: 'btn btn-primary', tabindex: 2
+
+:javascript
+  $("#videoModal").on('show.bs.modal', function (e) {
+    video = $(this).find('iframe').attr("src");
+    video += '?autoplay=1'
+    $(this).find('iframe').attr("src", video)
+  });
+
+  $("#videoModal").on('hidden.bs.modal', function (e) {
+      video = $(this).find('iframe').attr("src").replace('?autoplay=1', '');
+      $("#videoModal iframe").attr("src", video);
+  });
